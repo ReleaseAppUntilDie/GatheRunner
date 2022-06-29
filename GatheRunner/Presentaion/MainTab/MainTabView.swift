@@ -19,9 +19,12 @@ struct MainTabView: View {
                 .tabItem {
                     tabItem.title
                     tabItem.icon
-                }.tag(tabItem.tag)
+                }
+                .tag(tabItem.tag)
+                
             }
         }
+        .accentColor(.black)
     }
 }
 
