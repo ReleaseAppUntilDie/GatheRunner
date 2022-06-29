@@ -17,6 +17,11 @@
 		E3D349E8286C20D500618AC3 /* GatheRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349E7286C20D500618AC3 /* GatheRunnerTests.swift */; };
 		E3D349F2286C20D500618AC3 /* GatheRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F1286C20D500618AC3 /* GatheRunnerUITests.swift */; };
 		E3D349F4286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */; };
+		E3D34A09286C282D00618AC3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D34A08286C282D00618AC3 /* HomeView.swift */; };
+		E3D34A11286C352200618AC3 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D34A10286C352200618AC3 /* TabItem.swift */; };
+		E3D34A13286C3ABA00618AC3 /* RunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D34A12286C3ABA00618AC3 /* RunningView.swift */; };
+		E3D34A17286C414100618AC3 /* ClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D34A16286C414100618AC3 /* ClubView.swift */; };
+		E3D34A19286C415E00618AC3 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D34A18286C415E00618AC3 /* ActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,11 @@
 		E3D349ED286C20D500618AC3 /* GatheRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GatheRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349F1286C20D500618AC3 /* GatheRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerUITests.swift; sourceTree = "<group>"; };
 		E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E3D34A08286C282D00618AC3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E3D34A10286C352200618AC3 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		E3D34A12286C3ABA00618AC3 /* RunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningView.swift; sourceTree = "<group>"; };
+		E3D34A16286C414100618AC3 /* ClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubView.swift; sourceTree = "<group>"; };
+		E3D34A18286C415E00618AC3 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -136,6 +146,7 @@
 			children = (
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
 				E3D34A00286C22AA00618AC3 /* Application */,
+				E3D34A02286C230700618AC3 /* Presentaion */,
 				E3D34A01286C22DD00618AC3 /* Domain */,
 				E3D34A07286C23CC00618AC3 /* Helper */,
 				E3D34A04286C236300618AC3 /* Resources */,
@@ -179,26 +190,22 @@
 		E3D34A01286C22DD00618AC3 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				E3D34A03286C235B00618AC3 /* Common */,
-				E3D34A02286C230700618AC3 /* Views */,
 				E3D34A05286C239E00618AC3 /* Repo */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		E3D34A02286C230700618AC3 /* Views */ = {
+		E3D34A02286C230700618AC3 /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
-				E3D34A06286C23AC00618AC3 /* Tab */,
+				E3D34A1F286C5A3900618AC3 /* Commons */,
+				E3D34A1A286C592500618AC3 /* MainTab */,
+				E3D34A1B286C59D100618AC3 /* Home */,
+				E3D34A1E286C59EB00618AC3 /* Activity */,
+				E3D34A1D286C59E600618AC3 /* Club */,
+				E3D34A1C286C59E100618AC3 /* Running */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		E3D34A03286C235B00618AC3 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
+			path = Presentaion;
 			sourceTree = "<group>";
 		};
 		E3D34A04286C236300618AC3 /* Resources */ = {
@@ -216,19 +223,83 @@
 			path = Repo;
 			sourceTree = "<group>";
 		};
-		E3D34A06286C23AC00618AC3 /* Tab */ = {
+		E3D34A07286C23CC00618AC3 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E3D34A0A286C29BC00618AC3 /* UI */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		E3D34A0A286C29BC00618AC3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E3D34A0C286C2A1700618AC3 /* Modifiers */,
+				E3D34A0B286C29C500618AC3 /* Style */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E3D34A0B286C29C500618AC3 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		E3D34A0C286C2A1700618AC3 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		E3D34A1A286C592500618AC3 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
 				E3D349D8286C20D200618AC3 /* MainTabView.swift */,
 			);
-			path = Tab;
+			path = MainTab;
 			sourceTree = "<group>";
 		};
-		E3D34A07286C23CC00618AC3 /* Helper */ = {
+		E3D34A1B286C59D100618AC3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E3D34A08286C282D00618AC3 /* HomeView.swift */,
 			);
-			path = Helper;
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E3D34A1C286C59E100618AC3 /* Running */ = {
+			isa = PBXGroup;
+			children = (
+				E3D34A12286C3ABA00618AC3 /* RunningView.swift */,
+			);
+			path = Running;
+			sourceTree = "<group>";
+		};
+		E3D34A1D286C59E600618AC3 /* Club */ = {
+			isa = PBXGroup;
+			children = (
+				E3D34A16286C414100618AC3 /* ClubView.swift */,
+			);
+			path = Club;
+			sourceTree = "<group>";
+		};
+		E3D34A1E286C59EB00618AC3 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				E3D34A18286C415E00618AC3 /* ActivityView.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		E3D34A1F286C5A3900618AC3 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				E3D34A10286C352200618AC3 /* TabItem.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,7 +504,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3D34A17286C414100618AC3 /* ClubView.swift in Sources */,
+				E3D34A09286C282D00618AC3 /* HomeView.swift in Sources */,
+				E3D34A13286C3ABA00618AC3 /* RunningView.swift in Sources */,
 				E3D349D9286C20D200618AC3 /* MainTabView.swift in Sources */,
+				E3D34A19286C415E00618AC3 /* ActivityView.swift in Sources */,
+				E3D34A11286C352200618AC3 /* TabItem.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
