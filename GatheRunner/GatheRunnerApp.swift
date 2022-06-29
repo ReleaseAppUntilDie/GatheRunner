@@ -11,7 +11,7 @@ import SwiftUI
 struct GatheRunnerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
         }
     }
 }

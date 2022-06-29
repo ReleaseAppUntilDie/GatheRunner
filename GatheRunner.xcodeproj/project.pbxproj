@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19AB858B6A67A1FD7E20CE20 /* Pods_GatheRunner_GatheRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F3E5D65BF8160E66CE0901 /* Pods_GatheRunner_GatheRunnerUITests.framework */; };
+		9B5095EDA536B973CF0EB609 /* Pods_GatheRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */; };
+		D038E0DE9807E434F1BB41EE /* Pods_GatheRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */; };
 		E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */; };
-		E3D349D9286C20D200618AC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349D8286C20D200618AC3 /* ContentView.swift */; };
+		E3D349D9286C20D200618AC3 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349D8286C20D200618AC3 /* MainTabView.swift */; };
 		E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DA286C20D500618AC3 /* Assets.xcassets */; };
 		E3D349DE286C20D500618AC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DD286C20D500618AC3 /* Preview Assets.xcassets */; };
 		E3D349E8286C20D500618AC3 /* GatheRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349E7286C20D500618AC3 /* GatheRunnerTests.swift */; };
@@ -34,9 +37,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03EBBC3850C49984862875E4 /* Pods-GatheRunner-GatheRunnerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner-GatheRunnerUITests.release.xcconfig"; path = "Target Support Files/Pods-GatheRunner-GatheRunnerUITests/Pods-GatheRunner-GatheRunnerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		23E6AD997E8908FB2955C064 /* Pods-GatheRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.release.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.release.xcconfig"; sourceTree = "<group>"; };
+		3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3868EFEEEC4621DAB4C4BABD /* Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner-GatheRunnerUITests/Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		74F3E5D65BF8160E66CE0901 /* Pods_GatheRunner_GatheRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner_GatheRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75848D194E0D75CB55FC6E7D /* Pods-GatheRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.release.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
+		A1FBD7301BD3249E41A5E419 /* Pods-GatheRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D942972FC8ABC3559B78D5FF /* Pods-GatheRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.debug.xcconfig"; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
-		E3D349D8286C20D200618AC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E3D349D8286C20D200618AC3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		E3D349DA286C20D500618AC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3D349DD286C20D500618AC3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E3D349E3286C20D500618AC3 /* GatheRunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GatheRunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +55,7 @@
 		E3D349ED286C20D500618AC3 /* GatheRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GatheRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349F1286C20D500618AC3 /* GatheRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerUITests.swift; sourceTree = "<group>"; };
 		E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D038E0DE9807E434F1BB41EE /* Pods_GatheRunner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B5095EDA536B973CF0EB609 /* Pods_GatheRunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,12 +79,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19AB858B6A67A1FD7E20CE20 /* Pods_GatheRunner_GatheRunnerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		242D9D52C7267E361AEBDCF3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D942972FC8ABC3559B78D5FF /* Pods-GatheRunner.debug.xcconfig */,
+				23E6AD997E8908FB2955C064 /* Pods-GatheRunner.release.xcconfig */,
+				3868EFEEEC4621DAB4C4BABD /* Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig */,
+				03EBBC3850C49984862875E4 /* Pods-GatheRunner-GatheRunnerUITests.release.xcconfig */,
+				A1FBD7301BD3249E41A5E419 /* Pods-GatheRunnerTests.debug.xcconfig */,
+				75848D194E0D75CB55FC6E7D /* Pods-GatheRunnerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B89132CFF4951DA049D3CCAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */,
+				74F3E5D65BF8160E66CE0901 /* Pods_GatheRunner_GatheRunnerUITests.framework */,
+				3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E3D349CA286C20D200618AC3 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +116,8 @@
 				E3D349E6286C20D500618AC3 /* GatheRunnerTests */,
 				E3D349F0286C20D500618AC3 /* GatheRunnerUITests */,
 				E3D349D4286C20D200618AC3 /* Products */,
+				242D9D52C7267E361AEBDCF3 /* Pods */,
+				B89132CFF4951DA049D3CCAA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,8 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
-				E3D349D8286C20D200618AC3 /* ContentView.swift */,
-				E3D349DA286C20D500618AC3 /* Assets.xcassets */,
+				E3D34A00286C22AA00618AC3 /* Application */,
+				E3D34A01286C22DD00618AC3 /* Domain */,
+				E3D34A07286C23CC00618AC3 /* Helper */,
+				E3D34A04286C236300618AC3 /* Resources */,
 				E3D349DC286C20D500618AC3 /* Preview Content */,
 			);
 			path = GatheRunner;
@@ -127,6 +169,68 @@
 			path = GatheRunnerUITests;
 			sourceTree = "<group>";
 		};
+		E3D34A00286C22AA00618AC3 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E3D34A01286C22DD00618AC3 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E3D34A03286C235B00618AC3 /* Common */,
+				E3D34A02286C230700618AC3 /* Views */,
+				E3D34A05286C239E00618AC3 /* Repo */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		E3D34A02286C230700618AC3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E3D34A06286C23AC00618AC3 /* Tab */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E3D34A03286C235B00618AC3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E3D34A04286C236300618AC3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E3D349DA286C20D500618AC3 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E3D34A05286C239E00618AC3 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		E3D34A06286C23AC00618AC3 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				E3D349D8286C20D200618AC3 /* MainTabView.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		E3D34A07286C23CC00618AC3 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +238,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3D349F7286C20D500618AC3 /* Build configuration list for PBXNativeTarget "GatheRunner" */;
 			buildPhases = (
+				59C1DD9677C32AA916255C28 /* [CP] Check Pods Manifest.lock */,
 				E3D349CF286C20D200618AC3 /* Sources */,
 				E3D349D0286C20D200618AC3 /* Frameworks */,
 				E3D349D1286C20D200618AC3 /* Resources */,
@@ -151,6 +256,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3D349FA286C20D500618AC3 /* Build configuration list for PBXNativeTarget "GatheRunnerTests" */;
 			buildPhases = (
+				5F1667294D3A41D4DD0E9B42 /* [CP] Check Pods Manifest.lock */,
 				E3D349DF286C20D500618AC3 /* Sources */,
 				E3D349E0286C20D500618AC3 /* Frameworks */,
 				E3D349E1286C20D500618AC3 /* Resources */,
@@ -169,6 +275,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3D349FD286C20D500618AC3 /* Build configuration list for PBXNativeTarget "GatheRunnerUITests" */;
 			buildPhases = (
+				825264BEDD6BB349BEE4CAD6 /* [CP] Check Pods Manifest.lock */,
 				E3D349E9286C20D500618AC3 /* Sources */,
 				E3D349EA286C20D500618AC3 /* Frameworks */,
 				E3D349EB286C20D500618AC3 /* Resources */,
@@ -252,12 +359,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		59C1DD9677C32AA916255C28 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GatheRunner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F1667294D3A41D4DD0E9B42 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GatheRunnerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		825264BEDD6BB349BEE4CAD6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GatheRunner-GatheRunnerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E3D349CF286C20D200618AC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3D349D9286C20D200618AC3 /* ContentView.swift in Sources */,
+				E3D349D9286C20D200618AC3 /* MainTabView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +589,7 @@
 		};
 		E3D349F8286C20D500618AC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D942972FC8ABC3559B78D5FF /* Pods-GatheRunner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -442,6 +619,7 @@
 		};
 		E3D349F9286C20D500618AC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23E6AD997E8908FB2955C064 /* Pods-GatheRunner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +649,7 @@
 		};
 		E3D349FB286C20D500618AC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1FBD7301BD3249E41A5E419 /* Pods-GatheRunnerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +670,7 @@
 		};
 		E3D349FC286C20D500618AC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75848D194E0D75CB55FC6E7D /* Pods-GatheRunnerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -511,6 +691,7 @@
 		};
 		E3D349FE286C20D500618AC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3868EFEEEC4621DAB4C4BABD /* Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -529,6 +710,7 @@
 		};
 		E3D349FF286C20D500618AC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03EBBC3850C49984862875E4 /* Pods-GatheRunner-GatheRunnerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
