@@ -135,9 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
-				E3D34A00286C22AA00618AC3 /* Application */,
 				E3D34A01286C22DD00618AC3 /* Domain */,
-				E3D34A07286C23CC00618AC3 /* Helper */,
 				E3D34A04286C236300618AC3 /* Resources */,
 				E3D349DC286C20D500618AC3 /* Preview Content */,
 			);
@@ -167,13 +165,6 @@
 				E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */,
 			);
 			path = GatheRunnerUITests;
-			sourceTree = "<group>";
-		};
-		E3D34A00286C22AA00618AC3 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		E3D34A01286C22DD00618AC3 /* Domain */ = {
@@ -222,13 +213,6 @@
 				E3D349D8286C20D200618AC3 /* MainTabView.swift */,
 			);
 			path = Tab;
-			sourceTree = "<group>";
-		};
-		E3D34A07286C23CC00618AC3 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
