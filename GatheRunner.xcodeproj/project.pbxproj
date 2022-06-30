@@ -147,10 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
-				E3D34A00286C22AA00618AC3 /* Application */,
-				E3D34A02286C230700618AC3 /* Presentaion */,
 				E3D34A01286C22DD00618AC3 /* Domain */,
-				E3D34A07286C23CC00618AC3 /* Helper */,
 				E3D34A04286C236300618AC3 /* Resources */,
 				E3D349DC286C20D500618AC3 /* Preview Content */,
 			);
@@ -180,13 +177,6 @@
 				E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */,
 			);
 			path = GatheRunnerUITests;
-			sourceTree = "<group>";
-		};
-		E3D34A00286C22AA00618AC3 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		E3D34A01286C22DD00618AC3 /* Domain */ = {
@@ -262,47 +252,6 @@
 				E3D349D8286C20D200618AC3 /* MainTabView.swift */,
 			);
 			path = MainTab;
-			sourceTree = "<group>";
-		};
-		E3D34A1B286C59D100618AC3 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				E3D34A08286C282D00618AC3 /* HomeView.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		E3D34A1C286C59E100618AC3 /* Running */ = {
-			isa = PBXGroup;
-			children = (
-				E3D34A12286C3ABA00618AC3 /* RunningView.swift */,
-			);
-			path = Running;
-			sourceTree = "<group>";
-		};
-		E3D34A1D286C59E600618AC3 /* Club */ = {
-			isa = PBXGroup;
-			children = (
-				E3D34A16286C414100618AC3 /* ClubView.swift */,
-			);
-			path = Club;
-			sourceTree = "<group>";
-		};
-		E3D34A1E286C59EB00618AC3 /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-				E3D34A18286C415E00618AC3 /* ActivityView.swift */,
-			);
-			path = Activity;
-			sourceTree = "<group>";
-		};
-		E3D34A1F286C5A3900618AC3 /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-				E3D34A10286C352200618AC3 /* TabItem.swift */,
-				E3D34A20286C7C3100618AC3 /* TabItem+MainOption.swift */,
-			);
-			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
