@@ -1,5 +1,5 @@
 //
-//  TabItem+MainOption.swift
+//  TabItem+MainComponent.swift
 //  GatheRunner
 //
 //  Created by 김동현 on 2022/06/29.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension TabItem {
-    enum MainOption: String {
+    enum MainComponent: String {
         case home = "홈"
         case run = "러닝"
         case club = "클럽"
@@ -21,10 +21,6 @@ extension TabItem {
             case .club: return AnyView(ClubView())
             case .activity: return AnyView(ActivityView())
             }
-        }
-        
-        var title: Text {
-            Text(self.rawValue)
         }
         
         var icon: Image {
@@ -46,7 +42,7 @@ extension TabItem {
         }
     }
     
-    init(_ option: TabItem.MainOption) {
-        self.init(view: option.view, title: option.title, icon: option.icon, tag: option.tag)
+    init(_ component: TabItem.MainComponent) {
+        self.init(view: component.view, title: Text(component.rawValue), icon: component.icon, tag: component.tag)
     }
 }

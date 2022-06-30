@@ -12,24 +12,15 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            ForEach(tabs) { tabItem in
-                NavigationView {
-                    tabItem.view
-                }
-                .tabItem {
-                    tabItem.title
-                    tabItem.icon
-                }
-                .tag(tabItem.tag)
-                
-            }
+            ForEach(tabItems) { $0.body }
         }
         .accentColor(.black)
+        
     }
 }
 
 extension MainTabView {
-    private var tabs: [TabItem] {
+    private var tabItems: [TabItem] {
         [TabItem(.home), TabItem(.run), TabItem(.club), TabItem(.activity)]
     }
 }
