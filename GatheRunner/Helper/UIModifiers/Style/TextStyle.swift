@@ -11,7 +11,7 @@ import SwiftUI
 
 extension Text {
     func asTimerStyle(fontSize: CGFloat = 200, color: Color = .green) -> some View {
-        self.font(.custom("SystemFont", size: fontSize)).bold()
+        self.font(.system(size: fontSize)).bold()
             .foregroundColor(color)
     }
 }

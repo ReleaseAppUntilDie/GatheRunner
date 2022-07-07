@@ -9,8 +9,12 @@ import SwiftUI
 
 struct RunningView: View {
     var body: some View {
-        Text("Running View")
+        ZStack {
+            Text("Running View")
+            RunSplashScreen()
+        }
     }
+    
 }
 
 struct RunningView_Previews: PreviewProvider {

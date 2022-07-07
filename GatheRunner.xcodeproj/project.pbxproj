@@ -23,7 +23,7 @@
 		E3D349E8286C20D500618AC3 /* GatheRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349E7286C20D500618AC3 /* GatheRunnerTests.swift */; };
 		E3D349F2286C20D500618AC3 /* GatheRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F1286C20D500618AC3 /* GatheRunnerUITests.swift */; };
 		E3D349F4286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */; };
-		E3D43D722876BB07004C54C3 /* RunSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D43D712876BB07004C54C3 /* RunSplashView.swift */; };
+		E3D43D722876BB07004C54C3 /* RunSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D43D712876BB07004C54C3 /* RunSplashScreen.swift */; };
 		E3D43D772876BF37004C54C3 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D43D762876BF37004C54C3 /* TextStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +76,7 @@
 		E3D34A16286C414100618AC3 /* ClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubView.swift; sourceTree = "<group>"; };
 		E3D34A18286C415E00618AC3 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E3D34A20286C7C3100618AC3 /* TabItem+MainOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabItem+MainOption.swift"; sourceTree = "<group>"; };
-		E3D43D712876BB07004C54C3 /* RunSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSplashView.swift; sourceTree = "<group>"; };
+		E3D43D712876BB07004C54C3 /* RunSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSplashScreen.swift; sourceTree = "<group>"; };
 		E3D43D762876BF37004C54C3 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -179,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
-				E3D43D712876BB07004C54C3 /* RunSplashView.swift */,
+				E3D43D712876BB07004C54C3 /* RunSplashScreen.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3D43D772876BF37004C54C3 /* TextStyle.swift in Sources */,
-				E3D43D722876BB07004C54C3 /* RunSplashView.swift in Sources */,
+				E3D43D722876BB07004C54C3 /* RunSplashScreen.swift in Sources */,
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
