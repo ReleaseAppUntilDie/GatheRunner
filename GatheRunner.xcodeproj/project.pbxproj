@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		19AB858B6A67A1FD7E20CE20 /* Pods_GatheRunner_GatheRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F3E5D65BF8160E66CE0901 /* Pods_GatheRunner_GatheRunnerUITests.framework */; };
+		38FBB21328764C1C00DCB0EB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FBB21228764C1C00DCB0EB /* HeaderView.swift */; };
+		38FBB2162876651200DCB0EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FBB2152876651200DCB0EB /* Constants.swift */; };
 		9B5095EDA536B973CF0EB609 /* Pods_GatheRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */; };
 		D038E0DE9807E434F1BB41EE /* Pods_GatheRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */; };
 		E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEB8286DFB2D003E23DE /* ClubView.swift */; };
@@ -47,6 +49,8 @@
 		23E6AD997E8908FB2955C064 /* Pods-GatheRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.release.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.release.xcconfig"; sourceTree = "<group>"; };
 		3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3868EFEEEC4621DAB4C4BABD /* Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner-GatheRunnerUITests/Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		38FBB21228764C1C00DCB0EB /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		38FBB2152876651200DCB0EB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		74F3E5D65BF8160E66CE0901 /* Pods_GatheRunner_GatheRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner_GatheRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75848D194E0D75CB55FC6E7D /* Pods-GatheRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.release.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1FBD7301BD3249E41A5E419 /* Pods-GatheRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +122,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		38FBB214287664FF00DCB0EB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				38FBB2152876651200DCB0EB /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B89132CFF4951DA049D3CCAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +157,7 @@
 		E35EFEB6286DFB2D003E23DE /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				38FBB214287664FF00DCB0EB /* Utils */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
 				E35EFEB9286DFB2D003E23DE /* Home */,
@@ -184,6 +197,7 @@
 			children = (
 				E35EFEBE286DFB2D003E23DE /* TabItem.swift */,
 				E35EFEBF286DFB2D003E23DE /* TabItem+MainComponent.swift */,
+				38FBB21228764C1C00DCB0EB /* HeaderView.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -474,9 +488,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
+				38FBB21328764C1C00DCB0EB /* HeaderView.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
+				38FBB2162876651200DCB0EB /* Constants.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,

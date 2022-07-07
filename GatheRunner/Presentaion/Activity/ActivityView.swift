@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ActivityView: View {
     var body: some View {
-        Text("Activity View")
+        VStack{
+            HeaderView(title: "활동")
+            Spacer()
+        }
     }
 }
 
