@@ -14,12 +14,9 @@ struct JustStartView: View {
     var body: some View {
         ZStack {
             mapView
-
             VStack {
                 viewScrollDetection
-                
                 Spacer()
-                
                 HStack {
                     FloatingView()
                 }

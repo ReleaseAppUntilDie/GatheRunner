@@ -33,7 +33,6 @@ struct RunningView: View {
                     .foregroundColor(justStartButtonIsSelected ? Color.black : Color.gray)
                     .padding(4)
      
-                    
                     Button("러닝 가이드") {
                         withAnimation {
                             if justStartButtonIsSelected && !runningGuideButtonIsSelected {
@@ -47,7 +46,6 @@ struct RunningView: View {
                 .frame(width: 400, height: 30, alignment: .leading)
                     .font(Font.system(size: 14))
 
-                
                 VStack {
                     if justStartButtonIsSelected {
                         JustStartView()
