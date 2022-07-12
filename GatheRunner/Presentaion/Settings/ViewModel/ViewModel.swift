@@ -1,90 +1,14 @@
 //
-//  SettingView.swift
+//  ViewModel.swift
 //  GatheRunner
 //
-//  Created by Atlas on 2022/07/07.
+//  Created by Atlas on 2022/07/12.
 //
 
 import SwiftUI
 
-struct SettingView: View {
-    var body: some View {
-        VStack{
-            MeasurementView()
-            DetailControllView()
-        }
-    }
-}
-
-struct SettingView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingView()
-    }
-}
-
-struct MeasurementView: View {
-    var body: some View {
-        VStack {
-            Text("측정")
-            HStack {
-                TempletView(type: .indoorOutdoor())
-                TempletView(type: .autoPause())
-            }
-        }
-    }
-}
-
-struct DetailControllView: View {
-    var body: some View {
-        VStack {
-            Text("표시 및 음성")
-            HStack {
-                TempletView(type: .audioFeedback())
-                TempletView(type: .countDown())
-            }
-            HStack {
-                TempletView(type: .orientation())
-                TempletView(type: .display())
-            }
-        }
-    }
-}
-
-struct TempletView: View {
-//    @State var type: SettingType
-    var viewModel: ViewModel
-    
-    var body: some View {
-        HStack {
-            Spacer()
-            VStack {
-                Image(systemName: viewModel.imageIconName)
-                Text(viewModel.status)
-                Text(viewModel.description)
-            }
-            Spacer()
-        }.onTapGesture {
-            print("Pressed")
-        }
-    }
-    
-    init(type: SettingType){
-        self.viewModel = ViewModel(type: type)
-    }
-}
-
-enum SettingType {
-    case indoorOutdoor(status: String = "Outdoor", description: String = "Indoor/Outdoor", icon:String = "person.icloud.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
-    case autoPause(status: String = "On", description: String = "Auto-Pause", icon:String = "person.icloud.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
-    case audioFeedback(status: String = "Portrait", description: String = "On/Female", icon:String = "person.icloud.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
-    case countDown(status: String = "3 Seconds", description: String = "Countdown", icon:String = "person.icloud.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
-    case orientation(status: String = "Portrait", description: String = "Orientation", icon:String = "person.icloud.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
-    case display(status: String = "Run Level Color", description: String = "Display", icon:String = "person.icloud.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
-}
-
-extension TempletView {
+extension TemplateView {
     class ViewModel {
-        
         var status: String
         var description: String
         var imageIconName: String
@@ -144,20 +68,17 @@ extension TempletView {
                 self.statusTextHidden = statusTextHidden
                 self.descriptionTextHidden = descriptionTextHidden
             }
-            
         }
-        
-        func getStatus() -> String {
-            return ""
-        }
-        
-        func getDescription(){
-            
-        }
-        
-        func getImageName(){
-            
-        }
-        
+    }
+}
+
+extension TemplateView {
+    enum SettingType {
+        case indoorOutdoor(status: String = "Outdoor", description: String = "Indoor/Outdoor", icon:String = "location.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
+        case autoPause(status: String = "On", description: String = "Auto-Pause", icon:String = "pause.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
+        case audioFeedback(status: String = "Portrait", description: String = "On/Female", icon:String = "speaker.wave.2.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
+        case countDown(status: String = "3 Seconds", description: String = "Countdown", icon:String = "stopwatch", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
+        case orientation(status: String = "Portrait", description: String = "Orientation", icon:String = "iphone", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
+        case display(status: String = "Run Level Color", description: String = "Display", icon:String = "platter.filled.top.iphone", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
     }
 }
