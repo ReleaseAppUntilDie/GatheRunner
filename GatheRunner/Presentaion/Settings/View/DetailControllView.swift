@@ -12,7 +12,7 @@ struct DetailControllView: View {
         VStack (spacing: 10){
             HStack {
                 Spacer()
-                Text("측정")
+                Text("표시 및 음성")
                     .frame(height: 50, alignment: .center)
                 Spacer()
             }.background(Color.mint)
