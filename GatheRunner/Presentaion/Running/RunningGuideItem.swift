@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct RunningGuideItem: View {
-    var runningGuideArrs: RunningGuide = runningGuide[0]
+    // 관리자(개발자) 실수로 runningGuide Item의 내용을 담은 항목(배열)을 삭제할경우 런타임 에러가 발생하는 것을 막기 위해
+    // runningGuider.isEmpty 일때 하나의 RunningGuide 타입 항목을 임으로 대입한다. 비어 있지 않으면 runningGuide[0] 항목 대입.
+    var runningGuideArrs: RunningGuide = runningGuide.isEmpty ? RunningGuide(image: "runningGuide_01", title: "러닝 가이드 체험하기", subtitle: "First\nSpeed Run", text: "25분 운동 스피드 런") : runningGuide[0]
     
     var body: some View {
         HStack(alignment: .center, spacing: 8.0) {
