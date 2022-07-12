@@ -18,7 +18,6 @@ struct RunningView: View {
                     Text("Header View")
                 }
                 .frame(maxWidth: .infinity, maxHeight: 120)
-    //                .border(Color.red, width: 2)
                 
                 HStack {
                     Button("바로 시작") {
@@ -57,12 +56,8 @@ struct RunningView: View {
                             .transition(.move(edge: .trailing))
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-//                    .border(Color.blue, width: 8)
-                
-
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-    //            .border(Color.pink, width: 4)
                 .ignoresSafeArea(edges: .top)
         }
     }

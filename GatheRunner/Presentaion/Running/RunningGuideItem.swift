@@ -37,9 +37,7 @@ struct RunningGuideItem: View {
                     .lineLimit(1)
                 
             }.frame(width: 150, height: 100, alignment: .leading)
-//                .border(Color.green, width: 2)
         }.frame(width: 310, height: 100, alignment: .leading)
-//            .border(Color.red, width: 2)
             .background(.ultraThickMaterial, in:
                             RoundedRectangle(cornerRadius: 10, style: .continuous))
 

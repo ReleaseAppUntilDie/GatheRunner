@@ -41,7 +41,6 @@ struct JustStartView: View {
             featured
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .frame(width: 400, height: 120)
-//                .border(Color.red, width: 2)
         }
     }
     
