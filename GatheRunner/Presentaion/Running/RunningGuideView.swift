@@ -9,9 +9,11 @@ import SwiftUI
 
 struct RunningGuideView: View {
     var body: some View {
-        Image("runningGuide")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
+        ZStack {
+            Image("runningGuide")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }.zIndex(1)
     }
 }
 

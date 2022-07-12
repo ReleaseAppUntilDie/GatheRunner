@@ -16,7 +16,6 @@ struct RunningGuideItem: View {
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 120, height: 120)
-                .cornerRadius(30)
                 .padding(15)
                     
             VStack(alignment: .leading, spacing: 5.0) {
@@ -42,7 +41,7 @@ struct RunningGuideItem: View {
         }.frame(width: 310, height: 100, alignment: .leading)
 //            .border(Color.red, width: 2)
             .background(.ultraThickMaterial, in:
-                            RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            RoundedRectangle(cornerRadius: 10, style: .continuous))
 
     }
 }

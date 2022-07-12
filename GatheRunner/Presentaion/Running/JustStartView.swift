@@ -10,11 +10,6 @@ import MapKit
 
 struct JustStartView: View {
     @StateObject private var manager = LocationManager()
-    
-    let gradient = RadialGradient(gradient: Gradient(stops: [
-        .init(color: Color.clear, location: 0),
-        .init(color: Color.white, location: 0.5)]),
-        center: .center, startRadius: 150, endRadius: 300)
 
     var body: some View {
         ZStack {
@@ -58,7 +53,7 @@ struct JustStartView: View {
             ForEach(runningGuide) { item in
                 RunningGuideItem(runningGuideArrs: item)
             }
-        }
+        }.shadow(radius: 2)
     }
 }
 
