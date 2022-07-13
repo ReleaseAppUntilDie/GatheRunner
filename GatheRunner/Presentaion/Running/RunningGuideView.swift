@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RunningGuideView: View {
     var body: some View {
+        // 미구현
         ZStack {
             Image("runningGuide")
                 .resizable()
