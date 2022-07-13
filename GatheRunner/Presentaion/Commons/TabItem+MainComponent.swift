@@ -14,7 +14,7 @@ extension TabItem {
         case club = "클럽"
         case activity = "활동"
         
-        var view: AnyView {
+        var view: AnyView{
             switch self {
             case .home: return AnyView(HomeView())
             case .run: return AnyView(RunningView())
