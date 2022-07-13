@@ -12,13 +12,7 @@ struct ScreenSize {
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
     
-    static func getWidth(_ width : Double) -> Double {
-        return screenWidth * (width/375)
-    }
-    
-    static func getHeight(_ height : Double) -> Double {
-        return screenHeight * (height/812)
-    }
+
     static func getHeightby(ratio : Double) -> Double {
         return screenHeight * ratio
     }
