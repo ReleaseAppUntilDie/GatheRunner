@@ -38,14 +38,13 @@ struct FloatingView: View {
                 }
             }
             
-            HStack {
-                Button("목표 설정") {
-                
-                }.frame(width: 100, height: 40)
-                    .font(Font.system(size: 17, weight: .medium)).foregroundColor(Color.black)
-                    .background(Color.red)
-                    .cornerRadius(50)
-            }.padding(10)
+            Button("목표 설정") {
+            
+            }.frame(width: 100, height: 40)
+                .font(Font.system(size: 17, weight: .medium)).foregroundColor(Color.black)
+                .background(Color.red)
+                .cornerRadius(50)
+                .padding(10)
         }
     }
 }

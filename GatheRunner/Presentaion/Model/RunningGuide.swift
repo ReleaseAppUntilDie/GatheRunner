@@ -16,7 +16,11 @@ struct RunningGuide: Identifiable {
     
 }
 
-var runningGuide = [
+func returnRunningGuideArrs() -> [RunningGuide] {
+    return runningGuide
+}
+
+private var runningGuide = [
     RunningGuide(image: "runningGuide_01", title: "러닝 가이드 체험하기", subtitle: "First\nSpeed Run", text: "25분 운동 스피드 런"),
     RunningGuide(image: "runningGuide_02", title: "러닝 가이드 체험하기", subtitle: "Next Run", text: "24분 운동 회복 러닝"),
     RunningGuide(image: "runningGuide_03", title: "러닝 가이드 체험하기", subtitle: "First Run", text: "23분 운동 회복 러닝"),

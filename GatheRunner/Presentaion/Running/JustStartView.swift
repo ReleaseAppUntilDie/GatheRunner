@@ -17,9 +17,7 @@ struct JustStartView: View {
             VStack {
                 viewScrollDetection
                 Spacer()
-                HStack {
-                    FloatingView()
-                }
+                FloatingView()
             }.frame(alignment: .center)
         }
     }
@@ -28,7 +26,7 @@ struct JustStartView: View {
         Map(coordinateRegion: $manager.region, showsUserLocation: true).disabled(true)
             .overlay(
                 Circle()
-                    .frame(width: 600, height: 1000, alignment: .center)
+                    .frame(width: 900, height: 1000, alignment: .center)
                     .foregroundColor(Color.white)
                     .mask {
                         RadialGradient(gradient: Gradient(colors: [Color.white.opacity(0), Color.white, Color.white, Color.white, Color.white,     Color.white.opacity(1)]), center: .center, startRadius: 100, endRadius: 600)
@@ -46,7 +44,7 @@ struct JustStartView: View {
     
     var featured: some View {
         TabView {
-            ForEach(runningGuide) { item in
+            ForEach(returnRunningGuideArrs()) { item in
                 RunningGuideItem(runningGuideArrs: item)
             }
         }.shadow(radius: 2)
