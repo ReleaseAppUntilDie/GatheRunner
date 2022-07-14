@@ -7,72 +7,72 @@
 
 import SwiftUI
 
-extension TemplateView {
-    class ViewModel {
-        var status: String
-        var description: String
-        var imageIconName: String
-        var alignment: Alignment
-        var iconImageHidden: Bool
-        var statusTextHidden: Bool
-        var descriptionTextHidden: Bool
-        
-        init(type: SettingType){
-            switch type {
-            case .indoorOutdoor(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
-                self.status = status
-                self.description = description
-                self.imageIconName = icon
-                self.alignment = alignment
-                self.iconImageHidden = iconImageHidden
-                self.statusTextHidden = statusTextHidden
-                self.descriptionTextHidden = descriptionTextHidden
-            case .autoPause(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
-                self.status = status
-                self.description = description
-                self.imageIconName = icon
-                self.alignment = alignment
-                self.iconImageHidden = iconImageHidden
-                self.statusTextHidden = statusTextHidden
-                self.descriptionTextHidden = descriptionTextHidden
-            case .audioFeedback(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
-                self.status = status
-                self.description = description
-                self.imageIconName = icon
-                self.alignment = alignment
-                self.iconImageHidden = iconImageHidden
-                self.statusTextHidden = statusTextHidden
-                self.descriptionTextHidden = descriptionTextHidden
-            case .countDown(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
-                self.status = status
-                self.description = description
-                self.imageIconName = icon
-                self.alignment = alignment
-                self.iconImageHidden = iconImageHidden
-                self.statusTextHidden = statusTextHidden
-                self.descriptionTextHidden = descriptionTextHidden
-            case .orientation(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
-                self.status = status
-                self.description = description
-                self.imageIconName = icon
-                self.alignment = alignment
-                self.iconImageHidden = iconImageHidden
-                self.statusTextHidden = statusTextHidden
-                self.descriptionTextHidden = descriptionTextHidden
-            case .display(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
-                self.status = status
-                self.description = description
-                self.imageIconName = icon
-                self.alignment = alignment
-                self.iconImageHidden = iconImageHidden
-                self.statusTextHidden = statusTextHidden
-                self.descriptionTextHidden = descriptionTextHidden
-            }
+class SettingModel {
+    var status: String
+    var description: String
+    var imageIconName: String
+    var alignment: Alignment
+    var iconImageHidden: Bool
+    var statusTextHidden: Bool
+    var descriptionTextHidden: Bool
+    
+    init(type: SettingType){
+        switch type {
+        case .indoorOutdoor(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
+            self.status = status
+            self.description = description
+            self.imageIconName = icon
+            self.alignment = alignment
+            self.iconImageHidden = iconImageHidden
+            self.statusTextHidden = statusTextHidden
+            self.descriptionTextHidden = descriptionTextHidden
+        case .autoPause(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
+            self.status = status
+            self.description = description
+            self.imageIconName = icon
+            self.alignment = alignment
+            self.iconImageHidden = iconImageHidden
+            self.statusTextHidden = statusTextHidden
+            self.descriptionTextHidden = descriptionTextHidden
+        case .audioFeedback(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
+            self.status = status
+            self.description = description
+            self.imageIconName = icon
+            self.alignment = alignment
+            self.iconImageHidden = iconImageHidden
+            self.statusTextHidden = statusTextHidden
+            self.descriptionTextHidden = descriptionTextHidden
+        case .countDown(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
+            self.status = status
+            self.description = description
+            self.imageIconName = icon
+            self.alignment = alignment
+            self.iconImageHidden = iconImageHidden
+            self.statusTextHidden = statusTextHidden
+            self.descriptionTextHidden = descriptionTextHidden
+        case .orientation(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
+            self.status = status
+            self.description = description
+            self.imageIconName = icon
+            self.alignment = alignment
+            self.iconImageHidden = iconImageHidden
+            self.statusTextHidden = statusTextHidden
+            self.descriptionTextHidden = descriptionTextHidden
+        case .display(let status, let description, let icon, let alignment, let iconImageHidden, let statusTextHidden, let descriptionTextHidden):
+            self.status = status
+            self.description = description
+            self.imageIconName = icon
+            self.alignment = alignment
+            self.iconImageHidden = iconImageHidden
+            self.statusTextHidden = statusTextHidden
+            self.descriptionTextHidden = descriptionTextHidden
         }
     }
 }
 
-extension TemplateView {
+typealias ViewType = SettingModel.SettingType
+
+extension SettingModel {
     enum SettingType {
         case indoorOutdoor(status: String = "Outdoor", description: String = "Indoor/Outdoor", icon:String = "location.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)
         case autoPause(status: String = "On", description: String = "Auto-Pause", icon:String = "pause.fill", alignment: Alignment = .center , iconImageHidden: Bool = false, statusTextHidden:Bool = false, descriptionTextHidden: Bool = false)

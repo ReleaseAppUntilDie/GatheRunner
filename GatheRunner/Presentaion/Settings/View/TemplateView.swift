@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct TemplateView: View {
-    var viewModel: ViewModel
+    var settingData: SettingModel
     var body: some View {
         HStack {
             Spacer()
             VStack (){
-                Image(systemName: viewModel.imageIconName)
+                Image(systemName: settingData.imageIconName)
                     .frame(width: 30 , height: 30, alignment: .center)
-                Text(viewModel.status)
+                Text(settingData.status)
                     .foregroundColor(Color.gray)
-                Text(viewModel.description)
+                Text(settingData.description)
                     .foregroundColor(Color.black)
             }
             Spacer()
@@ -28,8 +28,8 @@ struct TemplateView: View {
         }
     }
     
-    init(type: SettingType){
-        self.viewModel = ViewModel(type: type)
+    init(type: ViewType){
+        self.settingData = SettingModel(type: type)
     }
 }
 
