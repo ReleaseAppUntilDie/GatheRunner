@@ -16,10 +16,12 @@ struct MeasurementView: View {
                     .frame(height: 50, alignment: .center)    
                 Spacer()
             }.background(Color.mint)
-
-            HStack {
-                TemplateView(type: .indoorOutdoor())
-                TemplateView(type: .autoPause())
+            
+            Group{
+                HStack {
+                    TemplateView(type: .indoorOutdoor)
+                    TemplateView(type: .autoPause)
+                }
             }
         }
         

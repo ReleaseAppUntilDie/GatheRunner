@@ -18,12 +18,12 @@ struct DetailControllView: View {
             }.background(Color.mint)
 
             HStack {
-                TemplateView(type: .audioFeedback())
-                TemplateView(type: .countDown())
+                TemplateView(type: .audioFeedback)
+                TemplateView(type:.countDown)
             }
             HStack {
-                TemplateView(type: .orientation())
-                TemplateView(type: .display())
+                TemplateView(type:.orientation)
+                TemplateView(type:.display)
             }
         }
     }
