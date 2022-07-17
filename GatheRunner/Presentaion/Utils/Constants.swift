@@ -8,11 +8,10 @@
 import SwiftUI
 
 
-struct ScreenSize {
+extension UIScreen {
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
     
-
     static func getHeightby(ratio : Double) -> Double {
         return screenHeight * ratio
     }
@@ -20,5 +19,5 @@ struct ScreenSize {
     static func getWidthby(ratio : Double) -> Double {
         return screenWidth * ratio
     }
-
 }
+

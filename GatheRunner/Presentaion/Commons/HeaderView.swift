@@ -4,7 +4,6 @@
 //
 //  Created by jaeseung han on 2022/07/07.
 //
-
 import SwiftUI
 
 enum ViewType {
@@ -40,7 +39,6 @@ struct HeaderView: View {
                 Text(title)
                     .font(.system(size: 20, weight: .bold))
                 
-                
                 Spacer()
                 if type == .activity || type == .club {
                     Button {
@@ -58,13 +56,13 @@ struct HeaderView: View {
             }.padding(.horizontal,10)
                 .padding(.bottom)
             Path { path in
-                path.move(to: CGPoint(x: 0, y: ScreenSize.getHeightby(ratio: 1/7)))
-                path.addLine(to: CGPoint(x: ScreenSize.screenWidth, y: ScreenSize.getHeightby(ratio: 1/7)))
+                path.move(to: CGPoint(x: 0, y: UIScreen.getHeightby(ratio: 1/7)))
+                path.addLine(to: CGPoint(x: UIScreen.screenWidth, y: UIScreen.getHeightby(ratio: 1/7)))
             }
             .stroke(style: StrokeStyle(lineWidth:1))
             .foregroundColor(.init(uiColor: .systemGray4))
 
-        }.frame(width: ScreenSize.screenWidth,height: ScreenSize.getHeightby(ratio: 1/7))
+        }.frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1/7))
             .ignoresSafeArea()
         
     }

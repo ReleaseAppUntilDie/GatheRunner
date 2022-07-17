@@ -15,7 +15,6 @@ struct MainTabView: View {
             ForEach(tabItems) { $0.body }
         }
         .accentColor(.black)
-        
     }
 }
 
