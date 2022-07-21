@@ -10,6 +10,13 @@
 		19AB858B6A67A1FD7E20CE20 /* Pods_GatheRunner_GatheRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F3E5D65BF8160E66CE0901 /* Pods_GatheRunner_GatheRunnerUITests.framework */; };
 		9B5095EDA536B973CF0EB609 /* Pods_GatheRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */; };
 		D038E0DE9807E434F1BB41EE /* Pods_GatheRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */; };
+		DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695728790DBE00FA13AE /* JustStartView.swift */; };
+		DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695928790E0C00FA13AE /* RunningGuideView.swift */; };
+		DAB5E6152881C21B000F24F4 /* RunningGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5E6142881C21B000F24F4 /* RunningGuideViewModel.swift */; };
+		DAEA9310287953D100349465 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA930F287953D100349465 /* LocationManager.swift */; };
+		DAEA9315287AED7200349465 /* RunningGuideItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunningGuideItem.swift */; };
+		DAEA9318287B011700349465 /* RunningGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9317287B011700349465 /* RunningGuide.swift */; };
+		DAEA931A287D184900349465 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* FloatingView.swift */; };
 		E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEB8286DFB2D003E23DE /* ClubView.swift */; };
 		E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBA286DFB2D003E23DE /* HomeView.swift */; };
 		E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBC286DFB2D003E23DE /* RunningView.swift */; };
@@ -51,6 +58,14 @@
 		75848D194E0D75CB55FC6E7D /* Pods-GatheRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.release.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1FBD7301BD3249E41A5E419 /* Pods-GatheRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D942972FC8ABC3559B78D5FF /* Pods-GatheRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.debug.xcconfig"; sourceTree = "<group>"; };
+		DA33695728790DBE00FA13AE /* JustStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustStartView.swift; sourceTree = "<group>"; };
+		DA33695928790E0C00FA13AE /* RunningGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideView.swift; sourceTree = "<group>"; };
+		DAB5E6142881C21B000F24F4 /* RunningGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideViewModel.swift; sourceTree = "<group>"; };
+		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DAEA930F287953D100349465 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		DAEA9314287AED7200349465 /* RunningGuideItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideItem.swift; sourceTree = "<group>"; };
+		DAEA9317287B011700349465 /* RunningGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuide.swift; sourceTree = "<group>"; };
+		DAEA9319287D184900349465 /* FloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
 		E35EFEB8286DFB2D003E23DE /* ClubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubView.swift; sourceTree = "<group>"; };
 		E35EFEBA286DFB2D003E23DE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E35EFEBC286DFB2D003E23DE /* RunningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningView.swift; sourceTree = "<group>"; };
@@ -128,6 +143,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DAB5E6162881C229000F24F4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DAB5E6142881C21B000F24F4 /* RunningGuideViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DAEA9316287B00FB00349465 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA9317287B011700349465 /* RunningGuide.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E35EFEB5286DFAE8003E23DE /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +176,8 @@
 		E35EFEB6286DFB2D003E23DE /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				DAB5E6162881C229000F24F4 /* ViewModel */,
+				DAEA9316287B00FB00349465 /* Model */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
 				E35EFEB9286DFB2D003E23DE /* Home */,
@@ -175,6 +208,11 @@
 			isa = PBXGroup;
 			children = (
 				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
+				DA33695728790DBE00FA13AE /* JustStartView.swift */,
+				DA33695928790E0C00FA13AE /* RunningGuideView.swift */,
+				DAEA930F287953D100349465 /* LocationManager.swift */,
+				DAEA9314287AED7200349465 /* RunningGuideItem.swift */,
+				DAEA9319287D184900349465 /* FloatingView.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -230,6 +268,7 @@
 		E3D349D5286C20D200618AC3 /* GatheRunner */ = {
 			isa = PBXGroup;
 			children = (
+				DAEA930E28794F6F00349465 /* Info.plist */,
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
 				E35EFEB6286DFB2D003E23DE /* Presentaion */,
 				E3D34A04286C236300618AC3 /* Resources */,
@@ -474,13 +513,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
+				DAEA9310287953D100349465 /* LocationManager.swift in Sources */,
+				DAB5E6152881C21B000F24F4 /* RunningGuideViewModel.swift in Sources */,
+				DAEA931A287D184900349465 /* FloatingView.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
+				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,
 				E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */,
+				DAEA9318287B011700349465 /* RunningGuide.swift in Sources */,
+				DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */,
+				DAEA9315287AED7200349465 /* RunningGuideItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,15 +685,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GatheRunner/Preview Content\"";
-				DEVELOPMENT_TEAM = JUH3Q3SWFH;
+				DEVELOPMENT_TEAM = H5RWE65UKW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GatheRunner/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -657,9 +706,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GatheRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -669,15 +719,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GatheRunner/Preview Content\"";
-				DEVELOPMENT_TEAM = JUH3Q3SWFH;
+				DEVELOPMENT_TEAM = H5RWE65UKW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GatheRunner/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -687,9 +740,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GatheRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -701,7 +755,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JUH3Q3SWFH;
+				DEVELOPMENT_TEAM = H5RWE65UKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
@@ -722,7 +776,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JUH3Q3SWFH;
+				DEVELOPMENT_TEAM = H5RWE65UKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
