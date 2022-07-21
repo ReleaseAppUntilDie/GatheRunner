@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct GatheRunnerApp: App {
+    @StateObject var goalButton = GoalSettingViewModel()
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .environmentObject(GoalSettingViewModel())
         }
     }
 }
