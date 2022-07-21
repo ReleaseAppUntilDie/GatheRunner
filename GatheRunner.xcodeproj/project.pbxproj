@@ -17,6 +17,8 @@
 		DAEA9315287AED7200349465 /* RunningGuideItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunningGuideItem.swift */; };
 		DAEA9318287B011700349465 /* RunningGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9317287B011700349465 /* RunningGuide.swift */; };
 		DAEA931A287D184900349465 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* FloatingView.swift */; };
+		E30285B9288971C80003D992 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30285B8288971C80003D992 /* SelectedTab.swift */; };
+		E35EAB4E28896EBC00167097 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EAB4D28896EBC00167097 /* ButtonStyle.swift */; };
 		E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEB8286DFB2D003E23DE /* ClubView.swift */; };
 		E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBA286DFB2D003E23DE /* HomeView.swift */; };
 		E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBC286DFB2D003E23DE /* RunningView.swift */; };
@@ -66,6 +68,8 @@
 		DAEA9314287AED7200349465 /* RunningGuideItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideItem.swift; sourceTree = "<group>"; };
 		DAEA9317287B011700349465 /* RunningGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuide.swift; sourceTree = "<group>"; };
 		DAEA9319287D184900349465 /* FloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
+		E30285B8288971C80003D992 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
+		E35EAB4D28896EBC00167097 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		E35EFEB8286DFB2D003E23DE /* ClubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubView.swift; sourceTree = "<group>"; };
 		E35EFEBA286DFB2D003E23DE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E35EFEBC286DFB2D003E23DE /* RunningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningView.swift; sourceTree = "<group>"; };
@@ -157,6 +161,39 @@
 				DAEA9317287B011700349465 /* RunningGuide.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E30285B7288971330003D992 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				E30285B8288971C80003D992 /* SelectedTab.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		E35EAB4A28896E8400167097 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E35EAB4B28896E9100167097 /* Utils */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		E35EAB4B28896E9100167097 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E30285B7288971330003D992 /* Environment */,
+				E35EAB4C28896E9B00167097 /* Style */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E35EAB4C28896E9B00167097 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				E35EAB4D28896EBC00167097 /* ButtonStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		E35EFEB5286DFAE8003E23DE /* Recovered References */ = {
@@ -270,6 +307,7 @@
 			children = (
 				DAEA930E28794F6F00349465 /* Info.plist */,
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
+				E35EAB4A28896E8400167097 /* Helper */,
 				E35EFEB6286DFB2D003E23DE /* Presentaion */,
 				E3D34A04286C236300618AC3 /* Resources */,
 				E3D349DC286C20D500618AC3 /* Preview Content */,
@@ -519,8 +557,10 @@
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
+				E30285B9288971C80003D992 /* SelectedTab.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
+				E35EAB4E28896EBC00167097 /* ButtonStyle.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,
 				E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */,

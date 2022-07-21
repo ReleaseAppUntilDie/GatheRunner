@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var selectedTab: SelectedTab
+
     var body: some View {
-        Text("Home View")
+        Button("test") { }
+        .tabBarBtnStyle(tabIndex: TabItem.MainComponent.run.tag, iconName: "1.circle")
+        .environmentObject(selectedTab)
     }
 }
 

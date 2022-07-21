@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State private var selectedTab = 1
-    
+    @ObservedObject var selectedTab = SelectedTab.shared
+
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $selectedTab.index) {
             ForEach(tabItems) { $0.body }
+            .environmentObject(selectedTab)
         }
         .accentColor(.black)
         
