@@ -7,29 +7,21 @@
 
 import SwiftUI
 
-struct TabBarButton: ViewModifier {
+struct TabBarButton: ButtonStyle {
     @EnvironmentObject var selectedTab: SelectedTab
     let tabIndex: Int
-    let iconName: String
-
-    func body(content: Content) -> some View {
-        content
-            .overlay(
-                Button(action: {
-                    selectedTab.index = tabIndex
-                }) {
-                    HStack() {
-                        Image(systemName: iconName)
-                            .imageScale(.large)
-                            .frame(minWidth: 50)
-                    }
-                }
-            )
+    
+    func makeBody(configuration: Configuration) -> some View {
+        Button {
+            selectedTab.index = tabIndex
+        } label: {
+            configuration.label
+        }
     }
 }
 
-extension View {
-    func tabBarBtnStyle(tabIndex: Int, iconName: String) -> some View {
-        self.modifier(TabBarButton(tabIndex: tabIndex, iconName: iconName))
+extension TabBarButton {
+    init (_ tabIndex: Int) {
+        self.init(tabIndex: tabIndex)
     }
 }

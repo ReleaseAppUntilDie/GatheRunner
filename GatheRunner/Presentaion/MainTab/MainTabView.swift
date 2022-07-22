@@ -20,6 +20,8 @@ struct MainTabView: View {
     }
 }
 
+// MARK: - TabItem Property and Functions
+
 extension MainTabView {
     private var tabItems: [TabItem] {
         [TabItem(.home), TabItem(.run), TabItem(.club), TabItem(.activity)]
