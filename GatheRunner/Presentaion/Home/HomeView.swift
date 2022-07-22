@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var selectedTab: SelectedTab
+    
     var body: some View {
-        Text("Home View")
+        
+        // MARK: - Add TabEvent Action Example
+        
+        Button {
+        } label: {
+            Image(systemName: "plus")
+                .resizable()
+                .renderingMode(.template)
+                .foregroundColor(.black)
+                .frame(width: 25, height: 25)
+        }
+        .environmentObject(selectedTab)
+        .buttonStyle(TabBarButton(TabItem.MainComponent.run.tag))
+        
     }
 }
 

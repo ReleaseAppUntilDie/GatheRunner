@@ -14,15 +14,6 @@ extension TabItem {
         case club = "클럽"
         case activity = "활동"
         
-        var view: AnyView {
-            switch self {
-            case .home: return AnyView(HomeView())
-            case .run: return AnyView(RunningView())
-            case .club: return AnyView(ClubView())
-            case .activity: return AnyView(ActivityView())
-            }
-        }
-        
         var icon: Image {
             switch self {
             case .home: return Image(systemName: "house.fill")
@@ -43,6 +34,6 @@ extension TabItem {
     }
     
     init(_ component: TabItem.MainComponent) {
-        self.init(view: component.view, title: Text(component.rawValue), icon: component.icon, tag: component.tag)
+        self.init(title: Text(component.rawValue), icon: component.icon, tag: component.tag)
     }
 }
