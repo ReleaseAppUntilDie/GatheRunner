@@ -261,6 +261,7 @@
 			children = (
 				E35EFEBE286DFB2D003E23DE /* TabItem.swift */,
 				E35EFEBF286DFB2D003E23DE /* TabItem+MainComponent.swift */,
+				38FBB21228764C1C00DCB0EB /* HeaderView.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -563,6 +564,7 @@
 				6F795EF92876743C007FA0B2 /* SettingView.swift in Sources */,
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
+				38FBB2162876651200DCB0EB /* Constants.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,
