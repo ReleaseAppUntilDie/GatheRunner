@@ -6,14 +6,14 @@
 //
 import SwiftUI
 
-enum ViewType {
+enum Views {
     case home,running,club,activity
 }
 
 struct HeaderView: View {
     
     let title : String
-    let type : ViewType
+    let type : Views
     
     let rightButtonAction : ()->()
     
