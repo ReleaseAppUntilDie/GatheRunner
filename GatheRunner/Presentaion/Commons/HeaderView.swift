@@ -14,6 +14,7 @@ struct HeaderView: View {
     
     let title : String
     let type : ViewsInHeaderView
+
     
     let rightButtonAction : ()->()
     
