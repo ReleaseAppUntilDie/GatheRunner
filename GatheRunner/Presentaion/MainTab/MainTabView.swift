@@ -11,10 +11,14 @@ struct MainTabView: View {
     @State private var selectedTab = 1
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            ForEach(tabItems) { $0.body }
-        }
-        .accentColor(.black)
+       
+            
+            TabView(selection: $selectedTab) {
+                ForEach(tabItems) { $0.body }
+            }
+            .accentColor(.black)
+        
+        
     }
 }
 
