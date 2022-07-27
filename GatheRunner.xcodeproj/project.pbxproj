@@ -31,6 +31,8 @@
 		E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBF286DFB2D003E23DE /* TabItem+MainComponent.swift */; };
 		E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC1286DFB2D003E23DE /* ActivityView.swift */; };
 		E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC3286DFB2D003E23DE /* MainTabView.swift */; };
+		E370F00F2891274E00ED4AE1 /* ImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E370F00E2891274E00ED4AE1 /* ImageStyle.swift */; };
+		E370F011289158FE00ED4AE1 /* MenuBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E370F010289158FE00ED4AE1 /* MenuBarButton.swift */; };
 		E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */; };
 		E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DA286C20D500618AC3 /* Assets.xcassets */; };
 		E3D349DE286C20D500618AC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DD286C20D500618AC3 /* Preview Assets.xcassets */; };
@@ -87,6 +89,8 @@
 		E35EFEBF286DFB2D003E23DE /* TabItem+MainComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TabItem+MainComponent.swift"; sourceTree = "<group>"; };
 		E35EFEC1286DFB2D003E23DE /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E35EFEC3286DFB2D003E23DE /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		E370F00E2891274E00ED4AE1 /* ImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyle.swift; sourceTree = "<group>"; };
+		E370F010289158FE00ED4AE1 /* MenuBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarButton.swift; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
 		E3D349D8286C20D200618AC3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -295,6 +299,31 @@
 			path = MainTab;
 			sourceTree = "<group>";
 		};
+		E370F0092891260F00ED4AE1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E370F00D2891270F00ED4AE1 /* Modifier */,
+				E370F00A2891261B00ED4AE1 /* Style */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		E370F00A2891261B00ED4AE1 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				E370F00E2891274E00ED4AE1 /* ImageStyle.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		E370F00D2891270F00ED4AE1 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				E370F010289158FE00ED4AE1 /* MenuBarButton.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 		E3D349CA286C20D200618AC3 = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +352,7 @@
 			children = (
 				DAEA930E28794F6F00349465 /* Info.plist */,
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
+				E370F0092891260F00ED4AE1 /* Helper */,
 				E35EFEB6286DFB2D003E23DE /* Presentaion */,
 				E3D34A04286C236300618AC3 /* Resources */,
 				E3D349DC286C20D500618AC3 /* Preview Content */,
@@ -568,6 +598,7 @@
 				6F1E0DDB287D43620025A671 /* DetailControllView.swift in Sources */,
 				DB198DAF288F7908002513A9 /* Constants.swift in Sources */,
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
+				E370F011289158FE00ED4AE1 /* MenuBarButton.swift in Sources */,
 				DAEA9310287953D100349465 /* LocationManager.swift in Sources */,
 				DAB5E6152881C21B000F24F4 /* RunningGuideViewModel.swift in Sources */,
 				DAEA931A287D184900349465 /* FloatingView.swift in Sources */,
@@ -579,6 +610,7 @@
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
+				E370F00F2891274E00ED4AE1 /* ImageStyle.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,
