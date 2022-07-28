@@ -9,26 +9,25 @@ import SwiftUI
 
 struct TemplateView: View {
     var model: SettingModel
+    typealias SettingType = SettingModel.SettingType
+    
     var body: some View {
         HStack {
             Spacer()
-            VStack (){
-                Image(systemName: model.imageIconName)
-                    .frame(width: 30 , height: 30, alignment: .center)
-                Text(model.status)
-                    .foregroundColor(Color.gray)
-                Text(model.description)
-                    .foregroundColor(Color.black)
+            VStack() {
+                Image(systemName: model.imageIconName).frame(width: 30, height: 30, alignment: .center)
+                Text(model.status).foregroundColor(Color.gray)
+                Text(model.description).foregroundColor(Color.black)
             }
             Spacer()
+            
         }
         .background(Color.white)
-        .onTapGesture {
-            print("Pressed")
-        }
+        .onTapGesture { print("Pressed") } //TODO: 구현 예정
+        
     }
     
-    init(type: ViewType){
+    init(type: SettingType){
         self.model = SettingModel(type)
     }
 }

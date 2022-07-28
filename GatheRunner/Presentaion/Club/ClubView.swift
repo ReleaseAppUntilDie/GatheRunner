@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//TODO: 구현예정
+
 struct ClubView: View {
     var body: some View {
         Text("Club View")

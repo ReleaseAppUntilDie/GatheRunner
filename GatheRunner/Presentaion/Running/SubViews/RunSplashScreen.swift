@@ -22,11 +22,15 @@ struct RunSplashScreen: View {
     }
 }
 
+// MARK: - Convenience init
+
 extension RunSplashScreen {
     init(_ initialTime: Int = 3) {
         self.init(initialTime: initialTime)
     }
 }
+
+// MARK: - Rendering TimerText
 
 extension RunSplashScreen {
     var countNumberText: some View {
@@ -36,7 +40,6 @@ extension RunSplashScreen {
                 timeRemaining -= timeRemaining > 0 ? 1 : 0
             }
     }
-    
 }
 
 struct RunSplashScreen_Previews: PreviewProvider {

@@ -1,5 +1,5 @@
 //
-//  Constants.swift
+//  UIScreen+GetSize.swift
 //  GatheRunner
 //
 //  Created by jaeseung han on 2022/07/07.
@@ -7,17 +7,15 @@
 
 import SwiftUI
 
-
 extension UIScreen {
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
     
-    static func getHeightby(ratio : Double) -> Double {
+    static func getHeightby(ratio: Double) -> Double {
         return screenHeight * ratio
     }
     
-    static func getWidthby(ratio : Double) -> Double {
+    static func getWidthby(ratio: Double) -> Double {
         return screenWidth * ratio
     }
 }
-

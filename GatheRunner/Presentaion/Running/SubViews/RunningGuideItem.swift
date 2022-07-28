@@ -36,11 +36,12 @@ struct RunningGuideItem: View {
                         .fontWeight(.regular)
                         .foregroundColor(Color.gray)
                         .lineLimit(1)
-                    
-                }.frame(width: 150, height: 100, alignment: .leading)
-            }.frame(width: 310, height: 100, alignment: .leading)
-                .background(.ultraThickMaterial, in:
-                                RoundedRectangle(cornerRadius: 10, style: .continuous))
+                }
+                .frame(width: 150, height: 100, alignment: .leading)
+                
+            }
+            .frame(width: 310, height: 100, alignment: .leading)
+            .background(.ultraThickMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
         
     }
