@@ -23,7 +23,7 @@ struct EmptyModifier: ViewModifier {
         }
     }
     
-    var checkedLogicalOperator: Bool? {
+    private var checkedLogicalOperator: Bool? {
         switch self.logicalOperator {
         case .and: return false
         case .or: return true
@@ -32,7 +32,7 @@ struct EmptyModifier: ViewModifier {
         
     }
     
-    var checkedCondition: Bool {
+    private var checkedCondition: Bool {
         guard let result = checkedLogicalOperator else {
             return self.conditions[0]
         }
