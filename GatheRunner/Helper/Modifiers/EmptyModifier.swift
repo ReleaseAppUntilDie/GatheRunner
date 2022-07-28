@@ -8,47 +8,49 @@
 import SwiftUI
 
 struct EmptyModifier: ViewModifier {
-    enum conditionalState {
-        case and, or, single
+    enum LogicalOperator {
+        case and, or, none
     }
     
-    let state: conditionalState
+    let logicalOperator: LogicalOperator
     let conditions: [Bool]
     
     func body(content: Content) -> some View {
-        if !checkedCondition() {
+        if !checkedCondition {
             EmptyView()
         } else {
             content
         }
     }
     
-    func checkedCondition() -> Bool {
-        switch self.state {
-        case .and: return checkedMultipleConditions(compare: false)
-        case .or: return checkedMultipleConditions(compare: true)
-        case .single: return self.conditions[0]
-            
+    var checkedLogicalOperator: Bool? {
+        switch self.logicalOperator {
+        case .and: return false
+        case .or: return true
+        default: return nil
         }
+        
     }
     
-    func checkedMultipleConditions(compare: Bool) -> Bool {
-        var result = !compare
+    var checkedCondition: Bool {
+        guard let result = checkedLogicalOperator else {
+            return self.conditions[0]
+        }
+        
         for condition in self.conditions {
-            if condition == compare {
-                result = compare
-                break
+            if condition == result {
+                return result
             }
         }
-        return result
+        return !result
     }
 }
 
 extension View {
     
-    //MARK: - 사용 예시: .isEmpty(state: .or, [type == .activity, type == .club])
+    //MARK: - 사용 예시: .isEmpty(logicalOperator: .or, [type == .activity, type == .club])
     
-    func isEmpty(state: EmptyModifier.conditionalState, _ conditions: [Bool]) -> some View {
-        modifier(EmptyModifier(state: state, conditions: conditions))
+    func isEmpty(logicalOperator: EmptyModifier.LogicalOperator, _ conditions: [Bool]) -> some View {
+        modifier(EmptyModifier(logicalOperator: logicalOperator, conditions: conditions))
     }
 }
