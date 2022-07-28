@@ -15,7 +15,7 @@ struct TabItem: Identifiable {
     let tag: Int
     
     var body: some View {
-        NavigationView { self.view }
+        NavigationView { self.view.navigationBarHidden(true) }
         .tabItem {
             Label(title: { self.title }, icon: { self.icon } )
         }
