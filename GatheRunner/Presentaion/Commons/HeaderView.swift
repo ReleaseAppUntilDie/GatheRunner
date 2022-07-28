@@ -4,27 +4,21 @@
 //
 //  Created by jaeseung han on 2022/07/07.
 //
+
 import SwiftUI
 
-enum Views {
-    case home,running,club,activity
-}
-
 struct HeaderView: View {
-    
     let title : String
     let type : Views
     
-    let rightButtonAction : ()->()
+    let rightButtonAction: (() -> Void)
     
     var body: some View {
-        ZStack(alignment:.bottom){
+        ZStack(alignment: .bottom) {
             Color(uiColor: .systemGray6)
-            HStack(alignment: .center){
+            HStack(alignment: .center) {
                 VStack(alignment: .leading) {
-                    Button {
-                        //TODO: profile view로 이동
-                        print("move to profile")
+                    Button { print("move to profile")  //TODO: profile view 이동 구현 예정
                     } label: {
                         Image(systemName: "person.crop.circle.fill")
                             .renderingMode(.template)
@@ -33,16 +27,13 @@ struct HeaderView: View {
                             .frame(width: 30, height: 30)
                     }
                 }
-                
                 Spacer()
                 
-                Text(title)
-                    .font(.system(size: 20, weight: .bold))
-                
+                Text(title).font(.system(size: 20, weight: .bold))
                 Spacer()
+                
                 if type == .activity || type == .club {
-                    Button {
-                        rightButtonAction()
+                    Button { rightButtonAction()
                     } label: {
                         Image(systemName: "plus")
                             .resizable()
@@ -52,26 +43,28 @@ struct HeaderView: View {
                     }
                 }
                 
-
-            }.padding(.horizontal,10)
-                .padding(.bottom)
-            Path { path in
-                path.move(to: CGPoint(x: 0, y: UIScreen.getHeightby(ratio: 1/7)))
-                path.addLine(to: CGPoint(x: UIScreen.screenWidth, y: UIScreen.getHeightby(ratio: 1/7)))
             }
-            .stroke(style: StrokeStyle(lineWidth:1))
+            .padding(.horizontal,10)
+            .padding(.bottom)
+            
+            Path {
+                $0.move(to: CGPoint(x: 0, y: UIScreen.getHeightby(ratio: 1/7)))
+                $0.addLine(to: CGPoint(x: UIScreen.screenWidth, y: UIScreen.getHeightby(ratio: 1/7)))
+            }
+            .stroke(style: StrokeStyle(lineWidth: 1))
             .foregroundColor(.init(uiColor: .systemGray4))
-
-        }.frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1/7))
-            .ignoresSafeArea()
+            
+        }
+        .frame(width: UIScreen.screenWidth, height: UIScreen.getHeightby(ratio: 1/7))
+        .ignoresSafeArea()
         
     }
 }
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title:"활동",type: .activity) {
-            print("")
+        HeaderView(title: "활동",type: .activity) {
+            print("HeaderView Log")
         }
     }
 }

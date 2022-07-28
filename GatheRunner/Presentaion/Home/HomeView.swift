@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//TODO: 구현 예정
+
 struct HomeView: View {
     var body: some View {
         Text("Home View")

@@ -14,11 +14,13 @@ struct JustStartView: View {
     var body: some View {
         ZStack {
             mapView
+            
             VStack {
                 featured
                 Spacer()
                 FloatingView()
-            }.frame(alignment: .center)
+            }
+            .frame(alignment: .center)
         }
     }
     
@@ -32,12 +34,11 @@ struct JustStartView: View {
                         RadialGradient(gradient: Gradient(colors: [Color.white.opacity(0), Color.white, Color.white, Color.white, Color.white,     Color.white.opacity(1)]), center: .center, startRadius: 100, endRadius: 600)
                     }
             )
+        
     }
     
     var featured: some View {
-        TabView {
-            RunningGuideItem()
-        }
+        TabView { RunningGuideItem() }
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(width: 400, height: 120)
         .shadow(radius: 2)

@@ -9,24 +9,25 @@ import SwiftUI
 
 struct SettingView: View {
     @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        VStack{
+        VStack {
             ScrollView(.vertical) {
                 MeasurementView()
                 DetailControllView()
                 
-                
                 //MARK: - TEST CODE
-                Button("Dismiss button for testing") {
-                    dismiss()
-                }
+                
+                Button("Dismiss button for testing") { dismiss() }
                 .padding(10)
                 .background(Color.mint)
-                .frame( height: 30, alignment: .center)
+                .frame(height: 30, alignment: .center)
+                
                 Spacer()
             }
         }
     }
+    
 }
 
 struct SettingView_Previews: PreviewProvider {

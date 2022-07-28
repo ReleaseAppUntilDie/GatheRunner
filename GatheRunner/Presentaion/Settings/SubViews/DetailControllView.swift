@@ -12,20 +12,22 @@ struct DetailControllView: View {
         VStack (spacing: 10){
             HStack {
                 Spacer()
-                Text("표시 및 음성")
-                    .frame(height: 50, alignment: .center)
+                Text("표시 및 음성").frame(height: 50, alignment: .center)
                 Spacer()
-            }.background(Color.mint)
-
+            }
+            .background(Color.mint)
+            
             HStack {
                 TemplateView(type: .audioFeedback)
                 TemplateView(type:.countDown)
             }
+            
             HStack {
                 TemplateView(type:.orientation)
                 TemplateView(type:.display)
             }
         }
+        
     }
 }
 

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct MeasurementView: View {
     var body: some View {
-        VStack (spacing: 10){
+        VStack (spacing: 10) {
             HStack {
                 Spacer()
-                Text("측정")
-                    .frame(height: 50, alignment: .center)    
+                Text("측정").frame(height: 50, alignment: .center)
                 Spacer()
-            }.background(Color.mint)
+            }
+            .background(Color.mint)
             
             Group{
                 HStack {

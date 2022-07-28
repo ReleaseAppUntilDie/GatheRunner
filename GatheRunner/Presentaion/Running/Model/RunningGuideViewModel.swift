@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//MARK: - temporary dummy data
+
 class RunningGuideViewModel: ObservableObject {
     private var runningGuide = [
         RunningGuide(image: "runningGuide_01", title: "러닝 가이드 체험하기", subtitle: "First\nSpeed Run", text: "25분 운동 스피드 런"),
@@ -21,12 +23,7 @@ class RunningGuideViewModel: ObservableObject {
         if runningGuide[safe: 0] == nil {
             runningGuide = [RunningGuide(image: "runningGuide_01", title: "러닝 가이드 체험하기", subtitle: "First\nSpeed Run", text: "25분 운동 스피드 런")]
         }
+        
         return runningGuide
-    }
-}
-
-extension Array {
-    subscript (safe index: Int) -> Element? {
-        return indices ~= index ? self[index] : nil
     }
 }
