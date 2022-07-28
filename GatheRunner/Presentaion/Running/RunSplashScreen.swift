@@ -43,5 +43,4 @@ struct RunSplashScreen_Previews: PreviewProvider {
     static var previews: some View {
         RunSplashScreen()
     }
-    
 }
