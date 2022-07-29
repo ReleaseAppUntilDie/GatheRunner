@@ -816,6 +816,97 @@ extension Galaxy: SpaceThing, NamedObject { … }
   </pre>
   </details>
    
+   ## Guard문
+   
+   + 코드의 가독성을 향상시기 위해, 명령문 대신 종종 사용할 것     
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+
+   // NOT PREFERRED
+   
+   func eatDoughnut(at index: Int) {
+       if index >= 0 && index < doughnuts.count {
+           let doughnut = doughnuts[index]
+           eat(doughnut)
+       }
+   }
+   
+   if let monkeyIsland = monkeyIsland {
+       bookVacation(on: monkeyIsland)
+       bragAboutVacation(at: monkeyIsland)
+   }
+
+   // PREFERRED
+   
+   func eatDoughnut(at index: Int) {
+       guard index >= 0 && index < doughnuts.count else {
+           // return early because the index is out of bounds
+           return
+       }
+
+       let doughnut = doughnuts[index]
+       eat(doughnut)
+   }
+
+   guard let monkeyIsland = monkeyIsland else {
+       return
+   }
+   bookVacation(on: monkeyIsland)
+   bragAboutVacation(at: monkeyIsland)
+
+  </code>
+  </pre>
+
+   + if-else문을 대체하진 말 것    
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+
+   // NOT PREFERRED
+   
+   guard isFriendly else {
+       print("You have the manners of a beggar.")
+       return
+   }
+
+   print("Hello, nice to meet you!")
+
+   // PREFERRED
+   
+   if isFriendly {
+       print("Hello, nice to meet you!")
+   } else {
+       print("You have the manners of a beggar.")
+   }
+
+  </code>
+  </pre>
+   
+   + 반드시 return에 줄바꿈 할 것
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+
+   // NOT PREFERRED
+   
+   guard let thingOne = thingOne else { return }
+   
+   // PREFERRED
+   
+   guard let thingOne = thingOne else {
+       return
+   }
+
+  </code>
+  </pre>
+   
    
    
    
@@ -825,8 +916,10 @@ extension Galaxy: SpaceThing, NamedObject { … }
    
  ## 참고문헌
    
+   + 공식문서: https://google.github.io/swift/#non-documentation-comments](https://www.swift.org/documentation/api-design-guidelines/
    + 구글 스타일가이드: https://google.github.io/swift/#non-documentation-comments
    + 에어비앤비 스타일가이드: https://github.com/airbnb/swift#file-organization
    + 스타일쉐어 스타일가이드: https://github.com/StyleShare/swift-style-guide
+   + 링크드인 스타일가이드: https://github.com/StyleShare/swift-style-guide](https://github.com/linkedin/swift-style-guide
    + raywenderlich 스타일가이드: https://github.com/raywenderlich/swift-style-guide#spacing
    
