@@ -23,7 +23,7 @@ GatheRunner Swift Style Guide
    + [프로토콜](#함수)
    + [함수](#함수)
    + [유형추론](#유형추론)
-   + [명확성](#모호성)  
+   + [명확성](#명확성)  
    + [부울](#부울)
    + [약어](#약어)  
    
@@ -39,7 +39,8 @@ GatheRunner Swift Style Guide
    + [매개변수미사용](#매개변수미사용)
    + [표현식](#표현식)
    
-[4.Guard문](#Guard문)
+   
+[4.Guard](#Guard)
 
 [5.import](#import)
 
@@ -54,9 +55,9 @@ GatheRunner Swift Style Guide
 ## 네이밍    
 
 ### 대소문자
-
-  + 타입 및 프로토콜의 이름에는 UpperCamelCase 사용하고, 그 외 변수,함수등 다른 모든 이름에는 lowerCamelCase를 사용한다.      
-
+  
+  + 타입 및 프로토콜의 이름에는 UpperCamelCase 사용하고, 그 외 변수,함수등 다른 모든 이름에는 lowerCamelCase를 사용한다.
+  
   <details>
   <summary>예시</summary>
   <pre>
@@ -824,8 +825,8 @@ extension Galaxy: SpaceThing, NamedObject { … }
   </code>
   </pre>
   </details>
-   
-   ## Guard문
+  
+   ## Guard
    
    + 코드의 가독성을 향상시기 위해, 명령문 대신 종종 사용할 것     
 
