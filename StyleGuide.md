@@ -1030,7 +1030,7 @@ extension Galaxy: SpaceThing, NamedObject { … }
    
  ## 참고문헌
    
-   + 공식문서: https://google.github.io/swift/#non-documentation-comments](https://www.swift.org/documentation/api-design-guidelines/
+   + 공식문서: https://www.swift.org/documentation/api-design-guidelines
    + 구글 스타일가이드: https://google.github.io/swift/#non-documentation-comments
    + 에어비앤비 스타일가이드: https://github.com/airbnb/swift#file-organization
    + 스타일쉐어 스타일가이드: https://github.com/StyleShare/swift-style-guide
