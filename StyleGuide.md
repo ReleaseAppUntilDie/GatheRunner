@@ -81,6 +81,124 @@ let view = UIView(frame: CGRect.zero)
   </code>
   </pre>
   </details>  
+  
+  이름은 설명적이고 모호하지 않아야 합니다.
+    <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+  // PREFERRED
+class RoundAnimatingButton: UIButton { /* ... */ }
+
+// NOT PREFERRED
+class CustomButton: UIButton { /* ... */ }
+    </code>
+  </pre>
+  </details> 
+  
+  2.8 약어를 사용하거나 단축된 이름 또는 단일 문자 이름을 사용하지 마십시오.
+  
+    <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+// PREFERRED
+class RoundAnimatingButton: UIButton {
+    let animationDuration: NSTimeInterval
+
+    func startAnimating() {
+        let firstSubview = subviews.first
+    }
+
+}
+
+// NOT PREFERRED
+class RoundAnimating: UIButton {
+    let aniDur: NSTimeInterval
+
+    func srtAnmating() {
+        let v = subviews.first
+    }
+}
+    </code>
+  </pre>
+  </details> 
+  
+  2.9 명확하지 않은 경우 상수 또는 변수 이름에 유형 정보를 포함합니다.
+
+    <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+// PREFERRED
+class ConnectionTableViewCell: UITableViewCell {
+    let personImageView: UIImageView
+
+    let animationDuration: TimeInterval
+
+    // it is ok not to include string in the ivar name here because it's obvious
+    // that it's a string from the property name
+    let firstName: String
+
+    // though not preferred, it is OK to use `Controller` instead of `ViewController`
+    let popupController: UIViewController
+    let popupViewController: UIViewController
+
+    // when working with a subclass of `UIViewController` such as a table view
+    // controller, collection view controller, split view controller, etc.,
+    // fully indicate the type in the name.
+    let popupTableViewController: UITableViewController
+
+    // when working with outlets, make sure to specify the outlet type in the
+    // property name.
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
+
+}
+
+// NOT PREFERRED
+class ConnectionTableViewCell: UITableViewCell {
+    // this isn't a `UIImage`, so shouldn't be called image
+    // use personImageView instead
+    let personImage: UIImageView
+
+    // this isn't a `String`, so it should be `textLabel`
+    let text: UILabel
+
+    // `animation` is not clearly a time interval
+    // use `animationDuration` or `animationTimeInterval` instead
+    let animation: TimeInterval
+
+    // this is not obviously a `String`
+    // use `transitionText` or `transitionString` instead
+    let transition: String
+
+    // this is a view controller - not a view
+    let popupView: UIViewController
+
+    // as mentioned previously, we don't want to use abbreviations, so don't use
+    // `VC` instead of `ViewController`
+    let popupVC: UIViewController
+
+    // even though this is still technically a `UIViewController`, this property
+    // should indicate that we are working with a *Table* View Controller
+    let popupViewController: UITableViewController
+
+    // for the sake of consistency, we should put the type name at the end of the
+    // property name and not at the start
+    @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var buttonSubmit: UIButton!
+
+    // we should always have a type in the property name when dealing with outlets
+    // for example, here, we should have `firstNameLabel` instead
+    @IBOutlet weak var firstName: UILabel!
+}
+
+    </code>
+  </pre>
+  </details> 
+
  
 + Bool타입 변수의 네이밍은 isTrue, hasItem 의 형태로만 선언한다.    
 + 두문자어(약어)는 모두 대문자이거나, 모두 소문자이어야 한다.
