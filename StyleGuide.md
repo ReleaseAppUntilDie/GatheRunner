@@ -4,14 +4,15 @@ GatheRunner Swift Style Guide
 # 목적
 스타일 가이드를 준수해야하는 이유:
 
++ 코드의 가독성은 이해를 돕는다.
++ 유지보수가 용이해진다.
++ 자잘한 실수가 줄어든다.  
++ 코딩하는 동안 인지 부하를 줄인다. 
+
 인지 부하(cognitive load)는 학습이나 과제 해결 과정에서의 인지적 요구량을 말한다. 
 어떤 정보가 학습되기 위해서는 작동기억 안에서 정보가 처리되어야 하는데, 작동기억이 처리해 낼 수 있는 정보의 양보다 처리해야 할 정보가 많으면 문제가 생기며 인지부하가 생기게 된다.
 
-행동 경제학에 따르면, 과잉 선택권은 선택할 수 있는 옵션이 너무 많아서 뇌가 결정하기 어려울 때 발생한다. 결과적으로, 뇌는 결정을 내리지 못하고 그에 대해 스트레스를 받게 된다
-
-+ 코드의 가독성은 이해를 돕는다.
-+ 유지보수가 용이해진다.
-+ 자잘한 실수가 줄어든다.   
+행동 경제학에 따르면, 과잉 선택권은 선택할 수 있는 옵션이 너무 많아서 뇌가 결정하기 어려울 때 발생한다. 결과적으로, 뇌는 결정을 내리지 못하고 그에 대해 스트레스를 받게 된다.
 
 ## 목차
 
@@ -19,15 +20,24 @@ GatheRunner Swift Style Guide
    + [대소문자](#대소문자)
    + [프로토콜](#함수)
    + [함수](#함수)
-   + [유형추론](#유형추론)  
+   + [유형추론](#유형추론)
+   + [명확성](#모호성)  
+   + [부울](#부울)
    + [약어](#약어)  
- 
+   
 [2.코드레이아웃](#코드레이아웃)
    + [글자수제한](#글자수제한)
    + [줄바꿈](#줄바꿈)
    + [수평정렬](#수평정렬)
    + [주석](#주석)
    + [배치순서](#배치순서)
+
+[3.클로저](#클로저)
+   + [선언](#선언)
+   + [매개변수미사용](#매개변수미사용)
+   + [표현식](#표현식)
+   
+[4.Guard문](#Guard문)
 
 
 [참고문헌](#참고문헌)
@@ -163,6 +173,36 @@ let myFleet = SpaceFleet()
   </code>
   </pre>
   </details>
+  
+   ### 명확성
+  
+  + 모호성을 피하기 위해 필요한 모든 단어를 포함한다.
+  
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+  
+   // NOT PREFERRED
+
+   employees.remove(x) // x위치에 있는 요소삭제라는 기능과 달리 x라는 요소를 삭제하는 의도로 보임.
+
+
+   // PREFERRED
+ 
+   extension List {
+     public mutating func remove(at position: Index) -> Element
+   }
+   employees.remove(at: x)
+
+  </code>
+  </pre>
+  </details>
+  
+  ### 부울
+  
+  + 부울의 유형은 isSpaceship, hasSpacesuit 등과 같이 네이밍에 속성이 표현되어야 한다.
+ 
   
  ## 코드레이아웃    
 
@@ -600,7 +640,7 @@ extension Galaxy: SpaceThing, NamedObject { … }
 
    // PREFERRED
 
-let initialFactor = 2  // Warm up the modulator.
+   let initialFactor = 2  // Warm up the modulator.
 
   </code>
   </pre>
@@ -699,6 +739,89 @@ let initialFactor = 2  // Warm up the modulator.
   </pre>
   </details>
 
+   ## 클로저    
+
+   ### 선언
+   
+  + 클로저 선언에서 반환 유형을 명시한다.      
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+
+   // NOT PREFERRED
+
+   func method(completion: () -> ()) {
+     ...
+   }
+   
+   // PREFERRED
+
+   func method(completion: () -> Void) {
+     ...
+   }
+
+  </code>
+  </pre>
+  </details>
+   
+   ### 매개변수미사용
+   
+  + 사용하지 않는 클로저 매개변수의 이름을 밑줄(_)로 지정한다.      
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+
+   // NOT PREFERRED
+
+   someAsyncThing() { argument1, argument2, argument3 in
+     print(argument3)
+   }
+
+   // PREFERRED
+
+   someAsyncThing() { _, _, argument3 in
+     print(argument3)
+   }
+
+
+  </code>
+  </pre>
+  </details>
+ 
+   ### 표현식
+   
+  + 클로저 표현식에서 반환 유형을 생략한다.      
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+
+   // NOT PREFERRED
+
+   someAsyncThing() { argument -> Void in
+     ...
+   }
+
+   // PREFERRED
+   someAsyncThing() { argument in
+     ...
+   }
+
+  </code>
+  </pre>
+  </details>
+   
+   
+   
+   
+   
+   
+   
    
  ## 참고문헌
    
