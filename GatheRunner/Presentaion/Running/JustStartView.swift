@@ -77,6 +77,6 @@ struct JustStartView: View {
 
 struct JustStartView_Previews: PreviewProvider {
     static var previews: some View {
-        JustStartView(selected: .constant(0)).environmentObject(GoalSettingViewModel())
+        JustStartView(selected: .constant(0))
     }
 }

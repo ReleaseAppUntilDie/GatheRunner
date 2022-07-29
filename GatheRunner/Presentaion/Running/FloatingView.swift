@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct FloatingView: View {
-    @ObservedObject var goalButton = GoalSettingViewModel.shared
-    
     var body: some View {
         VStack(spacing: 10) {
             HStack(alignment: .center, spacing: 30) {
@@ -43,7 +41,6 @@ struct FloatingView: View {
             
             Button("목표 설정") {
                 withAnimation {
-                    goalButton.isButtonSelected = true
                 }
             }
             .frame(width: UIScreen.main.bounds.width * 0.26, height: UIScreen.main.bounds.height * 0.07)
@@ -58,6 +55,6 @@ struct FloatingView: View {
 
 struct FloatingView_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingView().environmentObject(GoalSettingViewModel())
+        FloatingView()
     }
 }

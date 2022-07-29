@@ -15,8 +15,6 @@
 		DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */; };
 		DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421A2893C24A00554B5D /* Array+Extensions.swift */; };
 		DA58421E2893C27700554B5D /* RunningGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */; };
-		DA5842202893C28400554B5D /* GoalSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421F2893C28400554B5D /* GoalSettingViewModel.swift */; };
-		DA5842222893C29D00554B5D /* GoalSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5842212893C29D00554B5D /* GoalSetting.swift */; };
 		DAEA9310287953D100349465 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA930F287953D100349465 /* LocationManager.swift */; };
 		DAEA9315287AED7200349465 /* RunningGuideTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunningGuideTabItem.swift */; };
 		DAEA9318287B011700349465 /* RunningGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9317287B011700349465 /* RunningGuide.swift */; };
@@ -67,8 +65,6 @@
 		DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedCorner+Extensions.swift"; sourceTree = "<group>"; };
 		DA58421A2893C24A00554B5D /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideViewModel.swift; sourceTree = "<group>"; };
-		DA58421F2893C28400554B5D /* GoalSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingViewModel.swift; sourceTree = "<group>"; };
-		DA5842212893C29D00554B5D /* GoalSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetting.swift; sourceTree = "<group>"; };
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA930F287953D100349465 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunningGuideTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideTabItem.swift; sourceTree = "<group>"; };
@@ -172,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */,
-				DA58421F2893C28400554B5D /* GoalSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -197,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				DAEA9317287B011700349465 /* RunningGuide.swift */,
-				DA5842212893C29D00554B5D /* GoalSetting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -564,9 +558,7 @@
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */,
-				DA5842202893C28400554B5D /* GoalSettingViewModel.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
-				DA5842222893C29D00554B5D /* GoalSetting.swift in Sources */,
 				DA58421E2893C27700554B5D /* RunningGuideViewModel.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,

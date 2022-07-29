@@ -9,41 +9,12 @@ import SwiftUI
 
 struct MainTabView: View {
     @State private var selectedTab = 1
-    @ObservedObject var goalButton = GoalSettingViewModel.shared
     
     var body: some View {
-        ZStack {
-            TabView(selection: $selectedTab) {
-                ForEach(tabItems) { $0.body }
-            }
-            .accentColor(.black)
-            VStack {
-                Spacer()
-                if goalButton.isButtonSelected {
-                    BottomSheet()
-                        .frame(width: UIScreen.main.bounds.width, height: 220)
-                        .transition(.move(edge: .bottom))
-                }
-            }
+        TabView(selection: $selectedTab) {
+            ForEach(tabItems) { $0.body }
         }
-    }
-}
-
-struct BottomSheet: View {
-    private var getGoalSettingArrs = GoalSettingViewModel().getGoalSettingArrs
-    var body: some View {
-        VStack(alignment: .leading) {
-            ForEach(getGoalSettingArrs.indices, id:\.self) { index in
-                Text(getGoalSettingArrs[index].title)
-                if getGoalSettingArrs.count - 1 > index {
-                    Divider()
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.white)
-        .mask(RoundedTopCorner(radius: 30))
-        .ignoresSafeArea()
+        .accentColor(.black)
     }
 }
 
@@ -55,6 +26,6 @@ extension MainTabView {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView().environmentObject(GoalSettingViewModel())
+        MainTabView()
     }
 }

@@ -10,7 +10,6 @@ import SwiftUI
 struct RunningView: View {
     @State private var justStartButtonIsSelected: Bool = true
     @State private var runningGuideButtonIsSelected: Bool = false
-    @ObservedObject var goalButton = GoalSettingViewModel.shared
     @State var selected: Int = 0
     
     var body: some View {
@@ -33,13 +32,6 @@ struct RunningView: View {
             if runningGuideButtonIsSelected {
                 RunningGuideView()
                     .transition(.move(edge: .trailing))
-            }
-        }.overlay {
-            Color.black.opacity(goalButton.isButtonSelected ? 0.4 : 0)
-        }
-        .onTapGesture {
-            withAnimation {
-                goalButton.isButtonSelected = false
             }
         }.ignoresSafeArea(edges: .top)
     }
@@ -68,6 +60,6 @@ struct commonBtn: View {
 
 struct RunningView_Previews: PreviewProvider {
     static var previews: some View {
-        RunningView(selected: 0).environmentObject(GoalSettingViewModel())
+        RunningView(selected: 0)
     }
 }
