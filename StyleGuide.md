@@ -9,7 +9,31 @@ GatheRunner Swift Style Guide
 ## 목차
 [1.환경설정](#환경설정) 
 
-[2.네이밍](#네이밍)   
+[2.네이밍](#네이밍)
+   + [유형 추론 컨텍스트 사용](#유형 추론 컨텍스트 사용)  
+   
+     <details>
+  <summary>선호:</summary>
+  <pre>
+  <code>
+let selector = #selector(viewDidLoad)
+view.backgroundColor = .red
+let toView = context.view(forKey: .to)
+let view = UIView(frame: .zero)
+  </code>
+  </pre>
+
+  <summary>선호하지 않음 :</summary>
+  
+  <pre>
+  <code>
+let selector = #selector(ViewController.viewDidLoad)
+view.backgroundColor = UIColor.red
+let toView = context.view(forKey: UITransitionContextViewKey.to)
+let view = UIView(frame: CGRect.zero)
+   </pre>
+   </code>
+   </details>  
 
 [3.스타일](#스타일)
    + [함수](#함수)   
@@ -17,6 +41,8 @@ GatheRunner Swift Style Guide
    + [연산자](#연산자)
      
 [4.패턴](#패턴)   
+   + [StyleModifiers](#StyleModifiers)   
+
 
 [5.파일 구성](#파일-구성)   
 
