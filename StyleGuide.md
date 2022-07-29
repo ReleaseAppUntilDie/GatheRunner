@@ -1,507 +1,351 @@
 GatheRunner Swift Style Guide 
 =============
+
 # 목적
 스타일 가이드를 준수해야하는 이유:
+
+인지 부하(cognitive load)는 학습이나 과제 해결 과정에서의 인지적 요구량을 말한다. 
+어떤 정보가 학습되기 위해서는 작동기억 안에서 정보가 처리되어야 하는데, 작동기억이 처리해 낼 수 있는 정보의 양보다 처리해야 할 정보가 많으면 문제가 생기며 인지부하가 생기게 된다.
+
 + 코드의 가독성은 이해를 돕는다.
 + 유지보수가 용이해진다.
 + 자잘한 실수가 줄어든다.   
 
 ## 목차
-[1.환경설정](#환경설정) 
 
-[2.네이밍](#네이밍)
-   + [유형 추론 컨텍스트 사용](#유형 추론 컨텍스트 사용)  
-   
-     <details>
-  <summary>선호:</summary>
-  <pre>
-  <code>
-let selector = #selector(viewDidLoad)
-view.backgroundColor = .red
-let toView = context.view(forKey: .to)
-let view = UIView(frame: .zero)
-  </code>
-  </pre>
-
-  <summary>선호하지 않음 :</summary>
-  
-  <pre>
-  <code>
-let selector = #selector(ViewController.viewDidLoad)
-view.backgroundColor = UIColor.red
-let toView = context.view(forKey: UITransitionContextViewKey.to)
-let view = UIView(frame: CGRect.zero)
-   </pre>
-   </code>
-   </details>  
-
-[3.스타일](#스타일)
-   + [함수](#함수)   
-   + [클로저](#클로저)   
-   + [연산자](#연산자)
-     
-[4.패턴](#패턴)   
-   + [StyleModifiers](#StyleModifiers)   
+[1.네이밍](#네이밍)
+   + [대소문자](#대소문자)
+   + [프로토콜](#함수)
+   + [함수](#함수)
+   + [유형추론](#유형추론)  
+ 
+[2.코드레이아웃](#코드레이아웃)
+   + [글자수제한](#글자수제한)
+   + [줄바꿈](#줄바꿈)
+   + [간격](#간격)
+   + [배치순서](#배치순서)
 
 
-[5.파일 구성](#파일-구성)   
-
-[6.코드 구성](#코드 구성)   
-
-
-## 환경설정    
-* * *
+[참고문헌](#참고문헌)
 
 ## 네이밍    
-+ 타입 및 프로토콜의 이름에는 PascalCase를 사용하고, 그 외 변수,함수등 다른 모든 이름에는 lowerCamelCase를 사용한다.      
+
+### 대소문자
+
+  + 타입 및 프로토콜의 이름에는 UpperCamelCase 사용하고, 그 외 변수,함수등 다른 모든 이름에는 lowerCamelCase를 사용한다.      
 
   <details>
   <summary>예시</summary>
   <pre>
   <code>
-  protocol Item {
-    // ...
-  }
 
-  class ChildItem: Item {
+     protocol SpaceThing {
+     // ...
+   }
 
-    enum ItemType {
-      // ...
-      }
+   class SpaceFleet: SpaceThing {
 
-    var target: [Members] = []
-    static let worldName: String = "Earth"
-
-    func addList(_ item: Spaceship) {
-      // ...
+     enum Formation {
+       // ...
      }
-  }
 
-  let myFleet = SpaceFleet()
-  </code>
-  </pre>
-  </details>  
-  
-  이름은 설명적이고 모호하지 않아야 합니다.
-    <details>
-  <summary>예시</summary>
-  <pre>
-  <code>
-  // PREFERRED
-class RoundAnimatingButton: UIButton { /* ... */ }
+     class Spaceship {
+       // ...
+     }
 
-// NOT PREFERRED
-class CustomButton: UIButton { /* ... */ }
-    </code>
-  </pre>
-  </details> 
-  
-  2.8 약어를 사용하거나 단축된 이름 또는 단일 문자 이름을 사용하지 마십시오.
-  
-    <details>
-  <summary>예시</summary>
-  <pre>
-  <code>
-// PREFERRED
-class RoundAnimatingButton: UIButton {
-    let animationDuration: NSTimeInterval
+     var ships: [Spaceship] = []
+     static let worldName: String = "Earth"
 
-    func startAnimating() {
-        let firstSubview = subviews.first
-    }
-
-}
-
-// NOT PREFERRED
-class RoundAnimating: UIButton {
-    let aniDur: NSTimeInterval
-
-    func srtAnmating() {
-        let v = subviews.first
-    }
-}
-    </code>
-  </pre>
-  </details> 
-  
-  2.9 명확하지 않은 경우 상수 또는 변수 이름에 유형 정보를 포함합니다.
-
-    <details>
-  <summary>예시</summary>
-  <pre>
-  <code>
-// PREFERRED
-class ConnectionTableViewCell: UITableViewCell {
-    let personImageView: UIImageView
-
-    let animationDuration: TimeInterval
-
-    // it is ok not to include string in the ivar name here because it's obvious
-    // that it's a string from the property name
-    let firstName: String
-
-    // though not preferred, it is OK to use `Controller` instead of `ViewController`
-    let popupController: UIViewController
-    let popupViewController: UIViewController
-
-    // when working with a subclass of `UIViewController` such as a table view
-    // controller, collection view controller, split view controller, etc.,
-    // fully indicate the type in the name.
-    let popupTableViewController: UITableViewController
-
-    // when working with outlets, make sure to specify the outlet type in the
-    // property name.
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var nameLabel: UILabel!
-
-}
-
-// NOT PREFERRED
-class ConnectionTableViewCell: UITableViewCell {
-    // this isn't a `UIImage`, so shouldn't be called image
-    // use personImageView instead
-    let personImage: UIImageView
-
-    // this isn't a `String`, so it should be `textLabel`
-    let text: UILabel
-
-    // `animation` is not clearly a time interval
-    // use `animationDuration` or `animationTimeInterval` instead
-    let animation: TimeInterval
-
-    // this is not obviously a `String`
-    // use `transitionText` or `transitionString` instead
-    let transition: String
-
-    // this is a view controller - not a view
-    let popupView: UIViewController
-
-    // as mentioned previously, we don't want to use abbreviations, so don't use
-    // `VC` instead of `ViewController`
-    let popupVC: UIViewController
-
-    // even though this is still technically a `UIViewController`, this property
-    // should indicate that we are working with a *Table* View Controller
-    let popupViewController: UITableViewController
-
-    // for the sake of consistency, we should put the type name at the end of the
-    // property name and not at the start
-    @IBOutlet weak var btnSubmit: UIButton!
-    @IBOutlet weak var buttonSubmit: UIButton!
-
-    // we should always have a type in the property name when dealing with outlets
-    // for example, here, we should have `firstNameLabel` instead
-    @IBOutlet weak var firstName: UILabel!
-}
-
-    </code>
-  </pre>
-  </details> 
-
- 
-+ Bool타입 변수의 네이밍은 isTrue, hasItem 의 형태로만 선언한다.    
-+ 두문자어(약어)는 모두 대문자이거나, 모두 소문자이어야 한다.
-
-  <details>
-  <summary>예시</summary>
-  
-  <pre>
-  <code>
-  // WRONG
-  class UrlValidator {
-  func isValidUrl(_ URL: URL) -> Bool {
-  // ...
-    }
-  }
-
-  // RIGHT
-  class URLValidator {
-  func isValidURL(_ url: URL) -> Bool {
-    // ...
+     func addShip(_ ship: Spaceship) {
+       // ...
      }
    }
-   </pre>
-   </code>
-   </details>        
-   
-   정적 및 클래스 속성
-   
-                <details>
-  <summary>예시</summary>
+
+let myFleet = SpaceFleet()
+
+
+  </code>
+  </pre>
+  </details>
   
+  ### 프로토콜
+  
+  + 기능 을 설명하는 프로토콜 은 접미사 able, ible, 또는ing (예: Equatable, ProgressReporting)를 사용하여 이름을 지정해야 한다.
+  
+  ### 함수 
+  
+  + 이벤트 처리 함수의 이름은 과거형 문장처럼 지정해야 한다.
+  
+  <details>
+  <summary>예시</summary>
   <pre>
   <code>
-public class UIColor {
-  public class var red: UIColor {                // GOOD.
-    // ...
-  }
-}
-
-public class URLSession {
-  public class var shared: URLSession {          // GOOD.
-    // ...
-  }
-}
-   </code>
-      </pre>
-         </details>  
-        
-        약식
-
-                <details>
-  <summary>예시</summary>
   
-  <pre>
-  <code>
-func enumeratedDictionary<Element>(
-  from values: [Element],
-  start: Array<Element>.Index? = nil
-) -> [Int: Element] {
-  // ...
-}
-   </code>
-      </pre>
-         </details> 
-         
-typealias
+   // NOT PREFERRED
+   class ExperiencesViewController {
 
- <details>
-  <summary>예시</summary>
+     private func handleBookButtonTap() {
+       // ...
+     }
+
+     private func modelChanged() {
+       // ...
+     }
+   }
+
+    // PREFERRED
+   class ExperiencesViewController {
+
+     private func didTapBookButton() {
+       // ...
+     }
+
+     private func modelDidChange() {
+       // ...
+     }
+}
+
+  </code>
+  </pre>
+  </details>
   
-  <pre>
-  <code>
-func doSomething() {
-  // ...
-}
-
-let callback: () -> Void
-
-   </code>
-      </pre>
-    </details> 
-         
-Nesting and Namespacing
-
- <details>
-  <summary>예시</summary>
-  
-  <pre>
-  <code>
-class Parser {
-  enum Error: Swift.Error {
-    case invalidToken(String)
-    case unexpectedEOF
-  }
-
-  func parse(text: String) throws {
-    // ...
-  }
-}
-   </code>
-      </pre>
-    </details>
-    
-    for-where Loops
-<details>
-  <summary>예시</summary>
-  
-  <pre>
-  <code>
-for item in collection where item.hasProperty {
-  // ...
-}
-   </code>
-      </pre>
-    </details>
-
-## 코드 구성    
-확장을 사용하여 코드를 기능의 논리적 블록으로 구성합니다. 각 확장은 // MARK: -잘 정리된 상태를 유지하기 위해 주석으로 시작해야 합니다.
-
-### 미사용 코드 제거
-Xcode 템플릿 코드 및 자리 표시자 주석을 포함하여 사용되지 않는(죽은) 코드는 제거해야 합니다. 튜토리얼이나 책에서 사용자에게 주석 처리된 코드를 사용하도록 지시하는 경우는 예외
-
-### Import 최소화
-소스 파일에 필요한 모듈만 가져옵니다.
+  + 사용 사이트가 문법적 영어 구문을 형성하도록 하는 메서드 및 기능 이름을 선호합니다.
 
   <details>
   <summary>예시</summary>
-  
   <pre>
   <code>
   
-  // WRONG
-import UIKit
-import Foundation
-var view: UIView
-var deviceModels: [String]
+   // NOT PREFERRED
 
-  // RIGHT
-import UIKit
-var view: UIView
-var deviceModels: [String]
+   x.insert(y, position: z)
+   x.subViews(color: y)
+   x.nounCapitalize()
 
-  // WRONG
-import UIKit
-var deviceModels: [String]
 
-  // RIGHT
-import Foundation
-var deviceModels: [String]
-   </pre>
-   </code>
-   </details>    
+   // PREFERRED
+ 
+   x.insert(y, at: z)          “x, insert y at z”
+   x.subViews(havingColor: y)  “x's subviews having color y”
+   x.capitalizingNouns()       “x, capitalizing nouns”
 
-### 간격
-시각적 명확성과 구성을 돕기 위해 메서드 사이에는 한 줄의 빈 줄이 있어야 하고 형식 선언 사이에는 최대 한 줄의 빈 줄이 있어야 합니다. 메서드 내의 공백은 기능을 분리해야 하지만 메서드에 너무 많은 섹션이 있으면 여러 메서드로 리팩토링해야 하는 경우가 많습니다.
+  </code>
+  </pre>
+  </details>
+  
+  
+  ### 유형추론
+  
+  + 컴파일러 추론 컨텍스트를 사용하여 더 짧고 명확한 코드를 작성한다.
+  
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+  
+   // NOT PREFERRED
 
-여는 중괄호 뒤나 닫는 중괄호 앞에 빈 줄이 없어야 합니다.
+   view.backgroundColor = UIColor.red
+   let toView = context.view(forKey: UITransitionContextViewKey.to)
+   let view = UIView(frame: CGRect.zero)
 
-닫는 괄호는 한 줄에 단독으로 나타나지 않아야 합니다.
+
+   // PREFERRED
+ 
+   view.backgroundColor = .red
+   let toView = context.view(forKey: .to)
+   let view = UIView(frame: .zero)
+
+  </code>
+  </pre>
+  </details>
+  
+ ## 코드레이아웃    
+
+   ### 글자수제한
+   
+   + 한 줄은 최대 100자를 넘지 않는다.
+   
+   Xcode의 Preferences → Text Editing → Display의 'Page guide at column' 옵션을 활성화하고 99자로 설정
+  
+   ### 줄바꿈
+   
+   + 연속적인 공백을 하나의 빈 줄이나 공백으로 제한한다.
 
   <details>
   <summary>예시</summary>
-  
   <pre>
   <code>
   
-  // WRONG
-if user.isHappy
-{
-  // Do something
-}
-else {
-  // Do something else
-}
+   // NOT PREFERRED
 
-   </code>
+   struct Planet {
+
+     let mass:          Double
+     let hasAtmosphere: Bool
+
+
+     func distance(to: Planet) { }
+
+   }
+
+   // PREFERRED
+ 
+   struct Planet {
+
+     let mass: Double
+     let hasAtmosphere: Bool
+
+     func distance(to: Planet) { }
+
+   }
+
+  </code>
+  </pre>
+  </details>
    
-  <code>
-  
-  // RIGHT
-if user.isHappy {
-  // Do something
-} else {
-  // Do something else
-}
-
-   </code>
-      </pre>
-   </details>  
-
-콜론은 항상 왼쪽에 공백이 없고 오른쪽에 하나의 공백이 있습니다. 삼항 연산자 ? :, 빈 사전 [:]및 #selector구문 은 예외 addTarget(_:action:)입니다.
-  <details>
-  <summary>예시</summary>
-  
-  <pre>
-  <code>
-  
-  // WRONG
-class TestDatabase : Database {
-  var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
-}
-   </code>
-   
-  <code>
-  
-  // RIGHT
-class TestDatabase: Database {
-  var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
-}
-
-   </code>
-      </pre>
-
-### 일반 서식
-
-   한 줄에 하나의 명령문
-
-   한 줄 에 최대 하나의 명령문 이 있으며 각 명령문 뒤에는 줄 바꿈이 옵니다. 단, 0개 또는 1개의 명령문이 포함된 블록으로 줄이 끝나는 경우는 예외입니다.
+   + 여러 줄에 걸쳐 있는 범위를 포함하는 선언은 같은 범위에 있는 인접한 선언과 줄 바꿈으로 구분한다.
+   범위가 지정된 선언을 동일한 범위에 있는 다른 선언과 분리하면 시각적으로 구분되므로 인접한 선언을 범위가 지정된 선언과 쉽게 구분할 수 있다.
 
   <details>
   <summary>예시</summary>
-  
   <pre>
   <code>
   
-guard let value = value else { return 0 }
+   // NOT PREFERRED
 
-defer { file.close() }
-
-switch someEnum {
-case .first: return 5
-case .second: return 10
-case .third: return 20
+struct SolarSystem {
+  var numberOfPlanets: Int {
+    …
+  }
+  func distance(to: SolarSystem) -> AstronomicalUnit {
+    …
+  }
+}
+struct Galaxy {
+  func distance(to: Galaxy) -> AstronomicalUnit {
+    …
+  }
+  func contains(_ solarSystem: SolarSystem) -> Bool {
+    …
+  }
 }
 
-let squares = numbers.map { $0 * $0 }
+   // PREFERRED
+ 
+struct SolarSystem {
+  var numberOfPlanets: Int {
+    …
+  }
 
-var someProperty: Int {
-  get { return otherObject.property }
-  set { otherObject.property = newValue }
+  func distance(to: SolarSystem) -> AstronomicalUnit {
+    …
+  }
 }
 
-var someProperty: Int { return otherObject.somethingElse() }
+struct Galaxy {
+  func distance(to: Galaxy) -> AstronomicalUnit {
+    …
+  }
 
-required init?(coder aDecoder: NSCoder) { fatalError("no coder") }
+  func contains(_ solarSystem: SolarSystem) -> Bool {
+    …
+  }
+}
 
-   </code>
-   
+  </code>
+  </pre>
+  </details>
+  
+  + 선택적으로 빈 줄을 포함할 수 있는 유형 본문을 제외하고 범위의 상단과 하단에서 빈 줄을 제거한다.
+   범위가 지정된 선언을 동일한 범위에 있는 다른 선언과 분리하면 시각적으로 구분되므로 인접한 선언을 범위가 지정된 선언과 쉽게 구분할 수 있다.
 
-      </pre>
-   </details>  
-
-   줄바꿈
-
-     <details>
+  <details>
   <summary>예시</summary>
-  
   <pre>
   <code>
-  public func performanceTrackingIndex<Elements: Collection, Element>(
-  of element: Element,
-  in collection: Elements
-) -> (
-  Element.Index?,
-  PerformanceTrackingIndexStatistics.Timings,
-  PerformanceTrackingIndexStatistics.SpaceUsed
-) {
-  // ...
+  
+   // NOT PREFERRED
+
+class Planet {
+  func terraform() {
+
+    generateAtmosphere()
+    generateOceans()
+
+  }
 }
 
-   </code>
-      </pre>
-         </details>  
-
-      
-함수의 반환 유형 앞에 있는 화살표
-   
-     <details>
-  <summary>예시</summary>
-  
-  <pre>
-  <code>
-func sum(_ numbers: [Int]) -> Int {
-  // ...
+   // PREFERRED
+ 
+class Planet {
+  func terraform() {
+    generateAtmosphere()
+    generateOceans()
+  } 
 }
-   </code>
-      </pre>
-         </details>  
-        
-        쉼표
-        
-             <details>
-  <summary>예시</summary>
+
+class Planet {
+
+  func terraform() {
+    generateAtmosphere()
+    generateOceans()
+  }
+
+}
+
+  </code>
+  </pre>
+  </details>
   
+  + 다른 종류의 속성 선언 사이에 빈 줄을 추가한다.
+   범위가 지정된 선언을 동일한 범위에 있는 다른 선언과 분리하면 시각적으로 구분되므로 인접한 선언을 범위가 지정된 선언과 쉽게 구분할 수 있다.
+
+  <details>
+  <summary>예시</summary>
   <pre>
   <code>
-let numbers = [1, 2, 3]
+  
+   // NOT PREFERRED
 
-   </code>
-      </pre>
-         </details>  
-        
-        
-        
-* * *
+   static let gravityEarth: CGFloat = 9.8
+   static let gravityMoon: CGFloat = 1.6
+   var gravity: CGFloat
 
+   // PREFERRED
+ 
+   static let gravityEarth: CGFloat = 9.8
+   static let gravityMoon: CGFloat = 1.6
+
+   var gravity: CGFloat
+
+  </code>
+  </pre>
+  </details>
+  
+    + 다른 종류의 속성 선언 사이에 빈 줄을 추가한다.
+   범위가 지정된 선언을 동일한 범위에 있는 다른 선언과 분리하면 시각적으로 구분되므로 인접한 선언을 범위가 지정된 선언과 쉽게 구분할 수 있다.
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+  
+   // NOT PREFERRED
+
+   static let gravityEarth: CGFloat = 9.8
+   static let gravityMoon: CGFloat = 1.6
+   var gravity: CGFloat
+
+   // PREFERRED
+ 
+   static let gravityEarth: CGFloat = 9.8
+   static let gravityMoon: CGFloat = 1.6
+
+   var gravity: CGFloat
+
+  </code>
+  </pre>
+  </details>
+
+  
