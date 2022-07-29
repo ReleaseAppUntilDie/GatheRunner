@@ -46,7 +46,8 @@ let view = UIView(frame: CGRect.zero)
 
 [5.파일 구성](#파일-구성)   
 
-[6.Contributors](#Contributors)   
+[6.코드 구성](#코드 구성)   
+
 
 ## 환경설정    
 * * *
@@ -105,4 +106,47 @@ let view = UIView(frame: CGRect.zero)
    </pre>
    </code>
    </details>        
+
+
+## 네이밍    
+확장을 사용하여 코드를 기능의 논리적 블록으로 구성합니다. 각 확장은 // MARK: -잘 정리된 상태를 유지하기 위해 주석으로 시작해야 합니다.
+
+### 미사용 코드 제거
+Xcode 템플릿 코드 및 자리 표시자 주석을 포함하여 사용되지 않는(죽은) 코드는 제거해야 합니다. 튜토리얼이나 책에서 사용자에게 주석 처리된 코드를 사용하도록 지시하는 경우는 예외
+
+### Import 최소화
+소스 파일에 필요한 모듈만 가져옵니다.
+
+  <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+  
+  // WRONG
+import UIKit
+import Foundation
+var view: UIView
+var deviceModels: [String]
+
+  // RIGHT
+import UIKit
+var view: UIView
+var deviceModels: [String]
+
+  // WRONG
+import UIKit
+var deviceModels: [String]
+
+  // RIGHT
+import Foundation
+var deviceModels: [String]
+   </pre>
+   </code>
+   </details>    
+
+
+
+
 * * *
+
