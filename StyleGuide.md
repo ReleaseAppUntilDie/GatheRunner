@@ -16,6 +16,8 @@ GatheRunner Swift Style Guide
 
 ## 목차
 
+[0.폴더구조](#폴더구조)
+
 [1.네이밍](#네이밍)
    + [대소문자](#대소문자)
    + [프로토콜](#함수)
@@ -38,6 +40,10 @@ GatheRunner Swift Style Guide
    + [표현식](#표현식)
    
 [4.Guard문](#Guard문)
+
+[5.import](#import)
+
+[6.switch&enum](#switch&enum)
 
 
 [참고문헌](#참고문헌)
@@ -906,12 +912,6 @@ extension Galaxy: SpaceThing, NamedObject { … }
 
   </code>
   </pre>
-   
-   
-   
-   
-   
-   
    
    
  ## 참고문헌
