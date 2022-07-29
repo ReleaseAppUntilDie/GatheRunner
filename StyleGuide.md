@@ -108,7 +108,7 @@ let view = UIView(frame: CGRect.zero)
    </details>        
 
 
-## 네이밍    
+## 코드 구성    
 확장을 사용하여 코드를 기능의 논리적 블록으로 구성합니다. 각 확장은 // MARK: -잘 정리된 상태를 유지하기 위해 주석으로 시작해야 합니다.
 
 ### 미사용 코드 제거
@@ -145,8 +145,42 @@ var deviceModels: [String]
    </code>
    </details>    
 
+### 간격
+시각적 명확성과 구성을 돕기 위해 메서드 사이에는 한 줄의 빈 줄이 있어야 하고 형식 선언 사이에는 최대 한 줄의 빈 줄이 있어야 합니다. 메서드 내의 공백은 기능을 분리해야 하지만 메서드에 너무 많은 섹션이 있으면 여러 메서드로 리팩토링해야 하는 경우가 많습니다.
 
+여는 중괄호 뒤나 닫는 중괄호 앞에 빈 줄이 없어야 합니다.
 
+닫는 괄호는 한 줄에 단독으로 나타나지 않아야 합니다.
+
+  <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+  
+  // WRONG
+if user.isHappy
+{
+  // Do something
+}
+else {
+  // Do something else
+}
+
+   </code>
+   
+  <code>
+  
+  // RIGHT
+if user.isHappy {
+  // Do something
+} else {
+  // Do something else
+}
+
+   </code>
+      </pre>
+   </details>  
 
 * * *
 
