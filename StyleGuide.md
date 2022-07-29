@@ -919,8 +919,8 @@ extension Galaxy: SpaceThing, NamedObject { … }
   </pre>
   </details>
   
-    ## import    
-   
+  ## import
+  
   + 소스 파일에 필요한 모듈만 가져온다.      
 
   <details>
@@ -957,7 +957,7 @@ extension Galaxy: SpaceThing, NamedObject { … }
   </pre>
   </details>
   
-  + 1) 헤더 주석 아래에 배치하고, 2) 알파벳순으로 정렬하고, 3) import 사이에 줄바꿈 하지않고, 4) import 시작과 끝에 한칸씩 줄바꿈 해준다.    
+  + 헤더 주석 아래에 배치하고, 알파벳순으로 정렬하고, import 사이에 줄바꿈 하지않고, import 시작과 끝에 한칸씩 줄바꿈 해준다.    
 
   <details>
   <summary>예시</summary>
