@@ -868,6 +868,7 @@ extension Galaxy: SpaceThing, NamedObject { … }
 
   </code>
   </pre>
+  </details>
 
    + if-else문을 대체하진 말 것    
 
@@ -895,6 +896,7 @@ extension Galaxy: SpaceThing, NamedObject { … }
 
   </code>
   </pre>
+  </details>
    
    + 반드시 return에 줄바꿈 할 것
 
@@ -915,6 +917,7 @@ extension Galaxy: SpaceThing, NamedObject { … }
 
   </code>
   </pre>
+  </details>
   
     ## import    
    
@@ -1023,7 +1026,7 @@ extension Galaxy: SpaceThing, NamedObject { … }
 
   </code>
   </pre>
-
+  </details>
    
  ## 참고문헌
    
