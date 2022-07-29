@@ -106,7 +106,96 @@ let view = UIView(frame: CGRect.zero)
    </pre>
    </code>
    </details>        
+   
+   정적 및 클래스 속성
+   
+                <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+public class UIColor {
+  public class var red: UIColor {                // GOOD.
+    // ...
+  }
+}
 
+public class URLSession {
+  public class var shared: URLSession {          // GOOD.
+    // ...
+  }
+}
+   </code>
+      </pre>
+         </details>  
+        
+        약식
+
+                <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+func enumeratedDictionary<Element>(
+  from values: [Element],
+  start: Array<Element>.Index? = nil
+) -> [Int: Element] {
+  // ...
+}
+   </code>
+      </pre>
+         </details> 
+         
+typealias
+
+ <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+func doSomething() {
+  // ...
+}
+
+let callback: () -> Void
+
+   </code>
+      </pre>
+    </details> 
+         
+Nesting and Namespacing
+
+ <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+class Parser {
+  enum Error: Swift.Error {
+    case invalidToken(String)
+    case unexpectedEOF
+  }
+
+  func parse(text: String) throws {
+    // ...
+  }
+}
+   </code>
+      </pre>
+    </details>
+    
+    for-where Loops
+<details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+for item in collection where item.hasProperty {
+  // ...
+}
+   </code>
+      </pre>
+    </details>
 
 ## 코드 구성    
 확장을 사용하여 코드를 기능의 논리적 블록으로 구성합니다. 각 확장은 // MARK: -잘 정리된 상태를 유지하기 위해 주석으로 시작해야 합니다.
@@ -182,5 +271,119 @@ if user.isHappy {
       </pre>
    </details>  
 
+콜론은 항상 왼쪽에 공백이 없고 오른쪽에 하나의 공백이 있습니다. 삼항 연산자 ? :, 빈 사전 [:]및 #selector구문 은 예외 addTarget(_:action:)입니다.
+  <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+  
+  // WRONG
+class TestDatabase : Database {
+  var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
+}
+   </code>
+   
+  <code>
+  
+  // RIGHT
+class TestDatabase: Database {
+  var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
+}
+
+   </code>
+      </pre>
+
+### 일반 서식
+
+   한 줄에 하나의 명령문
+
+   한 줄 에 최대 하나의 명령문 이 있으며 각 명령문 뒤에는 줄 바꿈이 옵니다. 단, 0개 또는 1개의 명령문이 포함된 블록으로 줄이 끝나는 경우는 예외입니다.
+
+  <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+  
+guard let value = value else { return 0 }
+
+defer { file.close() }
+
+switch someEnum {
+case .first: return 5
+case .second: return 10
+case .third: return 20
+}
+
+let squares = numbers.map { $0 * $0 }
+
+var someProperty: Int {
+  get { return otherObject.property }
+  set { otherObject.property = newValue }
+}
+
+var someProperty: Int { return otherObject.somethingElse() }
+
+required init?(coder aDecoder: NSCoder) { fatalError("no coder") }
+
+   </code>
+   
+
+      </pre>
+   </details>  
+
+   줄바꿈
+
+     <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+  public func performanceTrackingIndex<Elements: Collection, Element>(
+  of element: Element,
+  in collection: Elements
+) -> (
+  Element.Index?,
+  PerformanceTrackingIndexStatistics.Timings,
+  PerformanceTrackingIndexStatistics.SpaceUsed
+) {
+  // ...
+}
+
+   </code>
+      </pre>
+         </details>  
+
+      
+함수의 반환 유형 앞에 있는 화살표
+   
+     <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+func sum(_ numbers: [Int]) -> Int {
+  // ...
+}
+   </code>
+      </pre>
+         </details>  
+        
+        쉼표
+        
+             <details>
+  <summary>예시</summary>
+  
+  <pre>
+  <code>
+let numbers = [1, 2, 3]
+
+   </code>
+      </pre>
+         </details>  
+        
+        
+        
 * * *
 
