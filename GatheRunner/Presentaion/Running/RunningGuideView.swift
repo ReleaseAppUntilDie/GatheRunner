@@ -9,10 +9,14 @@ import SwiftUI
 
 struct RunningGuideView: View {
     var body: some View {
+        // MARK: 미구현 -> 구현 예정
         ZStack {
-            Image("runningGuide")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            VStack {
+                Image("runningGuide")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+            }
         }.zIndex(1)
     }
 }
