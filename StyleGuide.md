@@ -1035,6 +1035,6 @@ extension Galaxy: SpaceThing, NamedObject { … }
    + 구글 스타일가이드: https://google.github.io/swift/#non-documentation-comments
    + 에어비앤비 스타일가이드: https://github.com/airbnb/swift#file-organization
    + 스타일쉐어 스타일가이드: https://github.com/StyleShare/swift-style-guide
-   + 링크드인 스타일가이드: https://github.com/StyleShare/swift-style-guide](https://github.com/linkedin/swift-style-guide
-   + raywenderlich 스타일가이드: https://github.com/raywenderlich/swift-style-guide#spacing
+   + 링크드인 스타일가이드: https://github.com/linkedin/swift-style-guide
+   + raywenderlich 스타일가이드: https://github.com/raywenderlich/swift-style-guide
    
