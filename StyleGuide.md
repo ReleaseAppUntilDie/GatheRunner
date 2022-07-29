@@ -43,7 +43,10 @@ GatheRunner Swift Style Guide
 
 [5.import](#import)
 
-[6.switch&enum](#switch&enum)
+[6.enum](#enum)
+
+[7.기타](#기타)
+ + [완화](#완화)
 
 
 [참고문헌](#참고문헌)
@@ -912,7 +915,115 @@ extension Galaxy: SpaceThing, NamedObject { … }
 
   </code>
   </pre>
+  
+    ## import    
    
+  + 소스 파일에 필요한 모듈만 가져온다.      
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+
+   // NOT PREFERRED
+
+   import UIKit
+   import Foundation
+   var view: UIView
+   var deviceModels: [String]
+   
+   // PREFERRED
+   
+   import UIKit
+   var view: UIView
+   var deviceModels: [String]
+   
+   // NOT PREFERRED
+
+   import UIKit
+   var deviceModels: [String]
+
+   
+   // PREFERRED
+   
+   import Foundation
+   var deviceModels: [String]
+
+
+  </code>
+  </pre>
+  </details>
+  
+  + 1) 헤더 주석 아래에 배치하고, 2) 알파벳순으로 정렬하고, 3) import 사이에 줄바꿈 하지않고, 4) import 시작과 끝에 한칸씩 줄바꿈 해준다.    
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+
+   // NOT PREFERRED
+
+   //  Copyright © 2018 Airbnb. All rights reserved.
+   //
+   import DLSPrimitives
+   import Constellation
+   import Constellation
+   import Epoxy
+
+   import Foundation
+
+   // PREFERRED
+   
+   //  Copyright © 2018 Airbnb. All rights reserved.
+   //
+
+   import Constellation
+   import DLSPrimitives
+   import Epoxy
+   import Foundation
+
+  </code>
+  </pre>
+  </details>
+  
+  ## enum    
+   
+  + 유형 간의 범위 및 계층 관계를 표현하기 위해 중첩타입으로 사용할 것.    
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+
+   // NOT PREFERRED
+
+   class Parser {
+     func parse(text: String) throws {
+       // ...
+     }
+   }
+
+   enum ParseError: Error {
+     case invalidToken(String)
+     case unexpectedEOF
+   }
+   
+   // PREFERRED
+   
+   class Parser {
+     enum Error: Swift.Error {
+       case invalidToken(String)
+       case unexpectedEOF
+     }
+
+     func parse(text: String) throws {
+       // ...
+     }
+   }
+
+  </code>
+  </pre>
+
    
  ## 참고문헌
    
