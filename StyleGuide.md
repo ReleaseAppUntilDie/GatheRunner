@@ -20,12 +20,14 @@ GatheRunner Swift Style Guide
    + [프로토콜](#함수)
    + [함수](#함수)
    + [유형추론](#유형추론)  
+   + [약어](#약어)  
  
 [2.코드레이아웃](#코드레이아웃)
    + [글자수제한](#글자수제한)
    + [줄바꿈](#줄바꿈)
    + [수평정렬](#수평정렬)
    + [주석](#주석)
+   + [배치순서](#배치순서)
 
 
 [참고문헌](#참고문헌)
@@ -561,3 +563,147 @@ class Planet {
   </details>
    
    ### 주석
+   
+   + 적합성을 구현하는 각 유형 및 확장자 앞에 MARK주석이 있어야 한다.
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+  
+// MARK: - GalaxyView
+
+final class GalaxyView: UIView { … }
+
+// MARK: ContentConfigurableView
+
+extension GalaxyView: ContentConfigurableView { … }
+
+// MARK: - Galaxy + SpaceThing, NamedObject
+
+extension Galaxy: SpaceThing, NamedObject { … }
+
+  </code>
+  </pre>
+  </details>
+
+   + // 주석 앞으로 두 칸, 뒤로 한 칸의 공백을 둔다.
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+  
+   // NOT PREFERRED
+
+   let initialFactor = 2 //    Warm up the modulator.
+
+   // PREFERRED
+
+let initialFactor = 2  // Warm up the modulator.
+
+  </code>
+  </pre>
+  </details>
+   
+   + C언어 스타일인 /* ... */ 주석이 아닌, // // 을 사용한다.
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+  
+   // NOT PREFERRED
+
+   /**
+   * A planet that exists somewhere in the universe.
+   *
+   * Planets have many properties. For example, the best planets
+   * have atmospheres and bodies of water to support life.
+   */
+   class Planet {
+     /**
+       Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
+     */
+     func terraform() {
+       /* 
+       Generate the atmosphere first, before generating the ocean.
+       Otherwise, the water will just boil off immediately.
+       */
+       generateAtmosphere()
+
+       /* Now that we have an atmosphere, it's safe to generate the ocean */
+       generateOceans()
+     }
+   }
+   
+   struct Spaceship {
+
+     func travelFasterThanLight() {/*unimplemented*/}
+
+     func travelBackInTime() { }//TODO: research whether or not this is possible
+
+   }
+   
+
+   // PREFERRED
+
+   /// A planet that exists somewhere in the universe.
+   ///
+   /// Planets have many properties. For example, the best planets
+   /// have atmospheres and bodies of water to support life.
+   class Planet {
+     /// Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
+     func terraform() {
+       // Generate the atmosphere first, before generating the ocean.
+       // Otherwise, the water will just boil off immediately.
+       generateAtmosphere()
+
+       // Now that we have an atmosphere, it's safe to generate the ocean
+       generateOceans()
+     }
+   }
+   
+   struct Spaceship {
+
+     func travelFasterThanLight() { /* unimplemented */ }
+
+     func travelBackInTime() { } // TODO: research whether or not this is possible
+
+   }
+
+  </code>
+  </pre>
+  </details>
+   
+   + MARK 구문 위와 아래에는 공백 둔다.
+
+  <details>
+  <summary>예시</summary>
+  <pre>
+  <code>
+  
+   // MARK: Layout
+
+   override func layoutSubviews() {
+     // doSomething()
+   }
+
+   // MARK: Actions
+
+   override func menuButtonDidTap() {
+     // doSomething()
+   }
+
+  </code>
+  </pre>
+  </details>
+
+   
+ ## 참고문헌
+   
+   + 구글 스타일가이드: https://google.github.io/swift/#non-documentation-comments
+   + 에어비앤비 스타일가이드: https://github.com/airbnb/swift#file-organization
+   + 스타일쉐어 스타일가이드: https://github.com/StyleShare/swift-style-guide
+   + raywenderlich 스타일가이드: https://github.com/raywenderlich/swift-style-guide#spacing
+   
