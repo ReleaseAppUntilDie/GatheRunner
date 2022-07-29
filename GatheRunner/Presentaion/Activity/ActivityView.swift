@@ -47,7 +47,7 @@ struct ActivityView: View {
                 }.padding(.bottom)
                 
             }
-
+            GraphView()
         }
     }
 }
