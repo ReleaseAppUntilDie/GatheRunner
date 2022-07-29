@@ -14,7 +14,6 @@ struct RunningView: View {
     @State var selected: Int = 0
     
     var body: some View {
-        ZStack {
         VStack(alignment: .center) {
             Text("Header View")
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.1421)
@@ -30,7 +29,7 @@ struct RunningView: View {
                 JustStartView(selected: $selected)
                     .transition(.move(edge: .leading))
             }
-
+            
             if runningGuideButtonIsSelected {
                 RunningGuideView()
                     .transition(.move(edge: .trailing))
@@ -43,7 +42,6 @@ struct RunningView: View {
                 goalButton.isButtonSelected = false
             }
         }.ignoresSafeArea(edges: .top)
-        }
     }
 }
 
