@@ -33,12 +33,17 @@
 		E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBF286DFB2D003E23DE /* TabItem+MainComponent.swift */; };
 		E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC1286DFB2D003E23DE /* ActivityView.swift */; };
 		E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC3286DFB2D003E23DE /* MainTabView.swift */; };
+		E3708FDA289B8F13004FF0C1 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FD9289B8F13004FF0C1 /* SelectedTab.swift */; };
+		E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */; };
+		E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */; };
 		E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */; };
 		E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DA286C20D500618AC3 /* Assets.xcassets */; };
 		E3D349DE286C20D500618AC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DD286C20D500618AC3 /* Preview Assets.xcassets */; };
 		E3D349E8286C20D500618AC3 /* GatheRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349E7286C20D500618AC3 /* GatheRunnerTests.swift */; };
 		E3D349F2286C20D500618AC3 /* GatheRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F1286C20D500618AC3 /* GatheRunnerUITests.swift */; };
 		E3D349F4286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */; };
+		E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E748082892837700F40457 /* RunSplashScreen.swift */; };
+		E3E7480B289284B200F40457 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E7480A289284B200F40457 /* TextStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +96,9 @@
 		E35EFEBF286DFB2D003E23DE /* TabItem+MainComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TabItem+MainComponent.swift"; sourceTree = "<group>"; };
 		E35EFEC1286DFB2D003E23DE /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E35EFEC3286DFB2D003E23DE /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		E3708FD9289B8F13004FF0C1 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
+		E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModifier.swift; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
 		E3D349D8286C20D200618AC3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -107,6 +115,8 @@
 		E3D34A16286C414100618AC3 /* ClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubView.swift; sourceTree = "<group>"; };
 		E3D34A18286C415E00618AC3 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E3D34A20286C7C3100618AC3 /* TabItem+MainOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabItem+MainOption.swift"; sourceTree = "<group>"; };
+		E3E748082892837700F40457 /* RunSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSplashScreen.swift; sourceTree = "<group>"; };
+		E3E7480A289284B200F40457 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -208,6 +218,7 @@
 		DB198DAD288F7908002513A9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E3708FD8289B8F08004FF0C1 /* Environment */,
 				DB198DAE288F7908002513A9 /* Constants.swift */,
 				38CAF70128937734006A6158 /* TouchLocationView.swift */,
 			);
@@ -231,10 +242,10 @@
 		E35EFEB6286DFB2D003E23DE /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				E35EFEBD286DFB2D003E23DE /* Commons */,
 				6F795EF72876741F007FA0B2 /* Settings */,
 				DAB5E6162881C229000F24F4 /* ViewModel */,
 				DAEA9316287B00FB00349465 /* Model */,
-				E35EFEBD286DFB2D003E23DE /* Commons */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
 				DB198DAD288F7908002513A9 /* Utils */,
 				E35EFEB9286DFB2D003E23DE /* Home */,
@@ -270,6 +281,7 @@
 				DAEA930F287953D100349465 /* LocationManager.swift */,
 				DAEA9314287AED7200349465 /* RunningGuideItem.swift */,
 				DAEA9319287D184900349465 /* FloatingView.swift */,
+				E3E748082892837700F40457 /* RunSplashScreen.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -301,6 +313,14 @@
 			path = MainTab;
 			sourceTree = "<group>";
 		};
+		E3708FD8289B8F08004FF0C1 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				E3708FD9289B8F13004FF0C1 /* SelectedTab.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		E3D349CA286C20D200618AC3 = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +350,7 @@
 				DAEA930E28794F6F00349465 /* Info.plist */,
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
 				E35EFEB6286DFB2D003E23DE /* Presentaion */,
+				E3D43D732876BEF3004C54C3 /* Helper */,
 				E3D34A04286C236300618AC3 /* Resources */,
 				E3D349DC286C20D500618AC3 /* Preview Content */,
 			);
@@ -367,6 +388,32 @@
 				E3D349DA286C20D500618AC3 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E3D43D732876BEF3004C54C3 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E3D43D742876BF0E004C54C3 /* UIModifiers */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		E3D43D742876BF0E004C54C3 /* UIModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */,
+				E3D43D752876BF27004C54C3 /* Style */,
+			);
+			path = UIModifiers;
+			sourceTree = "<group>";
+		};
+		E3D43D752876BF27004C54C3 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				E3E7480A289284B200F40457 /* TextStyle.swift */,
+				E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,9 +618,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */,
+				E3E7480B289284B200F40457 /* TextStyle.swift in Sources */,
 				6F1E0DDB287D43620025A671 /* DetailControllView.swift in Sources */,
 				38CAF70228937734006A6158 /* TouchLocationView.swift in Sources */,
 				DB198DAF288F7908002513A9 /* Constants.swift in Sources */,
+				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
 				DAEA9310287953D100349465 /* LocationManager.swift in Sources */,
 				DAB5E6152881C21B000F24F4 /* RunningGuideViewModel.swift in Sources */,
@@ -587,9 +637,11 @@
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
+				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,
 				38CAF70028934CD0006A6158 /* GraphView.swift in Sources */,
+				E3708FDA289B8F13004FF0C1 /* SelectedTab.swift in Sources */,
 				6F1E0DDE287D43AF0025A671 /* SettingModel.swift in Sources */,
 				E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */,
 				DAEA9318287B011700349465 /* RunningGuide.swift in Sources */,
