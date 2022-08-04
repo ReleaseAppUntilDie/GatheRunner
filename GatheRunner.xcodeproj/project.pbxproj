@@ -33,6 +33,7 @@
 		E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC3286DFB2D003E23DE /* MainTabView.swift */; };
 		E3708FDA289B8F13004FF0C1 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FD9289B8F13004FF0C1 /* SelectedTab.swift */; };
 		E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */; };
+		E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */; };
 		E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */; };
 		E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DA286C20D500618AC3 /* Assets.xcassets */; };
 		E3D349DE286C20D500618AC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DD286C20D500618AC3 /* Preview Assets.xcassets */; };
@@ -93,6 +94,7 @@
 		E35EFEC3286DFB2D003E23DE /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		E3708FD9289B8F13004FF0C1 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModifier.swift; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
 		E3D349D8286C20D200618AC3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -235,10 +237,10 @@
 		E35EFEB6286DFB2D003E23DE /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				E35EFEBD286DFB2D003E23DE /* Commons */,
 				6F795EF72876741F007FA0B2 /* Settings */,
 				DAB5E6162881C229000F24F4 /* ViewModel */,
 				DAEA9316287B00FB00349465 /* Model */,
-				E35EFEBD286DFB2D003E23DE /* Commons */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
 				DB198DAD288F7908002513A9 /* Utils */,
 				E35EFEB9286DFB2D003E23DE /* Home */,
@@ -393,6 +395,7 @@
 		E3D43D742876BF0E004C54C3 /* UIModifiers */ = {
 			isa = PBXGroup;
 			children = (
+				E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */,
 				E3D43D752876BF27004C54C3 /* Style */,
 			);
 			path = UIModifiers;
@@ -609,6 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */,
 				E3E7480B289284B200F40457 /* TextStyle.swift in Sources */,
 				6F1E0DDB287D43620025A671 /* DetailControllView.swift in Sources */,
 				DB198DAF288F7908002513A9 /* Constants.swift in Sources */,
