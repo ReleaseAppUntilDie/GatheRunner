@@ -16,7 +16,6 @@ struct MainTabView: View {
             .environmentObject(selectedTab)
         }
         .accentColor(.black)
-        
     }
 }
 

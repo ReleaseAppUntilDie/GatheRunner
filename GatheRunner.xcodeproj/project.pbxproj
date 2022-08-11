@@ -19,9 +19,11 @@
 		D038E0DE9807E434F1BB41EE /* Pods_GatheRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */; };
 		DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695728790DBE00FA13AE /* JustStartView.swift */; };
 		DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695928790E0C00FA13AE /* RunningGuideView.swift */; };
-		DAB5E6152881C21B000F24F4 /* RunningGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5E6142881C21B000F24F4 /* RunningGuideViewModel.swift */; };
+		DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */; };
+		DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421A2893C24A00554B5D /* Array+Extensions.swift */; };
+		DA58421E2893C27700554B5D /* RunningGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */; };
 		DAEA9310287953D100349465 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA930F287953D100349465 /* LocationManager.swift */; };
-		DAEA9315287AED7200349465 /* RunningGuideItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunningGuideItem.swift */; };
+		DAEA9315287AED7200349465 /* RunningGuideTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunningGuideTabItem.swift */; };
 		DAEA9318287B011700349465 /* RunningGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9317287B011700349465 /* RunningGuide.swift */; };
 		DAEA931A287D184900349465 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* FloatingView.swift */; };
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
@@ -81,10 +83,12 @@
 		D942972FC8ABC3559B78D5FF /* Pods-GatheRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.debug.xcconfig"; sourceTree = "<group>"; };
 		DA33695728790DBE00FA13AE /* JustStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustStartView.swift; sourceTree = "<group>"; };
 		DA33695928790E0C00FA13AE /* RunningGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideView.swift; sourceTree = "<group>"; };
-		DAB5E6142881C21B000F24F4 /* RunningGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideViewModel.swift; sourceTree = "<group>"; };
+		DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedCorner+Extensions.swift"; sourceTree = "<group>"; };
+		DA58421A2893C24A00554B5D /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideViewModel.swift; sourceTree = "<group>"; };
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA930F287953D100349465 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		DAEA9314287AED7200349465 /* RunningGuideItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideItem.swift; sourceTree = "<group>"; };
+		DAEA9314287AED7200349465 /* RunningGuideTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideTabItem.swift; sourceTree = "<group>"; };
 		DAEA9317287B011700349465 /* RunningGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuide.swift; sourceTree = "<group>"; };
 		DAEA9319287D184900349465 /* FloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -199,12 +203,45 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DAB5E6162881C229000F24F4 /* ViewModel */ = {
+		DA5842162893C20F00554B5D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				DAB5E6142881C21B000F24F4 /* RunningGuideViewModel.swift */,
+				DA5842172893C21800554B5D /* Extension */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		DA5842172893C21800554B5D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */,
+				DA58421A2893C24A00554B5D /* Array+Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DA58421C2893C26200554B5D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DA5842232893C2DD00554B5D /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA930F287953D100349465 /* LocationManager.swift */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
+		DA5842242893C2E700554B5D /* RunningGuideTabItem */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA9314287AED7200349465 /* RunningGuideTabItem.swift */,
+			);
+			path = RunningGuideTabItem;
 			sourceTree = "<group>";
 		};
 		DAEA9316287B00FB00349465 /* Model */ = {
@@ -242,6 +279,9 @@
 		E35EFEB6286DFB2D003E23DE /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				DA58421C2893C26200554B5D /* ViewModel */,
+				DA5842162893C20F00554B5D /* Helper */,
+				DAEA9316287B00FB00349465 /* Model */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
 				6F795EF72876741F007FA0B2 /* Settings */,
 				DAB5E6162881C229000F24F4 /* ViewModel */,
@@ -275,11 +315,11 @@
 		E35EFEBB286DFB2D003E23DE /* Running */ = {
 			isa = PBXGroup;
 			children = (
+				DA5842242893C2E700554B5D /* RunningGuideTabItem */,
+				DA5842232893C2DD00554B5D /* LocationManager */,
 				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
 				DA33695728790DBE00FA13AE /* JustStartView.swift */,
 				DA33695928790E0C00FA13AE /* RunningGuideView.swift */,
-				DAEA930F287953D100349465 /* LocationManager.swift */,
-				DAEA9314287AED7200349465 /* RunningGuideItem.swift */,
 				DAEA9319287D184900349465 /* FloatingView.swift */,
 				E3E748082892837700F40457 /* RunSplashScreen.swift */,
 			);
@@ -626,7 +666,6 @@
 				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
 				DAEA9310287953D100349465 /* LocationManager.swift in Sources */,
-				DAB5E6152881C21B000F24F4 /* RunningGuideViewModel.swift in Sources */,
 				DAEA931A287D184900349465 /* FloatingView.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
@@ -635,7 +674,10 @@
 				6F795EF92876743C007FA0B2 /* SettingView.swift in Sources */,
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
+				DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
+				DA58421E2893C27700554B5D /* RunningGuideViewModel.swift in Sources */,
+				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
@@ -646,7 +688,7 @@
 				E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */,
 				DAEA9318287B011700349465 /* RunningGuide.swift in Sources */,
 				DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */,
-				DAEA9315287AED7200349465 /* RunningGuideItem.swift in Sources */,
+				DAEA9315287AED7200349465 /* RunningGuideTabItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
