@@ -13,4 +13,5 @@ struct RunningGuide: Identifiable {
     var title: String
     var subtitle: String
     var text: String
+    var tag: Int
 }

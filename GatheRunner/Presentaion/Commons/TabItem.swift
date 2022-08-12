@@ -9,16 +9,7 @@ import SwiftUI
 
 struct TabItem: Identifiable {
     let id = UUID()
-    let view: AnyView
     let title: Text
     let icon: Image
     let tag: Int
-    
-    var body: some View {
-        NavigationView { self.view.navigationBarHidden(true) }
-        .tabItem {
-            Label(title: { self.title }, icon: { self.icon } )
-        }
-        .tag(self.tag)
-    }
 }
