@@ -98,6 +98,7 @@ struct SimplifiedStatistics: View{
         .onAppear {
             print(beforeTwoWeeks())
             print(beforeThreeWeeks())
+            print(isValidMonth(year: 2020, month: 10))
         }
     }
     
@@ -135,6 +136,13 @@ struct SimplifiedStatistics: View{
         let firstDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeTwoWeeks)
         let lastDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeOneWeek)
         return (firstDateAndMonth.day,firstDateAndMonth.month,lastDateAndMonth.day,lastDateAndMonth.month)
+    }
+    
+    func isValidMonth(year: Int, month: Int) -> Bool{
+        let dateComponents = DateComponents(year:year,month: month)
+        let currentDate = Date()
+        guard let willCompareDate = Calendar.current.date(from: dateComponents) else {return false}
+        return currentDate >= willCompareDate
     }
 }
 
