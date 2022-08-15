@@ -47,6 +47,8 @@
 		E3D349F4286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */; };
 		E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E748082892837700F40457 /* RunSplashScreen.swift */; };
 		E3E7480B289284B200F40457 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E7480A289284B200F40457 /* TextStyle.swift */; };
+		EA2CDA3128A8E3FA00DFF53C /* GatherNaviBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2CDA3028A8E3FA00DFF53C /* GatherNaviBar.swift */; };
+		EA3875D228A9F13200222F34 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3875D128A9F13200222F34 /* GraphViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		E3E748082892837700F40457 /* RunSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSplashScreen.swift; sourceTree = "<group>"; };
 		E3E7480A289284B200F40457 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA2CDA3028A8E3FA00DFF53C /* GatherNaviBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatherNaviBar.swift; sourceTree = "<group>"; };
+		EA3875D128A9F13200222F34 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */,
+				EA3875D128A9F13200222F34 /* GraphViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				DB198DAE288F7908002513A9 /* Constants.swift */,
 				38CAF70128937734006A6158 /* TouchLocationView.swift */,
 				388E2C5F2893C330003D9F5E /* Alignment+Extention.swift */,
+				EA2CDA3028A8E3FA00DFF53C /* GatherNaviBar.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -284,10 +290,8 @@
 			children = (
 				DA58421C2893C26200554B5D /* ViewModel */,
 				DA5842162893C20F00554B5D /* Helper */,
-				DAEA9316287B00FB00349465 /* Model */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
 				6F795EF72876741F007FA0B2 /* Settings */,
-				DAB5E6162881C229000F24F4 /* ViewModel */,
 				DAEA9316287B00FB00349465 /* Model */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
 				DB198DAD288F7908002513A9 /* Utils */,
@@ -670,8 +674,10 @@
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
 				DAEA9310287953D100349465 /* LocationManager.swift in Sources */,
 				DAEA931A287D184900349465 /* FloatingView.swift in Sources */,
+				EA3875D228A9F13200222F34 /* GraphViewModel.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
+				EA2CDA3128A8E3FA00DFF53C /* GatherNaviBar.swift in Sources */,
 				6F1E0DE0287D44060025A671 /* TemplateView.swift in Sources */,
 				6F1E0DD9287D43410025A671 /* MeasurementView.swift in Sources */,
 				6F795EF92876743C007FA0B2 /* SettingView.swift in Sources */,

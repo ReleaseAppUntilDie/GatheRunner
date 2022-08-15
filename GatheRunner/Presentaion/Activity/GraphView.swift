@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-fileprivate enum TimeUnit {
+enum TimeUnit {
     case week,month,year,whole
 }
 
@@ -40,15 +40,15 @@ struct GraphView: View {
                         }
                     }
                 }
-            
-            SimplifiedStatistics(selectedTimeUnit: .week)
+            //TODO: Picker 아이템 생성후 삽입
+            SimplifiedStatistics(selectedTimeUnit: $selectedTimeUnit)
         }
     }
 }
 
 struct TimeUnitsTable : View{
     
-    @Binding fileprivate var curTimeUnit : TimeUnit
+    @Binding var curTimeUnit : TimeUnit
     let unitIndex : Double
     
     var body: some View{
@@ -77,8 +77,8 @@ struct TimeUnitsTable : View{
         }
     }
     struct TimeUnitComponent : View {
-        @Binding fileprivate var selectedTimeUnit : TimeUnit
-        fileprivate let timeUnit : TimeUnit
+        @Binding var selectedTimeUnit : TimeUnit
+        let timeUnit : TimeUnit
         let title : String
         var body : some View {
             Text(title)
@@ -88,62 +88,29 @@ struct TimeUnitsTable : View{
 }
 
 struct SimplifiedStatistics: View{
+
+    @State private var pickerButtonTitle : String
+    @Binding var selectedTimeUnit : TimeUnit
     
-    fileprivate let selectedTimeUnit : TimeUnit
+    init(selectedTimeUnit : Binding<TimeUnit>){
+        self._selectedTimeUnit = selectedTimeUnit
+        self.pickerButtonTitle = "test"
+    }
     
     var body: some View{
         VStack(alignment: .leading,spacing: UIScreen.getHeightby(ratio: 0.1)) {
-            
+            Button {
+                
+            } label: {
+                Text(pickerButtonTitle)
+                    .foregroundColor(.blue)
+            }
+
         }
-        .onAppear {
-            print(beforeTwoWeeks())
-            print(beforeThreeWeeks())
-            print(isValidMonth(year: 2020, month: 10))
-        }
+        
     }
     
-    func beforeTwoWeeks() -> (firstDay:Int?,firstMonth:Int?,lastDay:Int?,lastMonth:Int?){
-        let date = Date()
-        guard let weekDay = Calendar.current.dateComponents([.weekday], from: date).weekday else {
-            return (nil,nil,nil,nil)
-        }
-        
-        guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(14+(weekDay-2)), to: date) else {
-            return (nil,nil,nil,nil)
-        }
-        guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(7+(weekDay-1)), to: date) else {
-            return (nil,nil,nil,nil)
-        }
-        
-        let firstDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeTwoWeeks)
-        let lastDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeOneWeek)
-        return (firstDateAndMonth.day,firstDateAndMonth.month,lastDateAndMonth.day,lastDateAndMonth.month)
-    }
     
-    func beforeThreeWeeks() -> (firstDay:Int?,firstMonth:Int?,lastDay:Int?,lastMonth:Int?){
-        let date = Date()
-        guard let weekDay = Calendar.current.dateComponents([.weekday], from: date).weekday else {
-            return (nil,nil,nil,nil)
-        }
-        
-        guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(21+(weekDay-2)), to: date) else {
-            return (nil,nil,nil,nil)
-        }
-        guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(14+(weekDay-1)), to: date) else {
-            return (nil,nil,nil,nil)
-        }
-        
-        let firstDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeTwoWeeks)
-        let lastDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeOneWeek)
-        return (firstDateAndMonth.day,firstDateAndMonth.month,lastDateAndMonth.day,lastDateAndMonth.month)
-    }
-    
-    func isValidMonth(year: Int, month: Int) -> Bool{
-        let dateComponents = DateComponents(year:year,month: month)
-        let currentDate = Date()
-        guard let willCompareDate = Calendar.current.date(from: dateComponents) else {return false}
-        return currentDate >= willCompareDate
-    }
 }
 
 
