@@ -6,6 +6,9 @@ target 'GatheRunner' do
   use_frameworks!
 
   # Pods for GatheRunner
+  pod 'SwiftFormat/CLI'
+  pod 'SwiftLint'
+
 
   target 'GatheRunnerTests' do
     inherit! :search_paths
