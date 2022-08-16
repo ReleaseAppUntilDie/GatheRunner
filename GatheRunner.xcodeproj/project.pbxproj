@@ -30,6 +30,8 @@
 		DAEA931A287D184900349465 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* FloatingView.swift */; };
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
 		DB198DAF288F7908002513A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DAE288F7908002513A9 /* Constants.swift */; };
+		E351783A28ABC9E50088003B /* TimeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* TimeRecord.swift */; };
+		E351783C28ABEA780088003B /* StopwatchUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783B28ABEA780088003B /* StopwatchUnitView.swift */; };
 		E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEB8286DFB2D003E23DE /* ClubView.swift */; };
 		E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBA286DFB2D003E23DE /* HomeView.swift */; };
 		E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBC286DFB2D003E23DE /* RunningView.swift */; };
@@ -102,6 +104,8 @@
 		DAEA9319287D184900349465 /* FloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DB198DAE288F7908002513A9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E351783928ABC9E50088003B /* TimeRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRecord.swift; sourceTree = "<group>"; };
+		E351783B28ABEA780088003B /* StopwatchUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchUnitView.swift; sourceTree = "<group>"; };
 		E35EFEB8286DFB2D003E23DE /* ClubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubView.swift; sourceTree = "<group>"; };
 		E35EFEBA286DFB2D003E23DE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E35EFEBC286DFB2D003E23DE /* RunningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningView.swift; sourceTree = "<group>"; };
@@ -270,6 +274,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		E351783828ABC9A80088003B /* TimeRecord  */ = {
+			isa = PBXGroup;
+			children = (
+				E351783928ABC9E50088003B /* TimeRecord.swift */,
+				E351783B28ABEA780088003B /* StopwatchUnitView.swift */,
+			);
+			path = "TimeRecord ";
+			sourceTree = "<group>";
+		};
 		E35EFEB5286DFAE8003E23DE /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +306,7 @@
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
 				DB198DAD288F7908002513A9 /* Utils */,
 				E35EFEB9286DFB2D003E23DE /* Home */,
+				E351783828ABC9A80088003B /* TimeRecord  */,
 				E35EFEBB286DFB2D003E23DE /* Running */,
 				E35EFEB7286DFB2D003E23DE /* Club */,
 				E35EFEC0286DFB2D003E23DE /* Activity */,
@@ -730,6 +744,7 @@
 				6F1E0DDB287D43620025A671 /* DetailControllView.swift in Sources */,
 				38CAF70228937734006A6158 /* TouchLocationView.swift in Sources */,
 				DB198DAF288F7908002513A9 /* Constants.swift in Sources */,
+				E351783C28ABEA780088003B /* StopwatchUnitView.swift in Sources */,
 				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
 				DAEA9310287953D100349465 /* LocationManager.swift in Sources */,
@@ -748,6 +763,7 @@
 				388E2C602893C330003D9F5E /* Alignment+Extention.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */,
+				E351783A28ABC9E50088003B /* TimeRecord.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				DA58421E2893C27700554B5D /* RunningGuideViewModel.swift in Sources */,
 				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
