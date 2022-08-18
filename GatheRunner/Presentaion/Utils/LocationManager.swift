@@ -20,10 +20,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     // MARK: Internal
 
     @Published var region = MKCoordinateRegion()
+    @Published var currentPace = Double()
     var startingPoint = MKCoordinateRegion()
 
     func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locations.last.map {
+            currentPace = locations.last?.speed ?? 0
             let center = CLLocationCoordinate2D(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude)
             let span = MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004)
             region = MKCoordinateRegion(center: center, span: span)
