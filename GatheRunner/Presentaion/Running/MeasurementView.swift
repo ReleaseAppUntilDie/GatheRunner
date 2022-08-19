@@ -18,6 +18,7 @@ struct MeasurementView: View {
             timerView
             otherInfoView
             onOffButton
+                .accessibilityIdentifier("onOffButton")
         }
     }
 
@@ -35,6 +36,7 @@ extension MeasurementView {
         VStack(spacing: 10) {
             Text("\(progressTime.minutes) : \(progressTime.seconds)")
                 .font(.system(size: 40, weight: .bold))
+                .accessibilityIdentifier("timerView")
             Text("운동 시간").asLabelStyle()
         }
     }

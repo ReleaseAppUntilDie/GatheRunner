@@ -21,14 +21,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     @Published var region = MKCoordinateRegion()
     @Published var currentPace = Double()
-    var startingPoint = MKCoordinateRegion()
+    var startingPoint: MKCoordinateRegion?
 
     func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locations.last.map {
-            currentPace = locations.last?.speed ?? 0
             let center = CLLocationCoordinate2D(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude)
             let span = MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004)
             region = MKCoordinateRegion(center: center, span: span)
+
+            let tempPace = locations.last?.speed ?? 0
+            currentPace = tempPace >= 0 ? tempPace : 0
         }
     }
 
@@ -40,6 +42,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 extension LocationManager {
 
     var distance: CLLocationDistance {
+        guard let startingPoint = startingPoint else { return 0.0 }
         let from = CLLocation(latitude: startingPoint.center.latitude, longitude: startingPoint.center.longitude)
         let to = CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)
         return from.distance(from: to)

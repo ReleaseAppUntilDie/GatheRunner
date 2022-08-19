@@ -10,6 +10,8 @@ import SwiftUI
 // MARK: - FloatingView
 
 struct FloatingView: View {
+    @State var tag:Int? = nil
+
     var body: some View {
         VStack(spacing: 10) {
             HStack(alignment: .center, spacing: 30) {
@@ -21,12 +23,23 @@ struct FloatingView: View {
                         .cornerRadius(200)
                         .shadow(color: Color.gray, radius: 2, x: 3, y: 3)
                 }
-
-                Button("시작") { }
+                ZStack {
+                    NavigationLink(
+                        destination: MeasurementView().environmentObject(LocationManager()),
+                        tag: 1,
+                        selection: self.$tag)
+                    {
+                        EmptyView()
+                    }
+                    Button("시작") {
+                        self.tag = 1
+                    }
                     .frame(width: UIScreen.main.bounds.width * 0.2820, height: UIScreen.main.bounds.height * 0.1303)
                     .background(Color.yellow)
                     .font(.system(size: 27, weight: .black)).foregroundColor(Color.black)
                     .cornerRadius(200)
+                    .accessibilityIdentifier("runStartButton")
+                }
 
                 Button { } label: {
                     Image(systemName: "music.note")
