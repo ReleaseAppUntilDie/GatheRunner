@@ -18,8 +18,10 @@
 		6F795EF92876743C007FA0B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F795EF82876743C007FA0B2 /* SettingView.swift */; };
 		9B5095EDA536B973CF0EB609 /* Pods_GatheRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */; };
 		D038E0DE9807E434F1BB41EE /* Pods_GatheRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */; };
+		DA2FFD3D28A8B33B006291CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */; };
 		DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695728790DBE00FA13AE /* JustStartView.swift */; };
 		DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695928790E0C00FA13AE /* RunningGuideView.swift */; };
+		DA5165A728A8B3E60024BE22 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = DA5165A628A8B3E60024BE22 /* .swiftformat */; };
 		DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */; };
 		DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421A2893C24A00554B5D /* Array+Extensions.swift */; };
 		DA58421E2893C27700554B5D /* RunningGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */; };
@@ -85,8 +87,10 @@
 		75848D194E0D75CB55FC6E7D /* Pods-GatheRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.release.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1FBD7301BD3249E41A5E419 /* Pods-GatheRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D942972FC8ABC3559B78D5FF /* Pods-GatheRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.debug.xcconfig"; sourceTree = "<group>"; };
+		DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DA33695728790DBE00FA13AE /* JustStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustStartView.swift; sourceTree = "<group>"; };
 		DA33695928790E0C00FA13AE /* RunningGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideView.swift; sourceTree = "<group>"; };
+		DA5165A628A8B3E60024BE22 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedCorner+Extensions.swift"; sourceTree = "<group>"; };
 		DA58421A2893C24A00554B5D /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideViewModel.swift; sourceTree = "<group>"; };
@@ -288,7 +292,6 @@
 		E35EFEB6286DFB2D003E23DE /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
-				DA58421C2893C26200554B5D /* ViewModel */,
 				DA5842162893C20F00554B5D /* Helper */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
 				6F795EF72876741F007FA0B2 /* Settings */,
@@ -322,6 +325,8 @@
 		E35EFEBB286DFB2D003E23DE /* Running */ = {
 			isa = PBXGroup;
 			children = (
+				DAEA9316287B00FB00349465 /* Model */,
+				DA58421C2893C26200554B5D /* ViewModel */,
 				DA5842242893C2E700554B5D /* RunningGuideTabItem */,
 				DA5842232893C2DD00554B5D /* LocationManager */,
 				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
@@ -371,6 +376,8 @@
 		E3D349CA286C20D200618AC3 = {
 			isa = PBXGroup;
 			children = (
+				DA5165A628A8B3E60024BE22 /* .swiftformat */,
+				DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */,
 				E3D349D5286C20D200618AC3 /* GatheRunner */,
 				E3D349E6286C20D500618AC3 /* GatheRunnerTests */,
 				E3D349F0286C20D500618AC3 /* GatheRunnerUITests */,
@@ -471,6 +478,8 @@
 			buildConfigurationList = E3D349F7286C20D500618AC3 /* Build configuration list for PBXNativeTarget "GatheRunner" */;
 			buildPhases = (
 				59C1DD9677C32AA916255C28 /* [CP] Check Pods Manifest.lock */,
+				DA5165A928A8B4E70024BE22 /* SwiftFormat */,
+				DA5165AA28A8B5210024BE22 /* SwiftLint */,
 				E3D349CF286C20D200618AC3 /* Sources */,
 				E3D349D0286C20D200618AC3 /* Frameworks */,
 				E3D349D1286C20D200618AC3 /* Resources */,
@@ -570,6 +579,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5165A728A8B3E60024BE22 /* .swiftformat in Resources */,
+				DA2FFD3D28A8B33B006291CE /* .swiftlint.yml in Resources */,
 				E3D349DE286C20D500618AC3 /* Preview Assets.xcassets in Resources */,
 				E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */,
 			);
@@ -657,6 +668,42 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		DA5165A928A8B4E70024BE22 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
+		};
+		DA5165AA28A8B5210024BE22 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -1,0 +1,17 @@
+only_rules:
+  - colon
+  - implicitly_unwrapped_optional
+  - operator_usage_whitespace
+  - return_arrow_whitespace
+  - trailing_newline
+  - unused_optional_binding
+  - vertical_whitespace
+  - void_return
+
+excluded:
+  - Pods
+
+colon:
+  apply_to_dictionaries: false
+
+indentation: 4
