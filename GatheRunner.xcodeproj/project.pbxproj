@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19AB858B6A67A1FD7E20CE20 /* Pods_GatheRunner_GatheRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F3E5D65BF8160E66CE0901 /* Pods_GatheRunner_GatheRunnerUITests.framework */; };
+		388E2C602893C330003D9F5E /* Alignment+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388E2C5F2893C330003D9F5E /* Alignment+Extention.swift */; };
 		38CAF70028934CD0006A6158 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CAF6FF28934CD0006A6158 /* GraphView.swift */; };
 		38CAF70228937734006A6158 /* TouchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CAF70128937734006A6158 /* TouchLocationView.swift */; };
 		6F1E0DD9287D43410025A671 /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0DD8287D43410025A671 /* MeasurementView.swift */; };
@@ -48,6 +49,8 @@
 		E3D349F4286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */; };
 		E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E748082892837700F40457 /* RunSplashScreen.swift */; };
 		E3E7480B289284B200F40457 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E7480A289284B200F40457 /* TextStyle.swift */; };
+		EA2CDA3128A8E3FA00DFF53C /* GatherNaviBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2CDA3028A8E3FA00DFF53C /* GatherNaviBar.swift */; };
+		EA3875D228A9F13200222F34 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3875D128A9F13200222F34 /* GraphViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,7 @@
 		23E6AD997E8908FB2955C064 /* Pods-GatheRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.release.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.release.xcconfig"; sourceTree = "<group>"; };
 		3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3868EFEEEC4621DAB4C4BABD /* Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner-GatheRunnerUITests/Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		388E2C5F2893C330003D9F5E /* Alignment+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alignment+Extention.swift"; sourceTree = "<group>"; };
 		38CAF6FF28934CD0006A6158 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		38CAF70128937734006A6158 /* TouchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchLocationView.swift; sourceTree = "<group>"; };
 		6F1E0DD8287D43410025A671 /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 		E3E748082892837700F40457 /* RunSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSplashScreen.swift; sourceTree = "<group>"; };
 		E3E7480A289284B200F40457 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA2CDA3028A8E3FA00DFF53C /* GatherNaviBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatherNaviBar.swift; sourceTree = "<group>"; };
+		EA3875D128A9F13200222F34 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */,
+				EA3875D128A9F13200222F34 /* GraphViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -262,6 +269,8 @@
 				E3708FD8289B8F08004FF0C1 /* Environment */,
 				DB198DAE288F7908002513A9 /* Constants.swift */,
 				38CAF70128937734006A6158 /* TouchLocationView.swift */,
+				388E2C5F2893C330003D9F5E /* Alignment+Extention.swift */,
+				EA2CDA3028A8E3FA00DFF53C /* GatherNaviBar.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -286,6 +295,7 @@
 				DA5842162893C20F00554B5D /* Helper */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
 				6F795EF72876741F007FA0B2 /* Settings */,
+				DAEA9316287B00FB00349465 /* Model */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
 				DB198DAD288F7908002513A9 /* Utils */,
 				E35EFEB9286DFB2D003E23DE /* Home */,
@@ -711,12 +721,15 @@
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
 				DAEA9310287953D100349465 /* LocationManager.swift in Sources */,
 				DAEA931A287D184900349465 /* FloatingView.swift in Sources */,
+				EA3875D228A9F13200222F34 /* GraphViewModel.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
+				EA2CDA3128A8E3FA00DFF53C /* GatherNaviBar.swift in Sources */,
 				6F1E0DE0287D44060025A671 /* TemplateView.swift in Sources */,
 				6F1E0DD9287D43410025A671 /* MeasurementView.swift in Sources */,
 				6F795EF92876743C007FA0B2 /* SettingView.swift in Sources */,
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
+				388E2C602893C330003D9F5E /* Alignment+Extention.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,

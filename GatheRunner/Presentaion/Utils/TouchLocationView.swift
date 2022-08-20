@@ -10,6 +10,7 @@ import SwiftUI
 // Our UIKit to SwiftUI wrapper view
 struct TouchLocatingView: UIViewRepresentable {
     // The types of touches users want to be notified about
+    // 참고 : https://developer.apple.com/documentation/swift/optionset
     struct TouchType: OptionSet {
         let rawValue: Int
         static let started = TouchType(rawValue: 1 << 0)
