@@ -10,6 +10,9 @@ import SwiftUI
 // MARK: - FloatingView
 
 struct FloatingView: View {
+
+    // MARK: - 측정화면으로 이동을 위한 임시 구현
+
     @State var tag:Int? = nil
 
     var body: some View {
@@ -24,6 +27,9 @@ struct FloatingView: View {
                         .shadow(color: Color.gray, radius: 2, x: 3, y: 3)
                 }
                 ZStack {
+                    
+                    // MARK: - 측정화면으로 이동을 위한 임시 구현
+
                     NavigationLink(
                         destination: MeasurementView().environmentObject(LocationManager()),
                         tag: 1,

@@ -10,6 +10,7 @@ import XCTest
 class MeasurementViewUITests: XCTestCase {
     var app: XCUIApplication!
 
+
     override func setUp() {
         continueAfterFailure = false
         app = XCUIApplication()
@@ -17,8 +18,8 @@ class MeasurementViewUITests: XCTestCase {
         app.launch()
     }
 
-    func testOnOff() {
-        app.buttons["ButtonTest"].tap()
+    func test_onOffToggle_shouldOperationTimer_withFirstTap() {
+        app.buttons["moveButton"].tap()
         app.buttons["runStartButton"].tap()
         app.switches["onOffButton"].tap()
 
@@ -29,8 +30,8 @@ class MeasurementViewUITests: XCTestCase {
         XCTAssertNotEqual(timerView.label, "00 : 00")
     }
 
-    func testStop() {
-        app.buttons["ButtonTest"].tap()
+    func test_onOffToggle_shouldStopTimer_withSecondTap() {
+        app.buttons["moveButton"].tap()
         app.buttons["runStartButton"].tap()
         app.switches["onOffButton"].doubleTap()
 
@@ -41,4 +42,14 @@ class MeasurementViewUITests: XCTestCase {
         XCTAssertEqual(timerView.label, "00 : 00")
     }
 
+    func test_onOffToggle_shouldOperationTimer_onBackGround() {
+        app.buttons["moveButton"].tap()
+        app.buttons["runStartButton"].tap()
+        app.switches["onOffButton"].tap()
+        XCUIDevice().press(XCUIDevice.Button.home)
+        sleep(3)
+        app.activate()
+        let timerView = app.staticTexts["timerView"]
+        XCTAssertNotEqual(timerView.label, "00 : 00")
+    }
 }

@@ -24,17 +24,14 @@ struct MeasurementView: View {
 
     // MARK: Private
 
-    @State private var progressTime = 0
     @State private var isRunning = false
-    @State private var timer: Timer?
     @EnvironmentObject var manager: LocationManager
-
 }
 
 extension MeasurementView {
     var timerView: some View {
         VStack(spacing: 10) {
-            Text("\(progressTime.minutes) : \(progressTime.seconds)")
+            Text("\(manager.minutes) : \(manager.seconds)")
                 .font(.system(size: 40, weight: .bold))
                 .accessibilityIdentifier("timerView")
             Text("운동 시간").asLabelStyle()
@@ -60,13 +57,10 @@ extension MeasurementView {
         Toggle("", isOn: $isRunning)
             .onChange(of: isRunning) {
                 guard $0 else {
-                    timer?.invalidate()
+                    manager.didUnSetStartLocation()
                     return
                 }
-                manager.startingPoint = manager.region
-                timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-                    progressTime += 1
-                })
+                manager.didSetStartLocation()
             }
             .toggleStyle(IconStyle(onImage: "play", offImage: "stop"))
     }
