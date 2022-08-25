@@ -13,7 +13,6 @@ struct TemplateView: View {
 
     // MARK: Lifecycle
 
-
     init(type: ViewType) {
         model = SettingModel(type)
     }

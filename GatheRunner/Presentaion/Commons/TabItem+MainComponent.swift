@@ -11,7 +11,6 @@ extension TabItem {
 
     // MARK: Lifecycle
 
-
     init(_ component: TabItem.MainComponent) {
         self.init(title: Text(component.rawValue), icon: component.icon, tag: component.tag)
     }
@@ -25,7 +24,6 @@ extension TabItem {
         case activity = "활동"
 
         // MARK: Internal
-
 
         var icon: Image {
             switch self {

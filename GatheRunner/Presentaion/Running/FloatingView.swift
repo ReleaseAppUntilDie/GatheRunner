@@ -27,7 +27,6 @@ struct FloatingView: View {
                         .shadow(color: Color.gray, radius: 2, x: 3, y: 3)
                 }
                 ZStack {
-                    
                     // MARK: - 측정화면으로 이동을 위한 임시 구현
 
                     NavigationLink(
