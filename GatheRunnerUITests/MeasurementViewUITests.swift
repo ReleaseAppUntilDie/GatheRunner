@@ -5,51 +5,65 @@
 //  Created by 김동현 on 2022/08/19.
 //
 
+import SwiftUI
 import XCTest
 
 class MeasurementViewUITests: XCTestCase {
     var app: XCUIApplication!
-
+    var moveButton: XCUIElement!
+    var runStartButton: XCUIElement!
+    var onOffButton: XCUIElement!
+    var timerView: XCUIElement!
+    var delay: XCTestExpectation!
 
     override func setUp() {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["testing"]
+
+        moveButton = app.buttons["moveButton"]
+        runStartButton = app.buttons["runStartButton"]
+        onOffButton = app.switches["onOffButton"]
+        timerView = app.staticTexts["timerView"]
+
         app.launch()
     }
 
     func test_onOffToggle_shouldOperationTimer_withFirstTap() {
-        app.buttons["moveButton"].tap()
-        app.buttons["runStartButton"].tap()
-        app.switches["onOffButton"].tap()
+        print(#function)
 
-        let delayExpectation = XCTestExpectation()
-        delayExpectation.isInverted = true
-        wait(for: [delayExpectation], timeout: 2)
-        let timerView = app.staticTexts["timerView"]
+        moveButton.tap()
+        runStartButton.tap()
+        onOffButton.tap()
+
+        delay = XCTestExpectation()
+        delay.isInverted = true
+        wait(for: [delay], timeout: 2)
         XCTAssertNotEqual(timerView.label, "00 : 00")
     }
 
     func test_onOffToggle_shouldStopTimer_withSecondTap() {
-        app.buttons["moveButton"].tap()
-        app.buttons["runStartButton"].tap()
-        app.switches["onOffButton"].doubleTap()
+        print(#function)
 
-        let testStopDelay = XCTestExpectation()
-        testStopDelay.isInverted = true
-        wait(for: [testStopDelay], timeout: 2)
-        let timerView = app.staticTexts["timerView"]
+        moveButton.tap()
+        runStartButton.tap()
+        onOffButton.doubleTap()
+
+        delay = XCTestExpectation()
+        delay.isInverted = true
+        wait(for: [delay], timeout: 2)
         XCTAssertEqual(timerView.label, "00 : 00")
     }
 
     func test_onOffToggle_shouldOperationTimer_onBackGround() {
-        app.buttons["moveButton"].tap()
-        app.buttons["runStartButton"].tap()
-        app.switches["onOffButton"].tap()
+        print(#function)
+
+        moveButton.tap()
+        runStartButton.tap()
+        onOffButton.tap()
         XCUIDevice().press(XCUIDevice.Button.home)
         sleep(3)
         app.activate()
-        let timerView = app.staticTexts["timerView"]
         XCTAssertNotEqual(timerView.label, "00 : 00")
     }
 }
