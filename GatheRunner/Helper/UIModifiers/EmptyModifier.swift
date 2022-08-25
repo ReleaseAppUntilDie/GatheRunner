@@ -7,7 +7,12 @@
 
 import SwiftUI
 
+// MARK: - EmptyModifier
+
 struct EmptyModifier: ViewModifier {
+
+    // MARK: Internal
+
     enum LogicalOperator {
         case and, or, none
     }
@@ -23,21 +28,22 @@ struct EmptyModifier: ViewModifier {
         }
     }
 
+    // MARK: Private
+
     private var checkedLogicalOperator: Bool? {
-        switch self.logicalOperator {
+        switch logicalOperator {
         case .and: return false
         case .or: return true
         default: return nil
         }
-
     }
 
     private var checkedCondition: Bool {
         guard let result = checkedLogicalOperator else {
-            return self.conditions[0]
+            return conditions[0]
         }
 
-        for condition in self.conditions {
+        for condition in conditions {
             if condition == result {
                 return result
             }
@@ -48,8 +54,8 @@ struct EmptyModifier: ViewModifier {
 
 extension View {
 
-    //MARK: - 사용 예시: .isEmpty(logicalOperator: .or, [type == .activity, type == .club])
-    
+    // MARK: - 사용 예시: .isEmpty(logicalOperator: .or, [type == .activity, type == .club])
+
     func isEmpty(logicalOperator: EmptyModifier.LogicalOperator, _ conditions: [Bool]) -> some View {
         modifier(EmptyModifier(logicalOperator: logicalOperator, conditions: conditions))
     }

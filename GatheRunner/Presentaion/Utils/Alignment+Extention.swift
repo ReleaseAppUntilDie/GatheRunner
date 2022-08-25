@@ -10,7 +10,7 @@ import SwiftUI
 extension VerticalAlignment {
     struct CustomAlignment: AlignmentID {
         static func defaultValue(in context: ViewDimensions) -> CGFloat {
-            return context[VerticalAlignment.center]
+            context[VerticalAlignment.center]
         }
     }
 
@@ -20,8 +20,9 @@ extension VerticalAlignment {
 extension HorizontalAlignment {
     struct CustomAlignment : AlignmentID {
         static func defaultValue(in context: ViewDimensions) -> CGFloat {
-            return context[HorizontalAlignment.center]
+            context[HorizontalAlignment.center]
         }
     }
+
     static let horizontalCustom = HorizontalAlignment(CustomAlignment.self)
 }

@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+// MARK: - RunningGuideTabItem
+
 struct RunningGuideTabItem: View {
-    private var runningGuideArrs = RunningGuideViewModel().getRunningGuideArrs
-    
+
+    // MARK: Internal
+
+
     var body: some View {
         ForEach(runningGuideArrs.indices, id: \.self) { index in
             HStack(alignment: .center, spacing: 8.0) {
@@ -38,11 +42,19 @@ struct RunningGuideTabItem: View {
                         .lineLimit(1)
                 }.frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.height * 0.14, alignment: .leading)
             }.frame(width: UIScreen.main.bounds.width * 0.82, height: UIScreen.main.bounds.height * 0.13, alignment: .leading)
-                .background(.ultraThickMaterial, in:
-                                RoundedRectangle(cornerRadius: 15, style: .continuous))
+                .background(
+                    .ultraThickMaterial,
+                    in:
+                    RoundedRectangle(cornerRadius: 15, style: .continuous))
         }
     }
+
+    // MARK: Private
+
+    private var runningGuideArrs = RunningGuideViewModel().getRunningGuideArrs
 }
+
+// MARK: - RunningGuideItem_Previews
 
 struct RunningGuideItem_Previews: PreviewProvider {
     static var previews: some View {

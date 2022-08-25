@@ -11,7 +11,6 @@ class RunningGuideViewModel: ObservableObject {
 
     // MARK: Internal
 
-
     var getRunningGuideArrs: [RunningGuide] {
         runningGuide
     }

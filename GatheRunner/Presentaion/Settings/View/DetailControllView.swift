@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+// MARK: - DetailControllView
+
 struct DetailControllView: View {
     var body: some View {
-        VStack (spacing: 10){
+        VStack(spacing: 10) {
             HStack {
                 Spacer()
                 Text("표시 및 음성")
@@ -28,6 +30,8 @@ struct DetailControllView: View {
         }
     }
 }
+
+// MARK: - DetailControllView_Previews
 
 struct DetailControllView_Previews: PreviewProvider {
     static var previews: some View {

@@ -5,16 +5,19 @@
 //  Created by cho on 2022/07/09.
 //
 
-import SwiftUI
 import MapKit
+import SwiftUI
+
+// MARK: - JustStartView
 
 struct JustStartView: View {
     @StateObject private var manager = LocationManager()
     @Binding var selected: Int
     let timer = Timer.publish(every: 5.5, on: .main, in: .default).autoconnect()
     var runningGuideArrs = RunningGuideViewModel().getRunningGuideArrs
-    let forMapRadialGradient: Gradient = Gradient(colors: [Color.white.opacity(0), Color.white, Color.white, Color.white, Color.white, Color.white.opacity(1)])
-    
+    let forMapRadialGradient =
+        Gradient(colors: [Color.white.opacity(0), Color.white, Color.white, Color.white, Color.white, Color.white.opacity(1)])
+
     var body: some View {
         ZStack {
             mapView
@@ -25,11 +28,11 @@ struct JustStartView: View {
             }
         }
     }
-    
+
     var mapView: some View {
         Map(coordinateRegion: $manager.region, showsUserLocation: true).disabled(true)
     }
-    
+
     var featuredTabView: some View {
         VStack {
             TabView(selection: $selected) {
@@ -47,22 +50,21 @@ struct JustStartView: View {
             }
             // 여러 제스처를 동시에 사용하고 싶을때에는 simultaneously()를 사용하지만 편의상 highPriorityGesture를 사용해 우선순위를 두고 이와 같이 사용해도 된다.
             // highPriorityGesture를 사용하지 않고 두개의 제스처를 simultaneously() 없이 사용한다면 코드 아래에 있는 제스처는 정상적으로 작동하지 않는다.
-            .highPriorityGesture (
+            .highPriorityGesture(
                 DragGesture()
                     .onChanged { _ in
                         // onChanged는 실제로 드래그 하는 동안 좌표값을 실시간으로 리턴하지만 그렇다고 해서 코드 내부에 있는 메서드의 실행이나 변수의 값변경을 연속적으로 처리하는 것은 아니다.
                         // 드래그할때 딱 한번만 메서드가 실행된다. 따라서 아래 메서드는 드래그 하는 동안 한번만 호출된다.
                         timer.upstream.connect().cancel()
-                    }
-            )
-            .onReceive(timer) { time in
+                    })
+            .onReceive(timer) { _ in
                 if runningGuideArrs.count - 1 >= selected + 1 {
                     selected += 1
                 } else {
                     timer.upstream.connect().cancel()
                 }
             }.animation(.default, value: selected)
-            
+
             HStack(spacing: 5) {
                 ForEach(runningGuideArrs.indices, id: \.self) { index in
                     Capsule()
@@ -74,6 +76,8 @@ struct JustStartView: View {
         }
     }
 }
+
+// MARK: - JustStartView_Previews
 
 struct JustStartView_Previews: PreviewProvider {
     static var previews: some View {

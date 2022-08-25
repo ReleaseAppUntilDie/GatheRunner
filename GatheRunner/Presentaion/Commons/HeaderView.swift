@@ -6,24 +6,29 @@
 //
 import SwiftUI
 
+// MARK: - ViewsInHeaderView
+
 enum ViewsInHeaderView {
     case home,running,club,activity
 }
 
+// MARK: - HeaderView
+
 struct HeaderView: View {
-    
+
     let title : String
     let type : ViewsInHeaderView
-    
+
     let rightButtonAction : ()->()
-    
+
+
     var body: some View {
-        ZStack(alignment:.bottom){
+        ZStack(alignment:.bottom) {
             Color(uiColor: .systemGray6)
             GatherNaviBar {
                 VStack(alignment: .leading) {
                     Button {
-                        //TODO: profile view로 이동
+                        // TODO: profile view로 이동
                         print("move to profile")
                     } label: {
                         Image(systemName: "person.crop.circle.fill")
@@ -57,9 +62,10 @@ struct HeaderView: View {
 
         }.frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1/7))
             .ignoresSafeArea()
-        
     }
 }
+
+// MARK: - HeaderView_Previews
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
