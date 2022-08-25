@@ -226,14 +226,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DA5842162893C20F00554B5D /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				DA5842172893C21800554B5D /* Extension */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
 		DA5842172893C21800554B5D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,7 +283,6 @@
 		E35EFEB6286DFB2D003E23DE /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
-				DA5842162893C20F00554B5D /* Helper */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
 				6F795EF72876741F007FA0B2 /* Settings */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
@@ -441,18 +432,19 @@
 		E3D43D732876BEF3004C54C3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				E3D43D742876BF0E004C54C3 /* UIModifiers */,
+				DA5842172893C21800554B5D /* Extension */,
+				E3D43D742876BF0E004C54C3 /* UI */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		E3D43D742876BF0E004C54C3 /* UIModifiers */ = {
+		E3D43D742876BF0E004C54C3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */,
 				E3D43D752876BF27004C54C3 /* Style */,
 			);
-			path = UIModifiers;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		E3D43D752876BF27004C54C3 /* Style */ = {

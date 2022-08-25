@@ -13,7 +13,6 @@ struct RunningGuideTabItem: View {
 
     // MARK: Internal
 
-
     var body: some View {
         ForEach(runningGuideArrs.indices, id: \.self) { index in
             HStack(alignment: .center, spacing: 8.0) {
