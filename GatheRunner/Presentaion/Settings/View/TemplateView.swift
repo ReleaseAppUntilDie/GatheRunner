@@ -7,12 +7,25 @@
 
 import SwiftUI
 
+// MARK: - TemplateView
+
 struct TemplateView: View {
+
+    // MARK: Lifecycle
+
+
+    init(type: ViewType) {
+        model = SettingModel(type)
+    }
+
+    // MARK: Internal
+
     var model: SettingModel
+
     var body: some View {
         HStack {
             Spacer()
-            VStack (){
+            VStack {
                 Image(systemName: model.imageIconName)
                     .frame(width: 30 , height: 30, alignment: .center)
                 Text(model.status)
@@ -27,12 +40,10 @@ struct TemplateView: View {
             print("Pressed")
         }
     }
-    
-    init(type: ViewType){
-        self.model = SettingModel(type)
-    }
 }
 
+
+// MARK: - TemplateView_Previews
 
 struct TemplateView_Previews: PreviewProvider {
     static var previews: some View {

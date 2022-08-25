@@ -7,26 +7,29 @@
 
 import SwiftUI
 
+// MARK: - MeasurementView
+
 struct MeasurementView: View {
     var body: some View {
-        VStack (spacing: 10){
+        VStack(spacing: 10) {
             HStack {
                 Spacer()
                 Text("측정")
-                    .frame(height: 50, alignment: .center)    
+                    .frame(height: 50, alignment: .center)
                 Spacer()
             }.background(Color.mint)
-            
-            Group{
+
+            Group {
                 HStack {
                     TemplateView(type: .indoorOutdoor)
                     TemplateView(type: .autoPause)
                 }
             }
         }
-        
     }
 }
+
+// MARK: - MeasurementView_Previews
 
 struct MeasurementView_Previews: PreviewProvider {
     static var previews: some View {

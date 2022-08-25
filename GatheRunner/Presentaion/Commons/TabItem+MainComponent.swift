@@ -8,12 +8,25 @@
 import SwiftUI
 
 extension TabItem {
+
+    // MARK: Lifecycle
+
+
+    init(_ component: TabItem.MainComponent) {
+        self.init(title: Text(component.rawValue), icon: component.icon, tag: component.tag)
+    }
+
+    // MARK: Internal
+
     enum MainComponent: String {
         case home = "홈"
         case run = "러닝"
         case club = "클럽"
         case activity = "활동"
-        
+
+        // MARK: Internal
+
+
         var icon: Image {
             switch self {
             case .home: return Image(systemName: "house.fill")
@@ -22,7 +35,7 @@ extension TabItem {
             case .activity: return Image(systemName: "record.circle.fill")
             }
         }
-        
+
         var tag: Int {
             switch self {
             case .home: return 1
@@ -31,9 +44,5 @@ extension TabItem {
             case .activity: return 4
             }
         }
-    }
-    
-    init(_ component: TabItem.MainComponent) {
-        self.init(title: Text(component.rawValue), icon: component.icon, tag: component.tag)
     }
 }

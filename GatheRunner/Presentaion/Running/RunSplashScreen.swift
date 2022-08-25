@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+// MARK: - RunSplashScreen
+
 struct RunSplashScreen: View {
     private let initialTime: Int
-    @State private var timeRemaining: Int = 3
-    
+    @State private var timeRemaining = 3
+
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -18,7 +20,6 @@ struct RunSplashScreen: View {
         }
         .onAppear { timeRemaining = initialTime }
         .opacity(timeRemaining > 0 ? 1 : 0)
-        
     }
 }
 
@@ -36,8 +37,10 @@ extension RunSplashScreen {
                 timeRemaining -= timeRemaining > 0 ? 1 : 0
             }
     }
-    
+
 }
+
+// MARK: - RunSplashScreen_Previews
 
 struct RunSplashScreen_Previews: PreviewProvider {
     static var previews: some View {

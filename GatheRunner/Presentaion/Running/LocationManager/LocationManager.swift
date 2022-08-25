@@ -4,9 +4,10 @@ import SwiftUI
 
 // 에러 예외처리 필요 -> 구현 예정
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    @Published var region = MKCoordinateRegion()
-    private let manager = CLLocationManager()
-    
+
+    // MARK: Lifecycle
+
+
     override init() {
         super.init()
         // CLLocationManagerDelegate는 대리인의 메서드를 호출하여 위치 관련 이벤트를 앱에 보고합니다. 객체에 이 프로토콜을 구현하여 위치정보를 업데이트 할 수 있다. 예를 들어, 현재 위치를 사용하여 지도에서 사용자의 위치를 업데이트하거나 사용자의 현재 위치와 관련된 검색 결과를 반환할 수 있다.
@@ -19,10 +20,15 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         // 위치정보 수신 기능을 시작하는 메서드
         manager.startUpdatingLocation()
     }
-    
+
+    // MARK: Internal
+
+    @Published var region = MKCoordinateRegion()
+
+
     // CLLocationManagerDelegate 프로토콜에 정의된 locationManager 구현
     // didUpdateLocations는 현재 위치를 반영한 배열을 반환한다. 이 배열은 시간 순서대로 기록되어 있고 마지막값이 현재값이다.
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locations.last.map {
             // CLLocationCoordinate2D을 사용하여 현재 위치의 위도, 경도를 wgs84 좌표계 값으로 변환해 반환한다
             let center = CLLocationCoordinate2D(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude)
@@ -35,4 +41,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             region = MKCoordinateRegion(center: center, span: span)
         }
     }
+
+    // MARK: Private
+
+    private let manager = CLLocationManager()
 }
