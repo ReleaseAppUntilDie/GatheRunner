@@ -14,7 +14,7 @@ struct SettingView: View {
     var body: some View {
         VStack {
             ScrollView(.vertical) {
-                MeasurementView()
+                SettingItemView()
                 DetailControllView()
 
 

@@ -15,3 +15,10 @@ extension Text {
             .foregroundColor(color)
     }
 }
+
+extension Text {
+    func asLabelStyle(fontSize: CGFloat = 20, fontWeight: Font.Weight = .light, color: Color = .gray) -> some View {
+        font(.system(size: fontSize, weight: fontWeight))
+            .foregroundColor(color)
+    }
+}

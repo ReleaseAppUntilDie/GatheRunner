@@ -1,5 +1,5 @@
 //
-//  MeasurementView.swift
+//  SettingItemView.swift
 //  GatheRunner
 //
 //  Created by Atlas on 2022/07/12.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-// MARK: - MeasurementView
+// MARK: - SettingItemView
 
-struct MeasurementView: View {
+struct SettingItemView: View {
     var body: some View {
         VStack(spacing: 10) {
             HStack {
@@ -29,10 +29,10 @@ struct MeasurementView: View {
     }
 }
 
-// MARK: - MeasurementView_Previews
+// MARK: - SettingItemView_Previews
 
-struct MeasurementView_Previews: PreviewProvider {
+struct SettingItemView_Previews: PreviewProvider {
     static var previews: some View {
-        MeasurementView()
+        SettingItemView()
     }
 }
