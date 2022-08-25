@@ -19,30 +19,12 @@ struct GraphView: View {
 
     // MARK: Internal
 
-    var unitIndex : Double {
-        switch selectedTimeUnit {
-        case .week: return 0
-        case .month: return 1
-        case .year: return 2
-        case .whole: return 3
-        }
-    }
-
-
     var body: some View {
         VStack {
-            TimeUnitsTable(curTimeUnit: $selectedTimeUnit,unitIndex: unitIndex)
+            TimeUnitsTable(curTimeUnit: $selectedTimeUnit)
                 .onTouch(type: .started) { point in
                     withAnimation {
-                        if point.x < UIScreen.getWidthby(ratio: 0.2) {
-                            selectedTimeUnit = .week
-                        } else if point.x >= UIScreen.getWidthby(ratio: 0.2),point.x<UIScreen.getWidthby(ratio: 0.4) {
-                            selectedTimeUnit = .month
-                        } else if point.x >= UIScreen.getWidthby(ratio: 0.4),point.x<UIScreen.getWidthby(ratio: 0.6) {
-                            selectedTimeUnit = .year
-                        } else {
-                            selectedTimeUnit = .whole
-                        }
+                        setTimeUnitby(x: point.x)
                     }
                 }
             // TODO: Picker 아이템 생성후 삽입
@@ -50,29 +32,41 @@ struct GraphView: View {
         }
     }
 
+
+
+    func setTimeUnitby(x: CGFloat) {
+        if x < UIScreen.getWidthby(ratio: 0.2) {
+            selectedTimeUnit = .week
+        } else if x >= UIScreen.getWidthby(ratio: 0.2),x < UIScreen.getWidthby(ratio: 0.4) {
+            selectedTimeUnit = .month
+        } else if x >= UIScreen.getWidthby(ratio: 0.4),x < UIScreen.getWidthby(ratio: 0.6) {
+            selectedTimeUnit = .year
+        } else {
+            selectedTimeUnit = .whole
+        }
+    }
+
     // MARK: Private
 
-
-    @State private var selectedTimeUnit : TimeUnit = .week
+    @State private var selectedTimeUnit: TimeUnit = .week
 }
 
 // MARK: - TimeUnitsTable
 
-struct TimeUnitsTable : View {
-    struct TimeUnitComponent : View {
-        @Binding var selectedTimeUnit : TimeUnit
-        let timeUnit : TimeUnit
-        let title : String
-        var body : some View {
-            Text(title)
-                .foregroundColor(selectedTimeUnit == timeUnit ? .black : .init(uiColor: .systemGray2))
+
+struct TimeUnitsTable: View {
+
+    @Binding var curTimeUnit: TimeUnit
+
+
+    var unitIndex: Double {
+        switch curTimeUnit {
+        case .week:return 0
+        case .month:return 1
+        case .year:return 2
+        case .whole:return 3
         }
     }
-
-
-    @Binding var curTimeUnit : TimeUnit
-    let unitIndex : Double
-
 
     var body: some View {
         ZStack {
@@ -86,13 +80,17 @@ struct TimeUnitsTable : View {
                     .frame(width: UIScreen.getWidthby(ratio: 0.2), height: UIScreen.getHeightby(ratio: 0.04))
                     .offset(x: -UIScreen.getWidthby(ratio: 0.3) + UIScreen.getWidthby(ratio: 0.2 * unitIndex))
                 HStack(spacing:0) {
-                    TimeUnitComponent(selectedTimeUnit: $curTimeUnit, timeUnit: .week, title: "주")
+                    Text("주")
+                        .foregroundColor(curTimeUnit == .week ? .black : .init(uiColor: .systemGray2))
                         .frame(width: UIScreen.getWidthby(ratio: 0.2))
-                    TimeUnitComponent(selectedTimeUnit: $curTimeUnit, timeUnit: .month, title: "월")
+                    Text("월")
+                        .foregroundColor(curTimeUnit == .month ? .black : .init(uiColor: .systemGray2))
                         .frame(width: UIScreen.getWidthby(ratio: 0.2))
-                    TimeUnitComponent(selectedTimeUnit: $curTimeUnit, timeUnit: .year, title: "년")
+                    Text("년")
+                        .foregroundColor(curTimeUnit == .year ? .black : .init(uiColor: .systemGray2))
                         .frame(width: UIScreen.getWidthby(ratio: 0.2))
-                    TimeUnitComponent(selectedTimeUnit: $curTimeUnit, timeUnit: .whole, title: "전체")
+                    Text("전체")
+                        .foregroundColor(curTimeUnit == .whole ? .black : .init(uiColor: .systemGray2))
                         .frame(width: UIScreen.getWidthby(ratio: 0.2))
                 }
             }
@@ -103,36 +101,61 @@ struct TimeUnitsTable : View {
 
 // MARK: - SimplifiedStatistics
 
+
 struct SimplifiedStatistics: View {
 
     // MARK: Lifecycle
 
-
-    init(selectedTimeUnit : Binding<TimeUnit>) {
+    init(selectedTimeUnit: Binding<TimeUnit>) {
         _selectedTimeUnit = selectedTimeUnit
-        pickerButtonTitle = "test"
     }
 
     // MARK: Internal
 
-    @Binding var selectedTimeUnit : TimeUnit
+    var test = ["1","2","3","4"]
+    @Binding var selectedTimeUnit: TimeUnit
 
 
-    var body: some View {
-        VStack(alignment: .leading,spacing: UIScreen.getHeightby(ratio: 0.1)) {
-            Button { } label: {
-                Text(pickerButtonTitle)
-                    .foregroundColor(.blue)
-            }
+    var buttonText: String {
+        switch selectedTimeUnit {
+        case .week:return "이번주"
+        case .month:return "2022년 8월"
+        case .year:return "2022년"
+        case .whole:return "2020년~2022년"
         }
     }
 
+    var body: some View {
+        VStack(alignment: .leading,spacing: UIScreen.getHeightby(ratio: 0.02)) {
+            Button { } label: {
+                HStack {
+                    Text(buttonText)
+                        .foregroundColor(.black)
+                    Image(systemName: "chevron.down")
+                        .isEmpty(logicalOperator: .and, [selectedTimeUnit != .whole])
+                }
+            }
+            .disabled(selectedTimeUnit == .whole)
+            .foregroundColor(.black)
+            Text("10.0")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+            Text("킬로미터")
+                .foregroundColor(.gray)
+                .font(.system(size: 12))
+            Picker("test",selection: $selected) {
+                ForEach(test,id:\.self) {
+                    Text($0)
+                }
+            }
+        }
+        .pickerStyle(WheelPickerStyle())
+        .padding(.horizontal,UIScreen.getWidthby(ratio: 0.1))
+    }
 
     // MARK: Private
 
-    @State private var pickerButtonTitle : String
+    @State private var selected = ""
 }
-
 
 // MARK: - GraphView_Previews
 
@@ -141,6 +164,3 @@ struct GraphView_Previews: PreviewProvider {
         GraphView()
     }
 }
-
-
-

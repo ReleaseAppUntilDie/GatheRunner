@@ -21,8 +21,6 @@ extension SettingModel {
 
     // MARK: Lifecycle
 
-
-
     init(_ component: SettingModel.SettingType) {
         self.init(status: component.status, description: component.rawValue, imageIconName: component.imageIconName)
     }
@@ -39,7 +37,6 @@ extension SettingModel {
         case display = "Display"
 
         // MARK: Internal
-
 
         var status: String {
             switch self {
