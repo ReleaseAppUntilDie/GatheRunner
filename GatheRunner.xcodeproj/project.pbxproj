@@ -28,6 +28,7 @@
 		DAEA9310287953D100349465 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA930F287953D100349465 /* LocationManager.swift */; };
 		DAEA9315287AED7200349465 /* RunningGuideTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunningGuideTabItem.swift */; };
 		DAEA931A287D184900349465 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* FloatingView.swift */; };
+		DAEBE67528B7477400E3D5F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAEBE67428B7477400E3D5F8 /* GoogleService-Info.plist */; };
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
 		DB198DAF288F7908002513A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DAE288F7908002513A9 /* Constants.swift */; };
 		E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEB8286DFB2D003E23DE /* ClubView.swift */; };
@@ -100,6 +101,7 @@
 		DAEA930F287953D100349465 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunningGuideTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideTabItem.swift; sourceTree = "<group>"; };
 		DAEA9319287D184900349465 /* FloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
+		DAEBE67428B7477400E3D5F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DB198DAE288F7908002513A9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E35EFEB8286DFB2D003E23DE /* ClubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubView.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			children = (
 				DA5165A628A8B3E60024BE22 /* .swiftformat */,
 				DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */,
+				DAEBE67428B7477400E3D5F8 /* GoogleService-Info.plist */,
 				E3D349D5286C20D200618AC3 /* GatheRunner */,
 				E3D349E6286C20D500618AC3 /* GatheRunnerTests */,
 				E3D349F0286C20D500618AC3 /* GatheRunnerUITests */,
@@ -496,6 +499,7 @@
 				E3D349CF286C20D200618AC3 /* Sources */,
 				E3D349D0286C20D200618AC3 /* Frameworks */,
 				E3D349D1286C20D200618AC3 /* Resources */,
+				1A00913BB66F230D593E40A6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -533,6 +537,7 @@
 				E3D349E9286C20D500618AC3 /* Sources */,
 				E3D349EA286C20D500618AC3 /* Frameworks */,
 				E3D349EB286C20D500618AC3 /* Resources */,
+				8FF322560C293C3A1853AEEE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -594,6 +599,7 @@
 			files = (
 				DA5165A728A8B3E60024BE22 /* .swiftformat in Resources */,
 				DA2FFD3D28A8B33B006291CE /* .swiftlint.yml in Resources */,
+				DAEBE67528B7477400E3D5F8 /* GoogleService-Info.plist in Resources */,
 				E3D349DE286C20D500618AC3 /* Preview Assets.xcassets in Resources */,
 				E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */,
 			);
@@ -616,6 +622,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1A00913BB66F230D593E40A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GatheRunner/Pods-GatheRunner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GatheRunner/Pods-GatheRunner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GatheRunner/Pods-GatheRunner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		59C1DD9677C32AA916255C28 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -680,6 +703,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FF322560C293C3A1853AEEE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GatheRunner-GatheRunnerUITests/Pods-GatheRunner-GatheRunnerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GatheRunner-GatheRunnerUITests/Pods-GatheRunner-GatheRunnerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GatheRunner-GatheRunnerUITests/Pods-GatheRunner-GatheRunnerUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DA5165A928A8B4E70024BE22 /* SwiftFormat */ = {
@@ -985,7 +1025,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A1FBD7301BD3249E41A5E419 /* Pods-GatheRunnerTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1006,7 +1046,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 75848D194E0D75CB55FC6E7D /* Pods-GatheRunnerTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1027,7 +1067,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3868EFEEEC4621DAB4C4BABD /* Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JUH3Q3SWFH;
@@ -1046,7 +1086,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03EBBC3850C49984862875E4 /* Pods-GatheRunner-GatheRunnerUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JUH3Q3SWFH;
