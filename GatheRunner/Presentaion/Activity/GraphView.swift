@@ -199,11 +199,12 @@ struct Graph: View {
     let cellHeight: CGFloat
     let lineWidth = 0.5
     let lingColor = Color(uiColor: .systemGray5)
-    let bottomLabels = ["월","화","수","목","금","토","일"]
+    let bottomLabels = ["월","화","수","목","금","토","일","test"]
+    var mockData = [10,2,3,4,5,5,7,15]
 
     var body: some View {
         VStack(alignment:.leading) {
-            ZStack(alignment: .bottom) {
+            ZStack(alignment: .bottomLeading) {
                 ZStack(alignment:.topLeading) {
                     lineWithText(text: "15")
                     lineWithText(text: "10")
@@ -215,19 +216,29 @@ struct Graph: View {
                     graphOuterLine(startPos: CGPoint(x: graphWitdh, y: 0), endPoint: CGPoint(x: graphWitdh, y: cellHeight * 3))
                         .offset(y: cellHeight / 2)
                 }
-                Rectangle()
-                    .fill(.green)
-                    .frame(width: 10, height: cellHeight * 1.5)
-                    .offset(y: -cellHeight / 2)
+
+                HStack(alignment:.bottom,spacing: 0) {
+                    ForEach(0..<bottomLabels.count) { index in
+                        Rectangle()
+                            .fill(.green)
+                            .frame(width: 10, height: cellHeight * 3.0 * Double(mockData[index]) / 15.0)
+                            .padding(.horizontal,graphWitdh / CGFloat(bottomLabels.count) / 2 - 5)
+                            .offset(y: -cellHeight / 2)
+                    }
+                }
+
+
             }.frame(height: cellHeight * 4)
-            HStack {
+
+            HStack(spacing:0) {
                 ForEach(bottomLabels,id:\.self) {
                     Text($0)
                         .font(.system(size: 10, weight: .regular, design: .rounded))
-                        .frame(width: graphWitdh/CGFloat(bottomLabels.count+1), alignment: .center)
+                        .frame(width: graphWitdh/CGFloat(bottomLabels.count), alignment: .center)
                 }
             }
             .frame(width: graphWitdh)
+
             .offset(y: -cellHeight / 2)
         }
     }
