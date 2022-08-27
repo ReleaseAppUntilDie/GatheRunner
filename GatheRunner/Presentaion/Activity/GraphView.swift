@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 // MARK: - TimeUnit
 
 enum TimeUnit {
@@ -20,8 +21,9 @@ struct GraphView: View {
     // MARK: Internal
 
     var body: some View {
-        VStack {
+        VStack(alignment:.leading) {
             TimeUnitsTable(curTimeUnit: $selectedTimeUnit)
+                .padding(.bottom)
                 .onTouch(type: .started) { point in
                     withAnimation {
                         setTimeUnitby(x: point.x)
@@ -29,8 +31,13 @@ struct GraphView: View {
                 }
             // TODO: Picker 아이템 생성후 삽입
             SimplifiedStatistics(selectedTimeUnit: $selectedTimeUnit)
-        }
+
+            Graph(graphWitdh: UIScreen.getWidthby(ratio: 0.7), cellHeight: UIScreen.getHeightby(ratio: 0.035))
+
+        }.padding(.leading,UIScreen.getWidthby(ratio: 0.1))
     }
+
+
 
 
     func setTimeUnitby(x: CGFloat) {
@@ -55,6 +62,8 @@ struct GraphView: View {
 struct TimeUnitsTable: View {
 
     @Binding var curTimeUnit: TimeUnit
+
+
 
 
     var unitIndex: Double {
@@ -94,6 +103,7 @@ struct TimeUnitsTable: View {
             }
         }
     }
+
 }
 
 // MARK: - SimplifiedStatistics
@@ -108,8 +118,9 @@ struct SimplifiedStatistics: View {
 
     // MARK: Internal
 
-    var test = ["1","2","3","4"]
     @Binding var selectedTimeUnit: TimeUnit
+
+
 
 
     var buttonText: String {
@@ -138,19 +149,111 @@ struct SimplifiedStatistics: View {
             Text("킬로미터")
                 .foregroundColor(.gray)
                 .font(.system(size: 12))
-            Picker("test",selection: $selected) {
-                ForEach(test,id:\.self) {
-                    Text($0)
-                }
+            HStack(spacing: 40) {
+                runningCount
+                averagePace
+                totalTime
             }
         }
-        .pickerStyle(WheelPickerStyle())
-        .padding(.horizontal,UIScreen.getWidthby(ratio: 0.1))
     }
 
-    // MARK: Private
+}
 
-    @State private var selected = ""
+extension SimplifiedStatistics {
+    var runningCount: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text("6")
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
+            Text("러닝")
+                .foregroundColor(.gray)
+                .font(.system(size: 12))
+        }
+    }
+
+    var averagePace: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text("5'41''")
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
+            Text("평균 페이스")
+                .foregroundColor(.gray)
+                .font(.system(size: 12))
+        }
+    }
+
+    var totalTime: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text("2:54:51")
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
+            Text("시간")
+                .foregroundColor(.gray)
+                .font(.system(size: 12))
+        }
+    }
+}
+
+// MARK: - Graph
+
+struct Graph: View {
+
+    let graphWitdh: CGFloat
+    let cellHeight: CGFloat
+    let lineWidth = 0.5
+    let lingColor = Color(uiColor: .systemGray5)
+    let bottomLabels = ["월","화","수","목","금","토","일"]
+
+    var body: some View {
+        VStack(alignment:.leading) {
+            ZStack(alignment: .bottom) {
+                ZStack(alignment:.topLeading) {
+                    lineWithText(text: "15")
+                    lineWithText(text: "10")
+                        .offset(y: cellHeight)
+                    lineWithText(text: "5")
+                        .offset(y: cellHeight * 2)
+                    lineWithText(text: "0km")
+                        .offset(y: cellHeight * 3)
+                    graphOuterLine(startPos: CGPoint(x: graphWitdh, y: 0), endPoint: CGPoint(x: graphWitdh, y: cellHeight * 3))
+                        .offset(y: cellHeight / 2)
+                }
+                Rectangle()
+                    .fill(.green)
+                    .frame(width: 10, height: cellHeight * 1.5)
+                    .offset(y: -cellHeight / 2)
+            }.frame(height: cellHeight * 4)
+            HStack {
+                ForEach(bottomLabels,id:\.self) {
+                    Text($0)
+                        .font(.system(size: 10, weight: .regular, design: .rounded))
+                        .frame(width: graphWitdh/CGFloat(bottomLabels.count+1), alignment: .center)
+                }
+            }
+            .frame(width: graphWitdh)
+            .offset(y: -cellHeight / 2)
+        }
+    }
+}
+
+extension Graph {
+    @ViewBuilder
+    func graphOuterLine(startPos: CGPoint,endPoint: CGPoint) -> some View {
+        Path { path in
+            path.move(to: startPos)
+            path.addLine(to: endPoint)
+        }
+        .strokedPath(StrokeStyle(lineWidth: lineWidth))
+        .foregroundColor(lingColor)
+    }
+
+    @ViewBuilder
+    func lineWithText(text: String) -> some View {
+        HStack {
+            Rectangle()
+                .frame(width: graphWitdh, height: 0.5)
+                .foregroundColor(lingColor)
+            Text(text)
+                .font(.system(size: 10, weight: .regular, design: .rounded))
+        }.frame(height:cellHeight)
+    }
 }
 
 // MARK: - GraphView_Previews
@@ -160,3 +263,4 @@ struct GraphView_Previews: PreviewProvider {
         GraphView()
     }
 }
+
