@@ -1,5 +1,5 @@
 //
-//  RunningGuideTabItem.swift
+//  RunGuideExpTabItem.swift
 //  GatheRunner
 //
 //  Created by cho on 2022/07/10.
@@ -7,34 +7,34 @@
 
 import SwiftUI
 
-// MARK: - RunningGuideTabItem
+// MARK: - RunGuideExpTabItem
 
-struct RunningGuideTabItem: View {
+struct RunGuideExpTabItem: View {
 
     // MARK: Internal
 
     var body: some View {
-        ForEach(runningGuideArrs.indices, id: \.self) { index in
+        ForEach(arrsRunGuideExpTabItem.indices, id: \.self) { index in
             HStack(alignment: .center, spacing: 8.0) {
-                Image(runningGuideArrs[index].image)
+                Image(arrsRunGuideExpTabItem[index].image)
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: UIScreen.main.bounds.width * 0.28, height: UIScreen.main.bounds.height * 0.14)
                     .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 5))
 
                 VStack(alignment: .leading, spacing: 5.0) {
-                    Text(runningGuideArrs[index].title)
+                    Text(arrsRunGuideExpTabItem[index].title)
                         .font(.system(size: 15))
                         .fontWeight(.regular)
                         .foregroundColor(Color.gray)
                         .lineLimit(1)
 
-                    Text(runningGuideArrs[index].subtitle)
+                    Text(arrsRunGuideExpTabItem[index].subtitle)
                         .font(.system(size: 15))
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)
 
-                    Text(runningGuideArrs[index].text)
+                    Text(arrsRunGuideExpTabItem[index].text)
                         .font(.system(size: 15))
                         .fontWeight(.regular)
                         .foregroundColor(Color.gray)
@@ -50,13 +50,13 @@ struct RunningGuideTabItem: View {
 
     // MARK: Private
 
-    private var runningGuideArrs = RunningGuideViewModel().getRunningGuideArrs
+    private var arrsRunGuideExpTabItem = RunGuideExpItemVM().getArrsRunGuideExpItem
 }
 
-// MARK: - RunningGuideItem_Previews
+// MARK: - RunGuideExpTabItem_Previews
 
-struct RunningGuideItem_Previews: PreviewProvider {
+struct RunGuideExpTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        RunningGuideTabItem()
+        RunGuideExpTabItem()
     }
 }

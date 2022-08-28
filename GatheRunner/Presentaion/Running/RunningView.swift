@@ -17,21 +17,21 @@ struct RunningView: View {
     var body: some View {
         VStack(alignment: .center) {
             Text("Header View")
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.1421)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.getHeightby(ratio: 0.1421))
             HStack {
-                commonBtn(
+                MenuBtn(
                     title: "바로 시작",
                     fontSize: 14,
                     isToggled: $justStartButtonIsSelected,
                     isOtherToggled: $runningGuideButtonIsSelected)
                     .padding(15)
-                commonBtn(
+                MenuBtn(
                     title: "러닝 가이드",
                     fontSize: 14,
                     isToggled: $runningGuideButtonIsSelected,
                     isOtherToggled: $justStartButtonIsSelected)
             }
-            .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.0355, alignment: .leading)
+            .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeightby(ratio: 0.0355), alignment: .leading)
             .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
 
             if justStartButtonIsSelected {
@@ -47,9 +47,9 @@ struct RunningView: View {
     }
 }
 
-// MARK: - commonBtn
+// MARK: - MenuBtn
 
-struct commonBtn: View {
+struct MenuBtn: View {
     var title: String
     var fontSize: Int
     @Binding var isToggled: Bool
@@ -68,7 +68,6 @@ struct commonBtn: View {
         .font(.system(size: CGFloat(fontSize)))
     }
 }
-
 
 // MARK: - RunningView_Previews
 
