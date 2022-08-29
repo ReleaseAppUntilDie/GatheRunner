@@ -199,8 +199,8 @@ struct Graph: View {
     let cellHeight: CGFloat
     let lineWidth = 0.5
     let lingColor = Color(uiColor: .systemGray5)
-    let bottomLabels = ["월","화","수","목","금","토","일","test"]
-    var mockData = [10,2,3,4,5,5,7,15]
+    let bottomLabels = ["월","화","수","목","금","토","일","33"]
+    var mockData = [10,2,3,4,5,5,7,11]
 
     var body: some View {
         VStack(alignment:.leading) {
@@ -219,11 +219,17 @@ struct Graph: View {
 
                 HStack(alignment:.bottom,spacing: 0) {
                     ForEach(0..<bottomLabels.count) { index in
-                        Rectangle()
-                            .fill(.green)
-                            .frame(width: 10, height: cellHeight * 3.0 * Double(mockData[index]) / 15.0)
-                            .padding(.horizontal,graphWitdh / CGFloat(bottomLabels.count) / 2 - 5)
-                            .offset(y: -cellHeight / 2)
+                        VStack(spacing:0) {
+                            Text("\(mockData[index])")
+                                .font(.system(size: 8, weight: .regular, design: .rounded))
+                                .foregroundColor(.gray)
+                            Rectangle()
+                                .fill(.green)
+                                .frame(width: 10, height: cellHeight * 3.0 * Double(mockData[index]) / 15.0)
+                                .cornerRadius(3,corners: [.topLeft,.topRight])
+                        }
+                        .padding(.horizontal,graphWitdh / CGFloat(bottomLabels.count) / 2 - 5)
+                        .offset(y: -cellHeight / 2)
                     }
                 }
 
@@ -259,7 +265,7 @@ extension Graph {
     func lineWithText(text: String) -> some View {
         HStack {
             Rectangle()
-                .frame(width: graphWitdh, height: 0.5)
+                .frame(width: graphWitdh, height: lineWidth)
                 .foregroundColor(lingColor)
             Text(text)
                 .font(.system(size: 10, weight: .regular, design: .rounded))
