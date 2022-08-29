@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RunGuideExpItem: Identifiable {
+struct RunGuideExperienceItem: Identifiable {
     let id = UUID()
     var image: String
     var title: String

@@ -14,7 +14,7 @@ struct JustStartView: View {
     @StateObject private var manager = LocationManager()
     @Binding var selected: Int
     let timer = Timer.publish(every: 5.5, on: .main, in: .default).autoconnect()
-    var runningGuideArrs = RunGuideExpItemVM().getArrsRunGuideExpItem
+    var runningGuideArrs = RunGuideExperienceItemVM().getArrsRunGuideExperienceItem
     let forMapRadialGradient =
         Gradient(colors: [Color.white.opacity(0), Color.white, Color.white, Color.white, Color.white, Color.white.opacity(1)])
 
@@ -36,7 +36,7 @@ struct JustStartView: View {
     var featuredTabView: some View {
         VStack {
             TabView(selection: $selected) {
-                RunGuideExpTabItem()
+                RunGuideExperienceTabItem()
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.getHeightby(ratio: 0.2))
