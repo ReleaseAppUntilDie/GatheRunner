@@ -1,11 +1,5 @@
 # GatheRunner
+프로젝트 완성될때 까지 함께 달려!!!!!
 
-This project aims to share useful tutorials with other developers around the world.
-
-## GatheRunner 미리보기
-
-업데이트 예정
-
-### Requirements
-
-업데이트 예정
+# Commit Message / PR 작성 방법
+https://velog.io/@ye-ji/Git-PR-%EC%9E%98-%EC%93%B0%EB%8A%94-%EB%B0%A9%EB%B2%95
