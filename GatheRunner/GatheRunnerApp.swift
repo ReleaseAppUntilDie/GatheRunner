@@ -19,12 +19,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct GatheRunnerApp: App {
-    // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            AuthenticationView()
         }
     }
 }
