@@ -23,6 +23,9 @@ struct GatheRunnerApp: App {
 
     var body: some Scene {
         WindowGroup {
+            
+            // MARK: - 자동로그인 관련 기능 구현전까지, 임시로 무조건 인증화면 거치게 구현
+
             AuthenticationView()
         }
     }

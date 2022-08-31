@@ -9,11 +9,6 @@ import Combine
 
 class AuthenticationViewModel: ObservableObject {
 
-    // MARK: Lifecycle
-
-
-    init() { }
-
     // MARK: Internal
 
     @Published var email = ""
@@ -21,7 +16,6 @@ class AuthenticationViewModel: ObservableObject {
     @Published var isAuth: Bool?
 
     var cancelBag = Set<AnyCancellable>()
-
 
     func loginUser() {
         AuthenticationService.signIn(withEmail: email, password: password)
@@ -31,6 +25,9 @@ class AuthenticationViewModel: ObservableObject {
                 case .finished: break
                 }
             } receiveValue: { [weak self] data in
+                
+                // MARK: - userSettings 구현 후 로그인 및 회원가입후 토큰 저장과 자동로그인 구현
+
                 self?.isAuth = true
             }
             .store(in: &cancelBag)
@@ -43,7 +40,7 @@ class AuthenticationViewModel: ObservableObject {
                 case .failure(let error): print(error)
                 case .finished: break
                 }
-            } receiveValue: { [weak self] _ in
+            } receiveValue: { [weak self] data in
                 self?.isAuth = true
             }
             .store(in: &cancelBag)

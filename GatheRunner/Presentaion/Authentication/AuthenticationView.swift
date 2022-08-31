@@ -14,7 +14,7 @@ struct AuthenticationView: View {
     
     // MARK: Internal
     
-    @State var showViewLink = false
+    @State var isLink = false
     
     var body: some View {
         NavigationView {
@@ -24,7 +24,7 @@ struct AuthenticationView: View {
                 passwordField
                 Spacer()
                 checkButton
-                mainTabViewLink
+                signInNaviLink
             }
             .navigationTitle(isLogin ? "Welcome Back" : "Welcome")
             .onAppear { bind() }
@@ -66,10 +66,10 @@ struct AuthenticationView: View {
             .cornerRadius(8)
     }
     
-    var mainTabViewLink: some View {
+    var signInNaviLink: some View {
         NavigationLink(
             destination: MainTabView(),
-            isActive: $showViewLink,
+            isActive: $isLink,
             label: { EmptyView() }
         )
     }
@@ -86,7 +86,7 @@ extension AuthenticationView {
             .dropFirst()
             .compactMap { $0 }
             .sink(receiveValue: { result in
-                showViewLink = result
+                isLink = result
             })
             .store(in: &viewModel.cancelBag)
     }
