@@ -8,12 +8,28 @@
 import Combine
 import FirebaseAuth
 
-class AuthenticationService {
-    static func signIn(withEmail email: String, password: String) -> AnyPublisher<AuthDataResult, Error> {
-        Auth.auth().signIn(withEmail: email, password: password) as AnyPublisher<AuthDataResult, Error>
+class AuthenticationService: AuthenticationServiceProtocol {
+    func signIn(withEmail email: String, password: String) -> AnyPublisher<String, Error> {
+        Future<String, Error> { promise in
+            Auth.auth().signIn(withEmail: email, password: password) { auth, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else if let auth = auth {
+                    promise(.success(auth.user.refreshToken ?? ""))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 
-    static func createUser(withEmail email: String, password: String) -> AnyPublisher<AuthDataResult, Error> {
-        Auth.auth().createUser(withEmail: email, password: password) as AnyPublisher<AuthDataResult, Error>
+    func signUp(withEmail email: String, password: String) -> AnyPublisher<String, Error> {
+        Future<String, Error> { promise in
+            Auth.auth().createUser(withEmail: email, password: password) { auth, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else if let auth = auth {
+                    promise(.success(auth.user.refreshToken ?? ""))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 }
