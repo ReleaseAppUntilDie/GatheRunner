@@ -40,7 +40,7 @@ extension MainTabView {
     }
 
     private func createTabView(_ tabItem: TabItem) -> some View {
-        NavigationView { selectedView(tabItem.tag) }
+        NavigationView { selectedView(tabItem.tag).navigationBarHidden(true) }
             .tabItem {
                 Label(title: { tabItem.title }, icon: { tabItem.icon })
             }
