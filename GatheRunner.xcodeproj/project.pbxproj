@@ -25,7 +25,6 @@
 		DA58421E2893C27700554B5D /* RunningGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421D2893C27700554B5D /* RunningGuideViewModel.swift */; };
 		DAEA9315287AED7200349465 /* RunningGuideTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunningGuideTabItem.swift */; };
 		DAEA931A287D184900349465 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* FloatingView.swift */; };
-		DAEBE67528B7477400E3D5F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAEBE67428B7477400E3D5F8 /* GoogleService-Info.plist */; };
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
 		E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671028B75B6600DFA1C4 /* LocationManager.swift */; };
 		E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671228B75BA200DFA1C4 /* Int+Extensions.swift */; };
@@ -41,6 +40,9 @@
 		E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC3286DFB2D003E23DE /* MainTabView.swift */; };
 		E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */; };
 		E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */; };
+		E372CAB528C8E81700212124 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E372CAB428C8E81700212124 /* GoogleService-Info.plist */; };
+		E372CAB728CA1DAF00212124 /* ImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372CAB628CA1DAF00212124 /* ImageStyle.swift */; };
+		E372CAB928CA1F6200212124 /* View+onLongPressGestureWithAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372CAB828CA1F6200212124 /* View+onLongPressGestureWithAlert.swift */; };
 		E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */; };
 		E39F0B5C28B75D0B0086957F /* RunningGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E278E28B604A1004C0798 /* RunningGuide.swift */; };
 		E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E279128B604B7004C0798 /* GraphViewModel.swift */; };
@@ -102,7 +104,6 @@
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunningGuideTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideTabItem.swift; sourceTree = "<group>"; };
 		DAEA9319287D184900349465 /* FloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
-		DAEBE67428B7477400E3D5F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E305671028B75B6600DFA1C4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E305671228B75BA200DFA1C4 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
@@ -119,6 +120,9 @@
 		E35EFEC3286DFB2D003E23DE /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModifier.swift; sourceTree = "<group>"; };
+		E372CAB428C8E81700212124 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E372CAB628CA1DAF00212124 /* ImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyle.swift; sourceTree = "<group>"; };
+		E372CAB828CA1F6200212124 /* View+onLongPressGestureWithAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onLongPressGestureWithAlert.swift"; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
 		E3D349D8286C20D200618AC3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				E305671228B75BA200DFA1C4 /* Int+Extensions.swift */,
 				DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */,
 				DA58421A2893C24A00554B5D /* Array+Extensions.swift */,
+				E372CAB828CA1F6200212124 /* View+onLongPressGestureWithAlert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -363,7 +368,7 @@
 			children = (
 				DA5165A628A8B3E60024BE22 /* .swiftformat */,
 				DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */,
-				DAEBE67428B7477400E3D5F8 /* GoogleService-Info.plist */,
+				E372CAB428C8E81700212124 /* GoogleService-Info.plist */,
 				E3D349D5286C20D200618AC3 /* GatheRunner */,
 				E3D349E6286C20D500618AC3 /* GatheRunnerTests */,
 				E3D349F0286C20D500618AC3 /* GatheRunnerUITests */,
@@ -456,6 +461,7 @@
 				E3E7480A289284B200F40457 /* TextStyle.swift */,
 				E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */,
 				E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */,
+				E372CAB628CA1DAF00212124 /* ImageStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -597,7 +603,7 @@
 			files = (
 				DA5165A728A8B3E60024BE22 /* .swiftformat in Resources */,
 				DA2FFD3D28A8B33B006291CE /* .swiftlint.yml in Resources */,
-				DAEBE67528B7477400E3D5F8 /* GoogleService-Info.plist in Resources */,
+				E372CAB528C8E81700212124 /* GoogleService-Info.plist in Resources */,
 				E3D349DE286C20D500618AC3 /* Preview Assets.xcassets in Resources */,
 				E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */,
 			);
@@ -764,6 +770,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */,
+				E372CAB928CA1F6200212124 /* View+onLongPressGestureWithAlert.swift in Sources */,
 				E39F0B5C28B75D0B0086957F /* RunningGuide.swift in Sources */,
 				E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */,
 				E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */,
@@ -794,6 +801,7 @@
 				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
 				E3DA2F5828B76098001E9220 /* Constants.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
+				E372CAB728CA1DAF00212124 /* ImageStyle.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,

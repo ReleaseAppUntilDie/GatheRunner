@@ -17,8 +17,7 @@ struct MeasurementView: View {
         VStack(spacing: 30) {
             timerView
             otherInfoView
-            onOffButton
-                .accessibilityIdentifier("onOffButton")
+            buttons
         }
     }
 
@@ -53,6 +52,23 @@ extension MeasurementView {
         }
     }
 
+    var buttons: some View {
+        HStack(spacing: 20) {
+            stopButton
+                .isEmpty(logicalOperator: .none, [isRunning == true])
+            onOffButton
+                .accessibilityIdentifier("onOffButton")
+        }
+    }
+
+    var stopButton: some View {
+        Button(action: { }) {
+            Image("stop")
+                .asIconStyle(withMaxWidth: 100, withMaxHeight: 100)
+                .tapAndLongPressWithAlert(longPressAction: manager.didUnSetStartLocation, alertText: "길게 눌러주세요.")
+        }
+    }
+
     var onOffButton: some View {
         Toggle("", isOn: $isRunning)
             .onChange(of: isRunning) {
@@ -62,7 +78,7 @@ extension MeasurementView {
                 }
                 manager.didSetStartLocation()
             }
-            .toggleStyle(IconStyle(onImage: "play", offImage: "stop"))
+            .toggleStyle(IconStyle(onImage: "play", offImage: "pause"))
     }
 }
 
