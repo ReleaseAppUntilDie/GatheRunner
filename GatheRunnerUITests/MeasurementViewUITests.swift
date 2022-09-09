@@ -23,7 +23,7 @@ class MeasurementViewUITests: XCTestCase {
 
         moveButton = app.buttons["moveButton"]
         runStartButton = app.buttons["runStartButton"]
-        onOffButton = app.switches["onOffButton"]
+        onOffButton = app.switches["resumeButton"]
         timerView = app.staticTexts["timerView"]
 
         app.launch()

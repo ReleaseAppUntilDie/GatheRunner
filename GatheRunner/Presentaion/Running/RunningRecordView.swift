@@ -1,5 +1,5 @@
 //
-//  MeasurementView.swift
+//  RunningRecordView.swift
 //  GatheRunner
 //
 //  Created by 김동현 on 2022/08/16.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-// MARK: - MeasurementView
+// MARK: - RunningRecordView
 
-struct MeasurementView: View {
+struct RunningRecordView: View {
 
-    // MARK: Internal
+    // MARK: Internal runningRecordView
 
     var body: some View {
         VStack(spacing: 30) {
             timerView
-            otherInfoView
-            buttons
+            realTimeRecordView
+            stopWatchButttons
         }
     }
 
@@ -27,7 +27,7 @@ struct MeasurementView: View {
     @EnvironmentObject var manager: LocationManager
 }
 
-extension MeasurementView {
+extension RunningRecordView {
     var timerView: some View {
         VStack(spacing: 10) {
             Text("\(manager.minutes) : \(manager.seconds)")
@@ -37,7 +37,7 @@ extension MeasurementView {
         }
     }
 
-    var otherInfoView: some View {
+    var realTimeRecordView: some View {
         HStack(spacing: 30) {
             VStack(spacing: 10) {
                 Text(String(format: "%.2f", manager.distance))
@@ -52,24 +52,24 @@ extension MeasurementView {
         }
     }
 
-    var buttons: some View {
+    var stopWatchButttons: some View {
         HStack(spacing: 20) {
             stopButton
                 .isEmpty(logicalOperator: .none, [isRunning == true])
-            onOffButton
-                .accessibilityIdentifier("onOffButton")
+            resumeButton
+                .accessibilityIdentifier("resumeButton")
         }
     }
 
     var stopButton: some View {
         Button(action: { }) {
             Image("stop")
-                .asIconStyle(withMaxWidth: 100, withMaxHeight: 100)
-                .tapAndLongPressWithAlert(longPressAction: manager.didUnSetStartLocation, alertText: "길게 눌러주세요.")
+                .asIconStyle(withMaxWidth: 82, withMaxHeight: 82)
+                .setAlertWhenTappedAndLongPress(withAction: manager.didUnSetStartLocation, alertText: "길게 눌러주세요.")
         }
     }
 
-    var onOffButton: some View {
+    var resumeButton: some View {
         Toggle("", isOn: $isRunning)
             .onChange(of: isRunning) {
                 guard $0 else {
@@ -78,14 +78,14 @@ extension MeasurementView {
                 }
                 manager.didSetStartLocation()
             }
-            .toggleStyle(IconStyle(onImage: "play", offImage: "pause"))
+            .toggleStyle(IconStyle(onImage: "play", offImage: "pause", size: 100))
     }
 }
 
-// MARK: - MeasurementView_Previews
+// MARK: - RunningRecordView_Previews
 
-struct MeasurementView_Previews: PreviewProvider {
+struct RunningRecordView_Previews: PreviewProvider {
     static var previews: some View {
-        MeasurementView().environmentObject(LocationManager())
+        RunningRecordView().environmentObject(LocationManager())
     }
 }

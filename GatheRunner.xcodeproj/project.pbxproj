@@ -30,7 +30,7 @@
 		E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671228B75BA200DFA1C4 /* Int+Extensions.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
-		E351783A28ABC9E50088003B /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* MeasurementView.swift */; };
+		E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* RunningRecordView.swift */; };
 		E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEB8286DFB2D003E23DE /* ClubView.swift */; };
 		E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBA286DFB2D003E23DE /* HomeView.swift */; };
 		E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBC286DFB2D003E23DE /* RunningView.swift */; };
@@ -42,7 +42,7 @@
 		E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */; };
 		E372CAB528C8E81700212124 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E372CAB428C8E81700212124 /* GoogleService-Info.plist */; };
 		E372CAB728CA1DAF00212124 /* ImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372CAB628CA1DAF00212124 /* ImageStyle.swift */; };
-		E372CAB928CA1F6200212124 /* View+onLongPressGestureWithAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372CAB828CA1F6200212124 /* View+onLongPressGestureWithAlert.swift */; };
+		E372CAB928CA1F6200212124 /* AlertWhenTappedAndLongPressModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372CAB828CA1F6200212124 /* AlertWhenTappedAndLongPressModifier.swift */; };
 		E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */; };
 		E39F0B5C28B75D0B0086957F /* RunningGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E278E28B604A1004C0798 /* RunningGuide.swift */; };
 		E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E279128B604B7004C0798 /* GraphViewModel.swift */; };
@@ -110,7 +110,7 @@
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E350EA1528AD2DCC00F85FA1 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toggle+IconStyle.swift"; sourceTree = "<group>"; };
-		E351783928ABC9E50088003B /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
+		E351783928ABC9E50088003B /* RunningRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordView.swift; sourceTree = "<group>"; };
 		E35EFEB8286DFB2D003E23DE /* ClubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubView.swift; sourceTree = "<group>"; };
 		E35EFEBA286DFB2D003E23DE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E35EFEBC286DFB2D003E23DE /* RunningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningView.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModifier.swift; sourceTree = "<group>"; };
 		E372CAB428C8E81700212124 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E372CAB628CA1DAF00212124 /* ImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyle.swift; sourceTree = "<group>"; };
-		E372CAB828CA1F6200212124 /* View+onLongPressGestureWithAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onLongPressGestureWithAlert.swift"; sourceTree = "<group>"; };
+		E372CAB828CA1F6200212124 /* AlertWhenTappedAndLongPressModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWhenTappedAndLongPressModifier.swift; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
 		E3D349D8286C20D200618AC3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -238,7 +238,6 @@
 				E305671228B75BA200DFA1C4 /* Int+Extensions.swift */,
 				DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */,
 				DA58421A2893C24A00554B5D /* Array+Extensions.swift */,
-				E372CAB828CA1F6200212124 /* View+onLongPressGestureWithAlert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -270,6 +269,15 @@
 				E305671028B75B6600DFA1C4 /* LocationManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		E337032C28CB2F2F005689E4 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */,
+				E372CAB828CA1F6200212124 /* AlertWhenTappedAndLongPressModifier.swift */,
+			);
+			path = Modifier;
 			sourceTree = "<group>";
 		};
 		E35EFEB5286DFAE8003E23DE /* Recovered References */ = {
@@ -324,7 +332,7 @@
 				DA58421C2893C26200554B5D /* ViewModel */,
 				DA5842242893C2E700554B5D /* RunningGuideTabItem */,
 				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
-				E351783928ABC9E50088003B /* MeasurementView.swift */,
+				E351783928ABC9E50088003B /* RunningRecordView.swift */,
 				DA33695728790DBE00FA13AE /* JustStartView.swift */,
 				DA33695928790E0C00FA13AE /* RunningGuideView.swift */,
 				DAEA9319287D184900349465 /* FloatingView.swift */,
@@ -449,7 +457,7 @@
 		E3D43D742876BF0E004C54C3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */,
+				E337032C28CB2F2F005689E4 /* Modifier */,
 				E3D43D752876BF27004C54C3 /* Style */,
 			);
 			path = UI;
@@ -770,7 +778,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */,
-				E372CAB928CA1F6200212124 /* View+onLongPressGestureWithAlert.swift in Sources */,
+				E372CAB928CA1F6200212124 /* AlertWhenTappedAndLongPressModifier.swift in Sources */,
 				E39F0B5C28B75D0B0086957F /* RunningGuide.swift in Sources */,
 				E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */,
 				E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */,
@@ -794,7 +802,7 @@
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				E3DA2F5928B76098001E9220 /* Alignment+Extention.swift in Sources */,
 				DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */,
-				E351783A28ABC9E50088003B /* MeasurementView.swift in Sources */,
+				E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
 				DA58421E2893C27700554B5D /* RunningGuideViewModel.swift in Sources */,
