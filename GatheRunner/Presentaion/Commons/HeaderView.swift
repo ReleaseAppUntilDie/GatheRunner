@@ -50,7 +50,8 @@ struct HeaderView: View {
                         .renderingMode(.template)
                         .foregroundColor(.black)
                         .frame(width: 25, height: 25)
-                }.isEmpty(logicalOperator: .or, [type == .activity,type == .club])
+                }
+                .isEmpty(logicalOperator: .or, [type == .activity,type == .club]) { EmptyView() }
             }.padding(.horizontal,10)
                 .padding(.bottom)
             Path { path in

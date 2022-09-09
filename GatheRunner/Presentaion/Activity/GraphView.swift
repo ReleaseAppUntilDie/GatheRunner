@@ -132,7 +132,7 @@ struct SimplifiedStatistics: View {
                     Text(buttonText)
                         .foregroundColor(.black)
                     Image(systemName: "chevron.down")
-                        .isEmpty(logicalOperator: .and, [selectedTimeUnit != .whole])
+                        .isEmpty(logicalOperator: .and, [selectedTimeUnit != .whole]) { EmptyView() }
                 }
             }
             .disabled(selectedTimeUnit == .whole)
