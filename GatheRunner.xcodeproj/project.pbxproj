@@ -59,7 +59,7 @@
 		E3DA2F5B28B76098001E9220 /* GatherNaviBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA2F5628B7607F001E9220 /* GatherNaviBar.swift */; };
 		E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E748082892837700F40457 /* RunSplashScreen.swift */; };
 		E3E7480B289284B200F40457 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E7480A289284B200F40457 /* TextStyle.swift */; };
-		E3F83E6A28AF641D000CA1B5 /* MeasurementViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */; };
+		E3F83E6A28AF641D000CA1B5 /* RunningRecordViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F83E6928AF641D000CA1B5 /* RunningRecordViewUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,7 +145,7 @@
 		E3DA2F5728B7607F001E9220 /* TouchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchLocationView.swift; sourceTree = "<group>"; };
 		E3E748082892837700F40457 /* RunSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSplashScreen.swift; sourceTree = "<group>"; };
 		E3E7480A289284B200F40457 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
-		E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewUITests.swift; sourceTree = "<group>"; };
+		E3F83E6928AF641D000CA1B5 /* RunningRecordViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordViewUITests.swift; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyActivityView.swift; sourceTree = "<group>"; };
 		EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistoryView.swift; sourceTree = "<group>"; };
@@ -432,7 +432,7 @@
 			children = (
 				E3D349F1286C20D500618AC3 /* GatheRunnerUITests.swift */,
 				E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */,
-				E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */,
+				E3F83E6928AF641D000CA1B5 /* RunningRecordViewUITests.swift */,
 			);
 			path = GatheRunnerUITests;
 			sourceTree = "<group>";
@@ -833,7 +833,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3F83E6A28AF641D000CA1B5 /* MeasurementViewUITests.swift in Sources */,
+				E3F83E6A28AF641D000CA1B5 /* RunningRecordViewUITests.swift in Sources */,
 				E3D349F4286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift in Sources */,
 				E3D349F2286C20D500618AC3 /* GatheRunnerUITests.swift in Sources */,
 			);

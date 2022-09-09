@@ -1,5 +1,5 @@
 //
-//  MeasurementViewUITests.swift
+//  RunningRecordViewUITests.swift
 //  GatheRunnerUITests
 //
 //  Created by 김동현 on 2022/08/19.
@@ -8,7 +8,7 @@
 import SwiftUI
 import XCTest
 
-class MeasurementViewUITests: XCTestCase {
+class RunningRecordViewUITests: XCTestCase {
     var app: XCUIApplication!
     var moveButton: XCUIElement!
     var runStartButton: XCUIElement!
