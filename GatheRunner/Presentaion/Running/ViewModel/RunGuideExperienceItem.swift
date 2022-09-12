@@ -1,5 +1,5 @@
 //
-//  RunGuideExperienceItemVM.swift
+//  RunGuideExperienceVM.swift
 //  GatheRunner
 //
 //  Created by cho on 2022/07/16.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class RunGuideExperienceItemVM: ObservableObject {
+class RunGuideExperienceVM: ObservableObject {
 
     // MARK: Internal
 
