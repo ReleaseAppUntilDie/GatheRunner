@@ -29,13 +29,16 @@ extension MainTabView {
     }
 
 
-    private func selectedView(_ tag: Int) -> AnyView {
-        switch tag {
-        case 1: return AnyView(HomeView())
-        case 2: return AnyView(RunningView())
-        case 3: return AnyView(ClubView())
-        case 4: return AnyView(ActivityView())
-        default: return AnyView(HomeView())
+
+    private func selectedView(_ tag: Int) -> some View {
+        Group {
+            switch tag {
+            case 1: HomeView()
+            case 2: RunningView()
+            case 3: ClubView()
+            case 4: ActivityView()
+            default: HomeView()
+            }
         }
     }
 
