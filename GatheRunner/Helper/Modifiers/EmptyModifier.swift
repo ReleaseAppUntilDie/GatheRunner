@@ -32,7 +32,6 @@ struct EmptyModifier: ViewModifier {
 
     // MARK: Private
 
-
     private var checkedLogicalOperator: Bool? {
         switch logicalOperator {
         case .and: return false

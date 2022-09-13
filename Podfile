@@ -8,7 +8,8 @@ target 'GatheRunner' do
   # Pods for GatheRunner
   pod 'SwiftFormat/CLI'
   pod 'SwiftLint'
-
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
 
   target 'GatheRunnerTests' do
     inherit! :search_paths
