@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		19AB858B6A67A1FD7E20CE20 /* Pods_GatheRunner_GatheRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F3E5D65BF8160E66CE0901 /* Pods_GatheRunner_GatheRunnerUITests.framework */; };
-		38CAF70028934CD0006A6158 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CAF6FF28934CD0006A6158 /* GraphView.swift */; };
 		6F1E0DD9287D43410025A671 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0DD8287D43410025A671 /* SettingItemView.swift */; };
 		6F1E0DDB287D43620025A671 /* DetailControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0DDA287D43620025A671 /* DetailControllView.swift */; };
 		6F1E0DDE287D43AF0025A671 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0DDD287D43AF0025A671 /* SettingModel.swift */; };
@@ -58,6 +57,10 @@
 		E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E748082892837700F40457 /* RunSplashScreen.swift */; };
 		E3E7480B289284B200F40457 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E7480A289284B200F40457 /* TextStyle.swift */; };
 		E3F83E6A28AF641D000CA1B5 /* MeasurementViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */; };
+		EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8928D07C1000D78D28 /* PeriodView.swift */; };
+		EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8A28D07C1000D78D28 /* GraphView.swift */; };
+		EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8B28D07C1000D78D28 /* Graph.swift */; };
+		EA3D3F9028D07C1000D78D28 /* SimplifiedStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8C28D07C1000D78D28 /* SimplifiedStatistics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +85,6 @@
 		23E6AD997E8908FB2955C064 /* Pods-GatheRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.release.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.release.xcconfig"; sourceTree = "<group>"; };
 		3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3868EFEEEC4621DAB4C4BABD /* Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner-GatheRunnerUITests/Pods-GatheRunner-GatheRunnerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		38CAF6FF28934CD0006A6158 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		6F1E0DD8287D43410025A671 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
 		6F1E0DDA287D43620025A671 /* DetailControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailControllView.swift; sourceTree = "<group>"; };
 		6F1E0DDD287D43AF0025A671 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
@@ -143,6 +145,10 @@
 		E3E7480A289284B200F40457 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewUITests.swift; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA3D3F8928D07C1000D78D28 /* PeriodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodView.swift; sourceTree = "<group>"; };
+		EA3D3F8A28D07C1000D78D28 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		EA3D3F8B28D07C1000D78D28 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		EA3D3F8C28D07C1000D78D28 /* SimplifiedStatistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimplifiedStatistics.swift; sourceTree = "<group>"; };
 		EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyActivityView.swift; sourceTree = "<group>"; };
 		EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistoryView.swift; sourceTree = "<group>"; };
 		EA5E278E28B604A1004C0798 /* RunningGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningGuide.swift; sourceTree = "<group>"; };
@@ -341,10 +347,10 @@
 		E35EFEC0286DFB2D003E23DE /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				EA3D3F8828D07C0000D78D28 /* Graph */,
 				EA5E279028B604B7004C0798 /* ViewModel */,
 				E35EFEC1286DFB2D003E23DE /* ActivityView.swift */,
 				EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */,
-				38CAF6FF28934CD0006A6158 /* GraphView.swift */,
 				EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */,
 			);
 			path = Activity;
@@ -466,6 +472,17 @@
 				E335FAF828B7610300835F72 /* SelectedTab.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		EA3D3F8828D07C0000D78D28 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				EA3D3F8B28D07C1000D78D28 /* Graph.swift */,
+				EA3D3F8A28D07C1000D78D28 /* GraphView.swift */,
+				EA3D3F8928D07C1000D78D28 /* PeriodView.swift */,
+				EA3D3F8C28D07C1000D78D28 /* SimplifiedStatistics.swift */,
+			);
+			path = Graph;
 			sourceTree = "<group>";
 		};
 		EA5E278D28B604A1004C0798 /* Model */ = {
@@ -767,8 +784,10 @@
 				E39F0B5C28B75D0B0086957F /* RunningGuide.swift in Sources */,
 				E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */,
 				E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */,
+				EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */,
 				E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */,
 				E3DA2F5B28B76098001E9220 /* GatherNaviBar.swift in Sources */,
+				EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */,
 				E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */,
 				E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */,
 				E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */,
@@ -777,11 +796,13 @@
 				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
 				DAEA931A287D184900349465 /* FloatingView.swift in Sources */,
+				EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
 				6F1E0DE0287D44060025A671 /* TemplateView.swift in Sources */,
 				6F1E0DD9287D43410025A671 /* SettingItemView.swift in Sources */,
 				6F795EF92876743C007FA0B2 /* SettingView.swift in Sources */,
+				EA3D3F9028D07C1000D78D28 /* SimplifiedStatistics.swift in Sources */,
 				E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */,
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
@@ -797,10 +818,10 @@
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,
-				38CAF70028934CD0006A6158 /* GraphView.swift in Sources */,
 				6F1E0DDE287D43AF0025A671 /* SettingModel.swift in Sources */,
 				E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */,
 				DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */,
+				EA34523E28C78850005C0406 /* SimplifiedStatistics.swift in Sources */,
 				DAEA9315287AED7200349465 /* RunningGuideTabItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

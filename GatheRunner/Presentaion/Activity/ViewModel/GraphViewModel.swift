@@ -2,7 +2,7 @@
 //  GraphViewModel.swift
 //  GatheRunner
 //
-//  Created by 김현진 on 2022/08/15.
+//  Created by hanjaeseung on 2022/08/15.
 //
 
 import SwiftUI
@@ -11,8 +11,7 @@ class GraphViewModel: ObservableObject {
 
     @Published var pickerItemList = [String]()
 
-
-    func updatePicker(timeUnit : TimeUnit) {
+    func updatePicker(timeUnit: TimeUnit) {
         switch timeUnit {
         case .week:
             let beforeTwoWeeks = beforeTwoWeeks()
@@ -31,16 +30,16 @@ class GraphViewModel: ObservableObject {
         }
     }
 
-    func beforeTwoWeeks() -> (firstDay:Int?,firstMonth:Int?,lastDay:Int?,lastMonth:Int?) {
+    func beforeTwoWeeks() -> (firstDay: Int?,firstMonth: Int?,lastDay: Int?,lastMonth: Int?) {
         let date = Date()
         guard let weekDay = Calendar.current.dateComponents([.weekday], from: date).weekday else {
             return (nil,nil,nil,nil)
         }
 
-        guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(14+(weekDay-2)), to: date) else {
+        guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(14 + (weekDay - 2)), to: date) else {
             return (nil,nil,nil,nil)
         }
-        guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(7+(weekDay-1)), to: date) else {
+        guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(7 + (weekDay - 1)), to: date) else {
             return (nil,nil,nil,nil)
         }
 
@@ -49,16 +48,16 @@ class GraphViewModel: ObservableObject {
         return (firstDateAndMonth.day,firstDateAndMonth.month,lastDateAndMonth.day,lastDateAndMonth.month)
     }
 
-    func beforeThreeWeeks() -> (firstDay:Int?,firstMonth:Int?,lastDay:Int?,lastMonth:Int?) {
+    func beforeThreeWeeks() -> (firstDay: Int?,firstMonth: Int?,lastDay: Int?,lastMonth: Int?) {
         let date = Date()
         guard let weekDay = Calendar.current.dateComponents([.weekday], from: date).weekday else {
             return (nil,nil,nil,nil)
         }
 
-        guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(21+(weekDay-2)), to: date) else {
+        guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(21 + (weekDay - 2)), to: date) else {
             return (nil,nil,nil,nil)
         }
-        guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(14+(weekDay-1)), to: date) else {
+        guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(14 + (weekDay - 1)), to: date) else {
             return (nil,nil,nil,nil)
         }
 
