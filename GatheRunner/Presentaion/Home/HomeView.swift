@@ -23,7 +23,7 @@ struct HomeView: View {
                 .frame(width: 25, height: 25)
         }
         .environmentObject(selectedTab)
-        .buttonStyle(TabBarButton(TabItem.MainComponent.run.tag))
+        .buttonStyle(TabBarButton(MainTabView.Component.run.tag))
         .accessibilityIdentifier("moveButton")
     }
 }
