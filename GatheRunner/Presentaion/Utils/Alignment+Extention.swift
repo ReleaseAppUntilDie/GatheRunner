@@ -18,7 +18,7 @@ extension VerticalAlignment {
 }
 
 extension HorizontalAlignment {
-    struct CustomAlignment : AlignmentID {
+    struct CustomAlignment: AlignmentID {
         static func defaultValue(in context: ViewDimensions) -> CGFloat {
             context[HorizontalAlignment.center]
         }

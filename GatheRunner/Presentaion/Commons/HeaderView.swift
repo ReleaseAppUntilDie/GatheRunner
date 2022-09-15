@@ -16,11 +16,10 @@ enum ViewsInHeaderView {
 
 struct HeaderView: View {
 
-    let title : String
-    let type : ViewsInHeaderView
+    let title: String
+    let type: ViewsInHeaderView
 
-    let rightButtonAction : ()->()
-
+    let rightButtonAction : () -> Void
 
     var body: some View {
         ZStack(alignment:.bottom) {
@@ -54,13 +53,13 @@ struct HeaderView: View {
             }.padding(.horizontal,10)
                 .padding(.bottom)
             Path { path in
-                path.move(to: CGPoint(x: 0, y: UIScreen.getHeightby(ratio: 1/7)))
-                path.addLine(to: CGPoint(x: UIScreen.screenWidth, y: UIScreen.getHeightby(ratio: 1/7)))
+                path.move(to: CGPoint(x: 0, y: UIScreen.getHeightby(ratio: 1 / 7)))
+                path.addLine(to: CGPoint(x: UIScreen.screenWidth, y: UIScreen.getHeightby(ratio: 1 / 7)))
             }
             .stroke(style: StrokeStyle(lineWidth:1))
             .foregroundColor(.init(uiColor: .systemGray4))
 
-        }.frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1/7))
+        }.frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1 / 7))
             .ignoresSafeArea()
     }
 }
