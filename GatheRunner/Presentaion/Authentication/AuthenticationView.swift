@@ -17,10 +17,13 @@ struct AuthenticationView: View {
         NavigationView {
             VStack {
                 fieldLayer
+
                 Spacer()
+
                 submitButton
             }
         }
+        .onAppear { bindViewModel() }
     }
 
     var fieldLayer: some View {
@@ -38,25 +41,29 @@ struct AuthenticationView: View {
     }
 
     var emailField: some View {
-        TextField(LabelName.email, text: $email)
+        TextField(LabelName.email, text: $viewModel.email)
             .keyboardType(.emailAddress)
             .disableAutocorrection(true)
             .textFieldStyle(.roundedBorder)
             .frame(width: Size.width, height: Size.height, alignment: .center)
+            .alert(isPresented: $viewModel.isNotEmailValid) {
+                Alert(title: Text("이메일"), message: Text("This is a alert message"), dismissButton: .default(Text("Dismiss")))
+            }
     }
 
     var passwordField: some View {
-        SecureField(LabelName.password, text: $password)
+        SecureField(LabelName.password, text: $viewModel.password)
             .textFieldStyle(.roundedBorder)
             .frame(width: Size.width, height: Size.height, alignment: .center)
     }
 
     var submitButton: some View {
         VStack {
-            // MARK: NavigationLink 연산자로 추상화 & 버튼액션 구현 예정
+            // MARK: 환경변수를 통해서 인증시 메인탭뷰로 이동하게 처리 할 예정
 
-            NavigationLink(destination: MainTabView(), isActive: $isValiid) { EmptyView() }
-            Button { } label: { Text(isSignIn ? LabelName.signIn : LabelName.signUp).foregroundColor(.white) }
+            Button {
+                isSignIn ? viewModel.loginUser() : viewModel.createUser()
+            } label: { Text(isSignIn ? LabelName.signIn : LabelName.signUp).foregroundColor(.white) }
                 .frame(width: Size.width, height: Size.height, alignment: .center)
                 .background(Color.blue)
                 .cornerRadius(Size.cornerRadius)
@@ -67,12 +74,19 @@ struct AuthenticationView: View {
 
     @State private var isValiid = false
     @State private var isSignIn = false
+    @StateObject private var viewModel = AuthenticationViewModel()
+}
 
-    // MARK: Temp
-
-    @State private var password = ""
-    @State private var email = ""
-
+extension AuthenticationView {
+    private func bindViewModel() {
+        viewModel.$isAuthValid
+            .dropFirst()
+            .compactMap { $0 }
+            .sink(receiveValue: { result in
+                isValiid = result
+            })
+            .store(in: &viewModel.cancelBag)
+    }
 }
 
 // MARK: NameSpace
