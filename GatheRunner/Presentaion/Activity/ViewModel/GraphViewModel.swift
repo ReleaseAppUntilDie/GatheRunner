@@ -9,61 +9,98 @@ import SwiftUI
 
 class GraphViewModel: ObservableObject {
 
-    @Published var pickerItemList = [String]()
+    // MARK: Lifecycle
+
+    init() {
+        pickerItemList = [String]()
+        let periodString: ((Int,Int,Int,Int)) -> String = {
+            "\($0.0).\($0.1)~\($0.2).\($0.3)"
+        }
+        let beforeTwoWeeks = beforeTwoWeeks()
+        let beforeThreeWeeks = beforeThreeWeeks()
+
+        pickerItemList = [
+            "이번주",
+            "저번주",
+            periodString(beforeTwoWeeks),
+            periodString(beforeThreeWeeks),
+        ]
+    }
+
+    // MARK: Internal
+
+    @Published var pickerItemList: [String]
 
     func updatePicker(timeUnit: TimeUnit) {
         switch timeUnit {
         case .week:
+            let periodString: ((Int,Int,Int,Int)) -> String = {
+                "\($0.0).\($0.1)~\($0.2).\($0.3)"
+            }
             let beforeTwoWeeks = beforeTwoWeeks()
             let beforeThreeWeeks = beforeThreeWeeks()
+
             pickerItemList = [
                 "이번주",
                 "저번주",
-                "\(beforeTwoWeeks.firstMonth ?? 0)",
+                periodString(beforeTwoWeeks),
+                periodString(beforeThreeWeeks),
             ]
         case .month:
-            break
+            pickerItemList =
+                [
+                    "test",
+                    "test",
+                    "test",
+                    "test",
+                ]
         case .year:
-            break
+            pickerItemList =
+                [
+                    "test",
+                    "test",
+                    "test",
+                    "test",
+                ]
         case .whole:
             break
         }
     }
 
-    func beforeTwoWeeks() -> (firstDay: Int?,firstMonth: Int?,lastDay: Int?,lastMonth: Int?) {
+    func beforeTwoWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
         let date = Date()
         guard let weekDay = Calendar.current.dateComponents([.weekday], from: date).weekday else {
-            return (nil,nil,nil,nil)
+            return (0,0,0,0)
         }
 
         guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(14 + (weekDay - 2)), to: date) else {
-            return (nil,nil,nil,nil)
+            return (0,0,0,0)
         }
         guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(7 + (weekDay - 1)), to: date) else {
-            return (nil,nil,nil,nil)
+            return (0,0,0,0)
         }
 
         let firstDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeTwoWeeks)
         let lastDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeOneWeek)
-        return (firstDateAndMonth.day,firstDateAndMonth.month,lastDateAndMonth.day,lastDateAndMonth.month)
+        return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
     }
 
-    func beforeThreeWeeks() -> (firstDay: Int?,firstMonth: Int?,lastDay: Int?,lastMonth: Int?) {
+    func beforeThreeWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
         let date = Date()
         guard let weekDay = Calendar.current.dateComponents([.weekday], from: date).weekday else {
-            return (nil,nil,nil,nil)
+            return (0,0,0,0)
         }
 
         guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(21 + (weekDay - 2)), to: date) else {
-            return (nil,nil,nil,nil)
+            return (0,0,0,0)
         }
         guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(14 + (weekDay - 1)), to: date) else {
-            return (nil,nil,nil,nil)
+            return (0,0,0,0)
         }
 
         let firstDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeTwoWeeks)
         let lastDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeOneWeek)
-        return (firstDateAndMonth.day,firstDateAndMonth.month,lastDateAndMonth.day,lastDateAndMonth.month)
+        return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
     }
 
     func isValidMonth(year: Int, month: Int) -> Bool {

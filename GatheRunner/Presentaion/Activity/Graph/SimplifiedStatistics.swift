@@ -7,20 +7,21 @@
 
 import SwiftUI
 
-
 // MARK: - SimplifiedStatistics
 
 struct SimplifiedStatistics: View {
 
     // MARK: Lifecycle
 
-    init(selectedTimeUnit: Binding<TimeUnit>) {
+    init(selectedTimeUnit: Binding<TimeUnit>,pickerViewShowed: Binding<Bool>) {
         _selectedTimeUnit = selectedTimeUnit
+        _pickerViewShowed = pickerViewShowed
     }
 
     // MARK: Internal
 
     @Binding var selectedTimeUnit: TimeUnit
+    @Binding var pickerViewShowed: Bool
     let distance = "10.0"
     let distanceUnit = "킬로미터"
     let runningCnt = 6
@@ -38,7 +39,13 @@ struct SimplifiedStatistics: View {
 
     var body: some View {
         VStack(alignment: .leading,spacing: UIScreen.getHeightby(ratio: 0.02)) {
-            Button { } label: {
+            Button {
+                guard selectedTimeUnit != .whole else { return }
+                withAnimation(.linear) {
+                    pickerViewShowed.toggle()
+                }
+
+            } label: {
                 HStack {
                     Text(buttonText)
                         .foregroundColor(.black)
@@ -103,6 +110,6 @@ extension SimplifiedStatistics {
 
 struct SimplifiedStatistics_Previews: PreviewProvider {
     static var previews: some View {
-        SimplifiedStatistics(selectedTimeUnit: .constant(.week))
+        SimplifiedStatistics(selectedTimeUnit: .constant(.week), pickerViewShowed: .constant(true))
     }
 }

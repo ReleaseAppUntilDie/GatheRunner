@@ -19,21 +19,27 @@ struct GraphView: View {
 
     // MARK: Internal
 
+    @State var pickerViewShowed = false
+    @ObservedObject var viewModel = GraphViewModel()
+
     var body: some View {
-        VStack(alignment:.leading) {
-            PeriodView(curTimeUnit: $selectedTimeUnit)
-                .padding(.bottom)
-                .onTouch(type: .started) { point in
-                    withAnimation {
-                        setTimeUnitby(x: point.x)
+        ZStack {
+            VStack(alignment:.leading) {
+                PeriodView(curTimeUnit: $selectedTimeUnit)
+                    .padding(.bottom)
+                    .onTouch(type: .started) { point in
+                        withAnimation {
+                            setTimeUnitby(x: point.x)
+                        }
                     }
-                }
-            // TODO: Picker 아이템 생성후 삽입
-            SimplifiedStatistics(selectedTimeUnit: $selectedTimeUnit)
+                // TODO: Picker 아이템 생성후 삽입
+                SimplifiedStatistics(selectedTimeUnit: $selectedTimeUnit, pickerViewShowed: $pickerViewShowed)
 
-            Graph(graphWitdh: UIScreen.getWidthby(ratio: 0.7), cellHeight: UIScreen.getHeightby(ratio: 0.035))
+                Graph(graphWitdh: UIScreen.getWidthby(ratio: 0.7), cellHeight: UIScreen.getHeightby(ratio: 0.035))
 
-        }.padding(.leading,UIScreen.getWidthby(ratio: 0.1))
+            }.padding(.leading,UIScreen.getWidthby(ratio: 0.1))
+            GraphBottomSheetView(viewModel: viewModel, show: $pickerViewShowed, selectedTimeUnit: $selectedTimeUnit)
+        }
     }
 
     func setTimeUnitby(x: CGFloat) {
@@ -46,6 +52,7 @@ struct GraphView: View {
         } else {
             selectedTimeUnit = .whole
         }
+        viewModel.updatePicker(timeUnit: selectedTimeUnit)
     }
 
     // MARK: Private

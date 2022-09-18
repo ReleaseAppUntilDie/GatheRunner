@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 // MARK: - Graph
 
 struct Graph: View {
@@ -17,16 +16,20 @@ struct Graph: View {
     let lineWidth = 0.5
     let lingColor = Color(uiColor: .systemGray5)
     let bottomLabels = ["월","화","수","목","금","토","일","33"]
-    var mockData = [10,2,3,4,5,5,7,11]
+    var mockData = [20,2,3,4,5,5,7,11]
+
+    var maxValue: Int {
+        (mockData.max()! / 3 + 2) * 3
+    }
 
     var body: some View {
         VStack(alignment:.leading) {
             ZStack(alignment: .bottomLeading) {
                 ZStack(alignment:.topLeading) {
-                    lineWithText(text: "15")
-                    lineWithText(text: "10")
+                    lineWithText(text: "\(maxValue)")
+                    lineWithText(text: "\(maxValue / 3 * 2)")
                         .offset(y: cellHeight)
-                    lineWithText(text: "5")
+                    lineWithText(text: "\(maxValue / 3)")
                         .offset(y: cellHeight * 2)
                     lineWithText(text: "0km")
                         .offset(y: cellHeight * 3)
@@ -42,7 +45,7 @@ struct Graph: View {
                                 .foregroundColor(.gray)
                             Rectangle()
                                 .fill(.green)
-                                .frame(width: 10, height: cellHeight * 3.0 * Double(mockData[index]) / 15.0)
+                                .frame(width: 10, height: cellHeight * 3.0 * Double(mockData[index]) / Double(maxValue))
                                 .cornerRadius(3,corners: [.topLeft,.topRight])
                         }
                         .padding(.horizontal,graphWitdh / CGFloat(bottomLabels.count) / 2 - 5)
