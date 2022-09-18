@@ -29,6 +29,7 @@
 		E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671028B75B6600DFA1C4 /* LocationManager.swift */; };
 		E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671228B75BA200DFA1C4 /* Int+Extensions.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
+		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
 		E351783A28ABC9E50088003B /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* MeasurementView.swift */; };
 		E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355960F28D45ECB00AF0FBD /* AuthenticationView.swift */; };
@@ -112,6 +113,7 @@
 		E305671028B75B6600DFA1C4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E305671228B75BA200DFA1C4 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
+		E3438C3B28D74B260003591F /* FieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldStyle.swift; sourceTree = "<group>"; };
 		E350EA1528AD2DCC00F85FA1 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toggle+IconStyle.swift"; sourceTree = "<group>"; };
 		E351783928ABC9E50088003B /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 				E3E7480A289284B200F40457 /* TextStyle.swift */,
 				E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */,
 				E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */,
+				E3438C3B28D74B260003591F /* FieldStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -834,6 +837,7 @@
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				E3DA2F5928B76098001E9220 /* Alignment+Extention.swift in Sources */,
+				E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */,
 				DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */,
 				E351783A28ABC9E50088003B /* MeasurementView.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,

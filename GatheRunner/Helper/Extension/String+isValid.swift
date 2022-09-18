@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
 
-    var isValidEmail: Bool {
+    var isEmailValid: Bool {
         let name = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
         let domain = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
         let emailRegEx = name + "@" + domain + "[A-Za-z]{2,8}"
@@ -17,7 +17,7 @@ extension String {
         return emailPredicate.evaluate(with: self)
     }
 
-    var isValidPassword: Bool {
+    var isPasswordValid: Bool {
         let passwordreg = "(?=.*[A-Za-z])(?=.*[0-9]).{8,20}"
         let passwordtesting = NSPredicate(format: "SELF MATCHES %@", passwordreg)
         return passwordtesting.evaluate(with: self)

@@ -23,8 +23,8 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var isAuthValid = false
-    @Published var isNotEmailValid = false
-    @Published var isNotPasswordValid = false
+    @Published var isEmailValid = false
+    @Published var isPasswordValid = false
 
     var cancelBag = Set<AnyCancellable>()
 
@@ -42,20 +42,17 @@ final class AuthenticationViewModel: ObservableObject {
 
     private func bindValidation() {
         $email
-            .throttle(for: 1, scheduler: RunLoop.main, latest: true)
             .compactMap { $0 }
             .sink { [weak self] in
-                self?.isNotEmailValid = !$0.isValidEmail
+                self?.isEmailValid = $0.isEmailValid
             }
             .store(in: &cancelBag)
 
         $password
-            .throttle(for: 1, scheduler: RunLoop.main, latest: true)
             .compactMap { $0 }
             .sink { [weak self] in
-                self?.isNotPasswordValid = !$0.isValidPassword
+                self?.isPasswordValid = $0.isPasswordValid
             }
             .store(in: &cancelBag)
     }
-
 }

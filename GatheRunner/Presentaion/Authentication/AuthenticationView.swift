@@ -44,29 +44,33 @@ struct AuthenticationView: View {
         TextField(LabelName.email, text: $viewModel.email)
             .keyboardType(.emailAddress)
             .disableAutocorrection(true)
-            .textFieldStyle(.roundedBorder)
             .frame(width: Size.width, height: Size.height, alignment: .center)
-            .alert(isPresented: $viewModel.isNotEmailValid) {
-                Alert(title: Text("이메일"), message: Text("This is a alert message"), dismissButton: .default(Text("Dismiss")))
-            }
+            .asValidationFieldStyle(isValid: $viewModel.isEmailValid)
     }
 
     var passwordField: some View {
         SecureField(LabelName.password, text: $viewModel.password)
-            .textFieldStyle(.roundedBorder)
             .frame(width: Size.width, height: Size.height, alignment: .center)
+            .asValidationFieldStyle(isValid: $viewModel.isPasswordValid)
     }
 
     var submitButton: some View {
         VStack {
             // MARK: 환경변수를 통해서 인증시 메인탭뷰로 이동하게 처리 할 예정
+            // MARK: 확인 버튼 클릭 후 유효하지 않은 인증정보에 관한 알림처리
+            // MARK: 확인 버튼 클릭 후 인증정보 입력창 입력하지 않았을 경우 알림처리
+            // MARK: 알림에 사용되는 리터럴 네임스페이스 선언
 
             Button {
+//                showAlert = true
                 isSignIn ? viewModel.loginUser() : viewModel.createUser()
             } label: { Text(isSignIn ? LabelName.signIn : LabelName.signUp).foregroundColor(.white) }
                 .frame(width: Size.width, height: Size.height, alignment: .center)
                 .background(Color.blue)
                 .cornerRadius(Size.cornerRadius)
+//                .alert(isPresented: $showAlert) {
+//                    Alert(title: Text("알림"), message: message, dismissButton: .default(Text("확인")))
+//                }
         }
     }
 
@@ -78,13 +82,21 @@ struct AuthenticationView: View {
 }
 
 extension AuthenticationView {
+
+    // MARK: Temp
+
+//    private var message: Text {
+//        guard !viewModel.isEmailValid else {
+//            return Text("유효하지 않은 이메일 형식 입니다.")
+//        }
+//        return Text("유효하지 않은 비밀번호 형식 입니다.")
+//    }
+
     private func bindViewModel() {
         viewModel.$isAuthValid
             .dropFirst()
             .compactMap { $0 }
-            .sink(receiveValue: { result in
-                isValiid = result
-            })
+            .sink { isValiid = $0 }
             .store(in: &viewModel.cancelBag)
     }
 }
@@ -107,7 +119,6 @@ extension AuthenticationView {
         static let spacing: CGFloat = 16
         static let cornerRadius: CGFloat = 8
     }
-
 }
 
 // MARK: - AuthenticationView_Previews
