@@ -9,9 +9,30 @@ import SwiftUI
 
 // MARK: - AuthenticationView
 
-struct AuthenticationView: View {
+struct AuthenticationView {
 
-    // MARK: Internal
+    // MARK: Private
+
+    @State private var isValiid = false
+    @State private var isSignIn = false
+    @State private var isAlertShow = false
+    @StateObject private var viewModel = AuthenticationViewModel()
+
+    private var alertMessage: Text? {
+        switch true {
+        case viewModel.email.isEmpty: return Text(Content.Label.email + Content.Message.inputRequest)
+        case viewModel.password.isEmpty: return Text(Content.Label.password + Content.Message.inputRequest)
+        case !viewModel.isEmailValid: return Text(Content.Label.email + Content.Message.inputError)
+        case !viewModel.isPasswordValid: return Text(Content.Label.password + Content.Message.inputError)
+        case !viewModel.isAuthValid: return Text(Content.Message.authFailed)
+        default: return nil
+        }
+    }
+}
+
+// MARK: View
+
+extension AuthenticationView: View {
 
     var body: some View {
         NavigationView {
@@ -26,73 +47,79 @@ struct AuthenticationView: View {
         .onAppear { bindViewModel() }
     }
 
-    var fieldLayer: some View {
-        VStack(spacing: Size.spacing) {
-            Picker(LabelName.empty, selection: $isSignIn) {
-                Text(LabelName.signIn).tag(true)
-                Text(LabelName.signUp).tag(false)
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
+}
 
+// MARK: SubViews - Field
+
+extension AuthenticationView {
+
+    private var fieldLayer: some View {
+        VStack(spacing: Size.spacing) {
+            fieldPicker
             emailField
             passwordField
         }
     }
 
-    var emailField: some View {
-        TextField(LabelName.email, text: $viewModel.email)
+    private var fieldPicker: some View {
+        Picker(Content.Label.empty, selection: $isSignIn) {
+            Text(Content.Label.signIn).tag(true)
+            Text(Content.Label.signUp).tag(false)
+        }
+        .pickerStyle(SegmentedPickerStyle())
+        .padding()
+    }
+
+    private var emailField: some View {
+        TextField(Content.Label.email, text: $viewModel.email)
             .keyboardType(.emailAddress)
             .disableAutocorrection(true)
             .frame(width: Size.width, height: Size.height, alignment: .center)
             .asValidationFieldStyle(isValid: $viewModel.isEmailValid)
     }
 
-    var passwordField: some View {
-        SecureField(LabelName.password, text: $viewModel.password)
+    private var passwordField: some View {
+        SecureField(Content.Label.password, text: $viewModel.password)
             .frame(width: Size.width, height: Size.height, alignment: .center)
             .asValidationFieldStyle(isValid: $viewModel.isPasswordValid)
     }
-
-    var submitButton: some View {
-        VStack {
-            // MARK: 환경변수를 통해서 인증시 메인탭뷰로 이동하게 처리 할 예정
-            // MARK: 확인 버튼 클릭 후 유효하지 않은 인증정보에 관한 알림처리
-            // MARK: 확인 버튼 클릭 후 인증정보 입력창 입력하지 않았을 경우 알림처리
-            // MARK: 알림에 사용되는 리터럴 네임스페이스 선언
-
-            Button {
-//                showAlert = true
-                isSignIn ? viewModel.loginUser() : viewModel.createUser()
-            } label: { Text(isSignIn ? LabelName.signIn : LabelName.signUp).foregroundColor(.white) }
-                .frame(width: Size.width, height: Size.height, alignment: .center)
-                .background(Color.blue)
-                .cornerRadius(Size.cornerRadius)
-//                .alert(isPresented: $showAlert) {
-//                    Alert(title: Text("알림"), message: message, dismissButton: .default(Text("확인")))
-//                }
-        }
-    }
-
-    // MARK: Private
-
-    @State private var isValiid = false
-    @State private var isSignIn = false
-    @StateObject private var viewModel = AuthenticationViewModel()
 }
+
+// MARK: SubViews
 
 extension AuthenticationView {
 
-    // MARK: Temp
+    // MARK: 환경변수를 통해서 인증시 메인탭뷰로 이동하게 처리 할 예정
 
-//    private var message: Text {
-//        guard !viewModel.isEmailValid else {
-//            return Text("유효하지 않은 이메일 형식 입니다.")
-//        }
-//        return Text("유효하지 않은 비밀번호 형식 입니다.")
-//    }
+    private var submitButton: some View {
+        VStack {
+            Button {
+                isSignIn ? viewModel.signIn() : viewModel.signUp()
+            } label: { Text(isSignIn ? Content.Label.signIn : Content.Label.signUp).foregroundColor(.white) }
+                .frame(width: Size.width, height: Size.height, alignment: .center)
+                .background(Color.blue)
+                .cornerRadius(Size.cornerRadius)
+                .alert(isPresented: $isAlertShow) {
+                    Alert(
+                        title: Text(Content.Label.alertTitle),
+                        message: alertMessage,
+                        dismissButton: .default(Text(Content.Label.confirm)))
+                }
+        }
+    }
+}
+
+// MARK: Bind
+
+extension AuthenticationView {
 
     private func bindViewModel() {
+        viewModel.$isInputsValid
+            .dropFirst()
+            .compactMap { $0 }
+            .sink { isAlertShow = !$0 }
+            .store(in: &viewModel.cancelBag)
+
         viewModel.$isAuthValid
             .dropFirst()
             .compactMap { $0 }
@@ -105,19 +132,29 @@ extension AuthenticationView {
 
 extension AuthenticationView {
 
-    private enum LabelName {
-        static let signIn = "로그인"
-        static let signUp = "회원가입"
-        static let email = "이메일"
-        static let password = "패스워드"
-        static let empty = ""
-    }
-
     private enum Size {
         static let width: CGFloat = 280
         static let height: CGFloat = 45
         static let spacing: CGFloat = 16
         static let cornerRadius: CGFloat = 8
+    }
+
+    private enum Content {
+        enum Label {
+            static let signIn = "로그인"
+            static let signUp = "회원가입"
+            static let email = "이메일"
+            static let password = "패스워드"
+            static let empty = ""
+            static let alertTitle = "알림"
+            static let confirm = "확인"
+        }
+
+        enum Message {
+            static let inputRequest = "을(를) 입력해주세요."
+            static let inputError = "이(가) 유효하지 않습니다."
+            static let authFailed = "인증에 실패했습니다."
+        }
     }
 }
 

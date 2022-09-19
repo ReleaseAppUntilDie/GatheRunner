@@ -25,17 +25,19 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var isAuthValid = false
     @Published var isEmailValid = false
     @Published var isPasswordValid = false
+    @Published var isInputsValid = false
 
     var cancelBag = Set<AnyCancellable>()
 
-    // MARK: Temp - SubScribeMethods
 
-    func loginUser() {
-        isAuthValid = true
+    // MARK: Temp - NoService
+
+    func signIn() {
+        guard didValidate() else { return }
     }
 
-    func createUser() {
-        isAuthValid = true
+    func signUp() {
+        guard didValidate() else { return }
     }
 
     // MARK: Private
@@ -54,5 +56,14 @@ final class AuthenticationViewModel: ObservableObject {
                 self?.isPasswordValid = $0.isPasswordValid
             }
             .store(in: &cancelBag)
+    }
+
+    private func didValidate() -> Bool {
+        guard isEmailValid, isPasswordValid else {
+            isInputsValid = false
+            return false
+        }
+        isInputsValid = true
+        return true
     }
 }
