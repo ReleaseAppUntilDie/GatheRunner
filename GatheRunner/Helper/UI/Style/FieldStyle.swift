@@ -10,20 +10,24 @@ import SwiftUI
 // MARK: - ValidationFieldModifier
 
 struct ValidationFieldModifier: ViewModifier {
+    private enum Size {
+        static let cornerRadius: CGFloat = 8
+        static let lineWidth: CGFloat = 1
+    }
+
     @FocusState private var isFocused: Bool
-
     @Binding var isValid: Bool
-    @State var borderColor: Color
+    @State var borderColor: Color = .gray
 
-    var cornerRadius: CGFloat
-    var lineWidth: CGFloat
+    var cornerRadius: CGFloat = Size.cornerRadius
+    var lineWidth: CGFloat = Size.lineWidth
 
     func body(content: Content) -> some View {
         content
             .onSubmit { didValidate() }
             .submitLabel(.done)
             .focused($isFocused)
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(borderColor, lineWidth: 1))
+            .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(borderColor, lineWidth: lineWidth))
     }
 
     private func didValidate() {
@@ -37,11 +41,16 @@ struct ValidationFieldModifier: ViewModifier {
 
 extension View {
     @ViewBuilder
+    func asValidationFieldStyle(isValid: Binding<Bool>) -> some View {
+        modifier(ValidationFieldModifier(isValid: isValid))
+    }
+
+    @ViewBuilder
     func asValidationFieldStyle(
         isValid: Binding<Bool>,
-        witBorderColor borderColor: Color = .gray,
-        withCornerRadius cornerRadius: CGFloat = 8,
-        withLineWidth lineWidth: CGFloat = 1)
+        witBorderColor borderColor: Color,
+        withCornerRadius cornerRadius: CGFloat,
+        withLineWidth lineWidth: CGFloat)
         -> some View
     {
         modifier(ValidationFieldModifier(

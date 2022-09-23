@@ -9,9 +9,49 @@ import SwiftUI
 
 // MARK: - AuthenticationView
 
-struct AuthenticationView {
+struct AuthenticationView: View {
+
+    // MARK: Internal
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                fieldLayer
+
+                Spacer()
+
+                submitButton
+            }
+        }
+        .onAppear { bindViewModel() }
+    }
 
     // MARK: Private
+
+    private enum Size {
+        static let width: CGFloat = 280
+        static let height: CGFloat = 45
+        static let spacing: CGFloat = 16
+        static let cornerRadius: CGFloat = 8
+    }
+
+    private enum Content {
+        enum Label {
+            static let signIn = "로그인"
+            static let signUp = "회원가입"
+            static let email = "이메일"
+            static let password = "패스워드"
+            static let empty = ""
+            static let alertTitle = "알림"
+            static let confirm = "확인"
+        }
+
+        enum Message {
+            static let inputRequest = "을(를) 입력해주세요."
+            static let inputError = "이(가) 유효하지 않습니다."
+            static let authFailed = "인증에 실패했습니다."
+        }
+    }
 
     @State private var isValiid = false
     @State private var isSignIn = false
@@ -30,26 +70,26 @@ struct AuthenticationView {
     }
 }
 
-// MARK: View
+// MARK: binding
 
-extension AuthenticationView: View {
+extension AuthenticationView {
 
-    var body: some View {
-        NavigationView {
-            VStack {
-                fieldLayer
+    private func bindViewModel() {
+        viewModel.$isInputsValid
+            .dropFirst()
+            .compactMap { $0 }
+            .sink { isAlertShow = !$0 }
+            .store(in: &viewModel.cancelBag)
 
-                Spacer()
-
-                submitButton
-            }
-        }
-        .onAppear { bindViewModel() }
+        viewModel.$isAuthValid
+            .dropFirst()
+            .compactMap { $0 }
+            .sink { isValiid = $0 }
+            .store(in: &viewModel.cancelBag)
     }
-
 }
 
-// MARK: SubViews - Field
+// MARK: SubViews
 
 extension AuthenticationView {
 
@@ -83,11 +123,6 @@ extension AuthenticationView {
             .frame(width: Size.width, height: Size.height, alignment: .center)
             .asValidationFieldStyle(isValid: $viewModel.isPasswordValid)
     }
-}
-
-// MARK: SubViews
-
-extension AuthenticationView {
 
     // MARK: 환경변수를 통해서 인증시 메인탭뷰로 이동하게 처리 할 예정
 
@@ -105,55 +140,6 @@ extension AuthenticationView {
                         message: alertMessage,
                         dismissButton: .default(Text(Content.Label.confirm)))
                 }
-        }
-    }
-}
-
-// MARK: Bind
-
-extension AuthenticationView {
-
-    private func bindViewModel() {
-        viewModel.$isInputsValid
-            .dropFirst()
-            .compactMap { $0 }
-            .sink { isAlertShow = !$0 }
-            .store(in: &viewModel.cancelBag)
-
-        viewModel.$isAuthValid
-            .dropFirst()
-            .compactMap { $0 }
-            .sink { isValiid = $0 }
-            .store(in: &viewModel.cancelBag)
-    }
-}
-
-// MARK: NameSpace
-
-extension AuthenticationView {
-
-    private enum Size {
-        static let width: CGFloat = 280
-        static let height: CGFloat = 45
-        static let spacing: CGFloat = 16
-        static let cornerRadius: CGFloat = 8
-    }
-
-    private enum Content {
-        enum Label {
-            static let signIn = "로그인"
-            static let signUp = "회원가입"
-            static let email = "이메일"
-            static let password = "패스워드"
-            static let empty = ""
-            static let alertTitle = "알림"
-            static let confirm = "확인"
-        }
-
-        enum Message {
-            static let inputRequest = "을(를) 입력해주세요."
-            static let inputError = "이(가) 유효하지 않습니다."
-            static let authFailed = "인증에 실패했습니다."
         }
     }
 }
