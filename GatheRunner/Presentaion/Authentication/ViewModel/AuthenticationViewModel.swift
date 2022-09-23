@@ -29,15 +29,14 @@ final class AuthenticationViewModel: ObservableObject {
 
     var cancelBag = Set<AnyCancellable>()
 
-
     // MARK: Temp - NoService
 
     func signIn() {
-        guard didValidate() else { return }
+        guard validatedInputs() else { return }
     }
 
     func signUp() {
-        guard didValidate() else { return }
+        guard validatedInputs() else { return }
     }
 
     // MARK: Private
@@ -58,12 +57,13 @@ final class AuthenticationViewModel: ObservableObject {
             .store(in: &cancelBag)
     }
 
-    private func didValidate() -> Bool {
+    private func validatedInputs() -> Bool {
         guard isEmailValid, isPasswordValid else {
             isInputsValid = false
-            return false
+            return isInputsValid
         }
         isInputsValid = true
-        return true
+        return isInputsValid
     }
+
 }

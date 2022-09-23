@@ -53,7 +53,7 @@ struct AuthenticationView: View {
         }
     }
 
-    @State private var isValiid = false
+    @State private var isValid = false
     @State private var isSignIn = false
     @State private var isAlertShow = false
     @StateObject private var viewModel = AuthenticationViewModel()
@@ -70,10 +70,7 @@ struct AuthenticationView: View {
     }
 }
 
-// MARK: binding
-
 extension AuthenticationView {
-
     private func bindViewModel() {
         viewModel.$isInputsValid
             .dropFirst()
@@ -84,7 +81,7 @@ extension AuthenticationView {
         viewModel.$isAuthValid
             .dropFirst()
             .compactMap { $0 }
-            .sink { isValiid = $0 }
+            .sink { isValid = $0 }
             .store(in: &viewModel.cancelBag)
     }
 }
@@ -92,7 +89,6 @@ extension AuthenticationView {
 // MARK: SubViews
 
 extension AuthenticationView {
-
     private var fieldLayer: some View {
         VStack(spacing: Size.spacing) {
             fieldPicker
