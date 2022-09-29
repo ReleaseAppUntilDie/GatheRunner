@@ -29,6 +29,9 @@
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
 		E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671028B75B6600DFA1C4 /* LocationManager.swift */; };
 		E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671228B75BA200DFA1C4 /* Int+Extensions.swift */; };
+		E335913228E5E30800B3BC8E /* InputsValidatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335913128E5E30700B3BC8E /* InputsValidatorProtocol.swift */; };
+		E335913728E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335913628E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift */; };
+		E335913A28E5E4C200B3BC8E /* AuthenticationPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335913928E5E4C200B3BC8E /* AuthenticationPresenterTests.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
@@ -50,7 +53,6 @@
 		E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */; };
 		E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DA286C20D500618AC3 /* Assets.xcassets */; };
 		E3D349DE286C20D500618AC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DD286C20D500618AC3 /* Preview Assets.xcassets */; };
-		E3D349E8286C20D500618AC3 /* GatheRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349E7286C20D500618AC3 /* GatheRunnerTests.swift */; };
 		E3D349F2286C20D500618AC3 /* GatheRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F1286C20D500618AC3 /* GatheRunnerUITests.swift */; };
 		E3D349F4286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */; };
 		E3DA2F5828B76098001E9220 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA2F5228B7607F001E9220 /* Constants.swift */; };
@@ -113,6 +115,9 @@
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E305671028B75B6600DFA1C4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E305671228B75BA200DFA1C4 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		E335913128E5E30700B3BC8E /* InputsValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsValidatorProtocol.swift; sourceTree = "<group>"; };
+		E335913628E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksInputsValidatorProtocol.swift; sourceTree = "<group>"; };
+		E335913928E5E4C200B3BC8E /* AuthenticationPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPresenterTests.swift; sourceTree = "<group>"; };
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E3438C3B28D74B260003591F /* FieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldStyle.swift; sourceTree = "<group>"; };
 		E350EA1528AD2DCC00F85FA1 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
@@ -135,7 +140,6 @@
 		E3D349DA286C20D500618AC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3D349DD286C20D500618AC3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E3D349E3286C20D500618AC3 /* GatheRunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GatheRunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3D349E7286C20D500618AC3 /* GatheRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerTests.swift; sourceTree = "<group>"; };
 		E3D349ED286C20D500618AC3 /* GatheRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GatheRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349F1286C20D500618AC3 /* GatheRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerUITests.swift; sourceTree = "<group>"; };
 		E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -282,9 +286,43 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		E335913028E5E2F000B3BC8E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E335913128E5E30700B3BC8E /* InputsValidatorProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E335913328E5E37700B3BC8E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E335913428E5E3C400B3BC8E /* Mocks */,
+				E335913828E5E45700B3BC8E /* Presenters */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		E335913428E5E3C400B3BC8E /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E335913628E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		E335913828E5E45700B3BC8E /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				E335913928E5E4C200B3BC8E /* AuthenticationPresenterTests.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
 		E355960E28D45E8200AF0FBD /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				E335913028E5E2F000B3BC8E /* Protocols */,
 				E355961128D4650400AF0FBD /* ViewModel */,
 				E355960F28D45ECB00AF0FBD /* AuthenticationView.swift */,
 			);
@@ -442,7 +480,7 @@
 		E3D349E6286C20D500618AC3 /* GatheRunnerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E3D349E7286C20D500618AC3 /* GatheRunnerTests.swift */,
+				E335913328E5E37700B3BC8E /* Authentication */,
 			);
 			path = GatheRunnerTests;
 			sourceTree = "<group>";
@@ -607,6 +645,7 @@
 					};
 					E3D349E2286C20D500618AC3 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 						TestTargetID = E3D349D2286C20D200618AC3;
 					};
 					E3D349EC286C20D500618AC3 = {
@@ -849,6 +888,7 @@
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
+				E335913228E5E30800B3BC8E /* InputsValidatorProtocol.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,
 				6F1E0DDE287D43AF0025A671 /* SettingModel.swift in Sources */,
 				E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */,
@@ -861,7 +901,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3D349E8286C20D500618AC3 /* GatheRunnerTests.swift in Sources */,
+				E335913A28E5E4C200B3BC8E /* AuthenticationPresenterTests.swift in Sources */,
+				E335913728E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1081,15 +1122,22 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H5RWE65UKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GatheRunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GatheRunner.app/GatheRunner";
@@ -1102,11 +1150,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H5RWE65UKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GatheRunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

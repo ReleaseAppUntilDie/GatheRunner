@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - AuthenticationViewModel
 
-final class AuthenticationViewModel: ObservableObject {
+final class AuthenticationViewModel: ObservableObject, InputsValidatorProtocol {
 
     // MARK: Lifecycle
 
