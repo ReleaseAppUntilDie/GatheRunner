@@ -13,6 +13,10 @@ class GraphViewModel: ObservableObject {
 
     init() {
         pickerItemList = [String]()
+        pickerItemListInMonth = ([Int](),[Int]())
+        selectedString = "이번주"
+        selectedTimeUnit = .week
+
         let periodString: ((Int,Int,Int,Int)) -> String = {
             "\($0.0).\($0.1)~\($0.2).\($0.3)"
         }
@@ -30,6 +34,25 @@ class GraphViewModel: ObservableObject {
     // MARK: Internal
 
     @Published var pickerItemList: [String]
+    @Published var pickerItemListInMonth: ([Int],[Int])
+    @Published var selectedString: String
+    var selectedTimeUnit: TimeUnit
+
+    func updateTimeUnit(_ unit: TimeUnit) {
+        selectedTimeUnit = unit
+        switch unit {
+        case .week:
+            selectedString = "이번주"
+        case .month:
+            let current = Calendar.current.dateComponents([.year,.month], from: Date())
+            selectedString = "\(String(current.year!))년 \(String(current.month!))월"
+        case .year:
+            let current = Calendar.current.dateComponents([.year], from: Date())
+            selectedString = "\(String(current.year!))년"
+        case .whole:
+            selectedString = "전체"
+        }
+    }
 
     func updatePicker(timeUnit: TimeUnit) {
         switch timeUnit {
@@ -47,21 +70,18 @@ class GraphViewModel: ObservableObject {
                 periodString(beforeThreeWeeks),
             ]
         case .month:
-            pickerItemList =
-                [
-                    "test",
-                    "test",
-                    "test",
-                    "test",
-                ]
+            let years = calculateYears()
+            var result = ([Int](),[Int]())
+
+            result.0 = years
+            result.1 = Array(1...12)
+            pickerItemListInMonth = result
+
         case .year:
-            pickerItemList =
-                [
-                    "test",
-                    "test",
-                    "test",
-                    "test",
-                ]
+
+            pickerItemList = calculateYears().map {
+                "\($0)년"
+            }
         case .whole:
             break
         }
@@ -101,6 +121,15 @@ class GraphViewModel: ObservableObject {
         let firstDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeTwoWeeks)
         let lastDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeOneWeek)
         return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
+    }
+
+    func calculateYears() -> [Int] {
+        var result = [Int]()
+        let current = Calendar.current.dateComponents([.year], from: Date())
+        for i in 0..<4 {
+            result.append(current.year! - i)
+        }
+        return result
     }
 
     func isValidMonth(year: Int, month: Int) -> Bool {

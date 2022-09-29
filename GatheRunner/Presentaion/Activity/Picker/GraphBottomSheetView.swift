@@ -11,9 +11,30 @@ import SwiftUI
 
 struct GraphBottomSheetView: View {
 
+    // MARK: Lifecycle
+
+    init(
+        viewModel: GraphViewModel,
+        show: Binding<Bool>,
+        selectedTimeUnit: Binding<TimeUnit>)
+    {
+        self.viewModel = viewModel
+        _show = show
+        _selectedTimeUnit = selectedTimeUnit
+
+        let current = Calendar.current.dateComponents([.year,.month], from: Date())
+        selectedYear = current.year!
+        selectedMonth = current.month!
+    }
+
+
+    // MARK: Internal
+
     @ObservedObject var viewModel: GraphViewModel
     var pickerItems = ["이번주","저번주","어제","오늘"]
     @State var selected = ""
+    @State var selectedMonth: Int
+    @State var selectedYear: Int
     @Binding var show: Bool
     @Binding var selectedTimeUnit: TimeUnit
 
@@ -28,14 +49,15 @@ struct GraphBottomSheetView: View {
                 }
 
             VStack {
-                Picker("Choose period", selection: $selected) {
-                    ForEach(viewModel.pickerItemList,id: \.self) {
-                        Text($0)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .padding()
+                PickerView(
+                    viewModel: viewModel,
+                    selected: $selected,
+                    selectedMonth: $selectedMonth,
+                    selectedYear: $selectedYear,
+                    isMonth: selectedTimeUnit == .month)
+                    .padding()
                 Button {
+                    viewModel.selectedString = selectedTimeUnit == .month ? "\(selectedYear)년 \(selectedMonth)월" : selected
                     withAnimation(.linear) {
                         show.toggle()
                     }
@@ -44,7 +66,6 @@ struct GraphBottomSheetView: View {
                         .font(.system(size: 20, weight: .bold))
                         .foregroundColor(.white)
                         .frame(width: UIScreen.getWidthby(ratio: 0.8), height: 50, alignment: .center)
-
                         .background(RoundedRectangle(cornerRadius: 25).fill(Color.black))
                 }
             }
@@ -52,6 +73,46 @@ struct GraphBottomSheetView: View {
             .frame(maxHeight: show ? UIScreen.getHeightby(ratio: 0.5) : 0)
             .background(Color.white)
             .cornerRadius(16, corners: [.topLeft,.topRight])
+        }
+    }
+}
+
+// MARK: - PickerView
+
+struct PickerView: View {
+
+    @ObservedObject var viewModel: GraphViewModel
+    @Binding var selected: String
+    @Binding var selectedMonth: Int
+    @Binding var selectedYear: Int
+    var isMonth: Bool
+
+    var body: some View {
+        if !isMonth {
+            Picker("Choose period", selection: $selected) {
+                ForEach(viewModel.pickerItemList,id: \.self) {
+                    Text($0)
+                }
+            }
+            .pickerStyle(.wheel)
+        } else {
+            HStack(spacing: 0) {
+                Picker("Choose year", selection: $selectedYear) {
+                    ForEach(viewModel.pickerItemListInMonth.0,id: \.self) {
+                        Text("\($0)년")
+                    }
+                }
+                .frame(width: UIScreen.getWidthby(ratio: 0.5))
+                .pickerStyle(.wheel)
+
+                Picker("Choose month", selection: $selectedMonth) {
+                    ForEach(viewModel.pickerItemListInMonth.1,id: \.self) {
+                        Text("\($0)월")
+                    }
+                }
+                .frame(width: UIScreen.getWidthby(ratio: 0.5))
+                .pickerStyle(.wheel)
+            }
         }
     }
 }

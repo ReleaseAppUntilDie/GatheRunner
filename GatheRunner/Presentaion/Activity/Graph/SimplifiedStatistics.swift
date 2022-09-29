@@ -11,15 +11,7 @@ import SwiftUI
 
 struct SimplifiedStatistics: View {
 
-    // MARK: Lifecycle
-
-    init(selectedTimeUnit: Binding<TimeUnit>,pickerViewShowed: Binding<Bool>) {
-        _selectedTimeUnit = selectedTimeUnit
-        _pickerViewShowed = pickerViewShowed
-    }
-
-    // MARK: Internal
-
+    @ObservedObject var viewModel: GraphViewModel
     @Binding var selectedTimeUnit: TimeUnit
     @Binding var pickerViewShowed: Bool
     let distance = "10.0"
@@ -27,6 +19,8 @@ struct SimplifiedStatistics: View {
     let runningCnt = 6
     let averagePace = "5'41''"
     let totalTime = "2:54:51"
+
+
 
     var buttonText: String {
         switch selectedTimeUnit {
@@ -47,7 +41,7 @@ struct SimplifiedStatistics: View {
 
             } label: {
                 HStack {
-                    Text(buttonText)
+                    Text(viewModel.selectedString)
                         .foregroundColor(.black)
                     Image(systemName: "chevron.down")
                         .isEmpty(logicalOperator: .and, [selectedTimeUnit != .whole])
@@ -107,9 +101,9 @@ extension SimplifiedStatistics {
 }
 
 // MARK: - SimplifiedStatistics_Previews
-
-struct SimplifiedStatistics_Previews: PreviewProvider {
-    static var previews: some View {
-        SimplifiedStatistics(selectedTimeUnit: .constant(.week), pickerViewShowed: .constant(true))
-    }
-}
+//
+// struct SimplifiedStatistics_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SimplifiedStatistics(selectedTimeUnit: .constant(.week), pickerViewShowed: .constant(true))
+//    }
+// }

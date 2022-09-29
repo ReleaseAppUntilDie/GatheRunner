@@ -28,17 +28,28 @@ struct GraphView: View {
                 PeriodView(curTimeUnit: $selectedTimeUnit)
                     .padding(.bottom)
                     .onTouch(type: .started) { point in
+
                         withAnimation {
                             setTimeUnitby(x: point.x)
                         }
+                        viewModel.updateTimeUnit(selectedTimeUnit)
                     }
                 // TODO: Picker 아이템 생성후 삽입
-                SimplifiedStatistics(selectedTimeUnit: $selectedTimeUnit, pickerViewShowed: $pickerViewShowed)
+                SimplifiedStatistics(
+                    viewModel: viewModel,
+                    selectedTimeUnit: $selectedTimeUnit,
+                    pickerViewShowed: $pickerViewShowed)
 
-                Graph(graphWitdh: UIScreen.getWidthby(ratio: 0.7), cellHeight: UIScreen.getHeightby(ratio: 0.035))
+                Graph(
+                    graphWitdh: UIScreen.getWidthby(ratio: 0.7),
+                    cellHeight: UIScreen.getHeightby(ratio: 0.035))
 
             }.padding(.leading,UIScreen.getWidthby(ratio: 0.1))
-            GraphBottomSheetView(viewModel: viewModel, show: $pickerViewShowed, selectedTimeUnit: $selectedTimeUnit)
+
+            GraphBottomSheetView(
+                viewModel: viewModel,
+                show: $pickerViewShowed,
+                selectedTimeUnit: $selectedTimeUnit)
         }
     }
 
