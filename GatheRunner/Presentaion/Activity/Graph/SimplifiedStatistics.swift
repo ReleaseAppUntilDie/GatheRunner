@@ -20,14 +20,12 @@ struct SimplifiedStatistics: View {
     let averagePace = "5'41''"
     let totalTime = "2:54:51"
 
-
-
     var buttonText: String {
         switch selectedTimeUnit {
-        case .week:return "이번주"
-        case .month:return "2022년 8월"
-        case .year:return "2022년"
-        case .whole:return "2020년~2022년"
+        case .week: return "이번주"
+        case .month: return "2022년 8월"
+        case .year: return "2022년"
+        case .whole: return "2020년~2022년"
         }
     }
 

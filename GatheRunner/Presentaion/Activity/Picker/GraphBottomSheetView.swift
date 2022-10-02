@@ -2,7 +2,7 @@
 //  BottomSheetView.swift
 //  GatheRunner
 //
-//  Created by 김현진 on 2022/09/18.
+//  Created by hanjaeseung on 2022/09/18.
 //
 
 import SwiftUI
@@ -31,7 +31,6 @@ struct GraphBottomSheetView: View {
     // MARK: Internal
 
     @ObservedObject var viewModel: GraphViewModel
-    var pickerItems = ["이번주","저번주","어제","오늘"]
     @State var selected = ""
     @State var selectedMonth: Int
     @State var selectedYear: Int
@@ -57,7 +56,8 @@ struct GraphBottomSheetView: View {
                     isMonth: selectedTimeUnit == .month)
                     .padding()
                 Button {
-                    viewModel.selectedString = selectedTimeUnit == .month ? "\(selectedYear)년 \(selectedMonth)월" : selected
+                    viewModel.updateSelected(selectedStr: selected, selectedYear: selectedYear, selectedMonth: selectedMonth)
+                    viewModel.fetchData()
                     withAnimation(.linear) {
                         show.toggle()
                     }

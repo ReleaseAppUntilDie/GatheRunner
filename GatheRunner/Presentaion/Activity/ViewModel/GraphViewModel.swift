@@ -16,6 +16,7 @@ class GraphViewModel: ObservableObject {
         pickerItemListInMonth = ([Int](),[Int]())
         selectedString = "이번주"
         selectedTimeUnit = .week
+        records = [Int]()
 
         let periodString: ((Int,Int,Int,Int)) -> String = {
             "\($0.0).\($0.1)~\($0.2).\($0.3)"
@@ -29,6 +30,7 @@ class GraphViewModel: ObservableObject {
             periodString(beforeTwoWeeks),
             periodString(beforeThreeWeeks),
         ]
+        fetchData()
     }
 
     // MARK: Internal
@@ -36,6 +38,7 @@ class GraphViewModel: ObservableObject {
     @Published var pickerItemList: [String]
     @Published var pickerItemListInMonth: ([Int],[Int])
     @Published var selectedString: String
+    @Published var records: [Int]
     var selectedTimeUnit: TimeUnit
 
     func updateTimeUnit(_ unit: TimeUnit) {
@@ -53,6 +56,30 @@ class GraphViewModel: ObservableObject {
             selectedString = "전체"
         }
     }
+
+    func updateSelected(selectedStr: String, selectedYear: Int,selectedMonth: Int) {
+        if selectedTimeUnit == .month {
+            guard isValidMonth(year: selectedYear, month: selectedMonth) else { return }
+            selectedString = "\(selectedYear)년 \(selectedMonth)월"
+        } else {
+            selectedString = selectedStr
+        }
+    }
+
+    func fetchData() {
+        print(#function)
+        switch selectedTimeUnit {
+        case .week:
+            records = (0..<7).map { _ in Int.random(in: 1 ... 20) }
+        case .month:
+            records = (0..<30).map { _ in Int.random(in: 1 ... 20) }
+        case .year:
+            records = (0..<12).map { _ in Int.random(in: 1 ... 20) }
+        case .whole:
+            records = (0..<4).map { _ in Int.random(in: 1 ... 20) }
+        }
+    }
+
 
     func updatePicker(timeUnit: TimeUnit) {
         switch timeUnit {

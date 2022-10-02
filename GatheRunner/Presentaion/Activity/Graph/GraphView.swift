@@ -32,7 +32,6 @@ struct GraphView: View {
                         withAnimation {
                             setTimeUnitby(x: point.x)
                         }
-                        viewModel.updateTimeUnit(selectedTimeUnit)
                     }
                 // TODO: Picker 아이템 생성후 삽입
                 SimplifiedStatistics(
@@ -41,8 +40,9 @@ struct GraphView: View {
                     pickerViewShowed: $pickerViewShowed)
 
                 Graph(
-                    graphWitdh: UIScreen.getWidthby(ratio: 0.7),
-                    cellHeight: UIScreen.getHeightby(ratio: 0.035))
+                    graphWidth: UIScreen.getWidthby(ratio: 0.7),
+                    cellHeight: UIScreen.getHeightby(ratio: 0.035),
+                    viewModel: viewModel)
 
             }.padding(.leading,UIScreen.getWidthby(ratio: 0.1))
 
@@ -63,7 +63,9 @@ struct GraphView: View {
         } else {
             selectedTimeUnit = .whole
         }
+        viewModel.updateTimeUnit(selectedTimeUnit)
         viewModel.updatePicker(timeUnit: selectedTimeUnit)
+        viewModel.fetchData()
     }
 
     // MARK: Private

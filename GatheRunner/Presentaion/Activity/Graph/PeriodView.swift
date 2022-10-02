@@ -16,10 +16,10 @@ struct PeriodView: View {
 
     var unitIndex: Double {
         switch curTimeUnit {
-        case .week:return 0
-        case .month:return 1
-        case .year:return 2
-        case .whole:return 3
+        case .week: return 0
+        case .month: return 1
+        case .year: return 2
+        case .whole: return 3
         }
     }
 
@@ -34,7 +34,7 @@ struct PeriodView: View {
                     .fill(Color.green)
                     .frame(width: UIScreen.getWidthby(ratio: 0.2), height: UIScreen.getHeightby(ratio: 0.04))
                     .offset(x: -UIScreen.getWidthby(ratio: 0.3) + UIScreen.getWidthby(ratio: 0.2 * unitIndex))
-                HStack(spacing:0) {
+                HStack(spacing: 0) {
                     ForEach(0..<4) { index in
                         Text(data[index].0)
                             .foregroundColor(curTimeUnit == data[index].1 ? .black : .init(uiColor: .systemGray2))
