@@ -27,10 +27,8 @@ class MocksInputsValidatorProtocol: ObservableObject, InputsValidatorProtocol {
 
     var cancelBag = Set<AnyCancellable>()
 
-
-
-    func didValidation(isEmailTest: Bool, exampelBy exampe: String) {
-        if isEmailTest {
+    func didValidation(isTestWithEmail: Bool, exampelBy exampe: String) {
+        if isTestWithEmail {
             email = exampe
         } else {
             password = exampe
