@@ -6,28 +6,12 @@
 //
 
 import Combine
-import Foundation
 
 // MARK: - AuthenticationViewModel
 
-final class AuthenticationViewModel: ObservableObject, InputsValidatorProtocol {
-
-    // MARK: Lifecycle
-
-    init() {
-        bindValidation()
-    }
+final class AuthenticationViewModel: BaseInputsValidator {
 
     // MARK: Internal
-
-    @Published var email = ""
-    @Published var password = ""
-    @Published var isAuthValid = false
-    @Published var isEmailValid = false
-    @Published var isPasswordValid = false
-    @Published var isInputsValid = false
-
-    var cancelBag = Set<AnyCancellable>()
 
     // MARK: Temp - NoService
 
@@ -40,22 +24,6 @@ final class AuthenticationViewModel: ObservableObject, InputsValidatorProtocol {
     }
 
     // MARK: Private
-
-    private func bindValidation() {
-        $email
-            .compactMap { $0 }
-            .sink { [weak self] in
-                self?.isEmailValid = $0.isEmailValid
-            }
-            .store(in: &cancelBag)
-
-        $password
-            .compactMap { $0 }
-            .sink { [weak self] in
-                self?.isPasswordValid = $0.isPasswordValid
-            }
-            .store(in: &cancelBag)
-    }
 
     private func validatedInputs() -> Bool {
         guard isEmailValid, isPasswordValid else {

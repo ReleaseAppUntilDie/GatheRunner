@@ -30,7 +30,7 @@
 		E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671028B75B6600DFA1C4 /* LocationManager.swift */; };
 		E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671228B75BA200DFA1C4 /* Int+Extensions.swift */; };
 		E335913228E5E30800B3BC8E /* InputsValidatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335913128E5E30700B3BC8E /* InputsValidatorProtocol.swift */; };
-		E335913728E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335913628E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift */; };
+		E335913728E5E3EE00B3BC8E /* MocksInputsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335913628E5E3EE00B3BC8E /* MocksInputsValidator.swift */; };
 		E335913A28E5E4C200B3BC8E /* AuthenticationPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335913928E5E4C200B3BC8E /* AuthenticationPresenterTests.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
@@ -116,7 +116,7 @@
 		E305671028B75B6600DFA1C4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E305671228B75BA200DFA1C4 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		E335913128E5E30700B3BC8E /* InputsValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsValidatorProtocol.swift; sourceTree = "<group>"; };
-		E335913628E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksInputsValidatorProtocol.swift; sourceTree = "<group>"; };
+		E335913628E5E3EE00B3BC8E /* MocksInputsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksInputsValidator.swift; sourceTree = "<group>"; };
 		E335913928E5E4C200B3BC8E /* AuthenticationPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPresenterTests.swift; sourceTree = "<group>"; };
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E3438C3B28D74B260003591F /* FieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldStyle.swift; sourceTree = "<group>"; };
@@ -298,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				E335913428E5E3C400B3BC8E /* Mocks */,
+				E3FAB08F28E9664A00C59DE6 /* UI */,
 				E335913828E5E45700B3BC8E /* Presenters */,
 			);
 			path = Authentication;
@@ -306,7 +307,7 @@
 		E335913428E5E3C400B3BC8E /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				E335913628E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift */,
+				E335913628E5E3EE00B3BC8E /* MocksInputsValidator.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -538,6 +539,13 @@
 				E335FAF828B7610300835F72 /* SelectedTab.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		E3FAB08F28E9664A00C59DE6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		EA3D3F8828D07C0000D78D28 /* Graph */ = {
@@ -902,7 +910,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E335913A28E5E4C200B3BC8E /* AuthenticationPresenterTests.swift in Sources */,
-				E335913728E5E3EE00B3BC8E /* MocksInputsValidatorProtocol.swift in Sources */,
+				E335913728E5E3EE00B3BC8E /* MocksInputsValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

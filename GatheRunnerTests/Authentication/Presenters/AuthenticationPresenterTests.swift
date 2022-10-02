@@ -11,34 +11,32 @@ import XCTest
 
 class AuthenticationPresenterTests: XCTestCase {
 
-    // MARK: Internal
-
-    var mocksInputsValidatorProtocol: MocksInputsValidatorProtocol!
+    var mocksInputsValidator: MocksInputsValidator!
     var isPassEmailValidation: Bool!
     var isPassPasswordValidation: Bool!
 
     override func setUpWithError() throws {
-        mocksInputsValidatorProtocol = MocksInputsValidatorProtocol()
+        mocksInputsValidator = MocksInputsValidator()
         isPassEmailValidation = false
         isPassPasswordValidation = false
         bindValidatorProtocol()
     }
 
     override func tearDownWithError() throws {
-        mocksInputsValidatorProtocol = nil
+        mocksInputsValidator = nil
     }
 
     func testAuthenticationPresenter_EmailVerification_ShouldFail() {
         // MARK: choose madeOverLengthExample(isTestWithEmail: true) or madeInValidFormatExample()
 
         let example = madeInvalidFormatExample()
-        mocksInputsValidatorProtocol.didValidation(isTestWithEmail: true, exampelBy: example)
+        mocksInputsValidator.didValidation(isTestWithEmail: true, by: example)
         XCTAssert(isPassEmailValidation == false)
     }
 
     func testAuthenticationPresenter_EmailVerification_ShouldSucceed() {
         let example = madeValidExample(isTestWithEmail: true)
-        mocksInputsValidatorProtocol.didValidation(isTestWithEmail: true, exampelBy: example)
+        mocksInputsValidator.didValidation(isTestWithEmail: true, by: example)
         XCTAssert(isPassEmailValidation == true)
     }
 
@@ -46,18 +44,20 @@ class AuthenticationPresenterTests: XCTestCase {
         // MARK: choose madeOverLengthExample(isTestWithEmail: false) or madeInValidFormatExample()
 
         let example = madeOverLengthExample(isTestWithEmail: false)
-        mocksInputsValidatorProtocol.didValidation(isTestWithEmail: false, exampelBy: example)
+        mocksInputsValidator.didValidation(isTestWithEmail: false, by: example)
         XCTAssert(isPassEmailValidation == false)
     }
 
     func testAuthenticationPresenter_PasswordVerification_ShouldSucceed() {
         let example = madeValidExample(isTestWithEmail: false)
-        mocksInputsValidatorProtocol.didValidation(isTestWithEmail: false, exampelBy: example)
+        mocksInputsValidator.didValidation(isTestWithEmail: false, by: example)
         XCTAssert(isPassPasswordValidation == true)
     }
+}
 
-    // MARK: Private
+// MARK: Private NamsSpace & Methods
 
+extension AuthenticationPresenterTests {
     private enum Content {
         static let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         static let lettersAndNumbers = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -66,17 +66,17 @@ class AuthenticationPresenterTests: XCTestCase {
     }
 
     private func bindValidatorProtocol() {
-        mocksInputsValidatorProtocol.$isEmailValid
+        mocksInputsValidator.$isEmailValid
             .sink { [weak self] result in
                 self?.isPassEmailValidation = result
             }
-            .store(in: &mocksInputsValidatorProtocol.cancelBag)
+            .store(in: &mocksInputsValidator.cancelBag)
 
-        mocksInputsValidatorProtocol.$isPasswordValid
+        mocksInputsValidator.$isPasswordValid
             .sink { [weak self] result in
                 self?.isPassPasswordValidation = result
             }
-            .store(in: &mocksInputsValidatorProtocol.cancelBag)
+            .store(in: &mocksInputsValidator.cancelBag)
     }
 
     // MARK: Email Length Range 0 - 30 && Password Length Range 8 - 20
@@ -94,11 +94,7 @@ class AuthenticationPresenterTests: XCTestCase {
     private func madeInvalidFormatExample(length: Int = 10) -> String {
         createRandomStr(by: Content.letters, length: length)
     }
-}
 
-// MARK: Helper+CreateRandomStr
-
-extension AuthenticationPresenterTests {
     private func createRandomStr(by text: String, length: Int) -> String {
         String((0 ..< length).map { _ in text.randomElement()! })
     }
