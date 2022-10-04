@@ -65,6 +65,11 @@ extension AuthenticationPresenterTests {
         static let specialCharacters = "!1@2#3"
     }
 
+    private enum Requirement {
+        static let validLength = 10
+        static let overLength = 40
+    }
+
     private func bindValidatorProtocol() {
         mocksInputsValidator.$isEmailValid
             .sink { [weak self] result in
@@ -81,17 +86,17 @@ extension AuthenticationPresenterTests {
 
     // MARK: Email Length Range 0 - 30 && Password Length Range 8 - 20
 
-    private func madeValidExample(isTestWithEmail: Bool, length: Int = 10) -> String {
+    private func madeValidExample(isTestWithEmail: Bool, length: Int = Requirement.validLength) -> String {
         let result = createRandomStr(by: Content.lettersAndNumbers, length: length)
         return isTestWithEmail ? result + Content.emailDomainExample : result + Content.specialCharacters
     }
 
-    private func madeOverLengthExample(isTestWithEmail: Bool, length: Int = 40) -> String {
+    private func madeOverLengthExample(isTestWithEmail: Bool, length: Int = Requirement.overLength) -> String {
         let result = createRandomStr(by: Content.lettersAndNumbers, length: length)
         return isTestWithEmail ? result + Content.emailDomainExample : result
     }
 
-    private func madeInvalidFormatExample(length: Int = 10) -> String {
+    private func madeInvalidFormatExample(length: Int = Requirement.validLength) -> String {
         createRandomStr(by: Content.letters, length: length)
     }
 

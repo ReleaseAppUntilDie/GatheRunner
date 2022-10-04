@@ -50,6 +50,7 @@
 		E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */; };
 		E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E279128B604B7004C0798 /* GraphViewModel.swift */; };
 		E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */; };
+		E3C2976528EAB5860010CCE1 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = E3C2976428EAB5860010CCE1 /* ViewInspector */; };
 		E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */; };
 		E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DA286C20D500618AC3 /* Assets.xcassets */; };
 		E3D349DE286C20D500618AC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DD286C20D500618AC3 /* Preview Assets.xcassets */; };
@@ -59,9 +60,11 @@
 		E3DA2F5928B76098001E9220 /* Alignment+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA2F5528B7607F001E9220 /* Alignment+Extention.swift */; };
 		E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA2F5728B7607F001E9220 /* TouchLocationView.swift */; };
 		E3DA2F5B28B76098001E9220 /* GatherNaviBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA2F5628B7607F001E9220 /* GatherNaviBar.swift */; };
+		E3DB410528EABB3400A41182 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = E3DB410428EABB3400A41182 /* ViewInspector */; };
 		E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E748082892837700F40457 /* RunSplashScreen.swift */; };
 		E3E7480B289284B200F40457 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E7480A289284B200F40457 /* TextStyle.swift */; };
 		E3F83E6A28AF641D000CA1B5 /* MeasurementViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */; };
+		E3FAB09328E9B02F00C59DE6 /* AuthenticationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB09228E9B02F00C59DE6 /* AuthenticationUITests.swift */; };
 		E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE02FA28D49749008A9B91 /* String+isValid.swift */; };
 		EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8928D07C1000D78D28 /* PeriodView.swift */; };
 		EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8A28D07C1000D78D28 /* GraphView.swift */; };
@@ -156,6 +159,7 @@
 		E3E748082892837700F40457 /* RunSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSplashScreen.swift; sourceTree = "<group>"; };
 		E3E7480A289284B200F40457 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewUITests.swift; sourceTree = "<group>"; };
+		E3FAB09228E9B02F00C59DE6 /* AuthenticationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUITests.swift; sourceTree = "<group>"; };
 		E3FE02FA28D49749008A9B91 /* String+isValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValid.swift"; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3D3F8928D07C1000D78D28 /* PeriodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodView.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B5095EDA536B973CF0EB609 /* Pods_GatheRunnerTests.framework in Frameworks */,
+				E3DB410528EABB3400A41182 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19AB858B6A67A1FD7E20CE20 /* Pods_GatheRunner_GatheRunnerUITests.framework in Frameworks */,
+				E3C2976528EAB5860010CCE1 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				E335913428E5E3C400B3BC8E /* Mocks */,
-				E3FAB08F28E9664A00C59DE6 /* UI */,
 				E335913828E5E45700B3BC8E /* Presenters */,
 			);
 			path = Authentication;
@@ -489,9 +494,10 @@
 		E3D349F0286C20D500618AC3 /* GatheRunnerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				E3FAB09528E9B49C00C59DE6 /* Measurement */,
+				E3FAB09428E9B48B00C59DE6 /* Authentication */,
 				E3D349F1286C20D500618AC3 /* GatheRunnerUITests.swift */,
 				E3D349F3286C20D500618AC3 /* GatheRunnerUITestsLaunchTests.swift */,
-				E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */,
 			);
 			path = GatheRunnerUITests;
 			sourceTree = "<group>";
@@ -541,11 +547,20 @@
 			path = Environment;
 			sourceTree = "<group>";
 		};
-		E3FAB08F28E9664A00C59DE6 /* UI */ = {
+		E3FAB09428E9B48B00C59DE6 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				E3FAB09228E9B02F00C59DE6 /* AuthenticationUITests.swift */,
 			);
-			path = UI;
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		E3FAB09528E9B49C00C59DE6 /* Measurement */ = {
+			isa = PBXGroup;
+			children = (
+				E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */,
+			);
+			path = Measurement;
 			sourceTree = "<group>";
 		};
 		EA3D3F8828D07C0000D78D28 /* Graph */ = {
@@ -595,6 +610,8 @@
 			dependencies = (
 			);
 			name = GatheRunner;
+			packageProductDependencies = (
+			);
 			productName = GatheRunner;
 			productReference = E3D349D3286C20D200618AC3 /* GatheRunner.app */;
 			productType = "com.apple.product-type.application";
@@ -614,6 +631,9 @@
 				E3D349E5286C20D500618AC3 /* PBXTargetDependency */,
 			);
 			name = GatheRunnerTests;
+			packageProductDependencies = (
+				E3DB410428EABB3400A41182 /* ViewInspector */,
+			);
 			productName = GatheRunnerTests;
 			productReference = E3D349E3286C20D500618AC3 /* GatheRunnerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -634,6 +654,9 @@
 				E3D349EF286C20D500618AC3 /* PBXTargetDependency */,
 			);
 			name = GatheRunnerUITests;
+			packageProductDependencies = (
+				E3C2976428EAB5860010CCE1 /* ViewInspector */,
+			);
 			productName = GatheRunnerUITests;
 			productReference = E3D349ED286C20D500618AC3 /* GatheRunnerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -671,6 +694,9 @@
 				Base,
 			);
 			mainGroup = E3D349CA286C20D200618AC3;
+			packageReferences = (
+				E3C2976128EAB5770010CCE1 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			productRefGroup = E3D349D4286C20D200618AC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -909,6 +935,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3FAB09328E9B02F00C59DE6 /* AuthenticationUITests.swift in Sources */,
 				E335913A28E5E4C200B3BC8E /* AuthenticationPresenterTests.swift in Sources */,
 				E335913728E5E3EE00B3BC8E /* MocksInputsValidator.swift in Sources */,
 			);
@@ -1257,6 +1284,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E3C2976128EAB5770010CCE1 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = exactVersion;
+				version = 0.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E3C2976428EAB5860010CCE1 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3C2976128EAB5770010CCE1 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+		E3DB410428EABB3400A41182 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3C2976128EAB5770010CCE1 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E3D349CB286C20D200618AC3 /* Project object */;
 }

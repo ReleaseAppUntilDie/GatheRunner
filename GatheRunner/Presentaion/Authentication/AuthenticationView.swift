@@ -11,6 +11,12 @@ import SwiftUI
 
 struct AuthenticationView: View {
 
+    // MARK: Lifecycle
+
+    init(isSignIn: Bool = false) {
+        self.isSignIn = isSignIn
+    }
+
     // MARK: Internal
 
     var body: some View {
@@ -20,7 +26,7 @@ struct AuthenticationView: View {
 
                 Spacer()
 
-                submitButton
+                submitButton.id("submitButton")
             }
         }
         .onAppear { bindViewModel() }
@@ -54,7 +60,7 @@ struct AuthenticationView: View {
     }
 
     @State private var isValid = false
-    @State private var isSignIn = false
+    @State private var isSignIn: Bool
     @State private var isAlertShow = false
     @StateObject private var viewModel = AuthenticationViewModel()
 
@@ -123,20 +129,18 @@ extension AuthenticationView {
     // MARK: 환경변수를 통해서 인증시 메인탭뷰로 이동하게 처리 할 예정
 
     private var submitButton: some View {
-        VStack {
-            Button {
-                isSignIn ? viewModel.signIn() : viewModel.signUp()
-            } label: { Text(isSignIn ? Content.Label.signIn : Content.Label.signUp).foregroundColor(.white) }
-                .frame(width: Size.width, height: Size.height, alignment: .center)
-                .background(Color.blue)
-                .cornerRadius(Size.cornerRadius)
-                .alert(isPresented: $isAlertShow) {
-                    Alert(
-                        title: Text(Content.Label.alertTitle),
-                        message: alertMessage,
-                        dismissButton: .default(Text(Content.Label.confirm)))
-                }
-        }
+        Button {
+            isSignIn ? viewModel.signIn() : viewModel.signUp()
+        } label: { Text(isSignIn ? Content.Label.signIn : Content.Label.signUp).foregroundColor(.white) }
+            .frame(width: Size.width, height: Size.height, alignment: .center)
+            .background(Color.blue)
+            .cornerRadius(Size.cornerRadius)
+            .alert(isPresented: $isAlertShow) {
+                Alert(
+                    title: Text(Content.Label.alertTitle),
+                    message: alertMessage,
+                    dismissButton: .default(Text(Content.Label.confirm)))
+            }
     }
 }
 
