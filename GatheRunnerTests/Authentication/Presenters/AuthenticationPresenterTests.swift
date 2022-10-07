@@ -10,7 +10,6 @@ import XCTest
 // MARK: - AuthenticationPresenterTests
 
 class AuthenticationPresenterTests: XCTestCase {
-
     var mocksInputsValidator: MocksInputsValidator!
     var isPassEmailValidation: Bool!
     var isPassPasswordValidation: Bool!

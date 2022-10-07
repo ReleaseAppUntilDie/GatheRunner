@@ -16,8 +16,4 @@ target 'GatheRunner' do
     # Pods for testing
   end
 
-  target 'GatheRunnerUITests' do
-    # Pods for testing
-  end
-
 end
