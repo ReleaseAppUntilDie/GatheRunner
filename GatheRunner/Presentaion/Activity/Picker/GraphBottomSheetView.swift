@@ -27,7 +27,6 @@ struct GraphBottomSheetView: View {
         selectedMonth = current.month!
     }
 
-
     // MARK: Internal
 
     @ObservedObject var viewModel: GraphViewModel
@@ -38,7 +37,7 @@ struct GraphBottomSheetView: View {
     @Binding var selectedTimeUnit: TimeUnit
 
     var body: some View {
-        ZStack(alignment:.bottom) {
+        ZStack(alignment: .bottom) {
             Color.black.opacity(show ? 0.5 : 0)
                 .edgesIgnoringSafeArea(.top)
                 .onTapGesture {
@@ -56,11 +55,7 @@ struct GraphBottomSheetView: View {
                     isMonth: selectedTimeUnit == .month)
                     .padding()
                 Button {
-                    viewModel.updateSelected(selectedStr: selected, selectedYear: selectedYear, selectedMonth: selectedMonth)
-                    viewModel.fetchData()
-                    withAnimation(.linear) {
-                        show.toggle()
-                    }
+                    confirmButtonAction()
                 } label: {
                     Text("선택")
                         .font(.system(size: 20, weight: .bold))
@@ -73,6 +68,14 @@ struct GraphBottomSheetView: View {
             .frame(maxHeight: show ? UIScreen.getHeightby(ratio: 0.5) : 0)
             .background(Color.white)
             .cornerRadius(16, corners: [.topLeft,.topRight])
+        }
+    }
+
+    func confirmButtonAction() {
+        viewModel.updateSelected(selectedStr: selected, selectedYear: selectedYear, selectedMonth: selectedMonth)
+        viewModel.fetchData()
+        withAnimation(.linear) {
+            show.toggle()
         }
     }
 }

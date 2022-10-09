@@ -18,18 +18,8 @@ class GraphViewModel: ObservableObject {
         selectedTimeUnit = .week
         records = [Int]()
 
-        let periodString: ((Int,Int,Int,Int)) -> String = {
-            "\($0.0).\($0.1)~\($0.2).\($0.3)"
-        }
-        let beforeTwoWeeks = beforeTwoWeeks()
-        let beforeThreeWeeks = beforeThreeWeeks()
+        dataInit()
 
-        pickerItemList = [
-            "이번주",
-            "저번주",
-            periodString(beforeTwoWeeks),
-            periodString(beforeThreeWeeks),
-        ]
         fetchData()
     }
 
@@ -65,21 +55,6 @@ class GraphViewModel: ObservableObject {
             selectedString = selectedStr
         }
     }
-
-    func fetchData() {
-        print(#function)
-        switch selectedTimeUnit {
-        case .week:
-            records = (0..<7).map { _ in Int.random(in: 1 ... 20) }
-        case .month:
-            records = (0..<30).map { _ in Int.random(in: 1 ... 20) }
-        case .year:
-            records = (0..<12).map { _ in Int.random(in: 1 ... 20) }
-        case .whole:
-            records = (0..<4).map { _ in Int.random(in: 1 ... 20) }
-        }
-    }
-
 
     func updatePicker(timeUnit: TimeUnit) {
         switch timeUnit {
@@ -160,9 +135,40 @@ class GraphViewModel: ObservableObject {
     }
 
     func isValidMonth(year: Int, month: Int) -> Bool {
-        let dateComponents = DateComponents(year:year,month: month)
+        let dateComponents = DateComponents(year: year,month: month)
         let currentDate = Date()
         guard let willCompareDate = Calendar.current.date(from: dateComponents) else { return false }
         return currentDate >= willCompareDate
     }
+
+    func fetchData() {
+        switch selectedTimeUnit {
+        case .week:
+            records = (0..<7).map { _ in Int.random(in: 1 ... 20) }
+        case .month:
+            records = (0..<30).map { _ in Int.random(in: 1 ... 20) }
+        case .year:
+            records = (0..<12).map { _ in Int.random(in: 1 ... 20) }
+        case .whole:
+            records = (0..<4).map { _ in Int.random(in: 1 ... 20) }
+        }
+    }
+
+    // MARK: Private
+
+    private func dataInit() {
+        let periodString: ((Int,Int,Int,Int)) -> String = {
+            "\($0.0).\($0.1)~\($0.2).\($0.3)"
+        }
+        let beforeTwoWeeks = beforeTwoWeeks()
+        let beforeThreeWeeks = beforeThreeWeeks()
+
+        pickerItemList = [
+            "이번주",
+            "저번주",
+            periodString(beforeTwoWeeks),
+            periodString(beforeThreeWeeks),
+        ]
+    }
+
 }

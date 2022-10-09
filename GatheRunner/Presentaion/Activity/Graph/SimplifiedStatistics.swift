@@ -36,7 +36,6 @@ struct SimplifiedStatistics: View {
                 withAnimation(.linear) {
                     pickerViewShowed.toggle()
                 }
-
             } label: {
                 HStack {
                     Text(viewModel.selectedString)

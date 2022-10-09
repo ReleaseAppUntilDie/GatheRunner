@@ -18,7 +18,6 @@ struct Graph: View {
 
     @ObservedObject var viewModel: GraphViewModel
 
-
     var barCornerRadius: CGFloat {
         switch viewModel.selectedTimeUnit {
         case .week:
@@ -62,14 +61,22 @@ struct Graph: View {
         (viewModel.records.max()! / 3 + 2) * 3
     }
 
+    var secondV: Int {
+        maxValue / 3 * 2
+    }
+
+    var thirdV: Int {
+        maxValue / 3
+    }
+
     var body: some View {
-        VStack(alignment:.leading) {
+        VStack(alignment: .leading) {
             ZStack(alignment: .bottomLeading) {
-                ZStack(alignment:.topLeading) {
+                ZStack(alignment: .topLeading) {
                     lineWithText(text: "\(maxValue)")
-                    lineWithText(text: "\(maxValue / 3 * 2)")
+                    lineWithText(text: "\(secondV)")
                         .offset(y: cellHeight)
-                    lineWithText(text: "\(maxValue / 3)")
+                    lineWithText(text: "\(thirdV)")
                         .offset(y: cellHeight * 2)
                     lineWithText(text: "0km")
                         .offset(y: cellHeight * 3)
@@ -153,7 +160,7 @@ extension Graph {
                 .foregroundColor(lineColor)
             Text(text)
                 .font(.system(size: 10, weight: .regular, design: .rounded))
-        }.frame(height:cellHeight)
+        }.frame(height: cellHeight)
     }
 }
 

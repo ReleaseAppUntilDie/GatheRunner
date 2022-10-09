@@ -19,7 +19,7 @@ struct GraphView: View {
 
     // MARK: Internal
 
-    @State var pickerViewShowed = false
+    @State private var isPickerViewShowed = false
     @ObservedObject var viewModel = GraphViewModel()
 
     var body: some View {
@@ -28,16 +28,15 @@ struct GraphView: View {
                 PeriodView(curTimeUnit: $selectedTimeUnit)
                     .padding(.bottom)
                     .onTouch(type: .started) { point in
-
                         withAnimation {
-                            setTimeUnitby(x: point.x)
+                            setTimeUnit(by: point.x)
                         }
                     }
                 // TODO: Picker 아이템 생성후 삽입
                 SimplifiedStatistics(
                     viewModel: viewModel,
                     selectedTimeUnit: $selectedTimeUnit,
-                    pickerViewShowed: $pickerViewShowed)
+                    pickerViewShowed: $isPickerViewShowed)
 
                 Graph(
                     graphWidth: UIScreen.getWidthby(ratio: 0.7),
@@ -48,12 +47,12 @@ struct GraphView: View {
 
             GraphBottomSheetView(
                 viewModel: viewModel,
-                show: $pickerViewShowed,
+                show: $isPickerViewShowed,
                 selectedTimeUnit: $selectedTimeUnit)
         }
     }
 
-    func setTimeUnitby(x: CGFloat) {
+    func setTimeUnit(by x: CGFloat) {
         if x < UIScreen.getWidthby(ratio: 0.2) {
             selectedTimeUnit = .week
         } else if x >= UIScreen.getWidthby(ratio: 0.2),x < UIScreen.getWidthby(ratio: 0.4) {
@@ -63,6 +62,9 @@ struct GraphView: View {
         } else {
             selectedTimeUnit = .whole
         }
+    }
+
+    func viewModelUpdate() {
         viewModel.updateTimeUnit(selectedTimeUnit)
         viewModel.updatePicker(timeUnit: selectedTimeUnit)
         viewModel.fetchData()
@@ -70,7 +72,11 @@ struct GraphView: View {
 
     // MARK: Private
 
-    @State private var selectedTimeUnit: TimeUnit = .week
+    @State private var selectedTimeUnit: TimeUnit = .week {
+        didSet {
+            viewModelUpdate()
+        }
+    }
 }
 
 // MARK: - GraphView_Previews
