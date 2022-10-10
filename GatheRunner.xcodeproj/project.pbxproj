@@ -65,6 +65,7 @@
 		EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8A28D07C1000D78D28 /* GraphView.swift */; };
 		EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8B28D07C1000D78D28 /* Graph.swift */; };
 		EA3D3F9028D07C1000D78D28 /* SimplifiedStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8C28D07C1000D78D28 /* SimplifiedStatistics.swift */; };
+		EA7913B828D6EA7000F889E5 /* GraphBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7913B728D6EA7000F889E5 /* GraphBottomSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,7 @@
 		EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyActivityView.swift; sourceTree = "<group>"; };
 		EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistoryView.swift; sourceTree = "<group>"; };
 		EA5E279128B604B7004C0798 /* GraphViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
+		EA7913B728D6EA7000F889E5 /* GraphBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBottomSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +376,7 @@
 		E35EFEC0286DFB2D003E23DE /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				EA7913B628D6EA5900F889E5 /* Picker */,
 				EA3D3F8828D07C0000D78D28 /* Graph */,
 				EA5E279028B604B7004C0798 /* ViewModel */,
 				E35EFEC1286DFB2D003E23DE /* ActivityView.swift */,
@@ -527,6 +530,14 @@
 				EA5E279128B604B7004C0798 /* GraphViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EA7913B628D6EA5900F889E5 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				EA7913B728D6EA7000F889E5 /* GraphBottomSheetView.swift */,
+			);
+			path = Picker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -808,6 +819,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA7913B828D6EA7000F889E5 /* GraphBottomSheetView.swift in Sources */,
 				E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */,
 				E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */,
 				E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */,
