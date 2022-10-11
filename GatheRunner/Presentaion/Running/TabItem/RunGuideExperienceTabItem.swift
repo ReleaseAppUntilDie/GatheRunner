@@ -20,7 +20,7 @@ struct RunGuideExperienceTabItem: View {
                 VStack(alignment: .leading, spacing: 5.0) {
                     TabItemTexts(itemCategory: .title, index: index).lineLimit(1)
                     TabItemTexts(itemCategory: .subtitle, index: index)
-                    TabItemTexts(itemCategory: .text, index: index).lineLimit(1)
+                    TabItemTexts(itemCategory: .contents, index: index).lineLimit(1)
                 }.frame(
                     width: UIScreen.getWidthby(ratio: vStackFrameWidthRatio),
                     height: UIScreen.getHeightby(ratio: vStackFrameHeightRatio),
@@ -43,7 +43,7 @@ struct RunGuideExperienceTabItem: View {
     private let hStackFrameWidthRatio = 0.82
     private let hStackFrameHeightRatio = 0.13
 
-    private var arrsRunGuideExperienceTabItem = RunGuideExperienceVM().getArrsRunGuideExperienceItem
+    private var arrsRunGuideExperienceTabItem = RunGuideViewModel().getArrsRunGuideExperienceItem
 }
 
 // MARK: - TabItemImages
@@ -52,7 +52,7 @@ struct TabItemImages: View {
     private let imageFrameWidthRatio = 0.28
     private let imageFrameHeightRatio = 0.14
 
-    fileprivate var arrsRunGuideExperienceTabItem = RunGuideExperienceVM().getArrsRunGuideExperienceItem
+    fileprivate var arrsRunGuideExperienceTabItem = RunGuideViewModel().getArrsRunGuideExperienceItem
     fileprivate let index: Int
 
     var body: some View {
@@ -69,7 +69,7 @@ struct TabItemImages: View {
 // MARK: - TabItemTexts
 
 struct TabItemTexts: View {
-    private let arrsRunGuideExperienceTabItem = RunGuideExperienceVM().getArrsRunGuideExperienceItem
+    private let arrsRunGuideExperienceTabItem = RunGuideViewModel().getArrsRunGuideExperienceItem
     fileprivate var itemCategory: ItemCategory
     fileprivate let index: Int
 
@@ -84,7 +84,7 @@ struct TabItemTexts: View {
         switch s {
         case .title: return arrsRunGuideExperienceTabItem[index].title
         case .subtitle: return arrsRunGuideExperienceTabItem[index].subtitle
-        case .text: return arrsRunGuideExperienceTabItem[index].text
+        case .contents: return arrsRunGuideExperienceTabItem[index].contents
         }
     }
 }
@@ -93,7 +93,7 @@ extension TabItemTexts {
     enum ItemCategory {
         case title
         case subtitle
-        case text
+        case contents
     }
 }
 

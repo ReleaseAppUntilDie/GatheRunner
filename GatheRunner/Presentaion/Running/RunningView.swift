@@ -34,6 +34,7 @@ struct RunningView: View {
             BtnSelector(
                 justStartButtonIsSelected: $justStartButtonIsSelected,
                 runningGuideButtonIsSelected: $runningGuideButtonIsSelected)
+                .frame(height: UIScreen.getHeightby(ratio: 0.72))
         }.ignoresSafeArea(edges: .top)
     }
 
@@ -57,8 +58,7 @@ struct BtnSelector: View {
         }
 
         if runningGuideButtonIsSelected {
-            RunningGuideView()
-                .transition(.move(edge: .trailing))
+            RunningGuideView().transition(.move(edge: .trailing))
         }
     }
 }

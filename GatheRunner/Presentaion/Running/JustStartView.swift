@@ -13,12 +13,18 @@ import SwiftUI
 struct JustStartView: View {
     @StateObject private var manager = LocationManager()
     @Binding var selectedRunGuideTabItem: Int
+    @State var isPresented = true
+    @State private var selectedCardItem: RunGuideItem? = nil
+    private let timer = Timer.publish(every: 5.5, on: .main, in: .default).autoconnect()
+    var runGuideExperienceItemArrs = RunGuideViewModel().getArrsRunGuideExperienceItem
+    private let tabViewFrameWidthRatio: Double = 1
+    private let tabViewFrameHeightRatio = 0.2
 
     var body: some View {
         ZStack {
-            mapView
+            mapView.show(isVisible: isPresented)
             VStack {
-                RunGuideTabView(selectedRunGuideTabItem: $selectedRunGuideTabItem)
+                runGuideTabView
                 Spacer()
                 BottomButtonsView()
             }
@@ -30,18 +36,11 @@ struct JustStartView: View {
     }
 }
 
-// MARK: - RunGuideTabView
+extension JustStartView {
 
-struct RunGuideTabView: View {
-    @Binding var selectedRunGuideTabItem: Int
-    private let timer = Timer.publish(every: 5.5, on: .main, in: .default).autoconnect()
-    var runningGuideArrs = RunGuideExperienceVM().getArrsRunGuideExperienceItem
-    private let tabViewFrameWidthRatio: Double = 1
-    private let tabViewFrameHeightRatio = 0.2
-    private let forMapRadialGradient =
-        Gradient(colors: [Color.white.opacity(0), Color.white, Color.white, Color.white, Color.white, Color.white.opacity(1)])
+    // MARK: Internal
 
-    var body: some View {
+    var runGuideTabView: some View {
         VStack {
             TabView(selection: $selectedRunGuideTabItem) {
                 RunGuideExperienceTabItem()
@@ -53,23 +52,29 @@ struct RunGuideTabView: View {
             .shadow(radius: 2)
             .padding(-15)
             .onTapGesture {
-                timer.upstream.connect().cancel()
+                cancelTimerConnect()
+                selectedCardItem = runGuideExperienceItemArrs[selectedRunGuideTabItem]
+            }
+            .fullScreenCover(item: $selectedCardItem, onDismiss: didDismiss) { item in
+                FullScreenCoverView(item: item)
+                    .onAppear {
+                        isPresented = false
+                    }
             }
             .highPriorityGesture(
                 DragGesture()
                     .onChanged { _ in
-                        timer.upstream.connect().cancel()
+                        cancelTimerConnect()
                     })
             .onReceive(timer) { _ in
-                if runningGuideArrs.count - 1 >= selectedRunGuideTabItem + 1 {
+                if runGuideExperienceItemArrs.count - 1 >= selectedRunGuideTabItem + 1 {
                     selectedRunGuideTabItem += 1
                 } else {
-                    timer.upstream.connect().cancel()
+                    cancelTimerConnect()
                 }
             }.animation(.default, value: selectedRunGuideTabItem)
-
             HStack(spacing: 5) {
-                ForEach(runningGuideArrs.indices, id: \.self) { index in
+                ForEach(runGuideExperienceItemArrs.indices, id: \.self) { index in
                     Capsule()
                         .fill(Color.black.opacity(selectedRunGuideTabItem == index ? 1 : 0.55))
                         .frame(width: selectedRunGuideTabItem == index ? 18 : 6, height: 4)
@@ -77,6 +82,17 @@ struct RunGuideTabView: View {
                 }
             }
         }
+    }
+
+    // MARK: Private
+
+
+    private func cancelTimerConnect() {
+        timer.upstream.connect().cancel()
+    }
+
+    private func didDismiss() {
+        isPresented = true
     }
 }
 
