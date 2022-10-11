@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07FDA57639453B630935412C /* Pods_GatheRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */; };
 		6F1E0DD9287D43410025A671 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0DD8287D43410025A671 /* SettingItemView.swift */; };
 		6F1E0DDB287D43620025A671 /* DetailControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0DDA287D43620025A671 /* DetailControllView.swift */; };
 		6F1E0DDE287D43AF0025A671 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0DDD287D43AF0025A671 /* SettingModel.swift */; };
@@ -171,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3C2CA0F28F016BB00861A74 /* SnapshotTesting in Frameworks */,
+				07FDA57639453B630935412C /* Pods_GatheRunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,7 +864,7 @@
 /* Begin PBXTargetDependency section */
 		E3C2CA1F28F02C9D00861A74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = E3C2CA1E28F02C9D00861A74 /* SnapshotTesting */;
+			productRef = E3C2CA1E28F02C9D00861A74;
 		};
 		E3D349E5286C20D500618AC3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1156,11 +1158,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		E3C2CA0E28F016BB00861A74 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E39560F428EFBB8800ED78BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
-		};
-		E3C2CA1E28F02C9D00861A74 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E39560F428EFBB8800ED78BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;

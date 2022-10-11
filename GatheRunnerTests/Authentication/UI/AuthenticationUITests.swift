@@ -11,20 +11,27 @@ import XCTest
 
 class AuthenticationUITests: BaseUITests {
 
-    override var deviceModel: DeviceModel {
+    override var targetModel: DeviceModel {
         .iPhoneX
     }
 
-    override var identity: String {
-        "Authentication"
+    override var identity: ViewIdentity {
+        .authentication
     }
 
-    override var viewController: UIViewController {
+    override var targetView: UIViewController {
         AuthenticationView(isSignIn: true).toVC
+    }
+
+    override var isRecord: Bool {
+        false
     }
 
     override func test_view_on_iPhone() throws {
         try super.test_view_on_iPhone()
     }
 
+    override func test_view_on_iPhone_landscape() throws {
+        try super.test_view_on_iPhone_landscape()
+    }
 }
