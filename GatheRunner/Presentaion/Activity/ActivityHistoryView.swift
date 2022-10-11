@@ -11,8 +11,9 @@ import SwiftUI
 
 struct ActivityHistoryView: View {
     var body: some View {
-        VStack {
+        ScrollView {
             GraphView()
+            HistoryList()
         }
     }
 }

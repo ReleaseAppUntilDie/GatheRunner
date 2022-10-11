@@ -12,10 +12,6 @@ import SwiftUI
 struct EmptyActivityView: View {
     var body: some View {
         VStack {
-            HeaderView(title: "활동",type: .activity) {
-                // TODO: 활동 추가
-                print("test")
-            }
             Image("EmptyActivityIcon")
                 .padding(.bottom)
             Text("달리기를 시작하세요")

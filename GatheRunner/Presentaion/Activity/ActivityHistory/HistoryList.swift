@@ -12,8 +12,11 @@ import SwiftUI
 struct HistoryList: View {
     var body: some View {
         ZStack {
-            Color.gray
-            ScrollView {
+            Color(uiColor: .lightGray)
+            VStack {
+                Text("최근 활동")
+                    .font(.title2)
+                    .padding()
                 LazyVStack {
                     ForEach(0...10,id: \.self) { _ in
                         HistoryItem()
