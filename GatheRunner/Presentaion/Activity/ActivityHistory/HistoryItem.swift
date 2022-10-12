@@ -12,11 +12,8 @@ import SwiftUI
 struct HistoryItem: View {
 
     let iconImageName = "map"
-    let timeString = "2022.10.7."
-    let weekString = "금요일 저녁 러닝"
-    let distance = "8.00"
-    let averagePace = "5'13''"
-    let runningTime = "41:44"
+    let history: History
+    @State var hasBadge = true
 
     var body: some View {
         ZStack(alignment: .leading) {
@@ -29,22 +26,31 @@ struct HistoryItem: View {
                             RoundedRectangle(cornerRadius: 5)
                                 .strokeBorder(.black,lineWidth: 1))
                     VStack(alignment: .leading) {
-                        Text(timeString)
+                        Text(history.timeString)
                             .font(.system(size: 14))
                             .foregroundColor(.black)
-                        Text(weekString)
+                        Text(history.weekString)
                             .font(.system(size: 14))
                             .foregroundColor(.gray)
                     }
                 }
 
                 HStack(spacing: 20) {
-                    element(title: distance, sub: "Km")
-                    element(title: averagePace, sub: "평균 페이스")
-                    element(title: runningTime, sub: "시간")
+                    element(title: history.distance, sub: "Km")
+                    element(title: history.averagePace, sub: "평균 페이스")
+                    element(title: history.runningTime, sub: "시간")
                 }
+                Group {
+                    Rectangle()
+                        .strokeBorder(Color.gray,lineWidth: 1)
+                        .frame(height: 1)
+
+                    Image(systemName: "star.circle")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                }.isEmpty(logicalOperator: .none, [hasBadge])
             }
-            .padding(.leading,20)
+            .padding(.horizontal,20)
             .padding(.vertical,10)
         }
         .frame(width: UIScreen.getWidthby(ratio: 0.8))
@@ -64,8 +70,8 @@ struct HistoryItem: View {
 
 // MARK: - HistoryItem_Previews
 
-struct HistoryItem_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryItem()
-    }
-}
+// struct HistoryItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HistoryItem()
+//    }
+// }

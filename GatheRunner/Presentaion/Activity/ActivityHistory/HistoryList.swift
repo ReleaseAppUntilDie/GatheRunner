@@ -13,13 +13,16 @@ struct HistoryList: View {
     var body: some View {
         ZStack {
             Color(uiColor: .lightGray)
-            VStack {
+            VStack(alignment: .leading) {
                 Text("최근 활동")
-                    .font(.title2)
+                    .font(.title3)
                     .padding()
+                    .padding(.leading,20)
                 LazyVStack {
                     ForEach(0...10,id: \.self) { _ in
-                        HistoryItem()
+                        HistoryItem(history: History(
+                            timeString: "2022.10.7.", weekString: "금요일 저녁 러닝", distance: "8.00", averagePace: "5'13''",
+                            runningTime: "41:44"))
                     }
                 }
             }

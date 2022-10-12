@@ -63,6 +63,8 @@
 		E3E7480B289284B200F40457 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E7480A289284B200F40457 /* TextStyle.swift */; };
 		E3F83E6A28AF641D000CA1B5 /* MeasurementViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */; };
 		E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE02FA28D49749008A9B91 /* String+isValid.swift */; };
+		E85FF54728F6857700C197CA /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85FF54628F6857700C197CA /* History.swift */; };
+		E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85FF54828F6867C00C197CA /* AverageHistory.swift */; };
 		EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8928D07C1000D78D28 /* PeriodView.swift */; };
 		EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8A28D07C1000D78D28 /* GraphView.swift */; };
 		EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8B28D07C1000D78D28 /* Graph.swift */; };
@@ -159,6 +161,8 @@
 		E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewUITests.swift; sourceTree = "<group>"; };
 		E3FE02FA28D49749008A9B91 /* String+isValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValid.swift"; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E85FF54628F6857700C197CA /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		E85FF54828F6867C00C197CA /* AverageHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageHistory.swift; sourceTree = "<group>"; };
 		EA3D3F8928D07C1000D78D28 /* PeriodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodView.swift; sourceTree = "<group>"; };
 		EA3D3F8A28D07C1000D78D28 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		EA3D3F8B28D07C1000D78D28 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -389,6 +393,7 @@
 		E35EFEC0286DFB2D003E23DE /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				E85FF54528F6856800C197CA /* Model */,
 				DBD4C52D28F3DFBC000E28D0 /* ActivityHistory */,
 				EA7913B628D6EA5900F889E5 /* Picker */,
 				EA3D3F8828D07C0000D78D28 /* Graph */,
@@ -517,6 +522,15 @@
 				E335FAF828B7610300835F72 /* SelectedTab.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		E85FF54528F6856800C197CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E85FF54628F6857700C197CA /* History.swift */,
+				E85FF54828F6867C00C197CA /* AverageHistory.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EA3D3F8828D07C0000D78D28 /* Graph */ = {
@@ -867,11 +881,13 @@
 				E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */,
 				DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */,
 				E351783A28ABC9E50088003B /* MeasurementView.swift in Sources */,
+				E85FF54728F6857700C197CA /* History.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideExperienceItem.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
 				DA58421E2893C27700554B5D /* RunGuideExperienceVM.swift in Sources */,
 				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
+				E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */,
 				E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */,
 				E3DA2F5828B76098001E9220 /* Constants.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
