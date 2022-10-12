@@ -102,7 +102,7 @@ struct PickerView: View {
             HStack(spacing: 0) {
                 Picker("Choose year", selection: $selectedYear) {
                     ForEach(viewModel.pickerItemListInMonth.0,id: \.self) {
-                        Text("\($0)년")
+                        Text(verbatim: "\($0)년")
                     }
                 }
                 .frame(width: UIScreen.getWidthby(ratio: 0.5))
