@@ -15,19 +15,14 @@ struct FullScreenCoverView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                HStack {
-                    Spacer()
-                    CloseButton()
-                        .onTapGesture {
-                            dismiss()
-                        }
-                }
-                Spacer()
-            }.zIndex(3)
             backgroundImage
             fullScreenCoverViewBottomContents
         }
+        .overlay(CloseButton()
+            .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 30)), alignment: .topTrailing)
+            .onTapGesture {
+                dismiss()
+            }
         .onChange(of: isPressed) { _ in
             isPressedEvent()
         }
@@ -168,7 +163,6 @@ struct CloseButton: View {
             .padding(.all, Size.symbolPaddingValue)
             .background(.black.opacity(Opacity.backgroundBlackOpacity))
             .clipShape(Circle())
-            .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 30))
     }
 }
 
