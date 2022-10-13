@@ -18,11 +18,11 @@ struct FullScreenCoverView: View {
             backgroundImage
             fullScreenCoverViewBottomContents
         }
-        .overlay(CloseButton()
-            .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 30)), alignment: .topTrailing)
-            .onTapGesture {
-                dismiss()
-            }
+        .overlay(alignment: .topTrailing) {
+            CloseButton()
+                .padding(Size.edgeInsetsOfCloseButton)
+                .onTapGesture { dismiss() }
+        }
         .onChange(of: isPressed) { _ in
             isPressedEvent()
         }
@@ -41,11 +41,18 @@ struct FullScreenCoverView: View {
                 })
     }
     
+    private var backgroundImage: some View {
+        Image(item.image)
+            .offset(y: viewPositionYAxisOffset * Size.reducerYAxisOffset)
+            .frame(width: UIScreen.getWidthby(ratio: 1), height: UIScreen.getHeightby(ratio: 1))
+    }
+    
+    @ViewBuilder
     private var fullScreenCoverViewBottomContents: some View {
-        GeometryReader { proxy in
-            let _ = getBottomDescriptionMaxYPosition(proxy)
-            Rectangle()
-                .frame(width: UIScreen.getWidthby(ratio: 1), height: UIScreen.getHeightby(ratio: 1.05))
+        ZStack(alignment: .topLeading) {
+            GeometryReader { proxy in
+                makeBottomViewAndGetMaxYPosition(proxy)
+            }
             VStack(alignment: .leading) {
                 TextViewSetForRunGuideBottomView(
                     title: "워크아웃 목표", contents: "\(item.workoutGoal)")
@@ -57,35 +64,30 @@ struct FullScreenCoverView: View {
         .offset(y: viewPositionYAxisOffset)
     }
     
-    private var backgroundImage: some View {
-        Image(item.image)
-            .offset(y: viewPositionYAxisOffset * Size.reducerYAxisOffset)
-            .frame(width: UIScreen.getWidthby(ratio: 1), height: UIScreen.getHeightby(ratio: 1))
-    }
-    
     // MARK: Private
-
+    
     @Environment(\.dismiss) private var dismiss
     @State private var viewPositionYAxisOffset: CGFloat = .zero
     @State private var yAxisOffset: CGFloat = .zero
     @State private var previousValueYAxisOffset: CGFloat = .zero
-    @State private var previousYAxisPositionOfBottomDescription: CGFloat = .zero
+    @State private var previousYAxisPositionOfBottomView: CGFloat = .zero
     @State private var isPressed = false
-    @State private var bottomDescriptionMaxYPosition: CGFloat = .zero
+    @State private var bottomViewMaxYPosition: CGFloat = .zero
     let item: RunGuideItem
 }
 
 extension FullScreenCoverView {
     private enum Size {
         static let reducerYAxisOffset: CGFloat = 0.4
+        static let edgeInsetsOfCloseButton: EdgeInsets = EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 30)
     }
 }
 
 extension FullScreenCoverView {
     private func isPressedEvent() {
         previousValueYAxisOffset = viewPositionYAxisOffset
-        previousYAxisPositionOfBottomDescription =
-        bottomDescriptionMaxYPosition
+        previousYAxisPositionOfBottomView =
+        bottomViewMaxYPosition
     }
     
     private func dragGestureOnChangedEvent(_ state: DragGesture.Value) {
@@ -96,7 +98,7 @@ extension FullScreenCoverView {
     private func dragGestureOnEndedEvent() {
         isPressed = false
         viewPositionYAxisOffset > CGFloat(-50) ? viewPositionYAxisOffset = 0 : nil
-        bottomDescriptionMaxYPosition - UIScreen.screenHeight < CGFloat(100)
+        bottomViewMaxYPosition - UIScreen.screenHeight < CGFloat(100)
         ? viewPositionYAxisOffset = -UIScreen.screenHeight * 0.8
         : nil
     }
@@ -107,17 +109,20 @@ extension FullScreenCoverView {
         yAxisOffset = -state.translation.height * 1.5
         
         if
-            previousYAxisPositionOfBottomDescription - yAxisOffset > UIScreen.screenHeight,
+            previousYAxisPositionOfBottomView - yAxisOffset > UIScreen.screenHeight,
             previousValueYAxisOffset - yAxisOffset < 0
         {
             viewPositionYAxisOffset = previousValueYAxisOffset - yAxisOffset
         }
     }
     
-    private func getBottomDescriptionMaxYPosition(_ proxy: GeometryProxy) {
+    private func makeBottomViewAndGetMaxYPosition(_ proxy: GeometryProxy) -> some View {
+        let bottomViewBackground = Rectangle().frame(width: UIScreen.getWidthby(ratio: 1), height: UIScreen.getHeightby(ratio: 1.05))
         DispatchQueue.main.async {
-            bottomDescriptionMaxYPosition = proxy.frame(in: .global).maxY
+            bottomViewMaxYPosition = proxy.frame(in: .global).maxY
         }
+        
+        return bottomViewBackground
     }
 }
 

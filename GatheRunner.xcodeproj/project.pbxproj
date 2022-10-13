@@ -252,11 +252,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DA098D2828F802910053140F /* New Group */ = {
+		DA098D2928F818750053140F /* JustStartView */ = {
 			isa = PBXGroup;
 			children = (
+				DA33695728790DBE00FA13AE /* JustStartView.swift */,
+				DA7D5E7A28F740D90066B2C6 /* MapView.swift */,
+				DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */,
+				DAEA9319287D184900349465 /* BottomButtonsView.swift */,
 			);
-			path = "New Group";
+			path = JustStartView;
+			sourceTree = "<group>";
+		};
+		DA098D2A28F8189E0053140F /* RunningGuideView */ = {
+			isa = PBXGroup;
+			children = (
+				DA33695928790E0C00FA13AE /* RunningGuideView.swift */,
+				DA694A7E28F72E6800A02EEE /* FullScreenCoverView.swift */,
+				DA098D2628F802320053140F /* CardView.swift */,
+			);
+			path = RunningGuideView;
 			sourceTree = "<group>";
 		};
 		DA5842172893C21800554B5D /* Extension */ = {
@@ -365,20 +379,14 @@
 		E35EFEBB286DFB2D003E23DE /* Running */ = {
 			isa = PBXGroup;
 			children = (
-				DA098D2828F802910053140F /* New Group */,
 				EA5E278D28B604A1004C0798 /* Model */,
 				DA58421C2893C26200554B5D /* ViewModel */,
 				DA5842242893C2E700554B5D /* TabItem */,
+				DA098D2928F818750053140F /* JustStartView */,
+				DA098D2A28F8189E0053140F /* RunningGuideView */,
 				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
 				E351783928ABC9E50088003B /* MeasurementView.swift */,
-				DA33695728790DBE00FA13AE /* JustStartView.swift */,
-				DA33695928790E0C00FA13AE /* RunningGuideView.swift */,
-				DAEA9319287D184900349465 /* BottomButtonsView.swift */,
 				E3E748082892837700F40457 /* RunSplashScreen.swift */,
-				DA694A7E28F72E6800A02EEE /* FullScreenCoverView.swift */,
-				DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */,
-				DA7D5E7A28F740D90066B2C6 /* MapView.swift */,
-				DA098D2628F802320053140F /* CardView.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
