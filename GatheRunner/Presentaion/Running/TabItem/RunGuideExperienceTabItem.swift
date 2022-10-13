@@ -10,90 +10,78 @@ import SwiftUI
 // MARK: - RunGuideExperienceTabItem
 
 struct RunGuideExperienceTabItem: View {
-
+    
     // MARK: Internal
-
+    
     var body: some View {
         ForEach(arrsRunGuideExperienceTabItem.indices, id: \.self) { index in
             HStack(alignment: .center, spacing: 8.0) {
-                TabItemImages(index: index)
+                tabItemImages(index: index)
                 VStack(alignment: .leading, spacing: 5.0) {
-                    TabItemTexts(itemCategory: .title, index: index).lineLimit(1)
-                    TabItemTexts(itemCategory: .subtitle, index: index)
-                    TabItemTexts(itemCategory: .contents, index: index).lineLimit(1)
+                    tabItemTexts(category: .title, index: index).lineLimit(1)
+                    tabItemTexts(category: .subtitle, index: index)
+                    tabItemTexts(category: .contents, index: index).lineLimit(1)
                 }.frame(
-                    width: UIScreen.getWidthby(ratio: vStackFrameWidthRatio),
-                    height: UIScreen.getHeightby(ratio: vStackFrameHeightRatio),
+                    width: UIScreen.getWidthby(ratio: Size.tabItemTextsVStackFrameWidthRatio),
+                    height: UIScreen.getHeightby(ratio: Size.tabItemTextsVStackFrameHeightRatio),
                     alignment: .leading)
             }.frame(
-                width: UIScreen.getWidthby(ratio: hStackFrameWidthRatio),
-                height: UIScreen.getHeightby(ratio: hStackFrameHeightRatio),
+                width: UIScreen.getWidthby(ratio: Size.tabItemTextsHStackFrameWidthRatio),
+                height: UIScreen.getHeightby(ratio: Size.tabItemTextsHStackFrameHeightRatio),
                 alignment: .leading)
-                .background(
-                    .ultraThickMaterial,
-                    in:
+            .background(
+                .ultraThickMaterial,
+                in:
                     RoundedRectangle(cornerRadius: 15, style: .continuous))
         }
     }
-
+    
     // MARK: Private
-
-    private let vStackFrameWidthRatio = 0.45
-    private let vStackFrameHeightRatio = 0.14
-    private let hStackFrameWidthRatio = 0.82
-    private let hStackFrameHeightRatio = 0.13
-
+    
     private var arrsRunGuideExperienceTabItem = RunGuideViewModel().getArrsRunGuideExperienceItem
 }
 
-// MARK: - TabItemImages
+extension RunGuideExperienceTabItem {
+    private enum Size {
+        static let tabItemTextsVStackFrameWidthRatio = 0.45
+        static let tabItemTextsVStackFrameHeightRatio = 0.14
+        static let tabItemTextsHStackFrameWidthRatio = 0.82
+        static let tabItemTextsHStackFrameHeightRatio = 0.13
+        static let tabItemImagesFrameWidthRatio = 0.28
+        static let tabItemImagesFrameHeightRatio = 0.14
+    }
+    
+    private enum ItemCategory {
+        case title
+        case subtitle
+        case contents
+    }
+}
 
-struct TabItemImages: View {
-    private let imageFrameWidthRatio = 0.28
-    private let imageFrameHeightRatio = 0.14
-
-    fileprivate var arrsRunGuideExperienceTabItem = RunGuideViewModel().getArrsRunGuideExperienceItem
-    fileprivate let index: Int
-
-    var body: some View {
+extension RunGuideExperienceTabItem {
+    private func tabItemImages(index: Int) -> some View {
         Image(arrsRunGuideExperienceTabItem[index].image)
             .resizable(resizingMode: .stretch)
             .aspectRatio(contentMode: .fit)
             .frame(
-                width: UIScreen.getWidthby(ratio: imageFrameWidthRatio),
-                height: UIScreen.getHeightby(ratio: imageFrameHeightRatio))
+                width: UIScreen.getWidthby(ratio: Size.tabItemImagesFrameWidthRatio),
+                height: UIScreen.getHeightby(ratio: Size.tabItemImagesFrameHeightRatio))
             .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 5))
     }
-}
-
-// MARK: - TabItemTexts
-
-struct TabItemTexts: View {
-    private let arrsRunGuideExperienceTabItem = RunGuideViewModel().getArrsRunGuideExperienceItem
-    fileprivate var itemCategory: ItemCategory
-    fileprivate let index: Int
-
-    var body: some View {
-        Text(selectCategory(itemCategory, idx: index))
+    
+    private func tabItemTexts(category: ItemCategory, index: Int) -> some View {
+        Text(selectCategory(category, idx: index))
             .font(.system(size: 15))
             .fontWeight(.regular)
             .foregroundColor(Color.gray)
     }
-
+    
     private func selectCategory(_ s: ItemCategory, idx index: Int) -> String {
         switch s {
         case .title: return arrsRunGuideExperienceTabItem[index].title
         case .subtitle: return arrsRunGuideExperienceTabItem[index].subtitle
         case .contents: return arrsRunGuideExperienceTabItem[index].contents
         }
-    }
-}
-
-extension TabItemTexts {
-    enum ItemCategory {
-        case title
-        case subtitle
-        case contents
     }
 }
 

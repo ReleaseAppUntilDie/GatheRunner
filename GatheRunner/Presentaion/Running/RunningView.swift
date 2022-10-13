@@ -10,53 +10,57 @@ import SwiftUI
 // MARK: - RunningView
 
 struct RunningView: View {
-
+    
     // MARK: Internal
-
+    
     var body: some View {
         VStack(alignment: .center) {
             HeaderView(title: "러닝", type: .running, rightButtonAction: { })
             HStack {
                 MenuBtn(
                     title: "바로 시작",
-                    isToggled: $justStartButtonIsSelected,
-                    isOtherToggled: $runningGuideButtonIsSelected)
-                    .padding(15)
+                    isToggled: $isJustStartButtonSelected,
+                    isOtherToggled: $isRunningGuideButtonSelected)
+                .padding(15)
                 MenuBtn(
                     title: "러닝 가이드",
-                    isToggled: $runningGuideButtonIsSelected,
-                    isOtherToggled: $justStartButtonIsSelected)
+                    isToggled: $isRunningGuideButtonSelected,
+                    isOtherToggled: $isJustStartButtonSelected)
             }
             .frame(
                 width: UIScreen.main.bounds.size.width,
-                height: UIScreen.getHeightby(ratio: menuBtnHstackFrameHeightRatio),
+                height: UIScreen.getHeightby(ratio: Size.menuBtnHstackFrameHeightRatio),
                 alignment: .leading)
             BtnSelector(
-                justStartButtonIsSelected: $justStartButtonIsSelected,
-                runningGuideButtonIsSelected: $runningGuideButtonIsSelected)
-                .frame(height: UIScreen.getHeightby(ratio: 0.72))
+                justStartButtonIsSelected: $isJustStartButtonSelected,
+                runningGuideButtonIsSelected: $isRunningGuideButtonSelected)
+            .frame(height: UIScreen.getHeightby(ratio: 0.72))
         }.ignoresSafeArea(edges: .top)
     }
-
+    
     // MARK: Private
-
-    @State private var justStartButtonIsSelected = true
-    @State private var runningGuideButtonIsSelected = false
-    private let menuBtnHstackFrameHeightRatio = 0.0355
+    
+    @State private var isJustStartButtonSelected = true
+    @State private var isRunningGuideButtonSelected = false
+    
 }
 
+extension RunningView {
+    private enum Size {
+        static let menuBtnHstackFrameHeightRatio = 0.0355
+    }
+}
 // MARK: - BtnSelector
 
 struct BtnSelector: View {
-    @State var selectedRunGuideTabItem = 0
     @Binding var justStartButtonIsSelected: Bool
     @Binding var runningGuideButtonIsSelected: Bool
-
+    
     var body: some View {
         if justStartButtonIsSelected {
-            JustStartView(selectedRunGuideTabItem: $selectedRunGuideTabItem).transition(.move(edge: .leading))
+            JustStartView().transition(.move(edge: .leading))
         }
-
+        
         if runningGuideButtonIsSelected {
             RunningGuideView().transition(.move(edge: .trailing))
         }
@@ -67,10 +71,9 @@ struct BtnSelector: View {
 
 struct MenuBtn: View {
     var title: String
-    private let fontSize = 14
     @Binding var isToggled: Bool
     @Binding var isOtherToggled: Bool
-
+    
     var body: some View {
         Button(title) {
             withAnimation {
@@ -81,7 +84,13 @@ struct MenuBtn: View {
             }
         }
         .foregroundColor(isToggled ? Color.black : Color.gray)
-        .font(.system(size: CGFloat(fontSize)))
+        .font(.system(size: CGFloat(Size.fontSize)))
+    }
+}
+
+extension MenuBtn {
+    private enum Size {
+        static let fontSize = 14
     }
 }
 
