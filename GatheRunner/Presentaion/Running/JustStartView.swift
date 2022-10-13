@@ -16,7 +16,7 @@ struct JustStartView: View {
     
     var body: some View {
         ZStack {
-            MapView().show(isVisible: isPresented)
+            MapView().hide(isVisible: isPresented)
             VStack {
                 RunGuideTabView(isPresented: isPresented)
                 Spacer()
