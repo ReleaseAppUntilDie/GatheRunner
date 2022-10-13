@@ -2,7 +2,7 @@
 //  PeriodView.swift
 //  GatheRunner
 //
-//  Created by 김현진 on 2022/09/06.
+//  Created by jaeseung han on 2022/09/06.
 //
 
 import SwiftUI

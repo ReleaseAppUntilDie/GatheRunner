@@ -2,7 +2,7 @@
 //  GatherNavBar.swift
 //  GatheRunner
 //
-//  Created by 김현진 on 2022/08/14.
+//  Created by jaeseung han on 2022/08/14.
 //
 
 import SwiftUI

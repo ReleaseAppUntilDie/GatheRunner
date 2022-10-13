@@ -2,7 +2,7 @@
 //  HistoryList.swift
 //  GatheRunner
 //
-//  Created by 김현미 on 2022/10/10.
+//  Created by jaeseung han on 2022/10/10.
 //
 
 import SwiftUI

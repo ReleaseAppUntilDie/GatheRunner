@@ -2,7 +2,7 @@
 //  ActivityHistoryView.swift
 //  GatheRunner
 //
-//  Created by 김현진 on 2022/08/24.
+//  Created by jaeseung han on 2022/08/24.
 //
 
 import SwiftUI
