@@ -54,7 +54,7 @@ extension View {
         clipShape(RoundedTopCorner(radius: radius))
     }
     
-    func hide(isVisible: Bool) -> some View {
+    func hide(_ isVisible: Bool) -> some View {
         ModifiedContent(content: self, modifier: Hide(isVisible: isVisible))
     }
 }

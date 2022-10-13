@@ -1,5 +1,5 @@
 //
-//  FloatingView.swift
+//  BottomButtonsView.swift
 //  GatheRunner
 //
 //  Created by cho on 2022/07/12.

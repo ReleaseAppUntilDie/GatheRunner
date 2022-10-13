@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MapKit
 
 // MARK: - JustStartView
 
@@ -16,7 +15,7 @@ struct JustStartView: View {
     
     var body: some View {
         ZStack {
-            MapView().hide(isVisible: isPresented)
+            MapView().hide(isPresented)
             VStack {
                 RunGuideTabView(isPresented: isPresented)
                 Spacer()

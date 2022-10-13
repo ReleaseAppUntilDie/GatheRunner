@@ -45,7 +45,7 @@ class RunGuideViewModel: ObservableObject {
             title: "프로 선수를 위한 워크아웃",
             subtitle: "Pro",
             contents: "60분 중거리 러닝",
-            workoutGoal: "국내대회 입상을 위한 체계적이고 과학적인 워크아웃",
+            workoutGoal: "국내 대회 입상을 위한 체계적이고 과학적인 워크아웃",
             workoutComposition: "60분의 이승 탈출 워크아웃"),
         RunGuideItem(
             image: "RunGuideImage_5",

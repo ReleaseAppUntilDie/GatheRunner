@@ -75,7 +75,9 @@ extension RunGuideExperienceTabItem {
             .fontWeight(.regular)
             .foregroundColor(Color.gray)
     }
-    
+}
+
+extension RunGuideExperienceTabItem {
     private func selectCategory(_ s: ItemCategory, idx index: Int) -> String {
         switch s {
         case .title: return arrsRunGuideExperienceTabItem[index].title

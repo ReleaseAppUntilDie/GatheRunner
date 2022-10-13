@@ -1,5 +1,5 @@
 //
-//  RunningGuideView.swift
+//  RunGuideView.swift
 //  GatheRunner
 //
 //  Created by cho on 2022/07/09.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-// MARK: - RunningGuideView
+// MARK: - RunGuideView
 
-struct RunningGuideView: View {
+struct RunGuideView: View {
     
     // MARK: Internal
     
@@ -20,10 +20,10 @@ struct RunningGuideView: View {
     }
 }
 
-// MARK: - RunningGuideView_Previews
+// MARK: - RunGuideView_Previews
 
-struct RunningGuideView_Previews: PreviewProvider {
+struct RunGuideView_Previews: PreviewProvider {
     static var previews: some View {
-        RunningGuideView()
+        RunGuideView()
     }
 }

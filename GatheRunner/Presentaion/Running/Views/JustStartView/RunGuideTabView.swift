@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RunGuideTabView: View {
-    @State var selectedRunGuideTabItem: RunGuideItem? = nil
-    @State var selectedRunGuideTabItemNumber: Int = 0
+    @State private var selectedRunGuideTabItem: RunGuideItem? = nil
+    @State private var selectedRunGuideTabItemNumber: Int = 0
     @State var isPresented: Bool
     private let timer = Timer.publish(every: 5.5, on: .main, in: .default).autoconnect()
     let runGuideExperienceItemArrs: [RunGuideItem] = RunGuideViewModel().getArrsRunGuideExperienceItem
@@ -39,11 +39,11 @@ extension RunGuideTabView {
             onTapGestureEvent()
         }
         .fullScreenCover(item: $selectedRunGuideTabItem, onDismiss: didDismiss) { item in
-            FullScreenCoverView(item: item).onAppear { isPresented = false }
+            RunGuideDetailDescriptionView(item: item).onAppear { isPresented = false }
         }
         .highPriorityGesture(
             DragGesture()
-                .onChanged { _ in cancelTimerConnect() })
+                .onChanged { _ in cancelTimerUpstreamConnect() })
         .onReceive(timer) { _ in dragGestureOnReceiveEvent() }
         .animation(.default, value: selectedRunGuideTabItemNumber)
     }
@@ -60,7 +60,7 @@ extension RunGuideTabView {
 
 extension RunGuideTabView {
     private func onTapGestureEvent() {
-        cancelTimerConnect()
+        cancelTimerUpstreamConnect()
         selectedRunGuideTabItem = runGuideExperienceItemArrs[selectedRunGuideTabItemNumber]
     }
     
@@ -68,11 +68,11 @@ extension RunGuideTabView {
         if runGuideExperienceItemArrs.count - 1 >= selectedRunGuideTabItemNumber + 1 {
             selectedRunGuideTabItemNumber += 1
         } else {
-            cancelTimerConnect()
+            cancelTimerUpstreamConnect()
         }
     }
     
-    private func cancelTimerConnect() {
+    private func cancelTimerUpstreamConnect() {
         timer.upstream.connect().cancel()
     }
     

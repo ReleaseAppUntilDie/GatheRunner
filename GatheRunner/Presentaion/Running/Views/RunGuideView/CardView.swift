@@ -28,7 +28,7 @@ struct CardView: View {
                 }
             }
             .fullScreenCover(item: $selectedCardItem) { item in
-                FullScreenCoverView(item: item)
+                RunGuideDetailDescriptionView(item: item)
             }
         }
     }
