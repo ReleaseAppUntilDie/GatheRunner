@@ -57,7 +57,6 @@ struct HistoryItem: View {
         .cornerRadius(10)
     }
 
-    @ViewBuilder
     func element(title: String, sub: String) -> some View {
         VStack(alignment: .leading) {
             Text(title)

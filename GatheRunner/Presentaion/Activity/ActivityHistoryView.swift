@@ -7,13 +7,31 @@
 
 import SwiftUI
 
+// MARK: - TimeUnit
+
+enum TimeUnit {
+    case week,month,year,whole
+}
+
+
 // MARK: - ActivityHistoryView
 
 struct ActivityHistoryView: View {
+
+    @ObservedObject var viewModel = GraphViewModel()
+    @State private var isPickerViewShowed = false
+    @State var selectedTimeUnit: TimeUnit = .week
+
     var body: some View {
-        ScrollView {
-            GraphView()
-            HistoryList()
+        ZStack {
+            ScrollView {
+                GraphView(isPickerViewShowed: $isPickerViewShowed, viewModel: viewModel, selectedTimeUnit: $selectedTimeUnit)
+                HistoryList()
+            }
+            GraphBottomSheetView(
+                viewModel: viewModel,
+                show: $isPickerViewShowed,
+                selectedTimeUnit: $selectedTimeUnit)
         }
     }
 }
