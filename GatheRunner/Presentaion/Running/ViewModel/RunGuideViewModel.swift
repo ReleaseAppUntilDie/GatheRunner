@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class RunGuideViewModel: ObservableObject {
+class RunGuideViewModel {
 
     // MARK: Internal
 

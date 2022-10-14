@@ -7,13 +7,15 @@
 
 import SwiftUI
 
+// MARK: - RunGuideTabView
+
 struct RunGuideTabView: View {
     @State private var selectedRunGuideTabItem: RunGuideItem? = nil
-    @State private var selectedRunGuideTabItemNumber: Int = 0
-    @State var isPresented: Bool
+    @State private var selectedRunGuideTabItemNumber = 0
+    @Binding var isPresentedRunGuideDetailDescriptionView: Bool
     private let timer = Timer.publish(every: 5.5, on: .main, in: .default).autoconnect()
     let runGuideExperienceItemArrs: [RunGuideItem] = RunGuideViewModel().getArrsRunGuideExperienceItem
-    
+
     var body: some View {
         VStack {
             tabView
@@ -39,7 +41,7 @@ extension RunGuideTabView {
             onTapGestureEvent()
         }
         .fullScreenCover(item: $selectedRunGuideTabItem, onDismiss: didDismiss) { item in
-            RunGuideDetailDescriptionView(item: item).onAppear { isPresented = false }
+            RunGuideDetailDescriptionView(item: item).onAppear { isPresentedRunGuideDetailDescriptionView = true }
         }
         .highPriorityGesture(
             DragGesture()
@@ -47,7 +49,7 @@ extension RunGuideTabView {
         .onReceive(timer) { _ in dragGestureOnReceiveEvent() }
         .animation(.default, value: selectedRunGuideTabItemNumber)
     }
-    
+
     var tabViewIndicator: some View {
         ForEach(runGuideExperienceItemArrs.indices, id: \.self) { index in
             Capsule()
@@ -63,7 +65,7 @@ extension RunGuideTabView {
         cancelTimerUpstreamConnect()
         selectedRunGuideTabItem = runGuideExperienceItemArrs[selectedRunGuideTabItemNumber]
     }
-    
+
     private func dragGestureOnReceiveEvent() {
         if runGuideExperienceItemArrs.count - 1 >= selectedRunGuideTabItemNumber + 1 {
             selectedRunGuideTabItemNumber += 1
@@ -71,19 +73,19 @@ extension RunGuideTabView {
             cancelTimerUpstreamConnect()
         }
     }
-    
+
     private func cancelTimerUpstreamConnect() {
         timer.upstream.connect().cancel()
     }
-    
+
     private func didDismiss() {
-        isPresented = true
+        isPresentedRunGuideDetailDescriptionView = false
     }
 }
 
 extension RunGuideTabView {
     private enum Size {
         static let tabViewFrameWidthRatio: Double = 1
-        static let tabViewFrameHeightRatio: Double = 0.2
+        static let tabViewFrameHeightRatio = 0.2
     }
 }

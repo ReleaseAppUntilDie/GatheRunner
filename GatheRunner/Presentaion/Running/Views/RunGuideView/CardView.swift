@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+// MARK: - CardView
+
 struct CardView: View {
-    @State private var selectedCardItem: RunGuideItem? = nil
-    private let runGuideCardItemArrs = RunGuideViewModel().getArrsRunGuideExperienceItem
-    
+
+    // MARK: Internal
+
     var body: some View {
         ForEach(runGuideCardItemArrs) { item in
             ZStack(alignment: .center) {
@@ -33,6 +35,11 @@ struct CardView: View {
         }
     }
 
+    // MARK: Private
+
+    @State private var selectedCardItem: RunGuideItem? = nil
+    private let runGuideCardItemArrs = RunGuideViewModel().getArrsRunGuideExperienceItem
+
     private func cardImage(_ item: RunGuideItem) -> some View {
         Image(item.image)
             .resizable()
@@ -40,7 +47,7 @@ struct CardView: View {
             .cornerRadius(Size.cardItemCornerRadiusValue)
             .shadow(radius: 2)
     }
-    
+
     @ViewBuilder
     private func cardText(_ item: RunGuideItem) -> some View {
         Text(item.title)
@@ -62,6 +69,8 @@ extension CardView {
         static let cardItemCornerRadiusValue: CGFloat = 20
     }
 }
+
+// MARK: - CardView_Previews
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {

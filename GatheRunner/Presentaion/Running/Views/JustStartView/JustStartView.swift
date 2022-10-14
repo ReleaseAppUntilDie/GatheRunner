@@ -11,13 +11,13 @@ import SwiftUI
 
 struct JustStartView: View {
     @StateObject private var manager = LocationManager()
-    @State private var isPresented = true
-    
+    @State private var isPresentedRunGuideDetailDescriptionView = false
+
     var body: some View {
         ZStack {
-            MapView().hide(isPresented)
+            MapView().hide(isPresentedRunGuideDetailDescriptionView)
             VStack {
-                RunGuideTabView(isPresented: isPresented)
+                RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView)
                 Spacer()
                 BottomButtonsView()
             }

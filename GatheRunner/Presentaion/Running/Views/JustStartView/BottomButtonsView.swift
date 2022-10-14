@@ -11,14 +11,14 @@ import SwiftUI
 
 struct BottomButtonsView: View {
     @State var tag: Int? = nil
-    
+
     var body: some View {
         VStack(spacing: 10) {
             HStack(alignment: .center, spacing: 30) {
                 SideBtn(iconName: .goalSetting)
                 ZStack {
                     // MARK: - 측정화면으로 이동을 위한 임시 구현
-                    
+
                     NavigationLink(
                         destination: MeasurementView().environmentObject(LocationManager()),
                         tag: 1,
@@ -38,7 +38,7 @@ struct BottomButtonsView: View {
 
 struct StartBtn: View {
     @Binding var tag: Int?
-    
+
     var body: some View {
         Button("시작") {
             self.tag = 1
@@ -81,6 +81,16 @@ struct SideBtn: View {
 }
 
 extension SideBtn {
+
+    // MARK: Internal
+
+    enum BtnName {
+        case goalSetting
+        case music
+    }
+
+    // MARK: Private
+
     private enum Size {
         static let sideBtnWidthRatio = 0.1154
         static let sideBtnHeightRatio = 0.0592
@@ -88,10 +98,6 @@ extension SideBtn {
         static let cornerRadiusValue: CGFloat = 200
     }
 
-    enum BtnName {
-        case goalSetting
-        case music
-    }
 }
 
 extension SideBtn {

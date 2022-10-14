@@ -10,9 +10,9 @@ import SwiftUI
 // MARK: - RunGuideView
 
 struct RunGuideView: View {
-    
+
     // MARK: Internal
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             CardView()

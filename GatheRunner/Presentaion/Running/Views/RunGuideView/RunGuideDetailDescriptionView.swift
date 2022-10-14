@@ -10,9 +10,9 @@ import SwiftUI
 // MARK: - RunGuideDetailDescriptionView
 
 struct RunGuideDetailDescriptionView: View {
-    
+
     // MARK: Internal
-    
+
     var body: some View {
         ZStack {
             backgroundImage
@@ -23,9 +23,7 @@ struct RunGuideDetailDescriptionView: View {
                 .padding(Size.edgeInsetsOfCloseButton)
                 .onTapGesture { dismiss() }
         }
-        .onChange(of: isPressed) { _ in
-            savePreviousOffset()
-        }
+        .onChange(of: isPressed) { _ in savePreviousOffset() }
         .ignoresSafeArea()
         .gesture(
             DragGesture(minimumDistance: .leastNormalMagnitude)
@@ -35,14 +33,12 @@ struct RunGuideDetailDescriptionView: View {
                     }
                 }
                 .onEnded { _ in
-                    withAnimation {
-                        dragGestureOnEndedEvent()
-                    }
+                    withAnimation { dragGestureOnEndedEvent() }
                 })
     }
-    
+
     // MARK: Private
-    
+
     @Environment(\.dismiss) private var dismiss
     @State private var yAxisOffsetOfViews: CGFloat = .zero
     @State private var yAxisOffsetOfDragGesture: CGFloat = .zero
@@ -54,12 +50,15 @@ struct RunGuideDetailDescriptionView: View {
 }
 
 extension RunGuideDetailDescriptionView {
+
+    // MARK: Internal
+
     var backgroundImage: some View {
         Image(item.image)
             .offset(y: yAxisOffsetOfViews * Size.offsetReducer)
             .frame(width: UIScreen.getWidthby(ratio: 1), height: UIScreen.getHeightby(ratio: 1))
     }
-    
+
     @ViewBuilder
     var bottomViewContents: some View {
         ZStack(alignment: .topLeading) {
@@ -75,16 +74,22 @@ extension RunGuideDetailDescriptionView {
         .position(x: UIScreen.getWidthby(ratio: 0.5), y: UIScreen.getHeightby(ratio: 1.3))
         .offset(y: yAxisOffsetOfViews)
     }
-    
+
     var closeButton: some View {
         Image(systemName: "xmark")
             .font(.system(size: Size.symbolFontSize, weight: .bold))
             .foregroundColor(.white)
             .padding(.all, Size.symbolPaddingSize)
-            .background(.black.opacity(Opacity.imageBackgroundOpacity))
+            .background(.black.opacity(Size.imageBackgroundOpacity))
             .clipShape(Circle())
     }
-    
+
+    // MARK: Private
+
+    private var makeBackgroundOfBottomView: some View {
+        Rectangle().frame(width: UIScreen.getWidthby(ratio: 1), height: UIScreen.getHeightby(ratio: 1.05))
+    }
+
     @ViewBuilder
     private func textViewSetForBottomView(_ title: String, _ contents: String) -> some View {
         Text("\(title)")
@@ -96,41 +101,39 @@ extension RunGuideDetailDescriptionView {
             .foregroundColor(.gray)
             .padding(.horizontal, 30)
     }
-    
-    private var makeBackgroundOfBottomView: some View {
-        Rectangle().frame(width: UIScreen.getWidthby(ratio: 1), height: UIScreen.getHeightby(ratio: 1.05))
-    }
 }
 
 extension RunGuideDetailDescriptionView {
     private func savePreviousOffset() {
         previousValueYAxisOffsetOfViews = yAxisOffsetOfViews
         previousValueYAxisPositionOfBottomView =
-        maxYPositionOfBottomView
+            maxYPositionOfBottomView
     }
-    
+
     private func dragGestureOnChangedEvent(_ state: DragGesture.Value) {
         isPressed = true
         setYAxisOffsetOfViews(state)
     }
-    
+
     private func dragGestureOnEndedEvent() {
         isPressed = false
         yAxisOffsetOfViews > CGFloat(-50) ? yAxisOffsetOfViews = 0 : nil
         maxYPositionOfBottomView - UIScreen.screenHeight < CGFloat(100)
-        ? yAxisOffsetOfViews = -UIScreen.screenHeight * 0.8
-        : nil
+            ? yAxisOffsetOfViews = -UIScreen.screenHeight * 0.8
+            : nil
     }
-    
+
     private func setYAxisOffsetOfViews(_ state: DragGesture.Value) {
         yAxisOffsetOfDragGesture = -state.translation.height * 1.5
-        
-        if previousValueYAxisPositionOfBottomView - yAxisOffsetOfDragGesture > UIScreen.screenHeight, previousValueYAxisOffsetOfViews - yAxisOffsetOfDragGesture < 0
+
+        if
+            previousValueYAxisPositionOfBottomView - yAxisOffsetOfDragGesture > UIScreen.screenHeight,
+            previousValueYAxisOffsetOfViews - yAxisOffsetOfDragGesture < 0
         {
             yAxisOffsetOfViews = previousValueYAxisOffsetOfViews - yAxisOffsetOfDragGesture
         }
     }
-    
+
     private func getMaxYOfBottomView(_ proxy: GeometryProxy) {
         DispatchQueue.main.async {
             maxYPositionOfBottomView = proxy.frame(in: .global).maxY
@@ -141,18 +144,15 @@ extension RunGuideDetailDescriptionView {
 extension RunGuideDetailDescriptionView {
     private enum Size {
         static let offsetReducer: CGFloat = 0.4
-        static let edgeInsetsOfCloseButton: EdgeInsets = EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 30)
-        static let edgeInsetsOfTextView: EdgeInsets = EdgeInsets(top: 30, leading: 30, bottom: 10, trailing: 30)
+        static let edgeInsetsOfCloseButton = EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 30)
+        static let edgeInsetsOfTextView = EdgeInsets(top: 30, leading: 30, bottom: 10, trailing: 30)
         static let symbolFontSize: CGFloat = 17
         static let symbolPaddingSize: CGFloat = 10
-    }
-    
-    private enum Title {
-        static let workoutGoal: String = "워크아웃 목표"
-        static let runningComposition: String = "러닝 구성"
-    }
-    
-    private enum Opacity {
         static let imageBackgroundOpacity = 0.6
+    }
+
+    private enum Title {
+        static let workoutGoal = "워크아웃 목표"
+        static let runningComposition = "러닝 구성"
     }
 }

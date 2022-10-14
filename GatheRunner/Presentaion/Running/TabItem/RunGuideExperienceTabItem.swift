@@ -10,9 +10,9 @@ import SwiftUI
 // MARK: - RunGuideExperienceTabItem
 
 struct RunGuideExperienceTabItem: View {
-    
+
     // MARK: Internal
-    
+
     var body: some View {
         ForEach(arrsRunGuideExperienceTabItem.indices, id: \.self) { index in
             HStack(alignment: .center, spacing: 8.0) {
@@ -29,15 +29,13 @@ struct RunGuideExperienceTabItem: View {
                 width: UIScreen.getWidthby(ratio: Size.tabItemTextsHStackFrameWidthRatio),
                 height: UIScreen.getHeightby(ratio: Size.tabItemTextsHStackFrameHeightRatio),
                 alignment: .leading)
-            .background(
-                .ultraThickMaterial,
-                in:
+                .background(.ultraThickMaterial, in:
                     RoundedRectangle(cornerRadius: 15, style: .continuous))
         }
     }
-    
+
     // MARK: Private
-    
+
     private var arrsRunGuideExperienceTabItem = RunGuideViewModel().getArrsRunGuideExperienceItem
 }
 
@@ -50,7 +48,7 @@ extension RunGuideExperienceTabItem {
         static let tabItemImagesFrameWidthRatio = 0.28
         static let tabItemImagesFrameHeightRatio = 0.14
     }
-    
+
     private enum ItemCategory {
         case title
         case subtitle
@@ -68,7 +66,7 @@ extension RunGuideExperienceTabItem {
                 height: UIScreen.getHeightby(ratio: Size.tabItemImagesFrameHeightRatio))
             .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 5))
     }
-    
+
     private func tabItemTexts(category: ItemCategory, index: Int) -> some View {
         Text(selectCategory(category, idx: index))
             .font(.system(size: 15))

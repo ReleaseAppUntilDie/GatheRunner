@@ -10,9 +10,9 @@ import SwiftUI
 // MARK: - RunningView
 
 struct RunningView: View {
-    
+
     // MARK: Internal
-    
+
     var body: some View {
         VStack(alignment: .center) {
             HeaderView(title: "러닝", type: .running, rightButtonAction: { })
@@ -28,9 +28,9 @@ struct RunningView: View {
                 .frame(height: UIScreen.getHeightby(ratio: 0.72))
         }.ignoresSafeArea(edges: .top)
     }
-    
+
     // MARK: Private
-    
+
     @State private var isJustStartButtonSelected = true
     @State private var isRunningGuideButtonSelected = false
 }
@@ -45,7 +45,7 @@ extension RunningView {
             RunGuideView().transition(.move(edge: .trailing))
         }
     }
-    
+
     func menuBtn(_ title: String, _ isToggled: Binding<Bool>, _ isOtherToggled: Binding<Bool>) -> some View {
         Button(title) {
             withAnimation {

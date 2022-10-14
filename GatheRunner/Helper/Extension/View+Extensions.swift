@@ -32,15 +32,17 @@ struct RoundedTopCorner: Shape {
     }
 }
 
+// MARK: - Hide
+
 struct Hide: ViewModifier {
     let isVisible: Bool
 
     @ViewBuilder
     func body(content: Content) -> some View {
         if isVisible {
-            content
-        } else {
             content.hidden()
+        } else {
+            content
         }
     }
 }
@@ -53,7 +55,7 @@ extension View {
     func topCornerRadius(_ radius: CGFloat) -> some View {
         clipShape(RoundedTopCorner(radius: radius))
     }
-    
+
     func hide(_ isVisible: Bool) -> some View {
         ModifiedContent(content: self, modifier: Hide(isVisible: isVisible))
     }
