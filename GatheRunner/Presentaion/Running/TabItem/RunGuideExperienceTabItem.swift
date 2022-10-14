@@ -29,7 +29,9 @@ struct RunGuideExperienceTabItem: View {
                 width: UIScreen.getWidthby(ratio: Size.tabItemTextsHStackFrameWidthRatio),
                 height: UIScreen.getHeightby(ratio: Size.tabItemTextsHStackFrameHeightRatio),
                 alignment: .leading)
-                .background(.ultraThickMaterial, in:
+                .background(
+                    .ultraThickMaterial,
+                    in:
                     RoundedRectangle(cornerRadius: 15, style: .continuous))
         }
     }

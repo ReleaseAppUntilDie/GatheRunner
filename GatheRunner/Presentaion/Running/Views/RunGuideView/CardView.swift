@@ -30,7 +30,7 @@ struct CardView: View {
                 }
             }
             .fullScreenCover(item: $selectedCardItem) { item in
-                RunGuideDetailDescriptionView(item: item)
+                RunGuideDetailDescriptionView(selectedCardItem: $selectedCardItem, item: item)
             }
         }
     }

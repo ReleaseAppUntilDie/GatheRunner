@@ -37,16 +37,20 @@ extension RunGuideTabView {
             height: UIScreen.getHeightby(ratio: Size.tabViewFrameHeightRatio))
         .shadow(radius: 2)
         .padding(-15)
-        .onTapGesture {
-            onTapGestureEvent()
-        }
+        .onTapGesture { onTapGestureEvent() }
         .fullScreenCover(item: $selectedRunGuideTabItem, onDismiss: didDismiss) { item in
-            RunGuideDetailDescriptionView(item: item).onAppear { isPresentedRunGuideDetailDescriptionView = true }
+            RunGuideDetailDescriptionView(selectedCardItem: $selectedRunGuideTabItem, item: item)
+                .onAppear { isPresentedRunGuideDetailDescriptionView = true }
         }
+
         .highPriorityGesture(
             DragGesture()
-                .onChanged { _ in cancelTimerUpstreamConnect() })
-        .onReceive(timer) { _ in dragGestureOnReceiveEvent() }
+                .onChanged { _ in
+                    cancelTimerUpstreamConnect()
+                })
+        .onReceive(timer) { _ in
+            dragGestureOnReceiveEvent()
+        }
         .animation(.default, value: selectedRunGuideTabItemNumber)
     }
 

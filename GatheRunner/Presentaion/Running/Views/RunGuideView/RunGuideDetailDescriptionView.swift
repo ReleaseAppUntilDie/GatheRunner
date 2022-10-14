@@ -21,7 +21,10 @@ struct RunGuideDetailDescriptionView: View {
         .overlay(alignment: .topTrailing) {
             closeButton
                 .padding(Size.edgeInsetsOfCloseButton)
-                .onTapGesture { dismiss() }
+                .onTapGesture {
+                    selectedCardItem = nil
+                    yAxisOffsetOfViews = 0
+                }
         }
         .onChange(of: isPressed) { _ in savePreviousOffset() }
         .ignoresSafeArea()
@@ -33,19 +36,21 @@ struct RunGuideDetailDescriptionView: View {
                     }
                 }
                 .onEnded { _ in
-                    withAnimation { dragGestureOnEndedEvent() }
+                    withAnimation {
+                        dragGestureOnEndedEvent()
+                    }
                 })
     }
 
     // MARK: Private
 
-    @Environment(\.dismiss) private var dismiss
     @State private var yAxisOffsetOfViews: CGFloat = .zero
     @State private var yAxisOffsetOfDragGesture: CGFloat = .zero
     @State private var previousValueYAxisOffsetOfViews: CGFloat = .zero
     @State private var previousValueYAxisPositionOfBottomView: CGFloat = .zero
     @State private var maxYPositionOfBottomView: CGFloat = .zero
     @State private var isPressed = false
+    @Binding var selectedCardItem: RunGuideItem?
     let item: RunGuideItem
 }
 
@@ -80,7 +85,7 @@ extension RunGuideDetailDescriptionView {
             .font(.system(size: Size.symbolFontSize, weight: .bold))
             .foregroundColor(.white)
             .padding(.all, Size.symbolPaddingSize)
-            .background(.black.opacity(Size.imageBackgroundOpacity))
+            .background(.black.opacity(Size.opacityOfBackgroundImage))
             .clipShape(Circle())
     }
 
@@ -89,7 +94,7 @@ extension RunGuideDetailDescriptionView {
     private var makeBackgroundOfBottomView: some View {
         Rectangle().frame(width: UIScreen.getWidthby(ratio: 1), height: UIScreen.getHeightby(ratio: 1.05))
     }
-
+    
     @ViewBuilder
     private func textViewSetForBottomView(_ title: String, _ contents: String) -> some View {
         Text("\(title)")
@@ -148,7 +153,7 @@ extension RunGuideDetailDescriptionView {
         static let edgeInsetsOfTextView = EdgeInsets(top: 30, leading: 30, bottom: 10, trailing: 30)
         static let symbolFontSize: CGFloat = 17
         static let symbolPaddingSize: CGFloat = 10
-        static let imageBackgroundOpacity = 0.6
+        static let opacityOfBackgroundImage = 0.6
     }
 
     private enum Title {
