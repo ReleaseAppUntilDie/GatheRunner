@@ -10,60 +10,63 @@ import SwiftUI
 // MARK: - RunningView
 
 struct RunningView: View {
-
+    
     // MARK: Internal
-
+    
     var body: some View {
         VStack(alignment: .center) {
             HeaderView(title: "러닝", type: .running, rightButtonAction: { })
-            HStack {
-                menuBtn("바로 시작", $isJustStartButtonSelected, $isRunningGuideButtonSelected).padding(15)
-                menuBtn("러닝 가이드", $isRunningGuideButtonSelected, $isJustStartButtonSelected)
-            }
-            .frame(
-                width: UIScreen.main.bounds.size.width,
-                height: UIScreen.getHeightby(ratio: Size.menuBtnHstackFrameHeightRatio),
+            viewSelectorButton
+                .frame(width: UIScreen.main.bounds.size.width,
+                height: UIScreen.getHeightby(ratio: Size.viewSelectorButtonHstackFrameHeightRatio),
                 alignment: .leading)
-            btnSelector
+            viewSelector
                 .frame(height: UIScreen.getHeightby(ratio: 0.72))
         }.ignoresSafeArea(edges: .top)
     }
-
+    
     // MARK: Private
-
-    @State private var isJustStartButtonSelected = true
-    @State private var isRunningGuideButtonSelected = false
+    
+    @State private var selectedButton: ButtonName = .justStartButton
 }
 
 extension RunningView {
     @ViewBuilder
-    var btnSelector: some View {
-        if isJustStartButtonSelected {
+    var viewSelector: some View {
+        if selectedButton == .justStartButton {
             JustStartView().transition(.move(edge: .leading))
-        }
-        if isRunningGuideButtonSelected {
+        } else {
             RunGuideView().transition(.move(edge: .trailing))
         }
     }
 
-    func menuBtn(_ title: String, _ isToggled: Binding<Bool>, _ isOtherToggled: Binding<Bool>) -> some View {
-        Button(title) {
-            withAnimation {
-                if !isToggled.wrappedValue {
-                    isToggled.wrappedValue.toggle()
-                    isOtherToggled.wrappedValue.toggle()
+    var viewSelectorButton: some View {
+        HStack {
+            Button("바로 시작") {
+                withAnimation {
+                    selectedButton = .justStartButton
                 }
             }
-        }
-        .foregroundColor(isToggled.wrappedValue ? Color.black : Color.gray)
-        .font(.system(size: CGFloat(Size.menuBtnFontSize)))
+            .foregroundColor(selectedButton == .justStartButton ? Color.black : Color.gray)
+            .padding(15)
+            Button("러닝 가이드") {
+                withAnimation {
+                    selectedButton = .runGuideButton
+                }
+            }.foregroundColor(selectedButton == .runGuideButton ? Color.black : Color.gray)
+        }.font(.system(size: CGFloat(Size.viewSelectorButtonFontSize)))
     }
 }
 
 extension RunningView {
     private enum Size {
-        static let menuBtnHstackFrameHeightRatio = 0.0355
-        static let menuBtnFontSize = 14
+        static let viewSelectorButtonHstackFrameHeightRatio = 0.0355
+        static let viewSelectorButtonFontSize = 14
+    }
+    
+    enum ButtonName {
+        case justStartButton
+        case runGuideButton
     }
 }
 
