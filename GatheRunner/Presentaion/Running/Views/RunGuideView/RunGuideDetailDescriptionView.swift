@@ -22,7 +22,7 @@ struct RunGuideDetailDescriptionView: View {
             closeButton
                 .padding(Size.edgeInsetsOfCloseButton)
                 .onTapGesture {
-                    selectedCardItem = nil
+                    selectedItem = nil
                     yAxisOffsetOfViews = 0
                 }
         }
@@ -50,7 +50,7 @@ struct RunGuideDetailDescriptionView: View {
     @State private var previousValueYAxisPositionOfBottomView: CGFloat = .zero
     @State private var maxYPositionOfBottomView: CGFloat = .zero
     @State private var isPressed = false
-    @Binding var selectedCardItem: RunGuideItem?
+    @Binding var selectedItem: RunGuideItem?
     let item: RunGuideItem
 }
 
