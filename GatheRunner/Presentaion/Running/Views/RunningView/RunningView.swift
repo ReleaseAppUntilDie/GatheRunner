@@ -27,13 +27,13 @@ struct RunningView: View {
     
     // MARK: Private
     
-    @State private var selectedButton: ButtonName = .justStartButton
+    @EnvironmentObject var recentSelectButton: SelectedButtonMemory
 }
 
 extension RunningView {
     @ViewBuilder
     var viewSelector: some View {
-        if selectedButton == .justStartButton {
+        if recentSelectButton.selectedButton == .justStartButton {
             JustStartView().transition(.move(edge: .leading))
         } else {
             RunGuideView().transition(.move(edge: .trailing))
@@ -44,16 +44,16 @@ extension RunningView {
         HStack {
             Button("바로 시작") {
                 withAnimation {
-                    selectedButton = .justStartButton
+                    recentSelectButton.selectedButton = .justStartButton
                 }
             }
-            .foregroundColor(selectedButton == .justStartButton ? Color.black : Color.gray)
+            .foregroundColor(recentSelectButton.selectedButton == .justStartButton ? Color.black : Color.gray)
             .padding(15)
             Button("러닝 가이드") {
                 withAnimation {
-                    selectedButton = .runGuideButton
+                    recentSelectButton.selectedButton = .runGuideButton
                 }
-            }.foregroundColor(selectedButton == .runGuideButton ? Color.black : Color.gray)
+            }.foregroundColor(recentSelectButton.selectedButton == .runGuideButton ? Color.black : Color.gray)
         }.font(.system(size: CGFloat(Size.viewSelectorButtonFontSize)))
     }
 }
@@ -62,11 +62,6 @@ extension RunningView {
     private enum Size {
         static let viewSelectorButtonHstackFrameHeightRatio = 0.0355
         static let viewSelectorButtonFontSize = 14
-    }
-    
-    enum ButtonName {
-        case justStartButton
-        case runGuideButton
     }
 }
 

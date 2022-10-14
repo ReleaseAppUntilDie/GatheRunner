@@ -11,13 +11,15 @@ import SwiftUI
 
 struct MainTabView: View {
     @ObservedObject var selectedTab = SelectedTab.shared
-
+    private let recentSelectButton = SelectedButtonMemory()
+    
     var body: some View {
         TabView(selection: $selectedTab.index) {
             ForEach(tabItems) { createTabView($0) }
                 .environmentObject(selectedTab)
         }
         .accentColor(.black)
+        .environmentObject(recentSelectButton)
     }
 }
 
@@ -27,7 +29,6 @@ extension MainTabView {
     private var tabItems: [TabItem] {
         [TabItem(.home), TabItem(.run), TabItem(.club), TabItem(.activity)]
     }
-
 
     private func selectedView(_ tag: Int) -> AnyView {
         switch tag {

@@ -16,6 +16,7 @@
 		9B5095EDA536B973CF0EB609 /* Pods_GatheRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */; };
 		D038E0DE9807E434F1BB41EE /* Pods_GatheRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */; };
 		DA098D2728F802320053140F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA098D2628F802320053140F /* CardView.swift */; };
+		DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */; };
 		DA2FFD3D28A8B33B006291CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */; };
 		DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695728790DBE00FA13AE /* JustStartView.swift */; };
 		DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695928790E0C00FA13AE /* RunningGuideView.swift */; };
@@ -104,6 +105,7 @@
 		A1FBD7301BD3249E41A5E419 /* Pods-GatheRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D942972FC8ABC3559B78D5FF /* Pods-GatheRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.debug.xcconfig"; sourceTree = "<group>"; };
 		DA098D2628F802320053140F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedButtonMemory.swift; sourceTree = "<group>"; };
 		DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DA33695728790DBE00FA13AE /* JustStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustStartView.swift; sourceTree = "<group>"; };
 		DA33695928790E0C00FA13AE /* RunningGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideView.swift; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				E335FAF828B7610300835F72 /* SelectedTab.swift */,
+				DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */,
 				EA7913B828D6EA7000F889E5 /* GraphBottomSheetView.swift in Sources */,
 				E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */,
 				E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */,
