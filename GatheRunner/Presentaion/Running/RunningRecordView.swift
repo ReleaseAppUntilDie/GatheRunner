@@ -11,74 +11,107 @@ import SwiftUI
 
 struct RunningRecordView: View {
 
-    // MARK: Internal runningRecordView
+    // MARK: Internal
 
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: Size.mainVerticalSpacing) {
             timerView
             realTimeRecordView
-            stopWatchButttons
+            stopWatchButtonLayer
         }
     }
 
     // MARK: Private
 
+    private enum Size {
+        static let defaultVerticalSpacing: CGFloat = 10
+        static let mainVerticalSpacing: CGFloat = 30
+        static let recordHorizontalSpacing: CGFloat = 30
+        static let stopWatchHorizontalSpacing: CGFloat = 30
+        static let stopWatchImage: CGFloat = 100
+        static let labelFont: CGFloat = 40
+    }
+
+    private enum Content {
+        enum Label {
+            static let exerciseTime = "운동 시간"
+            static let kilometer = "알림"
+            static let pace = "페이스"
+            static let recordFormat = "%.2f"
+            static let empty = ""
+        }
+
+        enum Image {
+            static let stop = "stop"
+            static let play = "play"
+            static let pause = "pause"
+        }
+    }
+
     @State private var isRunning = false
-    @EnvironmentObject var manager: LocationManager
+    @EnvironmentObject private var manager: LocationManager
 }
 
+// MARK: SubViews
+
 extension RunningRecordView {
-    var timerView: some View {
-        VStack(spacing: 10) {
-            Text("\(manager.minutes) : \(manager.seconds)")
-                .font(.system(size: 40, weight: .bold))
-                .accessibilityIdentifier("timerView")
-            Text("운동 시간").asLabelStyle()
+    private var timerView: some View {
+        recordLabelView(
+            label: Content.Label.exerciseTime,
+            bidingText: "\(manager.minutes) : \(manager.seconds)",
+            identifier: SubViews.RunningRecord.timerView)
+    }
+
+    private var realTimeRecordView: some View {
+        HStack(spacing: Size.recordHorizontalSpacing) {
+            recordLabelView(
+                label: Content.Label.kilometer,
+                bidingText: String(format: Content.Label.recordFormat, manager.distance),
+                identifier: SubViews.RunningRecord.kilometerView)
+            recordLabelView(
+                label: Content.Label.pace,
+                bidingText: String(format: Content.Label.recordFormat, manager.currentPace),
+                identifier: SubViews.RunningRecord.paceView)
         }
     }
 
-    var realTimeRecordView: some View {
-        HStack(spacing: 30) {
-            VStack(spacing: 10) {
-                Text(String(format: "%.2f", manager.distance))
-                    .font(.system(size: 40, weight: .bold))
-                Text("킬로미터").asLabelStyle()
-            }
-            VStack(spacing: 10) {
-                Text(String(format: "%.2f", manager.currentPace))
-                    .font(.system(size: 40, weight: .bold))
-                Text("페이스").asLabelStyle()
-            }
+    private var stopWatchButtonLayer: some View {
+        HStack(spacing: Size.stopWatchHorizontalSpacing) {
+            stopButton.isEmpty(logicalOperator: .none, [isRunning == true])
+            resumeButton.accessibilityIdentifier(SubViews.RunningRecord.resumeButton)
         }
     }
 
-    var stopWatchButttons: some View {
-        HStack(spacing: 20) {
-            stopButton
-                .isEmpty(logicalOperator: .none, [isRunning == true])
-            resumeButton
-                .accessibilityIdentifier("resumeButton")
-        }
-    }
-
-    var stopButton: some View {
+    private var stopButton: some View {
         Button(action: { }) {
-            Image("stop")
-                .asIconStyle(withMaxWidth: 82, withMaxHeight: 82)
-                .setAlertWhenTappedAndLongPress(withAction: manager.didUnSetStartLocation, alertText: "길게 눌러주세요.")
+            Image(Content.Image.stop)
+                .asIconStyle(withMaxWidth: Size.stopWatchImage, withMaxHeight: Size.stopWatchImage)
+                .addLongPressTypeAlert(withAction: manager.didUnSetStartLocation)
         }
     }
 
-    var resumeButton: some View {
-        Toggle("", isOn: $isRunning)
+    private var resumeButton: some View {
+        Toggle(Content.Label.empty, isOn: $isRunning)
             .onChange(of: isRunning) {
-                guard $0 else {
-                    manager.didUnSetStartLocation()
-                    return
-                }
-                manager.didSetStartLocation()
+                $0 ? manager.didSetStartLocation() : manager.didUnSetStartLocation()
             }
-            .toggleStyle(IconStyle(onImage: "play", offImage: "pause", size: 100))
+            .toggleStyle(IconStyle(onImage: Content.Image.play, offImage: Content.Image.pause, size: Size.stopWatchImage))
+    }
+
+    private func recordLabelView(
+        spacing: CGFloat = Size.defaultVerticalSpacing,
+        font: Font = .system(size: Size.labelFont, weight: .bold),
+        label: String,
+        bidingText: String,
+        identifier: String)
+        -> some View
+    {
+        VStack(spacing: spacing) {
+            Text(bidingText)
+                .font(font)
+                .accessibilityIdentifier(identifier)
+            Text(label).asLabelStyle()
+        }
     }
 }
 

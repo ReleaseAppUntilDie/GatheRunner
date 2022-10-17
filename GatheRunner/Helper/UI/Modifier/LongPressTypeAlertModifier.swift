@@ -1,5 +1,5 @@
 //
-//  AlertWhenTappedAndLongPressModifier.swift
+//  LongPressTypeAlertModifier.swift
 //  GatheRunner
 //
 //  Created by 김동현 on 2022/09/08.
@@ -7,9 +7,18 @@
 
 import SwiftUI
 
-// MARK: - AlertWhenTappedAndLongPressModifier
+// MARK: - Constans
 
-struct AlertWhenTappedAndLongPressModifier: ViewModifier {
+private enum Constans {
+    fileprivate static let alertText = "길게 눌러주세요."
+    fileprivate static let alertDuration: Double = 2
+    fileprivate static let LongPressDuration = 0.5
+}
+
+// MARK: - LongPressTypeAlertModifier
+
+struct LongPressTypeAlertModifier: ViewModifier {
+
     @State var isAlertPresent = false
 
     let longPressAction: () -> Void
@@ -35,14 +44,14 @@ struct AlertWhenTappedAndLongPressModifier: ViewModifier {
 }
 
 extension View {
-    func setAlertWhenTappedAndLongPress(
+    func addLongPressTypeAlert(
         withAction longPressAction: @escaping () -> Void,
-        alertText: String,
-        alertDuration: Double = 2,
-        LongPressDuration: Double = 0.5)
+        alertText: String = Constans.alertText,
+        alertDuration: Double = Constans.alertDuration,
+        LongPressDuration: Double = Constans.LongPressDuration)
         -> some View
     {
-        modifier(AlertWhenTappedAndLongPressModifier(
+        modifier(LongPressTypeAlertModifier(
             longPressAction: longPressAction,
             alertText: alertText,
             alertDuration: alertDuration,
