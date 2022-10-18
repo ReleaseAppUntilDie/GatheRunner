@@ -20,7 +20,7 @@ class AuthenticationUITests: BaseUITests {
     }
 
     override var targetView: UIViewController {
-        AuthenticationView(isSignIn: true).toVC
+        AuthenticationView().convertedVC
     }
 
     override var isRecord: Bool {

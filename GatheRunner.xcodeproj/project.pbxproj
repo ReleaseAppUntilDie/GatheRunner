@@ -52,7 +52,7 @@
 		E3C2CA0F28F016BB00861A74 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E3C2CA0E28F016BB00861A74 /* SnapshotTesting */; };
 		E3C2CA1328F01A1100861A74 /* AuthenticationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C2CA1228F01A1100861A74 /* AuthenticationUITests.swift */; };
 		E3C2CA1528F01CFE00861A74 /* BaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C2CA1428F01CFE00861A74 /* BaseUITests.swift */; };
-		E3C2CA1928F026DF00861A74 /* View+ToVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C2CA1828F026DF00861A74 /* View+ToVc.swift */; };
+		E3C2CA1928F026DF00861A74 /* View+ConvertedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C2CA1828F026DF00861A74 /* View+ConvertedVC.swift */; };
 		E3C2CA2328F02FB400861A74 /* MeasurementViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C2CA2228F02FB400861A74 /* MeasurementViewUITests.swift */; };
 		E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */; };
 		E3D349DB286C20D500618AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D349DA286C20D500618AC3 /* Assets.xcassets */; };
@@ -127,7 +127,7 @@
 		E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModifier.swift; sourceTree = "<group>"; };
 		E3C2CA1228F01A1100861A74 /* AuthenticationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUITests.swift; sourceTree = "<group>"; };
 		E3C2CA1428F01CFE00861A74 /* BaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUITests.swift; sourceTree = "<group>"; };
-		E3C2CA1828F026DF00861A74 /* View+ToVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ToVc.swift"; sourceTree = "<group>"; };
+		E3C2CA1828F026DF00861A74 /* View+ConvertedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConvertedVC.swift"; sourceTree = "<group>"; };
 		E3C2CA2228F02FB400861A74 /* MeasurementViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewUITests.swift; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
@@ -430,7 +430,7 @@
 		E3C2CA1A28F02A2D00861A74 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				E3C2CA1828F026DF00861A74 /* View+ToVc.swift */,
+				E3C2CA1828F026DF00861A74 /* View+ConvertedVC.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -851,7 +851,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3C2CA1528F01CFE00861A74 /* BaseUITests.swift in Sources */,
-				E3C2CA1928F026DF00861A74 /* View+ToVc.swift in Sources */,
+				E3C2CA1928F026DF00861A74 /* View+ConvertedVC.swift in Sources */,
 				E3C2CA1328F01A1100861A74 /* AuthenticationUITests.swift in Sources */,
 				E3C2CA2328F02FB400861A74 /* MeasurementViewUITests.swift in Sources */,
 				E335913A28E5E4C200B3BC8E /* AuthenticationPresenterTests.swift in Sources */,
@@ -864,7 +864,6 @@
 /* Begin PBXTargetDependency section */
 		E3C2CA1F28F02C9D00861A74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = E3C2CA1E28F02C9D00861A74;
 		};
 		E3D349E5286C20D500618AC3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -8,11 +8,16 @@
 @testable import GatheRunner
 
 class MocksInputsValidator: BaseInputsValidator {
-    func didValidation(isTestWithEmail: Bool, by exampe: String) {
-        if isTestWithEmail {
-            email = exampe
-        } else {
-            password = exampe
+    enum InputType {
+        case email
+        case password
+    }
+
+
+    func inputTestSample(_ inputType: InputType, with example: String) {
+        switch inputType {
+        case .email: email = example
+        case .password: password = example
         }
     }
 }

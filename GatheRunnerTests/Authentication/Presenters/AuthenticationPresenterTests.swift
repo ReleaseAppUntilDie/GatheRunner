@@ -10,6 +10,8 @@ import XCTest
 // MARK: - AuthenticationPresenterTests
 
 class AuthenticationPresenterTests: XCTestCase {
+    typealias InputType = MocksInputsValidator.InputType
+
     var mocksInputsValidator: MocksInputsValidator!
     var isPassEmailValidation: Bool!
     var isPassPasswordValidation: Bool!
@@ -26,35 +28,27 @@ class AuthenticationPresenterTests: XCTestCase {
     }
 
     func testAuthenticationPresenter_EmailVerification_ShouldFail() {
-        // MARK: choose madeOverLengthExample(isTestWithEmail: true) or madeInValidFormatExample()
-
-        let example = madeInvalidFormatExample()
-        mocksInputsValidator.didValidation(isTestWithEmail: true, by: example)
+        mocksInputsValidator.inputTestSample(.email, with: example(.email, type: .invalidFormat))
         XCTAssert(isPassEmailValidation == false)
     }
 
     func testAuthenticationPresenter_EmailVerification_ShouldSucceed() {
-        let example = madeValidExample(isTestWithEmail: true)
-        mocksInputsValidator.didValidation(isTestWithEmail: true, by: example)
+        mocksInputsValidator.inputTestSample(.email, with: example(.email, type: .valid))
         XCTAssert(isPassEmailValidation == true)
     }
 
     func testAuthenticationPresenter_PasswordVerification_ShouldFail() {
-        // MARK: choose madeOverLengthExample(isTestWithEmail: false) or madeInValidFormatExample()
-
-        let example = madeOverLengthExample(isTestWithEmail: false)
-        mocksInputsValidator.didValidation(isTestWithEmail: false, by: example)
+        mocksInputsValidator.inputTestSample(.password, with: example(.password, type: .overLength))
         XCTAssert(isPassEmailValidation == false)
     }
 
     func testAuthenticationPresenter_PasswordVerification_ShouldSucceed() {
-        let example = madeValidExample(isTestWithEmail: false)
-        mocksInputsValidator.didValidation(isTestWithEmail: false, by: example)
+        mocksInputsValidator.inputTestSample(.password, with: example(.password, type: .valid))
         XCTAssert(isPassPasswordValidation == true)
     }
 }
 
-// MARK: Private NamsSpace & Methods
+// MARK: Private NamsSpaces
 
 extension AuthenticationPresenterTests {
     private enum Content {
@@ -64,11 +58,24 @@ extension AuthenticationPresenterTests {
         static let specialCharacters = "!1@2#3"
     }
 
-    private enum Requirement {
-        static let validLength = 10
-        static let overLength = 40
-    }
+    private enum Option {
+        enum Length: Int {
+            case zero = 0
+            case validLength = 10
+            case overLength = 40
+        }
 
+        enum Example {
+            case valid
+            case overLength
+            case invalidFormat
+        }
+    }
+}
+
+// MARK: Private Methods
+
+extension AuthenticationPresenterTests {
     private func bindValidatorProtocol() {
         mocksInputsValidator.$isEmailValid
             .sink { [weak self] result in
@@ -83,23 +90,22 @@ extension AuthenticationPresenterTests {
             .store(in: &mocksInputsValidator.cancelBag)
     }
 
-    // MARK: Email Length Range 0 - 30 && Password Length Range 8 - 20
+    /// Current Email Length Range 0 - 30 && Current Password Length Range 8 - 20
 
-    private func madeValidExample(isTestWithEmail: Bool, length: Int = Requirement.validLength) -> String {
-        let result = createRandomStr(by: Content.lettersAndNumbers, length: length)
-        return isTestWithEmail ? result + Content.emailDomainExample : result + Content.specialCharacters
+    private func example(_ inputType: InputType, type: Option.Example) -> String {
+        switch type {
+        case .valid:
+            let result = randomText(by: Content.lettersAndNumbers, length: .validLength)
+            return inputType == .email ? result + Content.emailDomainExample : result + Content.specialCharacters
+        case .overLength:
+            let result = randomText(by: Content.lettersAndNumbers, length: .overLength)
+            return inputType == .email ? result + Content.emailDomainExample : result + Content.specialCharacters
+        case .invalidFormat:
+            return randomText(by: Content.letters, length: .overLength)
+        }
     }
 
-    private func madeOverLengthExample(isTestWithEmail: Bool, length: Int = Requirement.overLength) -> String {
-        let result = createRandomStr(by: Content.lettersAndNumbers, length: length)
-        return isTestWithEmail ? result + Content.emailDomainExample : result
-    }
-
-    private func madeInvalidFormatExample(length: Int = Requirement.validLength) -> String {
-        createRandomStr(by: Content.letters, length: length)
-    }
-
-    private func createRandomStr(by text: String, length: Int) -> String {
-        String((0 ..< length).map { _ in text.randomElement()! })
+    private func randomText(by text: String, length: Option.Length) -> String {
+        String((Option.Length.zero.rawValue ..< length.rawValue).map { _ in text.randomElement()! })
     }
 }

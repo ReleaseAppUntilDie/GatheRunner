@@ -11,12 +11,6 @@ import SwiftUI
 
 struct AuthenticationView: View {
 
-    // MARK: Lifecycle
-
-    init(isSignIn: Bool = false) {
-        self.isSignIn = isSignIn
-    }
-
     // MARK: Internal
 
     var body: some View {
@@ -26,7 +20,7 @@ struct AuthenticationView: View {
 
                 Spacer()
 
-                submitButton.id("submitButton")
+                submitButton
             }
         }
         .onAppear { bindViewModel() }
@@ -60,7 +54,7 @@ struct AuthenticationView: View {
     }
 
     @State private var isValid = false
-    @State private var isSignIn: Bool
+    @State private var isSignIn = false
     @State private var isAlertShow = false
     @StateObject private var viewModel = AuthenticationViewModel()
 

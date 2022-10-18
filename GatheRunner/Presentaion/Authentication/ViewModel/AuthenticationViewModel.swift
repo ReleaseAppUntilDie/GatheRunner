@@ -13,19 +13,17 @@ final class AuthenticationViewModel: BaseInputsValidator {
 
     // MARK: Internal
 
-    // MARK: Temp - NoService
-
     func signIn() {
-        guard validatedInputs() else { return }
+        guard validatedInputs else { return }
     }
 
     func signUp() {
-        guard validatedInputs() else { return }
+        guard validatedInputs else { return }
     }
 
     // MARK: Private
 
-    private func validatedInputs() -> Bool {
+    private var validatedInputs: Bool {
         guard isEmailValid, isPasswordValid else {
             isInputsValid = false
             return isInputsValid
