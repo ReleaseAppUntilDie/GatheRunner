@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-// MARK: - Constans
+// MARK: - Constants
 
-private enum Constans {
+private enum Constants {
     fileprivate static let alertText = "길게 눌러주세요."
     fileprivate static let alertDuration: Double = 2
     fileprivate static let LongPressDuration = 0.5
@@ -46,9 +46,9 @@ struct LongPressTypeAlertModifier: ViewModifier {
 extension View {
     func addLongPressTypeAlert(
         withAction longPressAction: @escaping () -> Void,
-        alertText: String = Constans.alertText,
-        alertDuration: Double = Constans.alertDuration,
-        LongPressDuration: Double = Constans.LongPressDuration)
+        alertText: String = Constants.alertText,
+        alertDuration: Double = Constants.alertDuration,
+        LongPressDuration: Double = Constants.LongPressDuration)
         -> some View
     {
         modifier(LongPressTypeAlertModifier(
