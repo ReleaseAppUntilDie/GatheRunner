@@ -38,7 +38,7 @@ extension View {
     @ViewBuilder
     func asValidationFieldStyle(
         isValid: Binding<Bool>,
-        witBorderColor borderColor: Color = .gray,
+        withBorderColor borderColor: Color = .gray,
         withCornerRadius cornerRadius: CGFloat = DefaultSize.cornerRadius,
         withLineWidth lineWidth: CGFloat = DefaultSize.lineWidth)
         -> some View
