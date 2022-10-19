@@ -1,5 +1,5 @@
 //
-//  MeasurementViewUITests.swift
+//  RunningRecordViewUITests.swift
 //  GatheRunnerUITests
 //
 //  Created by 김동현 on 2022/08/19.
@@ -7,8 +7,12 @@
 
 import SwiftUI
 import XCTest
+@testable import GatheRunner
 
-class MeasurementViewUITests: XCTestCase {
+class RunningRecordViewUITests: XCTestCase {
+
+    // MARK: Internal
+
     var app: XCUIApplication!
     var moveButton: XCUIElement!
     var runStartButton: XCUIElement!
@@ -19,13 +23,12 @@ class MeasurementViewUITests: XCTestCase {
     override func setUp() {
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments = ["testing"]
+        app.launchArguments = [SettingValue.launchArguments]
 
         moveButton = app.buttons["moveButton"]
         runStartButton = app.buttons["runStartButton"]
-        onOffButton = app.switches["onOffButton"]
-        timerView = app.staticTexts["timerView"]
-
+        onOffButton = app.switches[SubViews.RunningRecord.resumeButton]
+        timerView = app.staticTexts[SubViews.RunningRecord.timerView]
         app.launch()
     }
 
@@ -38,8 +41,8 @@ class MeasurementViewUITests: XCTestCase {
 
         delay = XCTestExpectation()
         delay.isInverted = true
-        wait(for: [delay], timeout: 2)
-        XCTAssertNotEqual(timerView.label, "00 : 00")
+        wait(for: [delay], timeout: SettingValue.timeout)
+        XCTAssertNotEqual(timerView.label, Result.timerLabel)
     }
 
     func test_onOffToggle_shouldStopTimer_withSecondTap() {
@@ -51,8 +54,8 @@ class MeasurementViewUITests: XCTestCase {
 
         delay = XCTestExpectation()
         delay.isInverted = true
-        wait(for: [delay], timeout: 2)
-        XCTAssertEqual(timerView.label, "00 : 00")
+        wait(for: [delay], timeout: SettingValue.timeout)
+        XCTAssertEqual(timerView.label, Result.timerLabel)
     }
 
     func test_onOffToggle_shouldOperationTimer_onBackGround() {
@@ -61,9 +64,21 @@ class MeasurementViewUITests: XCTestCase {
         moveButton.tap()
         runStartButton.tap()
         onOffButton.tap()
-        XCUIDevice().press(XCUIDevice.Button.home)
-        sleep(3)
+        XCUIDevice.shared.press(XCUIDevice.Button.home)
+        sleep(SettingValue.sleepTime)
         app.activate()
-        XCTAssertNotEqual(timerView.label, "00 : 00")
+        XCTAssertNotEqual(timerView.label, Result.timerLabel)
+    }
+
+    // MARK: Private
+
+    private enum Result {
+        static let timerLabel = "00 : 00"
+    }
+
+    private enum SettingValue {
+        static let launchArguments = "testing"
+        static let timeout: Double = 2
+        static let sleepTime: UInt32 = 3
     }
 }
