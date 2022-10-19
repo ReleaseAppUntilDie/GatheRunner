@@ -10,16 +10,15 @@ import SwiftUI
 // MARK: - JustStartView
 
 struct JustStartView: View {
-    @StateObject private var manager = LocationManager()
     @State private var isPresentedRunGuideDetailDescriptionView = false
 
     var body: some View {
         ZStack {
             MapView().hide(isPresentedRunGuideDetailDescriptionView)
             VStack {
-                RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView)
+                RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView).padding(.top, 5)
                 Spacer()
-                BottomButtonsView()
+                BottomButtonsView().padding(.bottom, 30)
             }
         }
     }

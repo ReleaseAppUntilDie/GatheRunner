@@ -21,7 +21,7 @@ class RunGuideViewModel {
     private var runGuideExperienceItem = [
         RunGuideItem(
             image: "RunGuideImage_1",
-            title: "이렇게 쉽고 재미있을 순 없을걸",
+            title: "쉽고 즐겁게",
             subtitle: "초급자",
             contents: "10분 가볍게 러닝",
             workoutGoal: "초급자도 쉽게 즐길수 있는 운동입니다. 부담없이 러닝 고고싱!",
@@ -42,7 +42,7 @@ class RunGuideViewModel {
             workoutComposition: "40분의 심장 과부하 러닝"),
         RunGuideItem(
             image: "RunGuideImage_4",
-            title: "프로 선수를 위한 워크아웃",
+            title: "For Professional",
             subtitle: "Pro",
             contents: "60분 중거리 러닝",
             workoutGoal: "국내 대회 입상을 위한 체계적이고 과학적인 워크아웃",

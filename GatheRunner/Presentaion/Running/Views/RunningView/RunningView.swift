@@ -18,7 +18,7 @@ struct RunningView: View {
             HeaderView(title: "러닝", type: .running, rightButtonAction: { })
             viewSelectorButton
                 .frame(width: UIScreen.main.bounds.size.width,
-                height: UIScreen.getHeightby(ratio: Size.viewSelectorButtonHstackFrameHeightRatio),
+                height: UIScreen.getHeightby(ratio: Size.viewSelectorButtonHeightRatio),
                 alignment: .leading)
             viewSelector
                 .frame(height: UIScreen.getHeightby(ratio: 0.72))
@@ -34,8 +34,11 @@ extension RunningView {
     @ViewBuilder
     var viewSelector: some View {
         if recentSelectButton.selectedButton == .justStartButton {
-            JustStartView().transition(.move(edge: .leading))
-        } else {
+            JustStartView()
+                .transition(.move(edge: .leading))
+                .zIndex(-1)
+        }
+        if recentSelectButton.selectedButton == .runGuideButton {
             RunGuideView().transition(.move(edge: .trailing))
         }
     }
@@ -60,7 +63,7 @@ extension RunningView {
 
 extension RunningView {
     private enum Size {
-        static let viewSelectorButtonHstackFrameHeightRatio = 0.0355
+        static let viewSelectorButtonHeightRatio = 0.0355
         static let viewSelectorButtonFontSize = 14
     }
 }

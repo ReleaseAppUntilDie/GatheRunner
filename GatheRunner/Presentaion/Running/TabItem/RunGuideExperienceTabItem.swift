@@ -21,18 +21,16 @@ struct RunGuideExperienceTabItem: View {
                     tabItemTexts(category: .title, index: index).lineLimit(1)
                     tabItemTexts(category: .subtitle, index: index)
                     tabItemTexts(category: .contents, index: index).lineLimit(1)
-                }.frame(
-                    width: UIScreen.getWidthby(ratio: Size.tabItemTextsVStackFrameWidthRatio),
-                    height: UIScreen.getHeightby(ratio: Size.tabItemTextsVStackFrameHeightRatio),
+                }
+                .frame(
+                    width: UIScreen.getWidthby(ratio: Size.tabItemTextsVStackWidthRatio),
+                    height: UIScreen.getHeightby(ratio: Size.tabItemTextsVStackHeightRatio),
                     alignment: .leading)
             }.frame(
-                width: UIScreen.getWidthby(ratio: Size.tabItemTextsHStackFrameWidthRatio),
-                height: UIScreen.getHeightby(ratio: Size.tabItemTextsHStackFrameHeightRatio),
+                width: UIScreen.getWidthby(ratio: Size.tabItemTextsHStackWidthRatio),
+                height: UIScreen.getHeightby(ratio: Size.tabItemTextsHStackHeightRatio),
                 alignment: .leading)
-                .background(
-                    .ultraThickMaterial,
-                    in:
-                    RoundedRectangle(cornerRadius: 15, style: .continuous))
+            .background(.white, in: RoundedRectangle(cornerRadius: 15, style: .continuous))
         }
     }
 
@@ -43,12 +41,12 @@ struct RunGuideExperienceTabItem: View {
 
 extension RunGuideExperienceTabItem {
     private enum Size {
-        static let tabItemTextsVStackFrameWidthRatio = 0.45
-        static let tabItemTextsVStackFrameHeightRatio = 0.14
-        static let tabItemTextsHStackFrameWidthRatio = 0.82
-        static let tabItemTextsHStackFrameHeightRatio = 0.13
-        static let tabItemImagesFrameWidthRatio = 0.28
-        static let tabItemImagesFrameHeightRatio = 0.14
+        static let tabItemTextsVStackWidthRatio = 0.45
+        static let tabItemTextsVStackHeightRatio = 0.14
+        static let tabItemTextsHStackWidthRatio = 0.82
+        static let tabItemTextsHStackHeightRatio = 0.13
+        static let tabItemImagesWidthRatio = 0.28
+        static let tabItemImagesHeightRatio = 0.14
     }
 
     private enum ItemCategory {
@@ -64,8 +62,8 @@ extension RunGuideExperienceTabItem {
             .resizable(resizingMode: .stretch)
             .aspectRatio(contentMode: .fit)
             .frame(
-                width: UIScreen.getWidthby(ratio: Size.tabItemImagesFrameWidthRatio),
-                height: UIScreen.getHeightby(ratio: Size.tabItemImagesFrameHeightRatio))
+                width: UIScreen.getWidthby(ratio: Size.tabItemImagesWidthRatio),
+                height: UIScreen.getHeightby(ratio: Size.tabItemImagesHeightRatio))
             .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 5))
     }
 

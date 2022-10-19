@@ -18,6 +18,9 @@ struct MainTabView: View {
             ForEach(tabItems) { createTabView($0) }
                 .environmentObject(selectedTab)
         }
+        .onAppear {
+            tabViewOnAppearAction()
+        }
         .accentColor(.black)
         .environmentObject(recentSelectButton)
     }
@@ -46,6 +49,12 @@ extension MainTabView {
                 Label(title: { tabItem.title }, icon: { tabItem.icon })
             }
             .tag(tabItem.tag)
+    }
+    
+    private func tabViewOnAppearAction() {
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
     }
 }
 

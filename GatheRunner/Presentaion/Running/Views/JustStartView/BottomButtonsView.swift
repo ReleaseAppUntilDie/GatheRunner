@@ -38,18 +38,32 @@ struct BottomButtonsView: View {
 
 struct StartBtn: View {
     @Binding var tag: Int?
+    @State private var isPressed: Bool = false
 
     var body: some View {
-        Button("시작") {
-            self.tag = 1
-        }
-        .frame(
-            width: UIScreen.getWidthby(ratio: Size.startBtnWidthRatio),
-            height: UIScreen.getHeightby(ratio: Size.startBtnHeightRatio))
-        .background(Color.yellow)
-        .font(.system(size: Size.startBtnFontSize, weight: .black)).foregroundColor(Color.black)
-        .cornerRadius(200)
-        .accessibilityIdentifier("runStartButton")
+        Circle()
+            .frame(
+                width: UIScreen.getWidthby(ratio: Size.startBtnWidthRatio),
+                height: UIScreen.getHeightby(ratio: Size.startBtnHeightRatio))
+            .foregroundColor(isPressed ? .black.opacity(0.5) : .yellow)
+            .overlay {
+                Text("시작")
+                    .font(.system(size: Size.startBtnFontSize, weight: .black))
+                    .foregroundColor(Color.black)
+            }
+            .cornerRadius(200)
+            .simultaneousGesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged( { _ in
+                        isPressed = true
+                    })
+                    .onEnded( { _ in
+                        isPressed = false
+                        self.tag = 1
+                    })
+            
+            )
+            .accessibilityIdentifier("runStartButton")
     }
 }
 

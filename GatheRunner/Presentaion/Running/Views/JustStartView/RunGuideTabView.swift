@@ -21,7 +21,7 @@ struct RunGuideTabView: View {
             tabView
             HStack(spacing: 5) {
                 tabViewIndicator
-            }
+            }.padding(.top, 10)
         }
     }
 }
@@ -31,25 +31,25 @@ extension RunGuideTabView {
         TabView(selection: $selectedRunGuideTabItemNumber) {
             RunGuideExperienceTabItem()
         }
+        .frame(width: 330, height: 100)
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(
-            width: UIScreen.getWidthby(ratio: Size.tabViewFrameWidthRatio),
-            height: UIScreen.getHeightby(ratio: Size.tabViewFrameHeightRatio))
         .shadow(radius: 2)
-        .padding(-15)
-        .onTapGesture { onTapGestureEvent() }
+        .onTapGesture {
+            onTapGestureEvent()
+        }
         .fullScreenCover(item: $selectedRunGuideTabItem, onDismiss: didDismiss) { item in
             RunGuideDetailDescriptionView(selectedItem: $selectedRunGuideTabItem, item: item)
-                .onAppear { isPresentedRunGuideDetailDescriptionView = true }
+                .onAppear {
+                    isPresentedRunGuideDetailDescriptionView = true
+                }
         }
-
         .highPriorityGesture(
             DragGesture()
                 .onChanged { _ in
                     cancelTimerUpstreamConnect()
                 })
         .onReceive(timer) { _ in
-            dragGestureOnReceiveEvent()
+            dragGestureOnReceiveAction()
         }
         .animation(.default, value: selectedRunGuideTabItemNumber)
     }
@@ -70,7 +70,7 @@ extension RunGuideTabView {
         selectedRunGuideTabItem = runGuideExperienceItemArrs[selectedRunGuideTabItemNumber]
     }
 
-    private func dragGestureOnReceiveEvent() {
+    private func dragGestureOnReceiveAction() {
         if runGuideExperienceItemArrs.count - 1 >= selectedRunGuideTabItemNumber + 1 {
             selectedRunGuideTabItemNumber += 1
         } else {
@@ -89,7 +89,7 @@ extension RunGuideTabView {
 
 extension RunGuideTabView {
     private enum Size {
-        static let tabViewFrameWidthRatio: Double = 1
+        static let tabViewFrameWidthRatio = 1.0
         static let tabViewFrameHeightRatio = 0.2
     }
 }

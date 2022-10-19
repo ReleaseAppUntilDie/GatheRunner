@@ -10,20 +10,15 @@ import SwiftUI
 // MARK: - CardView
 
 struct CardView: View {
-
+    
     // MARK: Internal
-
+    
     var body: some View {
         ForEach(runGuideCardItemArrs) { item in
-            ZStack(alignment: .center) {
-                cardImage(item)
-                VStack(alignment: .center) {
-                    cardText(item)
-                }
-                .cornerRadius(Size.cardItemCornerRadiusValue)
+            ZStack {
+                cardItem(item)
             }
-            .frame(width: UIScreen.getWidthby(ratio: Size.cardItemFrameSizeRatio))
-            .padding(.bottom, 20)
+            .padding(.vertical, 20)
             .onTapGesture {
                 withAnimation {
                     selectedCardItem = item
@@ -34,39 +29,50 @@ struct CardView: View {
             }
         }
     }
-
+    
     // MARK: Private
-
+    
     @State private var selectedCardItem: RunGuideItem? = nil
     private let runGuideCardItemArrs = RunGuideViewModel().getArrsRunGuideExperienceItem
+}
 
-    private func cardImage(_ item: RunGuideItem) -> some View {
-        Image(item.image)
-            .resizable()
-            .scaledToFit()
-            .cornerRadius(Size.cardItemCornerRadiusValue)
-            .shadow(radius: 2)
+extension CardView {
+    @ViewBuilder
+    private func cardItem(_ item: RunGuideItem) -> some View {
+        ZStack(alignment: .bottomLeading) {
+            Image(item.image)
+                .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.getWidthby(ratio: Size.cardItemFrameSizeRatio))
+                .overlay {
+                    LinearGradient(colors: [.clear, .black.opacity(0.9)], startPoint: .center, endPoint: .bottom)
+                }
+                .cornerRadius(Size.cardItemCornerRadiusValue)
+            cardText(item).padding([.leading, .bottom])
+        }
     }
 
     @ViewBuilder
     private func cardText(_ item: RunGuideItem) -> some View {
-        Text(item.title)
-            .font(.largeTitle)
-            .fontWeight(.heavy)
-            .foregroundColor(.white)
-            .multilineTextAlignment(.center)
-        Text(item.subtitle)
-            .font(.title2)
-            .fontWeight(.medium)
-            .foregroundColor(.white)
-            .multilineTextAlignment(.center)
+        VStack(alignment: .leading) {
+            Text(item.title)
+                .font(.largeTitle)
+                .fontWeight(.black)
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+            Text(item.subtitle)
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+        }
     }
 }
 
 extension CardView {
     private enum Size {
         static let cardItemFrameSizeRatio = 0.89
-        static let cardItemCornerRadiusValue: CGFloat = 20
+        static let cardItemCornerRadiusValue: CGFloat = 10
     }
 }
 
