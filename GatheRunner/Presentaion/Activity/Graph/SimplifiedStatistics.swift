@@ -17,6 +17,7 @@ struct SimplifiedStatistics: View {
 
     let averageHistory: AverageHistory
 
+
     var buttonText: String {
         switch selectedTimeUnit {
         case .week: return "이번주"
@@ -30,7 +31,8 @@ struct SimplifiedStatistics: View {
         VStack(alignment: .leading,spacing: UIScreen.getHeightby(ratio: 0.02)) {
             Button {
                 guard selectedTimeUnit != .whole else { return }
-                withAnimation(.linear) {
+
+                withAnimation(.easeOut(duration: 0.5)) {
                     pickerViewShowed.toggle()
                 }
             } label: {

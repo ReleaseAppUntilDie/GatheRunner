@@ -12,7 +12,7 @@ import SwiftUI
 struct HistoryList: View {
     var body: some View {
         ZStack {
-            Color(uiColor: .lightGray)
+            Color(uiColor: .systemGray6)
             VStack(alignment: .leading) {
                 Text("최근 활동")
                     .font(.title3)

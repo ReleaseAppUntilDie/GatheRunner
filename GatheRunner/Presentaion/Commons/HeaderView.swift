@@ -19,10 +19,10 @@ struct HeaderView: View {
     let title: String
     let type: ViewsInHeaderView
 
-    let rightButtonAction : () -> Void
+    let rightButtonAction: () -> Void
 
     var body: some View {
-        ZStack(alignment:.bottom) {
+        ZStack(alignment: .bottom) {
             Color(uiColor: .systemGray6)
             GatherNaviBar {
                 VStack(alignment: .leading) {
