@@ -7,20 +7,13 @@
 
 import SwiftUI
 
-
 // MARK: - SimplifiedStatistics
 
 struct SimplifiedStatistics: View {
 
-    // MARK: Lifecycle
-
-    init(selectedTimeUnit: Binding<TimeUnit>) {
-        _selectedTimeUnit = selectedTimeUnit
-    }
-
-    // MARK: Internal
-
+    @ObservedObject var viewModel: GraphViewModel
     @Binding var selectedTimeUnit: TimeUnit
+    @Binding var pickerViewShowed: Bool
     let distance = "10.0"
     let distanceUnit = "킬로미터"
     let runningCnt = 6
@@ -29,18 +22,23 @@ struct SimplifiedStatistics: View {
 
     var buttonText: String {
         switch selectedTimeUnit {
-        case .week:return "이번주"
-        case .month:return "2022년 8월"
-        case .year:return "2022년"
-        case .whole:return "2020년~2022년"
+        case .week: return "이번주"
+        case .month: return "2022년 8월"
+        case .year: return "2022년"
+        case .whole: return "2020년~2022년"
         }
     }
 
     var body: some View {
         VStack(alignment: .leading,spacing: UIScreen.getHeightby(ratio: 0.02)) {
-            Button { } label: {
+            Button {
+                guard selectedTimeUnit != .whole else { return }
+                withAnimation(.linear) {
+                    pickerViewShowed.toggle()
+                }
+            } label: {
                 HStack {
-                    Text(buttonText)
+                    Text(viewModel.selectedString)
                         .foregroundColor(.black)
                     Image(systemName: "chevron.down")
                         .isEmpty(logicalOperator: .and, [selectedTimeUnit != .whole])
@@ -100,9 +98,9 @@ extension SimplifiedStatistics {
 }
 
 // MARK: - SimplifiedStatistics_Previews
-
-struct SimplifiedStatistics_Previews: PreviewProvider {
-    static var previews: some View {
-        SimplifiedStatistics(selectedTimeUnit: .constant(.week))
-    }
-}
+//
+// struct SimplifiedStatistics_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SimplifiedStatistics(selectedTimeUnit: .constant(.week), pickerViewShowed: .constant(true))
+//    }
+// }

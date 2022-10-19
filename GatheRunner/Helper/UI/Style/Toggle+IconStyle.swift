@@ -10,7 +10,7 @@ import SwiftUI
 struct IconStyle: ToggleStyle {
     let onImage: String
     let offImage: String
-    var size: CGFloat = 100
+    let size: CGFloat = 100
 
     func makeBody(configuration: Configuration) -> some View {
         Button {
@@ -20,8 +20,11 @@ struct IconStyle: ToggleStyle {
                 configuration.label
             } icon: {
                 Image(configuration.isOn ? offImage : onImage)
-                    .asIconStyle(withMaxWidth: size, withMaxHeight: size)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
             }
         }
+        .buttonStyle(PlainButtonStyle())
+        .frame(width: size, height: size)
     }
 }
