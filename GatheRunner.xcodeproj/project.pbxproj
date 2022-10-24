@@ -488,6 +488,7 @@
 		E3D349D5286C20D200618AC3 /* GatheRunner */ = {
 			isa = PBXGroup;
 			children = (
+				E3F9276328FFDB5F000E71F9 /* Data */,
 				DAEA930E28794F6F00349465 /* Info.plist */,
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
 				DB198DAD288F7908002513A9 /* Utils */,
@@ -914,7 +915,9 @@
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
 				DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */,
 				EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */,
+				E3F9276528FFDB7C000E71F9 /* APIManger.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
+				E3F9277C2906AD6D000E71F9 /* NetworkError.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
 				DBD4C53128F3DFE0000E28D0 /* HistoryList.swift in Sources */,
 				6F1E0DE0287D44060025A671 /* TemplateView.swift in Sources */,
