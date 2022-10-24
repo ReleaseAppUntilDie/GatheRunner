@@ -15,15 +15,20 @@
 		6F795EF92876743C007FA0B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F795EF82876743C007FA0B2 /* SettingView.swift */; };
 		9B5095EDA536B973CF0EB609 /* Pods_GatheRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3471F89BB819ED6185DCE2BC /* Pods_GatheRunnerTests.framework */; };
 		D038E0DE9807E434F1BB41EE /* Pods_GatheRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */; };
+		DA098D2728F802320053140F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA098D2628F802320053140F /* CardView.swift */; };
+		DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */; };
 		DA2FFD3D28A8B33B006291CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */; };
 		DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695728790DBE00FA13AE /* JustStartView.swift */; };
 		DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695928790E0C00FA13AE /* RunningGuideView.swift */; };
 		DA5165A728A8B3E60024BE22 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = DA5165A628A8B3E60024BE22 /* .swiftformat */; };
-		DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */; };
+		DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5842182893C22F00554B5D /* View+Extensions.swift */; };
 		DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421A2893C24A00554B5D /* Array+Extensions.swift */; };
-		DA58421E2893C27700554B5D /* RunGuideExperienceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421D2893C27700554B5D /* RunGuideExperienceVM.swift */; };
+		DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421D2893C27700554B5D /* RunGuideViewModel.swift */; };
+		DA694A7F28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA694A7E28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift */; };
+		DA7D5E7728F73A5F0066B2C6 /* RunGuideTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */; };
+		DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D5E7A28F740D90066B2C6 /* MapView.swift */; };
 		DA7E241828BB031F00046BFB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA7E241728BB031F00046BFB /* GoogleService-Info.plist */; };
-		DAE12F5D28D346FC00C328EA /* RunGuideExperienceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE12F5C28D346FC00C328EA /* RunGuideExperienceItem.swift */; };
+		DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */; };
 		DAEA9315287AED7200349465 /* RunGuideExperienceTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */; };
 		DAEA931A287D184900349465 /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* BottomButtonsView.swift */; };
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
@@ -103,15 +108,20 @@
 		75848D194E0D75CB55FC6E7D /* Pods-GatheRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.release.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1FBD7301BD3249E41A5E419 /* Pods-GatheRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunnerTests/Pods-GatheRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D942972FC8ABC3559B78D5FF /* Pods-GatheRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GatheRunner.debug.xcconfig"; path = "Target Support Files/Pods-GatheRunner/Pods-GatheRunner.debug.xcconfig"; sourceTree = "<group>"; };
+		DA098D2628F802320053140F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedButtonMemory.swift; sourceTree = "<group>"; };
 		DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DA33695728790DBE00FA13AE /* JustStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustStartView.swift; sourceTree = "<group>"; };
 		DA33695928790E0C00FA13AE /* RunningGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideView.swift; sourceTree = "<group>"; };
 		DA5165A628A8B3E60024BE22 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
-		DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedCorner+Extensions.swift"; sourceTree = "<group>"; };
+		DA5842182893C22F00554B5D /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		DA58421A2893C24A00554B5D /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		DA58421D2893C27700554B5D /* RunGuideExperienceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideExperienceVM.swift; sourceTree = "<group>"; };
+		DA58421D2893C27700554B5D /* RunGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideViewModel.swift; sourceTree = "<group>"; };
+		DA694A7E28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideDetailDescriptionView.swift; sourceTree = "<group>"; };
+		DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideTabView.swift; sourceTree = "<group>"; };
+		DA7D5E7A28F740D90066B2C6 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DA7E241728BB031F00046BFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DAE12F5C28D346FC00C328EA /* RunGuideExperienceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunGuideExperienceItem.swift; sourceTree = "<group>"; };
+		DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunGuideItem.swift; sourceTree = "<group>"; };
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideExperienceTabItem.swift; sourceTree = "<group>"; };
 		DAEA9319287D184900349465 /* BottomButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
@@ -252,11 +262,52 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DA098D2928F818750053140F /* JustStartView */ = {
+			isa = PBXGroup;
+			children = (
+				DA33695728790DBE00FA13AE /* JustStartView.swift */,
+				DA7D5E7A28F740D90066B2C6 /* MapView.swift */,
+				DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */,
+				DAEA9319287D184900349465 /* BottomButtonsView.swift */,
+			);
+			path = JustStartView;
+			sourceTree = "<group>";
+		};
+		DA098D2A28F8189E0053140F /* RunGuideView */ = {
+			isa = PBXGroup;
+			children = (
+				DA33695928790E0C00FA13AE /* RunningGuideView.swift */,
+				DA694A7E28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift */,
+				DA098D2628F802320053140F /* CardView.swift */,
+			);
+			path = RunGuideView;
+			sourceTree = "<group>";
+		};
+		DA098D2D28F8470F0053140F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA098D2E28F8615C0053140F /* RunningView */,
+				DA098D2928F818750053140F /* JustStartView */,
+				DA098D2A28F8189E0053140F /* RunGuideView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DA098D2E28F8615C0053140F /* RunningView */ = {
+			isa = PBXGroup;
+			children = (
+				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
+				E3E748082892837700F40457 /* RunSplashScreen.swift */,
+				E351783928ABC9E50088003B /* MeasurementView.swift */,
+			);
+			path = RunningView;
+			sourceTree = "<group>";
+		};
 		DA5842172893C21800554B5D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				E305671228B75BA200DFA1C4 /* Int+Extensions.swift */,
-				DA5842182893C22F00554B5D /* RoundedCorner+Extensions.swift */,
+				DA5842182893C22F00554B5D /* View+Extensions.swift */,
 				DA58421A2893C24A00554B5D /* Array+Extensions.swift */,
 				E3FE02FA28D49749008A9B91 /* String+isValid.swift */,
 			);
@@ -266,17 +317,17 @@
 		DA58421C2893C26200554B5D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				DA58421D2893C27700554B5D /* RunGuideExperienceVM.swift */,
+				DA58421D2893C27700554B5D /* RunGuideViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		DA5842242893C2E700554B5D /* RunningGuideExperienceTabItem */ = {
+		DA5842242893C2E700554B5D /* TabItem */ = {
 			isa = PBXGroup;
 			children = (
 				DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */,
 			);
-			path = RunningGuideExperienceTabItem;
+			path = TabItem;
 			sourceTree = "<group>";
 		};
 		DB198DAD288F7908002513A9 /* Utils */ = {
@@ -369,13 +420,8 @@
 			children = (
 				EA5E278D28B604A1004C0798 /* Model */,
 				DA58421C2893C26200554B5D /* ViewModel */,
-				DA5842242893C2E700554B5D /* RunningGuideExperienceTabItem */,
-				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
-				E351783928ABC9E50088003B /* MeasurementView.swift */,
-				DA33695728790DBE00FA13AE /* JustStartView.swift */,
-				DA33695928790E0C00FA13AE /* RunningGuideView.swift */,
-				DAEA9319287D184900349465 /* BottomButtonsView.swift */,
-				E3E748082892837700F40457 /* RunSplashScreen.swift */,
+				DA5842242893C2E700554B5D /* TabItem */,
+				DA098D2D28F8470F0053140F /* Views */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -520,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				E335FAF828B7610300835F72 /* SelectedTab.swift */,
+				DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -547,7 +594,7 @@
 		EA5E278D28B604A1004C0798 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DAE12F5C28D346FC00C328EA /* RunGuideExperienceItem.swift */,
+				DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -820,7 +867,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
 		};
 		DA5165AA28A8B5210024BE22 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -847,6 +894,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */,
 				EA7913B828D6EA7000F889E5 /* GraphBottomSheetView.swift in Sources */,
 				E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */,
 				E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */,
@@ -879,25 +927,30 @@
 				E3DA2F5928B76098001E9220 /* Alignment+Extention.swift in Sources */,
 				DBD4C52F28F3DFD1000E28D0 /* HistoryItem.swift in Sources */,
 				E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */,
-				DA5842192893C22F00554B5D /* RoundedCorner+Extensions.swift in Sources */,
+				DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */,
 				E351783A28ABC9E50088003B /* MeasurementView.swift in Sources */,
 				E85FF54728F6857700C197CA /* History.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideExperienceItem.swift in Sources */,
+				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
-				DA58421E2893C27700554B5D /* RunGuideExperienceVM.swift in Sources */,
+				DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */,
 				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
 				E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */,
 				E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */,
 				E3DA2F5828B76098001E9220 /* Constants.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
+				DA7D5E7728F73A5F0066B2C6 /* RunGuideTabView.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
+				DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */,
 				6F1E0DDE287D43AF0025A671 /* SettingModel.swift in Sources */,
 				E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */,
 				DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */,
 				DAEA9315287AED7200349465 /* RunGuideExperienceTabItem.swift in Sources */,
+				DA098D2728F802320053140F /* CardView.swift in Sources */,
+				DA694A7F28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

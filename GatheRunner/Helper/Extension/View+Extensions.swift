@@ -1,5 +1,5 @@
 //
-//  RoundedCorner.swift
+//  View+Extension.swift
 //  GatheRunner
 //
 //  Created by cho on 2022/07/19.
@@ -32,6 +32,21 @@ struct RoundedTopCorner: Shape {
     }
 }
 
+// MARK: - Hide
+
+struct Hide: ViewModifier {
+    let isVisible: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if isVisible {
+            content.hidden()
+        } else {
+            content
+        }
+    }
+}
+
 extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
@@ -39,5 +54,9 @@ extension View {
 
     func topCornerRadius(_ radius: CGFloat) -> some View {
         clipShape(RoundedTopCorner(radius: radius))
+    }
+
+    func hide(_ isVisible: Bool) -> some View {
+        ModifiedContent(content: self, modifier: Hide(isVisible: isVisible))
     }
 }
