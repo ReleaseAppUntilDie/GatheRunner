@@ -7,20 +7,14 @@
 
 import SwiftUI
 
-// MARK: - TimeUnit
-
-enum TimeUnit {
-    case week,month,year,whole
-}
 
 // MARK: - GraphView
 
 struct GraphView: View {
 
-    // MARK: Internal
+    @Binding var isPickerViewShowed: Bool
+    @ObservedObject var viewModel: GraphViewModel
 
-    @State private var isPickerViewShowed = false
-    @ObservedObject var viewModel = GraphViewModel()
 
     var body: some View {
         ZStack {
@@ -36,7 +30,11 @@ struct GraphView: View {
                 SimplifiedStatistics(
                     viewModel: viewModel,
                     selectedTimeUnit: $selectedTimeUnit,
-                    pickerViewShowed: $isPickerViewShowed)
+                    pickerViewShowed: $isPickerViewShowed, averageHistory: AverageHistory(
+                        distance: "10.0",
+                        runningCnt: 6,
+                        averagePace: "5'41''",
+                        totalTime: "2:54:51"))
 
                 Graph(
                     graphWidth: UIScreen.getWidthby(ratio: 0.7),
@@ -44,13 +42,15 @@ struct GraphView: View {
                     viewModel: viewModel)
 
             }.padding(.leading,UIScreen.getWidthby(ratio: 0.1))
-
-            GraphBottomSheetView(
-                viewModel: viewModel,
-                show: $isPickerViewShowed,
-                selectedTimeUnit: $selectedTimeUnit)
         }
     }
+
+    @Binding var selectedTimeUnit: TimeUnit {
+        didSet {
+            viewModelUpdate()
+        }
+    }
+
 
     func setTimeUnit(by x: CGFloat) {
         if x < UIScreen.getWidthby(ratio: 0.2) {
@@ -70,19 +70,12 @@ struct GraphView: View {
         viewModel.fetchData()
     }
 
-    // MARK: Private
-
-    @State private var selectedTimeUnit: TimeUnit = .week {
-        didSet {
-            viewModelUpdate()
-        }
-    }
 }
 
 // MARK: - GraphView_Previews
 
-struct GraphView_Previews: PreviewProvider {
-    static var previews: some View {
-        GraphView()
-    }
-}
+// struct GraphView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GraphView()
+//    }
+// }
