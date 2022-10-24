@@ -91,30 +91,32 @@ struct PickerView: View {
     var isMonth: Bool
 
     var body: some View {
-        if !isMonth {
-            Picker("Choose period", selection: $selected) {
-                ForEach(viewModel.pickerItemList,id: \.self) {
-                    Text($0)
-                }
-            }
-            .pickerStyle(.wheel)
-        } else {
-            HStack(spacing: 0) {
-                Picker("Choose year", selection: $selectedYear) {
-                    ForEach(viewModel.pickerItemListInMonth.0,id: \.self) {
-                        Text(verbatim: "\($0)년")
+        LazyVStack {
+            if !isMonth {
+                Picker("Choose period", selection: $selected) {
+                    ForEach(viewModel.pickerItemList,id: \.self) {
+                        Text($0)
                     }
                 }
-                .frame(width: UIScreen.getWidthby(ratio: 0.5))
                 .pickerStyle(.wheel)
+            } else {
+                HStack(spacing: 0) {
+                    Picker("Choose year", selection: $selectedYear) {
+                        ForEach(viewModel.pickerItemListInMonth.0,id: \.self) {
+                            Text(verbatim: "\($0)년")
+                        }
+                    }
+                    .frame(width: UIScreen.getWidthby(ratio: 0.5))
+                    .pickerStyle(.wheel)
 
-                Picker("Choose month", selection: $selectedMonth) {
-                    ForEach(viewModel.pickerItemListInMonth.1,id: \.self) {
-                        Text("\($0)월")
+                    Picker("Choose month", selection: $selectedMonth) {
+                        ForEach(viewModel.pickerItemListInMonth.1,id: \.self) {
+                            Text("\($0)월")
+                        }
                     }
+                    .frame(width: UIScreen.getWidthby(ratio: 0.5))
+                    .pickerStyle(.wheel)
                 }
-                .frame(width: UIScreen.getWidthby(ratio: 0.5))
-                .pickerStyle(.wheel)
             }
         }
     }
