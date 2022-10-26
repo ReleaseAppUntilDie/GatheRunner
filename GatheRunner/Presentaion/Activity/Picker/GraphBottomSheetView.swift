@@ -107,7 +107,7 @@ struct PickerView: View {
                 }
                 .frame(width: UIScreen.getWidthby(ratio: 0.5))
                 .pickerStyle(.wheel)
-                
+
                 Picker("Choose month", selection: $selectedMonth) {
                     ForEach(viewModel.pickerItemListInMonth.1,id: \.self) {
                         Text("\($0)월")

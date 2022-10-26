@@ -86,15 +86,15 @@ struct Graph: View {
 
                 HStack(alignment: .bottom,spacing: 0) {
                     // MARK: data는 hash를 요구하므로 0..<mockdata.count일때는 잘 동작하지 않음
-                    ForEach(viewModel.records,id: \.self) { data in
+                  ForEach(0..<viewModel.records.count) { index in
                         VStack(spacing: 0) {
-                            Text("\(data)")
+                            Text("\(viewModel.records[index])")
                                 .font(.system(size: 8, weight: .regular, design: .rounded))
                                 .foregroundColor(.gray)
                                 .isEmpty(logicalOperator: .and, [viewModel.selectedTimeUnit == .week])
                             Rectangle()
                                 .fill(.green)
-                                .frame(width: barWidth, height: cellHeight * 3.0 * Double(data) / Double(maxValue))
+                                .frame(width: barWidth, height: cellHeight * 3.0 * Double(viewModel.records[index]) / Double(maxValue))
                                 .cornerRadius(barCornerRadius,corners: [.topLeft,.topRight])
                         }
                         .padding(.horizontal,graphWidth / CGFloat(bottomLabels.count) / 2.0 - (barWidth / 2.0))
