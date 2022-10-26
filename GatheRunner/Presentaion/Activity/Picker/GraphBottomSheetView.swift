@@ -25,6 +25,7 @@ struct GraphBottomSheetView: View {
         let current = Calendar.current.dateComponents([.year,.month], from: Date())
         selectedYear = current.year!
         selectedMonth = current.month!
+     
     }
     
     // MARK: Internal
@@ -72,7 +73,11 @@ struct GraphBottomSheetView: View {
     }
     
     func confirmButtonAction() {
-        viewModel.updateSelected(selectedStr: selected, selectedYear: selectedYear, selectedMonth: selectedMonth)
+        viewModel.updateSelected(
+            selectedStr: selected,
+            selectedYear: selectedYear,
+            selectedMonth: selectedMonth
+        )
         viewModel.fetchData()
         withAnimation(.linear) {
             show.toggle()

@@ -56,7 +56,7 @@ struct HeaderView: View {
                 path.move(to: CGPoint(x: 0, y: UIScreen.getHeightby(ratio: 1 / 7)))
                 path.addLine(to: CGPoint(x: UIScreen.screenWidth, y: UIScreen.getHeightby(ratio: 1 / 7)))
             }
-            .stroke(style: StrokeStyle(lineWidth:1))
+            .stroke(style: StrokeStyle(lineWidth: 1))
             .foregroundColor(.init(uiColor: .systemGray4))
 
         }.frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1 / 7))
@@ -68,7 +68,7 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title:"활동",type: .activity) {
+        HeaderView(title: "활동",type: .activity) {
             print("")
         }
     }

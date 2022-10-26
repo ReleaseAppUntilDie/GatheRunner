@@ -48,12 +48,16 @@ class GraphViewModel: ObservableObject {
     }
 
     func updateSelected(selectedStr: String, selectedYear: Int,selectedMonth: Int) {
-        if selectedTimeUnit == .month {
+        switch selectedTimeUnit {
+        case .week, .whole:
+            selectedString = selectedStr
+        case .month:
             guard isValidMonth(year: selectedYear, month: selectedMonth) else { return }
             selectedString = "\(selectedYear)년 \(selectedMonth)월"
-        } else {
-            selectedString = selectedStr
+        case .year:
+            selectedString = "\(selectedYear)년"
         }
+     
     }
 
     func updatePicker(timeUnit: TimeUnit) {
