@@ -72,6 +72,6 @@ extension RunningView {
 
 struct RunningView_Previews: PreviewProvider {
     static var previews: some View {
-        RunningView()
+        RunningView().environmentObject(SelectedButtonMemory())
     }
 }

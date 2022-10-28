@@ -18,7 +18,7 @@ struct JustStartView: View {
             VStack {
                 RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView).padding(.top, 5)
                 Spacer()
-                BottomButtonsView().padding(.bottom, 30)
+                BottomButtonView().padding(.bottom, 30)
             }
         }
     }

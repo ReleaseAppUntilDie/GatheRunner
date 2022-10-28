@@ -24,11 +24,11 @@ class RunGuideViewModel {
             title: "쉽고 즐겁게",
             subtitle: "초급자",
             contents: "10분 가볍게 러닝",
-            workoutGoal: "초급자도 쉽게 즐길수 있는 운동입니다. 부담없이 러닝 고고싱!",
+            workoutGoal: "초급자도 쉽게 즐길수 있는 운동입니다. 부담없이 러닝을 즐겨요!",
             workoutComposition: "10분의 편안한 러닝"),
         RunGuideItem(
             image: "RunGuideImage_2",
-            title: "중급중급중급중급",
+            title: "중급중급중급",
             subtitle: "중급자",
             contents: "20분 적당한 속도로 러닝",
             workoutGoal: "이제 갓 초급 딱지를 뗀 당신에게 추천하는 운동입니다",
@@ -42,7 +42,7 @@ class RunGuideViewModel {
             workoutComposition: "40분의 심장 과부하 러닝"),
         RunGuideItem(
             image: "RunGuideImage_4",
-            title: "For Professional",
+            title: "For Expert",
             subtitle: "Pro",
             contents: "60분 중거리 러닝",
             workoutGoal: "국내 대회 입상을 위한 체계적이고 과학적인 워크아웃",
