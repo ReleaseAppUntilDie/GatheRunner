@@ -8,29 +8,24 @@
 import Combine
 
 class APIs {
-        
-    class func requestAuth(firebaseOption option: FirebaseAPIManager.Option, _ request: AuthRequestDTO) -> AnyPublisher<AuthResponseDTO, NetworkError> {
-        // MARK: - Temp guard fatalError()
-
+    func requestAuth(
+        firebaseOption option: AuthOption,
+        _ request: AuthRequestDTO) -> AnyPublisher<AuthResponseDTO, NetworkError>
+    {
         switch option {
         case .password:
-            guard let email = request.email, let password = request.password else { fatalError() }
-            return FirebaseAPIManager.shared.signIn(withEmail: email, password: password)
+            return FirebaseAPIManager.shared.signIn(withEmail: request.email, password: request.password)
         case .link:
-            guard let email = request.email, let link = request.link else { fatalError() }
-            return FirebaseAPIManager.shared.signIn(withEmail: email, link: link)
-            
+            return FirebaseAPIManager.shared.signIn(withEmail: request.email, link: request.link)
+
         case .credential:
-            guard let credential = request.credential else { fatalError() }
-            return FirebaseAPIManager.shared.signIn(with: credential)
+            return FirebaseAPIManager.shared.signIn(with: request.credential)
 
         case .anonymously:
             return FirebaseAPIManager.shared.signInAnonymously()
 
         case .customToken:
-            guard let token = request.token else { fatalError() }
-            return FirebaseAPIManager.shared.signIn(withCustomToken: token)
+            return FirebaseAPIManager.shared.signIn(withCustomToken: request.token)
         }
     }
 }
-
