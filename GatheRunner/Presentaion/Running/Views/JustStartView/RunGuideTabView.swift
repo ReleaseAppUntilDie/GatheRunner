@@ -38,7 +38,7 @@ extension RunGuideTabView {
             onTapGestureEvent()
         }
         .fullScreenCover(item: $selectedRunGuideTabItem, onDismiss: didDismiss) { item in
-            RunGuideDetailDescriptionView(selectedItem: $selectedRunGuideTabItem, item: item)
+            RunGuideDescriptionView(selectedItem: $selectedRunGuideTabItem, item: item)
                 .onAppear {
                     isPresentedRunGuideDetailDescriptionView = true
                 }

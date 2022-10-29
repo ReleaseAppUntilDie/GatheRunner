@@ -24,13 +24,13 @@
 		DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5842182893C22F00554B5D /* View+Extensions.swift */; };
 		DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421A2893C24A00554B5D /* Array+Extensions.swift */; };
 		DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421D2893C27700554B5D /* RunGuideViewModel.swift */; };
-		DA694A7F28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA694A7E28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift */; };
+		DA694A7F28F72E6800A02EEE /* RunGuideDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA694A7E28F72E6800A02EEE /* RunGuideDescriptionView.swift */; };
 		DA7D5E7728F73A5F0066B2C6 /* RunGuideTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */; };
 		DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D5E7A28F740D90066B2C6 /* MapView.swift */; };
 		DA7E241828BB031F00046BFB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA7E241728BB031F00046BFB /* GoogleService-Info.plist */; };
 		DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */; };
 		DAEA9315287AED7200349465 /* RunGuideExperienceTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */; };
-		DAEA931A287D184900349465 /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* BottomButtonsView.swift */; };
+		DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* BottomButtonView.swift */; };
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
 		DBD4C52F28F3DFD1000E28D0 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4C52E28F3DFD1000E28D0 /* HistoryItem.swift */; };
 		DBD4C53128F3DFE0000E28D0 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4C53028F3DFE0000E28D0 /* HistoryList.swift */; };
@@ -117,14 +117,14 @@
 		DA5842182893C22F00554B5D /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		DA58421A2893C24A00554B5D /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		DA58421D2893C27700554B5D /* RunGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideViewModel.swift; sourceTree = "<group>"; };
-		DA694A7E28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideDetailDescriptionView.swift; sourceTree = "<group>"; };
+		DA694A7E28F72E6800A02EEE /* RunGuideDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideDescriptionView.swift; sourceTree = "<group>"; };
 		DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideTabView.swift; sourceTree = "<group>"; };
 		DA7D5E7A28F740D90066B2C6 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DA7E241728BB031F00046BFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunGuideItem.swift; sourceTree = "<group>"; };
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideExperienceTabItem.swift; sourceTree = "<group>"; };
-		DAEA9319287D184900349465 /* BottomButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
+		DAEA9319287D184900349465 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DBD4C52E28F3DFD1000E28D0 /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		DBD4C53028F3DFE0000E28D0 /* HistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 				DA33695728790DBE00FA13AE /* JustStartView.swift */,
 				DA7D5E7A28F740D90066B2C6 /* MapView.swift */,
 				DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */,
-				DAEA9319287D184900349465 /* BottomButtonsView.swift */,
+				DAEA9319287D184900349465 /* BottomButtonView.swift */,
 			);
 			path = JustStartView;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				DA33695928790E0C00FA13AE /* RunningGuideView.swift */,
-				DA694A7E28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift */,
+				DA694A7E28F72E6800A02EEE /* RunGuideDescriptionView.swift */,
 				DA098D2628F802320053140F /* CardView.swift */,
 			);
 			path = RunGuideView;
@@ -912,7 +912,7 @@
 				6F1E0DDB287D43620025A671 /* DetailControllView.swift in Sources */,
 				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
 				E35EFEC4286DFB2D003E23DE /* ClubView.swift in Sources */,
-				DAEA931A287D184900349465 /* BottomButtonsView.swift in Sources */,
+				DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */,
 				EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				E35EFEC5286DFB2D003E23DE /* HomeView.swift in Sources */,
@@ -930,7 +930,7 @@
 				DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */,
 				E351783A28ABC9E50088003B /* MeasurementView.swift in Sources */,
 				E85FF54728F6857700C197CA /* History.swift in Sources */,
-				DAE12F5D28D346FC00C328EA /* RunGuideExperienceItem.swift in Sources */,
+				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
@@ -950,7 +950,7 @@
 				DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */,
 				DAEA9315287AED7200349465 /* RunGuideExperienceTabItem.swift in Sources */,
 				DA098D2728F802320053140F /* CardView.swift in Sources */,
-				DA694A7F28F72E6800A02EEE /* RunGuideDetailDescriptionView.swift in Sources */,
+				DA694A7F28F72E6800A02EEE /* RunGuideDescriptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1118,12 +1118,17 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Running;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1152,12 +1157,17 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Running;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
