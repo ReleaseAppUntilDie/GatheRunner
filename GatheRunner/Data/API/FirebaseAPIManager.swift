@@ -19,7 +19,7 @@ class FirebaseAPIManager {
     func getDocument<D: Decodable>(
         collection: CollectionOption,
         queries: [QueryOption]? = nil,
-        as type: D.Type) -> AnyPublisher<[D], Error>
+        as type: D.Type) -> AnyPublisher<D, Error>
     {
         db.collection(collection.rawValue)
             .addQueries(queries)
