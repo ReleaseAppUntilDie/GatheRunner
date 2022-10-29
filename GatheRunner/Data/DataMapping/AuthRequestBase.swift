@@ -9,16 +9,16 @@ import FirebaseAuth
 
 // MARK: - AuthResponseDTO
 
-struct AuthResponseDTO  {
+struct AuthResponseDTO {
     let uid: String
     let email: String
     let nickName: String
-    
+
     init(_ authDataResult: AuthDataResult) {
         let user = authDataResult.user
-        self.uid = user.uid
-        self.email = user.email ?? Default.email
-        self.nickName = user.displayName ?? Default.nickName
+        uid = user.uid
+        email = user.email ?? Default.email
+        nickName = user.displayName ?? Default.nickName
     }
 }
 
