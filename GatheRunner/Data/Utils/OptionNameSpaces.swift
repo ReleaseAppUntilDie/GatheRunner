@@ -8,6 +8,24 @@
 // MARK: - QueryOption
 
 enum QueryOption {
-    case equal(fieldPath: String, condition: Any)
-    case range(fieldPath: String, start: Any, end: Any)
+    case equal(fieldPath: String, condition: String)
+    case contains(fieldPath: String, condition: String)
+    case notContains(fieldPath: String, condition: String)
+}
+
+// MARK: - AuthOption
+
+enum AuthOption {
+    case password
+    case link
+    case credential
+    case anonymously
+    case customToken
+}
+
+// MARK: - CollectionOption
+
+enum CollectionOption: String {
+    case runningRecord = "RunningRecord"
+    case weatherInfo = "WeatherInfo"
 }

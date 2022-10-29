@@ -11,6 +11,16 @@ import Combine
 
 class FirebaseAPIManager {
     static let shared = FirebaseAPIManager()
+    
+    func getDocument<D: Decodable>(
+        collection: CollectionOption,
+        queries: [QueryOption]? = nil,
+        as type: D.Type) -> AnyPublisher<[D], Error>
+    {
+        db.collection(collection.rawValue)
+            .addQueries(queries)
+            .map(decodeWith: type)
+    }
 
     func fetch<D: Decodable>(withQuery request: FireStoreRequestWithQuery, as _: D.Type) -> AnyPublisher<D, Error> {
         request.query.firestoreGetTaskPublisher(as: D.self)
