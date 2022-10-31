@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 // MARK: - GraphView
 
 struct GraphView: View {
@@ -15,10 +14,9 @@ struct GraphView: View {
     @Binding var isPickerViewShowed: Bool
     @ObservedObject var viewModel: GraphViewModel
 
-
     var body: some View {
         ZStack {
-            VStack(alignment:.leading) {
+            VStack(alignment: .leading) {
                 PeriodView(curTimeUnit: $selectedTimeUnit)
                     .padding(.bottom)
                     .onTouch(type: .started) { point in
@@ -50,7 +48,6 @@ struct GraphView: View {
             viewModelUpdate()
         }
     }
-
 
     func setTimeUnit(by x: CGFloat) {
         if x < UIScreen.getWidthby(ratio: 0.2) {

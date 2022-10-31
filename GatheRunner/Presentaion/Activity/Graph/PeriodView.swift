@@ -35,9 +35,9 @@ struct PeriodView: View {
                     .frame(width: UIScreen.getWidthby(ratio: 0.2), height: UIScreen.getHeightby(ratio: 0.04))
                     .offset(x: -UIScreen.getWidthby(ratio: 0.3) + UIScreen.getWidthby(ratio: 0.2 * unitIndex))
                 HStack(spacing: 0) {
-                    ForEach(0..<4) { index in
-                        Text(data[index].0)
-                            .foregroundColor(curTimeUnit == data[index].1 ? .black : .init(uiColor: .systemGray2))
+                  ForEach(data, id: \.0) { element in
+                        Text(element.0)
+                            .foregroundColor(curTimeUnit == element.1 ? .black : .init(uiColor: .systemGray2))
                             .frame(width: UIScreen.getWidthby(ratio: 0.2))
                     }
                 }

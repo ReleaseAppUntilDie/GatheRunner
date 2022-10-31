@@ -30,15 +30,13 @@ struct MainTabView: View {
 
 extension MainTabView {
     private var tabItems: [TabItem] {
-        [TabItem(.home), TabItem(.run), TabItem(.club), TabItem(.activity)]
+         [TabItem(.run), TabItem(.activity)]
     }
 
     private func selectedView(_ tag: Int) -> AnyView {
         switch tag {
-        case 1: return AnyView(HomeView())
-        case 2: return AnyView(RunningView())
-        case 3: return AnyView(ClubView())
-        case 4: return AnyView(ActivityView())
+        case 1: return AnyView(RunningView())
+        case 2: return AnyView(ActivityView())
         default: return AnyView(HomeView())
         }
     }

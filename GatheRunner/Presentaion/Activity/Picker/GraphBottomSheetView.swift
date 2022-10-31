@@ -10,9 +10,9 @@ import SwiftUI
 // MARK: - GraphBottomSheetView
 
 struct GraphBottomSheetView: View {
-
+    
     // MARK: Lifecycle
-
+    
     init(
         viewModel: GraphViewModel,
         show: Binding<Bool>,
@@ -21,21 +21,22 @@ struct GraphBottomSheetView: View {
         self.viewModel = viewModel
         _show = show
         _selectedTimeUnit = selectedTimeUnit
-
+        
         let current = Calendar.current.dateComponents([.year,.month], from: Date())
         selectedYear = current.year!
         selectedMonth = current.month!
+     
     }
-
+    
     // MARK: Internal
-
+    
     @ObservedObject var viewModel: GraphViewModel
-    @State var selected = ""
+    @State var selected = "이번주"
     @State var selectedMonth: Int
     @State var selectedYear: Int
     @Binding var show: Bool
     @Binding var selectedTimeUnit: TimeUnit
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.black.opacity(show ? 0.5 : 0)
@@ -45,15 +46,15 @@ struct GraphBottomSheetView: View {
                         show.toggle()
                     }
                 }
-
-            VStack {
+            
+            LazyVStack {
                 PickerView(
                     viewModel: viewModel,
                     selected: $selected,
                     selectedMonth: $selectedMonth,
                     selectedYear: $selectedYear,
                     isMonth: selectedTimeUnit == .month)
-                    .padding()
+                .padding()
                 Button {
                     confirmButtonAction()
                 } label: {
@@ -64,15 +65,19 @@ struct GraphBottomSheetView: View {
                         .background(RoundedRectangle(cornerRadius: 25).fill(Color.black))
                 }
             }
-            .frame(width: UIScreen.screenWidth)
-            .frame(maxHeight: show ? UIScreen.getHeightby(ratio: 0.5) : 0)
+            .frame(width: UIScreen.screenWidth, height: UIScreen.getHeightby(ratio: 0.5))
+            .transition(.slide)
             .background(Color.white)
             .cornerRadius(16, corners: [.topLeft,.topRight])
         }
     }
-
+    
     func confirmButtonAction() {
-        viewModel.updateSelected(selectedStr: selected, selectedYear: selectedYear, selectedMonth: selectedMonth)
+        viewModel.updateSelected(
+            selectedStr: selected,
+            selectedYear: selectedYear,
+            selectedMonth: selectedMonth
+        )
         viewModel.fetchData()
         withAnimation(.linear) {
             show.toggle()
@@ -83,13 +88,13 @@ struct GraphBottomSheetView: View {
 // MARK: - PickerView
 
 struct PickerView: View {
-
+    
     @ObservedObject var viewModel: GraphViewModel
     @Binding var selected: String
     @Binding var selectedMonth: Int
     @Binding var selectedYear: Int
     var isMonth: Bool
-
+    
     var body: some View {
         if !isMonth {
             Picker("Choose period", selection: $selected) {

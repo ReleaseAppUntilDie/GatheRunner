@@ -13,7 +13,6 @@ enum TimeUnit {
     case week,month,year,whole
 }
 
-
 // MARK: - ActivityHistoryView
 
 struct ActivityHistoryView: View {
@@ -27,11 +26,13 @@ struct ActivityHistoryView: View {
             ScrollView {
                 GraphView(isPickerViewShowed: $isPickerViewShowed, viewModel: viewModel, selectedTimeUnit: $selectedTimeUnit)
                 HistoryList()
-            }
+            }.padding(.top)
             GraphBottomSheetView(
                 viewModel: viewModel,
                 show: $isPickerViewShowed,
-                selectedTimeUnit: $selectedTimeUnit)
+                selectedTimeUnit: $selectedTimeUnit
+            )
+            .isEmpty(logicalOperator: .none, [isPickerViewShowed])
         }
     }
 }

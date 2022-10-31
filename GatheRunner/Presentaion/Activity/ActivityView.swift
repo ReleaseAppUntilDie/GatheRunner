@@ -10,16 +10,13 @@ import SwiftUI
 
 struct ActivityView: View {
 
-
-
     var body: some View {
-        VStack {
-            HeaderView(title: "활동",type: .activity) {
-                // TODO: 활동 추가
-                print("test")
-            }
+        VStack(spacing: 0) {
+            HeaderView(title: "활동",type: .activity) {}
             ActivityHistoryView()
+                
         }
+        .ignoresSafeArea(edges: .top)
     }
 }
 

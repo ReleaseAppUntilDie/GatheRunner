@@ -19,10 +19,14 @@ struct HistoryList: View {
                     .padding()
                     .padding(.leading,20)
                 LazyVStack {
-                    ForEach(0...10,id: \.self) { _ in
-                        HistoryItem(history: History(
-                            timeString: "2022.10.7.", weekString: "금요일 저녁 러닝", distance: "8.00", averagePace: "5'13''",
-                            runningTime: "41:44"))
+                    ForEach(0..<10) { _ in
+                        HistoryItem(history:
+                                        History(
+                                            timeString: "2022.10.7.",
+                                            weekString: "금요일 저녁 러닝",
+                                            distance: "8.00",
+                                            averagePace: "5'13''",
+                                            runningTime: "41:44"))
                     }
                 }
             }
