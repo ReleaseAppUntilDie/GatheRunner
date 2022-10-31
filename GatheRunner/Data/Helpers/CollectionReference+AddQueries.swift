@@ -24,5 +24,4 @@ extension CollectionReference {
         }
         return self
     }
-
 }

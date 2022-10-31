@@ -28,4 +28,9 @@ class APIs {
             return FirebaseAPIManager.shared.signIn(withCustomToken: request.token)
         }
     }
+    
+    ///temp
+    func postRunningRecord(record: RunningRecordRequestDTO) -> AnyPublisher<Bool, Error> {
+        FirebaseAPIManager.shared.post(collection: .runningRecord, from: record)
+    }
 }
