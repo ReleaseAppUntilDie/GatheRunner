@@ -20,6 +20,8 @@ extension CollectionReference {
                 whereField(fieldPath, isEqualTo: condition)
             case .notContains(let fieldPath, let condition):
                 whereField(fieldPath, isEqualTo: condition)
+            case .range(let fieldPath, let start, let end):
+                whereField(fieldPath, isGreaterThanOrEqualTo: start).whereField(fieldPath, isLessThanOrEqualTo: end)
             }
         }
         return self

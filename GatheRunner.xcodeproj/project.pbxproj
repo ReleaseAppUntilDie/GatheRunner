@@ -55,7 +55,6 @@
 		E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC1286DFB2D003E23DE /* ActivityView.swift */; };
 		E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC3286DFB2D003E23DE /* MainTabView.swift */; };
 		E36E7F29290F7ED000F73DDC /* CollectionReference+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36E7F28290F7ED000F73DDC /* CollectionReference+Combine.swift */; };
-		E36E7F2B290FA3A500F73DDC /* RunningRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36E7F2A290FA3A500F73DDC /* RunningRecordRequest.swift */; };
 		E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */; };
 		E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */; };
 		E38C3AB0291546F500F0B104 /* Query+AddQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38C3AAF291546BA00F0B104 /* Query+AddQueries.swift */; };
