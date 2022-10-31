@@ -8,8 +8,8 @@ import Combine
 import FirebaseFirestore
 
 extension Query {
-    func map<D: Decodable>(decodeWith _: D.Type) -> AnyPublisher<D, Error> {
-        return Future<D, Error> { [weak self] promise in
+    func getDocumentWithAnyPublisher<D: Decodable>(decodeWith _: D.Type) -> AnyPublisher<D, Error> {
+        Future<D, Error> { [weak self] promise in
             self?.limit(to: 1)
                 .addSnapshotListener { querySnapshot, error in
                     if let error = error {
@@ -24,8 +24,8 @@ extension Query {
         }
         .eraseToAnyPublisher()
     }
-    
-    func map<D: Decodable>(decodeWith _: D.Type) -> AnyPublisher<[D], Error> {
+
+    func getDocumentWithAnyPublisher<D: Decodable>(decodeWith _: D.Type) -> AnyPublisher<[D], Error> {
         var items = [D]()
         return Future<[D], Error> { [weak self] promise in
             self?.addSnapshotListener { querySnapshot, error in

@@ -40,6 +40,7 @@
 		E32716C8290BB8E4005FA430 /* OptionNameSpaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32716C7290BB8E4005FA430 /* OptionNameSpaces.swift */; };
 		E32716CA290BBB91005FA430 /* CollectionReference+AddQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32716C9290BBB91005FA430 /* CollectionReference+AddQueries.swift */; };
 		E32716CC290CFF18005FA430 /* JSONDecoder+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32716CB290CFF18005FA430 /* JSONDecoder+Decode.swift */; };
+		E32716CE290D560A005FA430 /* Encodable+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32716CD290D560A005FA430 /* Encodable+Dictionary.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
@@ -53,6 +54,8 @@
 		E35EFEC8286DFB2D003E23DE /* TabItem+MainComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEBF286DFB2D003E23DE /* TabItem+MainComponent.swift */; };
 		E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC1286DFB2D003E23DE /* ActivityView.swift */; };
 		E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35EFEC3286DFB2D003E23DE /* MainTabView.swift */; };
+		E36E7F29290F7ED000F73DDC /* CollectionReference+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36E7F28290F7ED000F73DDC /* CollectionReference+Combine.swift */; };
+		E36E7F2B290FA3A500F73DDC /* RunningRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36E7F2A290FA3A500F73DDC /* RunningRecordRequest.swift */; };
 		E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FDB289B8F49004FF0C1 /* TabBarButton.swift */; };
 		E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */; };
 		E38C3AB0291546F500F0B104 /* Query+AddQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38C3AAF291546BA00F0B104 /* Query+AddQueries.swift */; };
@@ -568,9 +571,9 @@
 		E3D349D5286C20D200618AC3 /* GatheRunner */ = {
 			isa = PBXGroup;
 			children = (
-				E3F9276328FFDB5F000E71F9 /* Data */,
 				DAEA930E28794F6F00349465 /* Info.plist */,
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
+				E3F9276328FFDB5F000E71F9 /* Data */,
 				DB198DAD288F7908002513A9 /* Utils */,
 				E38C3AA2291546BA00F0B104 /* Data */,
 				E35EFEB6286DFB2D003E23DE /* Presentaion */,
@@ -1010,6 +1013,7 @@
 				6F795EF92876743C007FA0B2 /* SettingView.swift in Sources */,
 				EA3D3F9028D07C1000D78D28 /* SimplifiedStatistics.swift in Sources */,
 				E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */,
+				E36E7F29290F7ED000F73DDC /* CollectionReference+Combine.swift in Sources */,
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				E3DA2F5928B76098001E9220 /* Alignment+Extention.swift in Sources */,
