@@ -11,6 +11,7 @@ enum QueryOption {
     case equal(fieldPath: String, condition: String)
     case contains(fieldPath: String, condition: String)
     case notContains(fieldPath: String, condition: String)
+    case range(fieldPath: String, start: String, end: String)
 }
 
 // MARK: - AuthOption
