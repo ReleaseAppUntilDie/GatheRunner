@@ -10,7 +10,6 @@ import SwiftUI
 // MARK: - HistoryItem
 
 struct HistoryItem: View {
-
     let iconImageName = "map"
     let history: History
     @State var hasBadge = true

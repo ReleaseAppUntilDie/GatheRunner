@@ -930,7 +930,7 @@
 				DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */,
 				E351783A28ABC9E50088003B /* MeasurementView.swift in Sources */,
 				E85FF54728F6857700C197CA /* History.swift in Sources */,
-				DAE12F5D28D346FC00C328EA /* RunGuideExperienceItem.swift in Sources */,
+				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
@@ -1114,7 +1114,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GatheRunner/Preview Content\"";
-				DEVELOPMENT_TEAM = H5RWE65UKW;
+				DEVELOPMENT_TEAM = C57846S828;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;
@@ -1148,7 +1148,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GatheRunner/Preview Content\"";
-				DEVELOPMENT_TEAM = H5RWE65UKW;
+				DEVELOPMENT_TEAM = C57846S828;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;

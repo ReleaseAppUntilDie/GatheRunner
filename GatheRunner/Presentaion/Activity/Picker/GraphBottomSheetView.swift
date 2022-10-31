@@ -65,8 +65,8 @@ struct GraphBottomSheetView: View {
                         .background(RoundedRectangle(cornerRadius: 25).fill(Color.black))
                 }
             }
-            .frame(width: UIScreen.screenWidth)
-            .frame(maxHeight: show ? UIScreen.getHeightby(ratio: 0.5) : 0)
+            .frame(width: UIScreen.screenWidth, height: UIScreen.getHeightby(ratio: 0.5))
+            .transition(.slide)
             .background(Color.white)
             .cornerRadius(16, corners: [.topLeft,.topRight])
         }

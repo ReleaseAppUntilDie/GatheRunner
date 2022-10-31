@@ -15,12 +15,12 @@ enum ViewsInHeaderView {
 // MARK: - HeaderView
 
 struct HeaderView: View {
-
+    
     let title: String
     let type: ViewsInHeaderView
-
+    
     let rightButtonAction: () -> Void
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Color(uiColor: .systemGray6)
@@ -49,18 +49,20 @@ struct HeaderView: View {
                         .renderingMode(.template)
                         .foregroundColor(.black)
                         .frame(width: 25, height: 25)
-                }.isEmpty(logicalOperator: .or, [type == .activity,type == .club])
-            }.padding(.horizontal,10)
-                .padding(.bottom)
+                }.isEmpty(logicalOperator: .none, [type == .club])
+            }
+            .padding(.horizontal, 10)
+            .padding(.bottom)
+            
             Path { path in
                 path.move(to: CGPoint(x: 0, y: UIScreen.getHeightby(ratio: 1 / 7)))
                 path.addLine(to: CGPoint(x: UIScreen.screenWidth, y: UIScreen.getHeightby(ratio: 1 / 7)))
             }
             .stroke(style: StrokeStyle(lineWidth: 1))
             .foregroundColor(.init(uiColor: .systemGray4))
-
-        }.frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1 / 7))
-            .ignoresSafeArea()
+        }
+        .frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1 / 7))
+      
     }
 }
 
