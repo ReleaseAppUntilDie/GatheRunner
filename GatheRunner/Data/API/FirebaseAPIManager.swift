@@ -22,12 +22,8 @@ class FirebaseAPIManager {
             .getDocumentWithAnyPublisher(decodeWith: type)
     }
 
-    func post<T: Encodable>(
-        collection: CollectionOption,
-        from data: T) -> AnyPublisher<Bool, Error>
-    {
-        db.collection(collection.rawValue)
-            .addDocumentWithAnyPublisher(from: data)
+    func post(request: FireStoreRequest) -> AnyPublisher<Bool, Error> {
+        request.targetCollection.addDocumentWithAnyPublisher(with: request.body)
     }
 
     func fetch<D: Decodable>(withQuery request: FireStoreRequestWithQuery, as _: D.Type) -> AnyPublisher<D, Error> {
