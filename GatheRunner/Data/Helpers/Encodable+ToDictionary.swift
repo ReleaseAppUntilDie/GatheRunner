@@ -1,15 +1,14 @@
 //
-//  Encodable+Dictionary.swift
+//  Encodable+ToDictionary.swift
 //  GatheRunner
 //
 //  Created by 김동현 on 2022/10/29.
 //
 
-import FirebaseFirestore
 import Foundation
 
 extension Encodable {
-    var dictionary: [String: Any]? {
+    var toDictionary: [String: Any]? {
         guard let data = try? JSONEncoder().encode(self) else {
             return nil
         }

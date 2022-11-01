@@ -6,45 +6,24 @@
 //
 
 import Combine
-import FirebaseFirestore
 
 // MARK: - FirebaseAPIManager
 
 class FirebaseAPIManager {
 
-    // MARK: Internal
-
     static let shared = FirebaseAPIManager()
 
-    func fetch<D: Decodable>(
-        collection: CollectionOption,
-        queries: [QueryOption]? = nil,
-        as type: D.Type) -> AnyPublisher<D, Error>
-    {
-        db.collection(collection.rawValue)
-            .addQueries(queries)
-            .getDocumentWithAnyPublisher(decodeWith: type)
+    func fetch<D: Decodable>(request: FireStoreRequest) -> AnyPublisher<D, Error> {
+        let decodeType = request.responseType.self as? D.Type
+        return request.targetCollection.getDocumentWithAnyPublisher(queries: request.queries, type: decodeType)
     }
 
-    func fetch<D: Decodable>(
-        collection: CollectionOption,
-        queries: [QueryOption]? = nil,
-        as type: D.Type) -> AnyPublisher<[D], Error>
-    {
-        db.collection(collection.rawValue)
-            .addQueries(queries)
-            .getDocumentWithAnyPublisher(decodeWith: type)
+    func fetchs<D: Decodable>(request: FireStoreRequest) -> AnyPublisher<[D], Error> {
+        let decodeType = request.responseType.self as? D.Type
+        return request.targetCollection.getDocumentWithAnyPublisher(queries: request.queries, type: decodeType)
     }
 
-    func post<T: Encodable>(
-        collection: CollectionOption,
-        from data: T) -> AnyPublisher<Bool, Error>
-    {
-        db.collection(collection.rawValue)
-            .addDocumentWithAnyPublisher(from: data)
+    func post(request: FireStoreRequest) -> AnyPublisher<Bool, Error> {
+        request.targetCollection.addDocumentWithAnyPublisher(with: request.body)
     }
-
-    // MARK: Private
-
-    private let db = Firestore.firestore()
 }

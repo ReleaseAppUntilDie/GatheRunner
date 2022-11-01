@@ -7,7 +7,7 @@
 import Foundation
 
 extension JSONDecoder {
-    func decode<T>(_: T.Type, fromJSONObject object: Any) throws -> T where T: Decodable {
+    func decode<T>(_: T.Type?, fromJSONObject object: Any) throws -> T where T: Decodable {
         try decode(T.self, from: try JSONSerialization.data(withJSONObject: object, options: []))
     }
 }
