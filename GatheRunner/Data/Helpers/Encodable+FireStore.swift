@@ -5,8 +5,6 @@
 //  Created by 김동현 on 2022/11/01.
 //
 
-import FirebaseFirestore
-
 extension Encodable {
     var queries: [QueryOption] {
         var queries = [QueryOption]()
@@ -17,13 +15,14 @@ extension Encodable {
             let childMirror = Mirror(reflecting: child.value)
             switch childMirror.displayStyle {
             case .collection:
-                ///temp 
-                let children = (child.value as! [Encodable]).map { $0 }
+                guard let children = child.value as? [Any] else { continue }
+                
                 if children.count == 2 {
                     queries.append(.range(fieldPath: key, start: children[0], end: children[1]))
                 } else {
                     queries.append(.equal(fieldPath: key, condition: child.value))
                 }
+                
             default:
                 queries.append(.equal(fieldPath: key, condition: child.value))
             }
