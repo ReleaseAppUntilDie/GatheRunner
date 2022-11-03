@@ -11,7 +11,6 @@ import Foundation
 // MARK: - FireStoreRequest
 
 protocol FireStoreRequest: Codable {
-    var responseType: Decodable.Type { get }
     var collectionName: String { get }
 }
 
@@ -22,5 +21,9 @@ extension FireStoreRequest {
 
     var body: [String : Any]? {
         toDictionary
+    }
+    
+    var dto: Query {
+        targetCollection.addQueries(queries)
     }
 }
