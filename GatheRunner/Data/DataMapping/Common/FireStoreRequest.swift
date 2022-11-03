@@ -22,6 +22,10 @@ extension FireStoreRequest {
     var body: [String: Any]? {
         toDictionary
     }
+    
+    var dto: Query {
+        targetCollection.addQueries(queries)
+    }
 }
 
 protocol FireStoreRequestWithQuery: FireStoreRequest { }
