@@ -23,10 +23,3 @@ enum AuthOption {
     case anonymously
     case customToken
 }
-
-// MARK: - CollectionOption
-
-enum CollectionOption: String {
-    case runningRecord = "RunningRecord"
-    case weatherInfo = "WeatherInfo"
-}

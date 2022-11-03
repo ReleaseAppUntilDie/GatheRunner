@@ -12,6 +12,7 @@ extension CollectionReference {
         guard let queries = queries else {
             return self
         }
+        
         for query in queries {
             switch query {
             case .equal(let fieldPath, let condition):

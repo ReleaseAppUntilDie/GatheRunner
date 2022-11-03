@@ -13,17 +13,17 @@ class FirebaseAPIManager {
 
     static let shared = FirebaseAPIManager()
 
-    func fetch<D: Decodable>(request: FireStoreRequest) -> AnyPublisher<D, Error> {
-        let decodeType = request.responseType.self as? D.Type
-        return request.targetCollection.getDocumentWithAnyPublisher(queries: request.queries, type: decodeType)
+    func fetchOnce<D: Decodable>(request: FireStoreRequest) -> AnyPublisher<D, Error> {
+        let type = request.responseType.self as? D.Type
+        return request.targetCollection.getDocumentWithPublisher(queries: request.queries, as: type)
     }
 
-    func fetchs<D: Decodable>(request: FireStoreRequest) -> AnyPublisher<[D], Error> {
-        let decodeType = request.responseType.self as? D.Type
-        return request.targetCollection.getDocumentWithAnyPublisher(queries: request.queries, type: decodeType)
+    func fetch<D: Decodable>(request: FireStoreRequest) -> AnyPublisher<[D], Error> {
+        let type = request.responseType.self as? D.Type
+        return request.targetCollection.getDocumentWithPublisher(queries: request.queries, as: type)
     }
 
     func post(request: FireStoreRequest) -> AnyPublisher<Bool, Error> {
-        request.targetCollection.addDocumentWithAnyPublisher(with: request.body)
+        request.targetCollection.addDocumentWithPublisher(with: request.body)
     }
 }
