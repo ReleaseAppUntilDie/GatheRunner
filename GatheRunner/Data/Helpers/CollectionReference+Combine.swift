@@ -9,7 +9,7 @@ import Combine
 import FirebaseFirestore
 
 extension CollectionReference {
-    func addDocumentWithAnyPublisher(with data: [String : Any]?) -> AnyPublisher<Bool, Error> {
+    func addDocumentWithPublisher(with data: [String: Any]?) -> AnyPublisher<Bool, Error> {
         Future<Bool, Error> { [weak self] promise in
             guard let data = data else { return }
             self?.addDocument(data: data) { error in
@@ -23,7 +23,7 @@ extension CollectionReference {
         .eraseToAnyPublisher()
     }
 
-    func getDocumentWithAnyPublisher<D: Decodable>(queries: [QueryOption]?, type _: D.Type?) -> AnyPublisher<D, Error> {
+    func getDocumentWithPublisher<D: Decodable>(queries: [QueryOption]?, as _: D.Type?) -> AnyPublisher<D, Error> {
         Future<D, Error> { [weak self] promise in
             self?.addQueries(queries)
                 .limit(to: 1)
@@ -41,7 +41,7 @@ extension CollectionReference {
         .eraseToAnyPublisher()
     }
 
-    func getDocumentWithAnyPublisher<D: Decodable>(queries: [QueryOption]?, type _: D.Type?) -> AnyPublisher<[D], Error> {
+    func getDocumentWithPublisher<D: Decodable>(queries: [QueryOption]?, as _: D.Type?) -> AnyPublisher<[D], Error> {
         var items = [D]()
         return Future<[D], Error> { [weak self] promise in
             self?.addQueries(queries)

@@ -23,7 +23,7 @@ class FirebaseAPIManager {
     }
 
     func post(request: FireStoreRequest) -> AnyPublisher<Bool, Error> {
-        request.targetCollection.addDocumentWithAnyPublisher(with: request.body)
+        request.targetCollection.addDocumentWithPublisher(with: request.body)
     }
 
     func fetch<D: Decodable>(withQuery request: FireStoreRequestWithQuery, as _: D.Type) -> AnyPublisher<D, Error> {
