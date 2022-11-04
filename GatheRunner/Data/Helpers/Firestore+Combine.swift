@@ -57,7 +57,7 @@ extension Query {
 }
 
 extension QuerySnapshot {
-    public static func defaultMapper<D: Decodable>() -> (QuerySnapshot) -> [D] {
+    fileprivate static func defaultMapper<D: Decodable>() -> (QuerySnapshot) -> [D] {
         { snapshot in
             var models: [D] = []
             snapshot.documents.forEach {
