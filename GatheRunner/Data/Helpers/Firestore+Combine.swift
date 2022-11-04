@@ -13,7 +13,14 @@ extension Query {
     // MARK: Internal
 
     func firestoreTaskPublisher<D: Decodable>(
-        source _: FirestoreSource = .default,
+        as _: D.Type) -> AnyPublisher<D, Error>
+    {
+        getDocumentToPublisher
+            .tryMap { try JSONDecoder().decode(D.self, fromJSONObject: $0.data()) }
+            .eraseToAnyPublisher()
+    }
+
+    func firestoreTaskPublisher<D: Decodable>(
         as _: D.Type,
         querySnapshotMapper: @escaping (QuerySnapshot) -> [D] = QuerySnapshot.defaultMapper()) -> AnyPublisher<[D], Error>
     {
@@ -23,6 +30,18 @@ extension Query {
     }
 
     // MARK: Private
+
+    private var getDocumentToPublisher: AnyPublisher<QueryDocumentSnapshot, Error> {
+        Future<QueryDocumentSnapshot, Error> { [weak self] promise in
+            self?.getDocuments { snapshot, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else if let document = snapshot?.documents.first {
+                    promise(.success(document))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 
     private var getDocumentsToPublisher: AnyPublisher<QuerySnapshot, Error> {
         Future<QuerySnapshot, Error> { [weak self] promise in
@@ -40,17 +59,16 @@ extension Query {
 extension QuerySnapshot {
     public static func defaultMapper<D: Decodable>() -> (QuerySnapshot) -> [D] {
         { snapshot in
-            var dArray: [D] = []
+            var models: [D] = []
             snapshot.documents.forEach {
                 do {
-                    let d = try JSONDecoder().decode(D.self, fromJSONObject: $0.data())
-                    dArray.append(d)
+                    let model = try JSONDecoder().decode(D.self, fromJSONObject: $0.data())
+                    models.append(model)
                 } catch {
-                    print("\(error)")
+                    print("error \(error)")
                 }
             }
-            return dArray
+            return models
         }
     }
 }
-

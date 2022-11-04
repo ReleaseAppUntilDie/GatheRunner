@@ -8,6 +8,14 @@ import Foundation
 
 extension JSONDecoder {
     func decode<T>(_: T.Type?, fromJSONObject object: Any) throws -> T where T: Decodable {
-        try decode(T.self, from: try JSONSerialization.data(withJSONObject: object, options: []))
+        guard let value = try? decode(T.self, from: try JSONSerialization.data(withJSONObject: object, options: [])) else {
+            throw DecodingError.valueNotFound(
+                T.self,
+                DecodingError.Context(
+                    codingPath: [],
+                    debugDescription: "The given dictionary was invalid"))
+        }
+
+        return value
     }
 }
