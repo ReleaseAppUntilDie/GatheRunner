@@ -12,7 +12,7 @@ extension Query {
 
     // MARK: Internal
 
-    func firestoreTaskPublisher<D: Decodable>(
+    func firestoreGetTaskPublisher<D: Decodable>(
         as _: D.Type) -> AnyPublisher<D, Error>
     {
         getDocumentToPublisher
@@ -20,7 +20,7 @@ extension Query {
             .eraseToAnyPublisher()
     }
 
-    func firestoreTaskPublisher<D: Decodable>(
+    func firestoreGetTaskPublisher<D: Decodable>(
         as _: D.Type,
         querySnapshotMapper: @escaping (QuerySnapshot) -> [D] = QuerySnapshot.defaultMapper()) -> AnyPublisher<[D], Error>
     {
@@ -70,5 +70,21 @@ extension QuerySnapshot {
             }
             return models
         }
+    }
+}
+
+extension CollectionReference {
+    func firestorePostTaskPublisher(with data: [String: Any]?) -> AnyPublisher<Bool, Error> {
+        Future<Bool, Error> { [weak self] promise in
+            guard let data = data else { return }
+            self?.addDocument(data: data) { error in
+                guard let error = error else {
+                    promise(.success(true))
+                    return
+                }
+                promise(.failure(error))
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }

@@ -13,10 +13,14 @@ class FirebaseAPIManager {
     static let shared = FirebaseAPIManager()
 
     func fetch<D: Decodable>(request: FireStoreRequest, as _: D.Type) -> AnyPublisher<D, Error> {
-        request.dto.firestoreTaskPublisher(as: D.self)
+        request.query.firestoreGetTaskPublisher(as: D.self)
     }
 
     func fetch<D: Decodable>(request: FireStoreRequest, as _: D.Type) -> AnyPublisher<[D], Error> {
-        request.dto.firestoreTaskPublisher(as: D.self)
+        request.query.firestoreGetTaskPublisher(as: D.self)
+    }
+
+    func post(request: FireStoreRequest) -> AnyPublisher<Bool, Error> {
+        request.targetCollection.firestorePostTaskPublisher(with: request.body)
     }
 }
