@@ -16,13 +16,13 @@ extension CollectionReference {
         for query in queries {
             switch query {
             case .equal(let fieldPath, let condition):
-                whereField(fieldPath, isEqualTo: condition)
+                return whereField(fieldPath, isEqualTo: condition)
             case .contains(let fieldPath, let condition):
-                whereField(fieldPath, isEqualTo: condition)
+                return whereField(fieldPath, isEqualTo: condition)
             case .notContains(let fieldPath, let condition):
-                whereField(fieldPath, isEqualTo: condition)
+                return whereField(fieldPath, isEqualTo: condition)
             case .range(let fieldPath, let start, let end):
-                whereField(fieldPath, isGreaterThanOrEqualTo: start).whereField(fieldPath, isLessThanOrEqualTo: end)
+                return whereField(fieldPath, isGreaterThanOrEqualTo: start).whereField(fieldPath, isLessThanOrEqualTo: end)
             }
         }
         return self
