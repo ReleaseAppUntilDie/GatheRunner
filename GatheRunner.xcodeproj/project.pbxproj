@@ -1218,7 +1218,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Running;
+				INFOPLIST_KEY_CFBundleDisplayName = GatheRunner;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 권한 요청";
@@ -1257,7 +1257,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Running;
+				INFOPLIST_KEY_CFBundleDisplayName = GatheRunner;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 권한 요청";
