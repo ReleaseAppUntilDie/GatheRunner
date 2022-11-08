@@ -7,24 +7,25 @@
 
 import FirebaseFirestore
 
-extension CollectionReference {
+extension Query {
     func addQueries(_ queries: [QueryOption]?) -> Query {
-        guard let queries = queries else {
-            return self
-        }
-        
-        for query in queries {
+        if var queries = queries, queries.count > 0 {
+            let query = queries.removeFirst()
+            
             switch query {
             case .equal(let fieldPath, let condition):
-                return whereField(fieldPath, isEqualTo: condition)
+                return self.whereField(fieldPath, isEqualTo: condition).addQueries(queries)
             case .contains(let fieldPath, let condition):
-                return whereField(fieldPath, isEqualTo: condition)
+                return self.whereField(fieldPath, isEqualTo: condition).addQueries(queries)
             case .notContains(let fieldPath, let condition):
-                return whereField(fieldPath, isEqualTo: condition)
+                return self.whereField(fieldPath, isEqualTo: condition).addQueries(queries)
             case .range(let fieldPath, let start, let end):
-                return whereField(fieldPath, isGreaterThanOrEqualTo: start).whereField(fieldPath, isLessThanOrEqualTo: end)
+                return self.whereField(fieldPath, isGreaterThanOrEqualTo: start).whereField(fieldPath, isLessThanOrEqualTo: end).addQueries(queries)
             }
+            
+        } else {
+            return self
+            
         }
-        return self
     }
 }
