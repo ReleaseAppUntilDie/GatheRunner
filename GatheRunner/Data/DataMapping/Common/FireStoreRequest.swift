@@ -19,11 +19,21 @@ extension FireStoreRequest {
         Firestore.firestore().collection(collectionName)
     }
 
-    var body: [String : Any]? {
+    var body: [String: Any]? {
         toDictionary
     }
 
     var query: Query {
         targetCollection.addQueries(queries)
+    }
+}
+
+protocol FireStoreRequestWithDocument: FireStoreRequest {
+    var documentName: String { get }
+}
+
+extension FireStoreRequestWithDocument {
+    var doc: DocumentReference {
+        targetCollection.document(documentName)
     }
 }

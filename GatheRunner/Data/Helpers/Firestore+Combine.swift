@@ -9,9 +9,9 @@ import Combine
 import FirebaseFirestore
 
 extension Query {
-
+    
     // MARK: Internal
-
+    
     func firestoreGetTaskPublisher<D: Decodable>(
         as _: D.Type) -> AnyPublisher<D, Error>
     {
@@ -19,7 +19,7 @@ extension Query {
             .tryMap { try JSONDecoder().decode(D.self, fromJSONObject: $0.data()) }
             .eraseToAnyPublisher()
     }
-
+    
     func firestoreGetTaskPublisher<D: Decodable>(
         as _: D.Type,
         querySnapshotMapper: @escaping (QuerySnapshot) -> [D] = QuerySnapshot.defaultMapper()) -> AnyPublisher<[D], Error>
@@ -28,9 +28,9 @@ extension Query {
             .map { querySnapshotMapper($0) }
             .eraseToAnyPublisher()
     }
-
+    
     // MARK: Private
-
+    
     private var getDocumentToPublisher: AnyPublisher<QueryDocumentSnapshot, Error> {
         Future<QueryDocumentSnapshot, Error> { [weak self] promise in
             self?.getDocuments { snapshot, error in
@@ -42,7 +42,7 @@ extension Query {
             }
         }.eraseToAnyPublisher()
     }
-
+    
     private var getDocumentsToPublisher: AnyPublisher<QuerySnapshot, Error> {
         Future<QuerySnapshot, Error> { [weak self] promise in
             self?.getDocuments { snapshot, error in
@@ -86,5 +86,27 @@ extension CollectionReference {
             }
         }
         .eraseToAnyPublisher()
+    }
+}
+
+extension DocumentReference {
+    func firestoreGetTaskPublisher<D: Decodable>(
+        as _: D.Type) -> AnyPublisher<D, Error>
+    {
+        getDocumentToPublisher
+            .tryMap { try JSONDecoder().decode(D.self, fromJSONObject: $0.data() as Any) }
+            .eraseToAnyPublisher()
+    }
+    
+    private var getDocumentToPublisher: AnyPublisher<DocumentSnapshot, Error> {
+        Future<DocumentSnapshot, Error> { [weak self] promise in
+            self?.getDocument { snapshot, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else if let snapshot = snapshot {
+                    promise(.success(snapshot))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 }
