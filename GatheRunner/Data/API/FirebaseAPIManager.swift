@@ -12,7 +12,7 @@ import Combine
 class FirebaseAPIManager {
     static let shared = FirebaseAPIManager()
 
-    func fetch<D: Decodable>(withQuery request: FireStoreRequest, as _: D.Type) -> AnyPublisher<D, Error> {
+    func fetch<D: Decodable>(withQuery request: FireStoreRequestWithQuery, as _: D.Type) -> AnyPublisher<D, Error> {
         request.query.firestoreGetTaskPublisher(as: D.self)
     }
     
@@ -20,7 +20,7 @@ class FirebaseAPIManager {
         request.doc.firestoreGetTaskPublisher(as: D.self)
     }
     
-    func fetch<D: Decodable>(withQuery request: FireStoreRequest, as _: D.Type) -> AnyPublisher<[D], Error> {
+    func fetch<D: Decodable>(withQuery request: FireStoreRequestWithQuery, as _: D.Type) -> AnyPublisher<[D], Error> {
         request.query.firestoreGetTaskPublisher(as: D.self)
     }
 
