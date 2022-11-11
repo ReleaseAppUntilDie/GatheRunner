@@ -95,7 +95,20 @@ extension FirebaseAPIManager {
             }
         }.eraseToAnyPublisher()
     }
-
+    
+    func deleteUser() -> AnyPublisher<Bool, NetworkError> {
+        Future<Bool, NetworkError> { [weak self] promise in
+            self?.auth.currentUser?.delete { error in
+                if let error = error {
+                    let networkError = NetworkError.generic(error)
+                    promise(.failure(networkError))
+                } else {
+                    promise(.success(true))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
     // MARK: Private
 
     private var auth: Auth {
