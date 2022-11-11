@@ -15,6 +15,7 @@ class APIs {
         switch option {
         case .password:
             return FirebaseAPIManager.shared.signIn(withEmail: request.email, password: request.password)
+            
         case .link:
             return FirebaseAPIManager.shared.signIn(withEmail: request.email, link: request.link)
 
