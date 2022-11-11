@@ -7,7 +7,6 @@
 
 import Combine
 import FirebaseAuth
-import FirebaseFirestore
 
 extension FirebaseAPIManager {
 
@@ -105,6 +104,18 @@ extension FirebaseAPIManager {
                 } else {
                     promise(.success(true))
                 }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func signOut() -> AnyPublisher<Bool, NetworkError> {
+        Future<Bool, NetworkError> { [weak self] promise in
+            do {
+                try self?.auth.signOut()
+                promise(.success(true))
+            } catch let error {
+                let networkError = NetworkError.generic(error)
+                promise(.failure(networkError))
             }
         }.eraseToAnyPublisher()
     }
