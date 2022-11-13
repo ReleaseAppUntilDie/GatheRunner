@@ -5,7 +5,6 @@
 //  Created by 김동현 on 2022/06/29.
 //
 
-
 import FirebaseCore
 import SwiftUI
 
@@ -18,6 +17,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         -> Bool
     {
         FirebaseApp.configure()
+        RunGuideViewModel().getWeatherInfo()
         return true
     }
 }

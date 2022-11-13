@@ -65,6 +65,12 @@ struct StartBtn: View {
     }
 }
 
+//struct WeatherInfoBtn: View {
+//    var body: some View {
+//
+//    }
+//}
+
 extension StartBtn {
     private enum Size {
         static let startBtnWidthRatio = 0.2820
