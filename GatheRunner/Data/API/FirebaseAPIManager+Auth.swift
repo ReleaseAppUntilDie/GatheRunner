@@ -121,6 +121,22 @@ extension FirebaseAPIManager {
         }.eraseToAnyPublisher()
     }
     
+    func updatePassword(_ password: String) -> AnyPublisher<Bool, Error> {
+        Future<Bool, Error> { [weak self] promise in
+            guard let user = self?.auth.currentUser else {
+                return
+            }
+            
+            user.updatePassword(to: password) { error in
+                if let error = error {
+                    promise(.failure(error))
+                } else {
+                    promise(.success(true))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
     // MARK: Private
     
     private var auth: Auth {
