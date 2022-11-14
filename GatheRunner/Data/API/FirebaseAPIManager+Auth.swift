@@ -12,13 +12,12 @@ extension FirebaseAPIManager {
 
     // MARK: Internal
 
-    func signIn(withEmail email: String?, password: String?) -> AnyPublisher<AuthResponseDTO, NetworkError> {
-        Future<AuthResponseDTO, NetworkError> { [weak self] promise in
+    func signIn(withEmail email: String?, password: String?) -> AnyPublisher<AuthResponseDTO, Error> {
+        Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let email = email, let password = password else { return }
             self?.auth.signIn(withEmail: email, password: password) { auth, error in
                 if let error = error {
-                    let networkError = NetworkError.generic(error)
-                    promise(.failure(networkError))
+                    promise(.failure(error))
                 } else if let auth = auth {
                     promise(.success(AuthResponseDTO(auth)))
                 }
@@ -26,13 +25,12 @@ extension FirebaseAPIManager {
         }.eraseToAnyPublisher()
     }
 
-    func signIn(withEmail email: String?, link: String?) -> AnyPublisher<AuthResponseDTO, NetworkError> {
-        Future<AuthResponseDTO, NetworkError> { [weak self] promise in
+    func signIn(withEmail email: String?, link: String?) -> AnyPublisher<AuthResponseDTO, Error> {
+        Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let email = email, let link = link else { return }
             self?.auth.signIn(withEmail: email, link: link) { auth, error in
                 if let error = error {
-                    let networkError = NetworkError.generic(error)
-                    promise(.failure(networkError))
+                    promise(.failure(error))
                 } else if let auth = auth {
                     promise(.success(AuthResponseDTO(auth)))
                 }
@@ -40,13 +38,12 @@ extension FirebaseAPIManager {
         }.eraseToAnyPublisher()
     }
 
-    func signIn(with credential: AuthCredential?) -> AnyPublisher<AuthResponseDTO, NetworkError> {
-        Future<AuthResponseDTO, NetworkError> { [weak self] promise in
+    func signIn(with credential: AuthCredential?) -> AnyPublisher<AuthResponseDTO, Error> {
+        Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let credential = credential else { return }
             self?.auth.signIn(with: credential) { auth, error in
                 if let error = error {
-                    let networkError = NetworkError.generic(error)
-                    promise(.failure(networkError))
+                    promise(.failure(error))
                 } else if let auth = auth {
                     promise(.success(AuthResponseDTO(auth)))
                 }
@@ -54,12 +51,11 @@ extension FirebaseAPIManager {
         }.eraseToAnyPublisher()
     }
 
-    func signInAnonymously() -> AnyPublisher<AuthResponseDTO, NetworkError> {
-        Future<AuthResponseDTO, NetworkError> { [weak self] promise in
+    func signInAnonymously() -> AnyPublisher<AuthResponseDTO, Error> {
+        Future<AuthResponseDTO, Error> { [weak self] promise in
             self?.auth.signInAnonymously { auth, error in
                 if let error = error {
-                    let networkError = NetworkError.generic(error)
-                    promise(.failure(networkError))
+                    promise(.failure(error))
                 } else if let auth = auth {
                     promise(.success(AuthResponseDTO(auth)))
                 }
@@ -67,13 +63,12 @@ extension FirebaseAPIManager {
         }.eraseToAnyPublisher()
     }
 
-    func signIn(withCustomToken token: String?) -> AnyPublisher<AuthResponseDTO, NetworkError> {
-        Future<AuthResponseDTO, NetworkError> { [weak self] promise in
+    func signIn(withCustomToken token: String?) -> AnyPublisher<AuthResponseDTO, Error> {
+        Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let token = token else { return }
             self?.auth.signIn(withCustomToken: token) { auth, error in
                 if let error = error {
-                    let networkError = NetworkError.generic(error)
-                    promise(.failure(networkError))
+                    promise(.failure(error))
                 } else if let auth = auth {
                     promise(.success(AuthResponseDTO(auth)))
                 }
@@ -81,13 +76,12 @@ extension FirebaseAPIManager {
         }.eraseToAnyPublisher()
     }
 
-    func createUser(withEmail email: String?, password: String?) -> AnyPublisher<AuthResponseDTO, NetworkError> {
-        Future<AuthResponseDTO, NetworkError> { [weak self] promise in
+    func createUser(withEmail email: String?, password: String?) -> AnyPublisher<AuthResponseDTO, Error> {
+        Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let email = email, let password = password else { return }
             self?.auth.createUser(withEmail: email, password: password) { auth, error in
                 if let error = error {
-                    let networkError = NetworkError.generic(error)
-                    promise(.failure(networkError))
+                    promise(.failure(error))
                 } else if let auth = auth {
                     promise(.success(AuthResponseDTO(auth)))
                 }
@@ -95,12 +89,11 @@ extension FirebaseAPIManager {
         }.eraseToAnyPublisher()
     }
     
-    func deleteUser() -> AnyPublisher<Bool, NetworkError> {
-        Future<Bool, NetworkError> { [weak self] promise in
+    func deleteUser() -> AnyPublisher<Bool, Error> {
+        Future<Bool, Error> { [weak self] promise in
             self?.auth.currentUser?.delete { error in
                 if let error = error {
-                    let networkError = NetworkError.generic(error)
-                    promise(.failure(networkError))
+                    promise(.failure(error))
                 } else {
                     promise(.success(true))
                 }
@@ -108,14 +101,13 @@ extension FirebaseAPIManager {
         }.eraseToAnyPublisher()
     }
     
-    func signOut() -> AnyPublisher<Bool, NetworkError> {
-        Future<Bool, NetworkError> { [weak self] promise in
+    func signOut() -> AnyPublisher<Bool, Error> {
+        Future<Bool, Error> { [weak self] promise in
             do {
                 try self?.auth.signOut()
                 promise(.success(true))
             } catch let error {
-                let networkError = NetworkError.generic(error)
-                promise(.failure(networkError))
+                promise(.failure(error))
             }
         }.eraseToAnyPublisher()
     }

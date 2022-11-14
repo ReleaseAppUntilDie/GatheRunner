@@ -39,7 +39,6 @@
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
 		E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */; };
-		E345254F291E25F900E2FA38 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345254E291E25F900E2FA38 /* NetworkError.swift */; };
 		E3452551291E264000E2FA38 /* AuthRequestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3452550291E264000E2FA38 /* AuthRequestBase.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
 		E351783A28ABC9E50088003B /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* MeasurementView.swift */; };
@@ -145,7 +144,6 @@
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E3438C3B28D74B260003591F /* FieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldStyle.swift; sourceTree = "<group>"; };
 		E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseAPIManager+Auth.swift"; sourceTree = "<group>"; };
-		E345254E291E25F900E2FA38 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E3452550291E264000E2FA38 /* AuthRequestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestBase.swift; sourceTree = "<group>"; };
 		E350EA1528AD2DCC00F85FA1 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toggle+IconStyle.swift"; sourceTree = "<group>"; };
@@ -500,7 +498,6 @@
 			isa = PBXGroup;
 			children = (
 				E38C3AA4291546BA00F0B104 /* OptionNameSpaces.swift */,
-				E345254E291E25F900E2FA38 /* NetworkError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -980,7 +977,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3452551291E264000E2FA38 /* AuthRequestBase.swift in Sources */,
-				E345254F291E25F900E2FA38 /* NetworkError.swift in Sources */,
 				E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */,
 				DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */,
 				EA7913B828D6EA7000F889E5 /* GraphBottomSheetView.swift in Sources */,
