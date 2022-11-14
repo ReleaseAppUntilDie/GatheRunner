@@ -9,9 +9,9 @@ import Combine
 import FirebaseAuth
 
 extension FirebaseAPIManager {
-
+    
     // MARK: Internal
-
+    
     func signIn(withEmail email: String?, password: String?) -> AnyPublisher<AuthResponseDTO, Error> {
         Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let email = email, let password = password else { return }
@@ -19,12 +19,12 @@ extension FirebaseAPIManager {
                 if let error = error {
                     promise(.failure(error))
                 } else if let auth = auth {
-                    promise(.success(AuthResponseDTO(auth)))
+                    promise(.success(AuthResponseDTO(auth.user)))
                 }
             }
         }.eraseToAnyPublisher()
     }
-
+    
     func signIn(withEmail email: String?, link: String?) -> AnyPublisher<AuthResponseDTO, Error> {
         Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let email = email, let link = link else { return }
@@ -32,12 +32,12 @@ extension FirebaseAPIManager {
                 if let error = error {
                     promise(.failure(error))
                 } else if let auth = auth {
-                    promise(.success(AuthResponseDTO(auth)))
+                    promise(.success(AuthResponseDTO(auth.user)))
                 }
             }
         }.eraseToAnyPublisher()
     }
-
+    
     func signIn(with credential: AuthCredential?) -> AnyPublisher<AuthResponseDTO, Error> {
         Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let credential = credential else { return }
@@ -45,24 +45,24 @@ extension FirebaseAPIManager {
                 if let error = error {
                     promise(.failure(error))
                 } else if let auth = auth {
-                    promise(.success(AuthResponseDTO(auth)))
+                    promise(.success(AuthResponseDTO(auth.user)))
                 }
             }
         }.eraseToAnyPublisher()
     }
-
+    
     func signInAnonymously() -> AnyPublisher<AuthResponseDTO, Error> {
         Future<AuthResponseDTO, Error> { [weak self] promise in
             self?.auth.signInAnonymously { auth, error in
                 if let error = error {
                     promise(.failure(error))
                 } else if let auth = auth {
-                    promise(.success(AuthResponseDTO(auth)))
+                    promise(.success(AuthResponseDTO(auth.user)))
                 }
             }
         }.eraseToAnyPublisher()
     }
-
+    
     func signIn(withCustomToken token: String?) -> AnyPublisher<AuthResponseDTO, Error> {
         Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let token = token else { return }
@@ -70,12 +70,12 @@ extension FirebaseAPIManager {
                 if let error = error {
                     promise(.failure(error))
                 } else if let auth = auth {
-                    promise(.success(AuthResponseDTO(auth)))
+                    promise(.success(AuthResponseDTO(auth.user)))
                 }
             }
         }.eraseToAnyPublisher()
     }
-
+    
     func createUser(withEmail email: String?, password: String?) -> AnyPublisher<AuthResponseDTO, Error> {
         Future<AuthResponseDTO, Error> { [weak self] promise in
             guard let email = email, let password = password else { return }
@@ -83,7 +83,7 @@ extension FirebaseAPIManager {
                 if let error = error {
                     promise(.failure(error))
                 } else if let auth = auth {
-                    promise(.success(AuthResponseDTO(auth)))
+                    promise(.success(AuthResponseDTO(auth.user)))
                 }
             }
         }.eraseToAnyPublisher()
@@ -112,8 +112,17 @@ extension FirebaseAPIManager {
         }.eraseToAnyPublisher()
     }
     
+    func currentUser() -> AnyPublisher<AuthResponseDTO, Error> {
+        Future<AuthResponseDTO, Error> { [weak self] promise in
+            guard let user = self?.auth.currentUser else {
+                return
+            }
+            promise(.success(AuthResponseDTO(user)))
+        }.eraseToAnyPublisher()
+    }
+    
     // MARK: Private
-
+    
     private var auth: Auth {
         Auth.auth()
     }

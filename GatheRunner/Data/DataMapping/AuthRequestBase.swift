@@ -14,8 +14,7 @@ struct AuthResponseDTO {
     let email: String
     let nickName: String
 
-    init(_ authDataResult: AuthDataResult) {
-        let user = authDataResult.user
+    init(_ user: User) {
         uid = user.uid
         email = user.email ?? Default.email
         nickName = user.displayName ?? Default.nickName
