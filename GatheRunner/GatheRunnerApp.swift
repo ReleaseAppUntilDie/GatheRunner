@@ -26,12 +26,22 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct GatheRunnerApp: App {
-    // register app delegate for Firebase setup
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @ObservedObject var authenticator: Authenticator
+    
+    init() {
+        FirebaseApp.configure()
+        self.authenticator = Authenticator.shared
+    }
 
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            if authenticator.isSignIn {
+                MainTabView()
+            } else {
+                AuthenticationView()
+                    .environmentObject(authenticator)
+            }
         }
+    
     }
 }

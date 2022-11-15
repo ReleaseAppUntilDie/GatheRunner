@@ -13,6 +13,8 @@ import Foundation
 final class AuthenticationViewModel: ObservableObject {
 
     // MARK: Lifecycle
+    //의존성 주입 및 다형성
+    let repo: FirebaseAuthUserRepository = FirebaseAuthUserRepository()
 
     init() {
         bindValidation()
@@ -33,10 +35,28 @@ final class AuthenticationViewModel: ObservableObject {
 
     func signIn() {
         guard validatedInputs() else { return }
+//        let request = FirebaseAuthRequestDTO(option: .password, email: email, password: password)
+//        repo.signIn(request: request)
+//            .sink { _ in
+//            } receiveValue: { [weak self] user in
+//                self?.authenticator.isSignIn = true
+//                self?.authenticator.uid = user.uid
+//                self?.authenticator.email = user.email
+//            }
+//            .store(in: &cancelBag)
     }
 
-    func signUp() {
+    func signUp(authenticator: Authenticator) {
         guard validatedInputs() else { return }
+        let request = FirebaseAuthRequestDTO(email: email, password: password)
+        repo.signUp(request: request)
+            .sink { _ in
+            } receiveValue: { [weak self] user in
+                self?.isAuthValid = true
+                authenticator.uid = user.uid
+                authenticator.email = user.email
+            }
+            .store(in: &cancelBag)
     }
 
     // MARK: Private

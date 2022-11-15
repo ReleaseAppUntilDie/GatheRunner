@@ -10,6 +10,7 @@ import SwiftUI
 // MARK: - AuthenticationView
 
 struct AuthenticationView: View {
+    @EnvironmentObject var authenticator: Authenticator
 
     // MARK: Internal
 
@@ -81,7 +82,10 @@ extension AuthenticationView {
         viewModel.$isAuthValid
             .dropFirst()
             .compactMap { $0 }
-            .sink { isValid = $0 }
+            .sink {
+                isValid = $0
+                authenticator.isSignIn = true
+            }
             .store(in: &viewModel.cancelBag)
     }
 }
@@ -125,7 +129,7 @@ extension AuthenticationView {
     private var submitButton: some View {
         VStack {
             Button {
-                isSignIn ? viewModel.signIn() : viewModel.signUp()
+                isSignIn ? viewModel.signIn() : viewModel.signUp(authenticator: authenticator)
             } label: { Text(isSignIn ? Content.Label.signIn : Content.Label.signUp).foregroundColor(.white) }
                 .frame(width: Size.width, height: Size.height, alignment: .center)
                 .background(Color.blue)
