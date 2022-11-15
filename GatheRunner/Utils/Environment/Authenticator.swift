@@ -5,7 +5,6 @@
 //  Created by 김동현 on 2022/11/14.
 //
 
-
 import Combine
 
 class Authenticator: ObservableObject {
@@ -15,21 +14,22 @@ class Authenticator: ObservableObject {
     @Published var uid = ""
     @Published var email = ""
     
-    var repo = FirebaseAuthUserRepository() //의존성 주입 및 다형성
+    let userDataRepository: UserRepository
     var cancelBag = Set<AnyCancellable>()
     
-    init() {
-        checkUser()
+    init(userDataRepository: UserDataRepository = UserDataRepository()) {
+        self.userDataRepository = userDataRepository
+        bindCurrentUser()
     }
     
-    func bind(_ user: FirebaseAuthResponseDTO) {
+    func bindInfo(with user: FirebaseAuthResponseDTO) {
         isSignIn = true
         uid = user.uid
         email = user.email
     }
     
-    private func checkUser() {
-        repo.currentUser()
+    private func bindCurrentUser() {
+        userDataRepository.currentUser()
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(_): self?.isSignIn = false
@@ -38,7 +38,7 @@ class Authenticator: ObservableObject {
                 }
                 
         } receiveValue: { [weak self] user in
-            self?.bind(user)
+            self?.bindInfo(with: user)
         }
         .store(in: &cancelBag)
     }

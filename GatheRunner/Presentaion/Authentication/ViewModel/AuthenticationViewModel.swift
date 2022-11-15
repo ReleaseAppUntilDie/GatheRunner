@@ -6,15 +6,12 @@
 //
 
 import Combine
-import Foundation
 
 // MARK: - AuthenticationViewModel
 
 final class AuthenticationViewModel: ObservableObject {
     
     // MARK: Internal
-    
-    let repo: FirebaseAuthUserRepository = FirebaseAuthUserRepository()  //의존성 주입 및 다형성
     
     @Published var email = ""
     @Published var password = ""
@@ -23,11 +20,13 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var isPasswordValid = false
     @Published var isInputsValid = false
     
+    let userDataRepository: UserRepository
     var cancelBag = Set<AnyCancellable>()
     
     // MARK: Lifecycle
     
-    init() {
+    init(userDataRepository: UserDataRepository = UserDataRepository()) {
+        self.userDataRepository = userDataRepository
         bindValidation()
     }
     
@@ -36,7 +35,7 @@ final class AuthenticationViewModel: ObservableObject {
         
         let request = FirebaseAuthRequestDTO(email: email, password: password)
         
-        repo.signIn(request: request)
+        userDataRepository.signIn(request: request)
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(_):
@@ -48,7 +47,7 @@ final class AuthenticationViewModel: ObservableObject {
                 
             } receiveValue: { [weak self] user in
                 self?.isAuthValid = true
-                authenticator.bind(user)
+                authenticator.bindInfo(with: user)
             }
             .store(in: &cancelBag)
     }
@@ -58,7 +57,7 @@ final class AuthenticationViewModel: ObservableObject {
         
         let request = FirebaseAuthRequestDTO(email: email, password: password)
         
-        repo.signUp(request: request)
+        userDataRepository.signUp(request: request)
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(_):
@@ -70,7 +69,7 @@ final class AuthenticationViewModel: ObservableObject {
                 
             } receiveValue: { [weak self] user in
                 self?.isAuthValid = true
-                authenticator.bind(user)
+                authenticator.bindInfo(with: user)
             }
             .store(in: &cancelBag)
     }
