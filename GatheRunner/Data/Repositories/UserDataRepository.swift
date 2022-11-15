@@ -1,5 +1,5 @@
 //
-//  FirebaseAuthUserRepository.swift
+//  UserDataRepository.swift
 //  GatheRunner
 //
 //  Created by 김동현 on 2022/11/14.
@@ -8,11 +8,7 @@
 import Foundation
 import Combine
 
-struct FirebaseAuthUserRepository: UserRepository {
-    
-    typealias Request = FirebaseAuthRequestDTO
-    typealias Response = FirebaseAuthResponseDTO
-    
+struct UserDataRepository: UserRepository {    
     func currentUser() -> AnyPublisher<FirebaseAuthResponseDTO, Error> {
         FirebaseAPIManager.shared.currentUser()
     }

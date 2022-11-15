@@ -8,12 +8,9 @@
 import Combine
 
 protocol UserRepository {
-    associatedtype Request
-    associatedtype Response
-    
-    func currentUser() -> AnyPublisher<Response, Error>
-    func signIn(request: Request) -> AnyPublisher<Response, Error>
-    func signUp(request: Request) -> AnyPublisher<Response, Error>
+    func currentUser() -> AnyPublisher<FirebaseAuthResponseDTO, Error>
+    func signIn(request: FirebaseAuthRequestDTO) -> AnyPublisher<FirebaseAuthResponseDTO, Error>
+    func signUp(request: FirebaseAuthRequestDTO) -> AnyPublisher<FirebaseAuthResponseDTO, Error>
     func signOut() -> AnyPublisher<Bool, Error>
-    func deleteUser(request: Request) -> AnyPublisher<Bool, Error>
+    func deleteUser(request: FirebaseAuthRequestDTO) -> AnyPublisher<Bool, Error>
 }
