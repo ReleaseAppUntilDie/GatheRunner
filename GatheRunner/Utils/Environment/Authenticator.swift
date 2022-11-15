@@ -12,28 +12,34 @@ class Authenticator: ObservableObject {
     static var shared = Authenticator()
     
     @Published var isSignIn = false
+    @Published var uid = ""
+    @Published var email = ""
     
-    //옵셔널?
-    @Published var uid: String?
-    @Published var email: String?
-    
-    //의존성 주입 및 다형성
-    var repo = FirebaseAuthUserRepository()
+    var repo = FirebaseAuthUserRepository() //의존성 주입 및 다형성
     var cancelBag = Set<AnyCancellable>()
     
     init() {
         checkUser()
     }
     
+    func bind(_ user: FirebaseAuthResponseDTO) {
+        isSignIn = true
+        uid = user.uid
+        email = user.email
+    }
+    
     private func checkUser() {
-        repo.currentUser().sink { [weak self] _ in
-//            self?.isSignIn = false
+        repo.currentUser()
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(_): self?.isSignIn = false
+                    
+                default: print("completion \(completion)")
+                }
+                
         } receiveValue: { [weak self] user in
-            self?.isSignIn = true
-            self?.uid = user.uid
-            self?.email = user.email
+            self?.bind(user)
         }
         .store(in: &cancelBag)
     }
-    
 }

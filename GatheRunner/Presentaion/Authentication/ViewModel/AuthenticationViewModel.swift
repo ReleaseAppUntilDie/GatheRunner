@@ -11,56 +11,72 @@ import Foundation
 // MARK: - AuthenticationViewModel
 
 final class AuthenticationViewModel: ObservableObject {
-
-    // MARK: Lifecycle
-    //의존성 주입 및 다형성
-    let repo: FirebaseAuthUserRepository = FirebaseAuthUserRepository()
-
-    init() {
-        bindValidation()
-    }
-
+    
     // MARK: Internal
-
+    
+    let repo: FirebaseAuthUserRepository = FirebaseAuthUserRepository()  //의존성 주입 및 다형성
+    
     @Published var email = ""
     @Published var password = ""
     @Published var isAuthValid = false
     @Published var isEmailValid = false
     @Published var isPasswordValid = false
     @Published var isInputsValid = false
-
+    
     var cancelBag = Set<AnyCancellable>()
-
-    // MARK: Temp - NoService
-
-    func signIn() {
-        guard validatedInputs() else { return }
-//        let request = FirebaseAuthRequestDTO(option: .password, email: email, password: password)
-//        repo.signIn(request: request)
-//            .sink { _ in
-//            } receiveValue: { [weak self] user in
-//                self?.authenticator.isSignIn = true
-//                self?.authenticator.uid = user.uid
-//                self?.authenticator.email = user.email
-//            }
-//            .store(in: &cancelBag)
+    
+    // MARK: Lifecycle
+    
+    init() {
+        bindValidation()
     }
-
-    func signUp(authenticator: Authenticator) {
+    
+    func signIn(authenticator: Authenticator) {
         guard validatedInputs() else { return }
+        
         let request = FirebaseAuthRequestDTO(email: email, password: password)
-        repo.signUp(request: request)
-            .sink { _ in
+        
+        repo.signIn(request: request)
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(_):
+                    self?.isAuthValid = false
+                    authenticator.isSignIn = false
+                    
+                default: print("completion \(completion)")
+                }
+                
             } receiveValue: { [weak self] user in
                 self?.isAuthValid = true
-                authenticator.uid = user.uid
-                authenticator.email = user.email
+                authenticator.bind(user)
             }
             .store(in: &cancelBag)
     }
-
+    
+    func signUp(authenticator: Authenticator) {
+        guard validatedInputs() else { return }
+        
+        let request = FirebaseAuthRequestDTO(email: email, password: password)
+        
+        repo.signUp(request: request)
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(_):
+                    self?.isAuthValid = false
+                    authenticator.isSignIn = false
+                    
+                default: print("completion \(completion)")
+                }
+                
+            } receiveValue: { [weak self] user in
+                self?.isAuthValid = true
+                authenticator.bind(user)
+            }
+            .store(in: &cancelBag)
+    }
+    
     // MARK: Private
-
+    
     private func bindValidation() {
         $email
             .compactMap { $0 }
@@ -68,7 +84,7 @@ final class AuthenticationViewModel: ObservableObject {
                 self?.isEmailValid = $0.isEmailValid
             }
             .store(in: &cancelBag)
-
+        
         $password
             .compactMap { $0 }
             .sink { [weak self] in
@@ -76,7 +92,7 @@ final class AuthenticationViewModel: ObservableObject {
             }
             .store(in: &cancelBag)
     }
-
+    
     private func validatedInputs() -> Bool {
         guard isEmailValid, isPasswordValid else {
             isInputsValid = false
@@ -85,5 +101,4 @@ final class AuthenticationViewModel: ObservableObject {
         isInputsValid = true
         return isInputsValid
     }
-
 }

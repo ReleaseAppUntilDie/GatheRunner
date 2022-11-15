@@ -151,7 +151,6 @@
 		E3435A022922820D00B65D48 /* FirebaseUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserRepository.swift; sourceTree = "<group>"; };
 		E3435A042922825300B65D48 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		E3435A062922848B00B65D48 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
-		E3435A0829233F3F00B65D48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E3438C3B28D74B260003591F /* FieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldStyle.swift; sourceTree = "<group>"; };
 		E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseAPIManager+Auth.swift"; sourceTree = "<group>"; };
 		E3452550291E264000E2FA38 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
@@ -1034,7 +1033,6 @@
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
 				DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */,
 				E38C3AB72915472D00F0B104 /* FirebaseAPIManager.swift in Sources */,
-				E3435A0929233F3F00B65D48 /* ContentView.swift in Sources */,
 				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
 				E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */,
 				E38C3AB0291546F500F0B104 /* Query+AddQueries.swift in Sources */,

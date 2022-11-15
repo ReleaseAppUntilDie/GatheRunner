@@ -5,7 +5,6 @@
 //  Created by 김동현 on 2022/06/29.
 //
 
-
 import FirebaseCore
 import SwiftUI
 
@@ -30,18 +29,17 @@ struct GatheRunnerApp: App {
     
     init() {
         FirebaseApp.configure()
-        self.authenticator = Authenticator.shared
+        authenticator = Authenticator.shared
     }
 
     var body: some Scene {
         WindowGroup {
             if authenticator.isSignIn {
-                MainTabView()
+                MainTabView().environmentObject(authenticator)
             } else {
-                AuthenticationView()
-                    .environmentObject(authenticator)
+                AuthenticationView().environmentObject(authenticator)
             }
+            
         }
-    
     }
 }

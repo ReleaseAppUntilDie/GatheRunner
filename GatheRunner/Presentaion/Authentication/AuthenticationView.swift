@@ -124,12 +124,10 @@ extension AuthenticationView {
             .asValidationFieldStyle(isValid: $viewModel.isPasswordValid)
     }
 
-    // MARK: 환경변수를 통해서 인증시 메인탭뷰로 이동하게 처리 할 예정
-
     private var submitButton: some View {
         VStack {
             Button {
-                isSignIn ? viewModel.signIn() : viewModel.signUp(authenticator: authenticator)
+                isSignIn ? viewModel.signIn(authenticator: authenticator) : viewModel.signUp(authenticator: authenticator)
             } label: { Text(isSignIn ? Content.Label.signIn : Content.Label.signUp).foregroundColor(.white) }
                 .frame(width: Size.width, height: Size.height, alignment: .center)
                 .background(Color.blue)
