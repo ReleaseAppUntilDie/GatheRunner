@@ -47,7 +47,7 @@ final class AuthenticationViewModel: ObservableObject {
                 
             } receiveValue: { [weak self] user in
                 self?.isAuthValid = true
-                authenticator.bindInfo(with: user)
+                authenticator.setInfo(with: user)
             }
             .store(in: &cancelBag)
     }
@@ -69,7 +69,7 @@ final class AuthenticationViewModel: ObservableObject {
                 
             } receiveValue: { [weak self] user in
                 self?.isAuthValid = true
-                authenticator.bindInfo(with: user)
+                authenticator.setInfo(with: user)
             }
             .store(in: &cancelBag)
     }

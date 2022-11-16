@@ -22,7 +22,7 @@ class Authenticator: ObservableObject {
         bindCurrentUser()
     }
     
-    func bindInfo(with user: FirebaseAuthResponseDTO) {
+    func setInfo(with user: FirebaseAuthResponseDTO) {
         isSignIn = true
         uid = user.uid
         email = user.email
@@ -38,7 +38,7 @@ class Authenticator: ObservableObject {
                 }
                 
         } receiveValue: { [weak self] user in
-            self?.bindInfo(with: user)
+            self?.setInfo(with: user)
         }
         .store(in: &cancelBag)
     }
