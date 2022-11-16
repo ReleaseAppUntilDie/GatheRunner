@@ -37,7 +37,7 @@ struct HeaderView: View {
                             .resizable()
                             .foregroundColor(.gray)
                             .frame(width: 30, height: 30)
-                            .alert("회원정보 설정", isPresented: $showingAlert) {
+                            .alert(Content.Label.userInfoSetting, isPresented: $showingAlert) {
                                 profileButtonLayer
                             }
                     }
@@ -72,18 +72,33 @@ struct HeaderView: View {
     }
 }
 
+// MARK: - NameSpace
+
+extension HeaderView {
+    private enum Content {
+        enum Label {
+            static let userInfoSetting = "회원정보 설정"
+            static let signOut = "로그아웃"
+            static let deleteUser = "회원탈퇴"
+            static let cancle = "취소"
+        }
+    }
+}
+
 // MARK: SubViews
 
 extension HeaderView {
     private var profileButtonLayer: some View {
         VStack {
-            Button("로그아웃") {
+            Button(Content.Label.signOut) {
                 viewModel.signOut(authenticator: authenticator)
             }
-            Button("회원탈퇴") {
+            Button(Content.Label.deleteUser) {
                 viewModel.deleteUser(authenticator: authenticator)
             }
-            Button("취소", role: .cancel) {}
+            Button(Content.Label.cancle) {
+                showingAlert = false
+            }
         }
     }
 }
