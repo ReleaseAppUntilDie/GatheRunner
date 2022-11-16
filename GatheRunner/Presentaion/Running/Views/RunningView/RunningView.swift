@@ -10,12 +10,13 @@ import SwiftUI
 // MARK: - RunningView
 
 struct RunningView: View {
-    
+
     // MARK: Internal
     
     var body: some View {
         VStack(alignment: .center) {
             HeaderView(title: "러닝", type: .running, rightButtonAction: { })
+                .environmentObject(authenticator)
             viewSelectorButton
                 .frame(width: UIScreen.main.bounds.size.width,
                 height: UIScreen.getHeightby(ratio: Size.viewSelectorButtonHeightRatio),

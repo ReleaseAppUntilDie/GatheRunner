@@ -15,11 +15,14 @@ enum ViewsInHeaderView {
 // MARK: - HeaderView
 
 struct HeaderView: View {
+    @EnvironmentObject var authenticator: Authenticator
     
     let title: String
     let type: ViewsInHeaderView
-    
     let rightButtonAction: () -> Void
+    
+    @State private var showingAlert = false
+    @StateObject private var viewModel = AuthenticationViewModel()
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -27,14 +30,16 @@ struct HeaderView: View {
             GatherNaviBar {
                 VStack(alignment: .leading) {
                     Button {
-                        // TODO: profile view로 이동
-                        print("move to profile")
+                        showingAlert = true
                     } label: {
                         Image(systemName: "person.crop.circle.fill")
                             .renderingMode(.template)
                             .resizable()
                             .foregroundColor(.gray)
                             .frame(width: 30, height: 30)
+                            .alert("회원정보 설정", isPresented: $showingAlert) {
+                                profileButtonLayer
+                            }
                     }
                 }
             } center: {
@@ -49,7 +54,8 @@ struct HeaderView: View {
                         .renderingMode(.template)
                         .foregroundColor(.black)
                         .frame(width: 25, height: 25)
-                }.isEmpty(logicalOperator: .none, [type == .club])
+                }
+                .isEmpty(logicalOperator: .none, [type == .club])
             }
             .padding(.horizontal, 10)
             .padding(.bottom)
@@ -62,7 +68,23 @@ struct HeaderView: View {
             .foregroundColor(.init(uiColor: .systemGray4))
         }
         .frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1 / 7))
-      
+        
+    }
+}
+
+// MARK: SubViews
+
+extension HeaderView {
+    private var profileButtonLayer: some View {
+        VStack {
+            Button("로그아웃") {
+                viewModel.signOut(authenticator: authenticator)
+            }
+            Button("회원탈퇴") {
+                viewModel.deleteUser(authenticator: authenticator)
+            }
+            Button("취소", role: .cancel) {}
+        }
     }
 }
 

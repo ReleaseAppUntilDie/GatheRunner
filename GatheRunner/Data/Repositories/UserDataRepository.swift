@@ -47,7 +47,7 @@ struct UserDataRepository: UserRepository {
         FirebaseAPIManager.shared.signOut()
     }
     
-    func deleteUser(request: FirebaseAuthRequestDTO) -> AnyPublisher<Bool, Error> {
+    func deleteUser() -> AnyPublisher<Bool, Error> {
         FirebaseAPIManager.shared.deleteUser()
     }
 }

@@ -74,6 +74,36 @@ final class AuthenticationViewModel: ObservableObject {
             .store(in: &cancelBag)
     }
     
+    func signOut(authenticator: Authenticator) {
+        userDataRepository.signOut()
+            .sink { completion in
+                switch completion {
+                case .failure(let error): print("error \(error)")
+                default: print("completion \(completion)")
+                }
+                
+            } receiveValue: { result in
+                guard result else { return }
+                authenticator.isSignIn = false
+            }
+            .store(in: &cancelBag)
+    }
+    
+    func deleteUser(authenticator: Authenticator) {
+        userDataRepository.deleteUser()
+            .sink { completion in
+                switch completion {
+                case .failure(let error): print("error \(error)")
+                default: print("completion \(completion)")
+                }
+                
+            } receiveValue: { result in
+                guard result else { return }
+                authenticator.isSignIn = false
+            }
+            .store(in: &cancelBag)
+    }
+    
     // MARK: Private
     
     private func bindValidation() {
