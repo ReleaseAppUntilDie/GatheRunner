@@ -22,7 +22,7 @@ struct HeaderView: View {
     let rightButtonAction: () -> Void
     
     @State private var showingAlert = false
-    @StateObject private var viewModel = AuthenticationViewModel()
+    @StateObject private var viewModel = AuthenticationViewModel(userRepository: FirebaseUserRepository())
     
     var body: some View {
         ZStack(alignment: .bottom) {

@@ -57,7 +57,7 @@ struct AuthenticationView: View {
     @State private var isValid = false
     @State private var isSignIn = false
     @State private var isAlertShow = false
-    @StateObject private var viewModel = AuthenticationViewModel()
+    @StateObject private var viewModel = AuthenticationViewModel(userRepository: FirebaseUserRepository())
 
     private var alertMessage: Text? {
         switch true {

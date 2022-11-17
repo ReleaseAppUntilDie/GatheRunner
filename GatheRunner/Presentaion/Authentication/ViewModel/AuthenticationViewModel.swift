@@ -20,22 +20,20 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var isPasswordValid = false
     @Published var isInputsValid = false
     
-    let userDataRepository: UserRepository
+    let userRepository: UserRepository
     var cancelBag = Set<AnyCancellable>()
     
     // MARK: Lifecycle
     
-    init(userDataRepository: UserDataRepository = UserDataRepository()) {
-        self.userDataRepository = userDataRepository
+    init(userRepository: UserRepository) { 
+        self.userRepository = userRepository
         bindValidation()
     }
     
     func signIn(authenticator: Authenticator) {
         guard validatedInputs() else { return }
         
-        let request = FirebaseAuthRequestDTO(email: email, password: password)
-        
-        userDataRepository.signIn(request: request)
+        userRepository.signIn(AuthRequest(email: email, password: password))
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(_):
@@ -55,9 +53,7 @@ final class AuthenticationViewModel: ObservableObject {
     func signUp(authenticator: Authenticator) {
         guard validatedInputs() else { return }
         
-        let request = FirebaseAuthRequestDTO(email: email, password: password)
-        
-        userDataRepository.signUp(request: request)
+        userRepository.signUp(AuthRequest(email: email, password: password))
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(_):
@@ -75,7 +71,7 @@ final class AuthenticationViewModel: ObservableObject {
     }
     
     func signOut(authenticator: Authenticator) {
-        userDataRepository.signOut()
+        userRepository.signOut()
             .sink { completion in
                 switch completion {
                 case .failure(let error): print("error \(error)")
@@ -90,7 +86,7 @@ final class AuthenticationViewModel: ObservableObject {
     }
     
     func deleteUser(authenticator: Authenticator) {
-        userDataRepository.deleteUser()
+        userRepository.deleteUser()
             .sink { completion in
                 switch completion {
                 case .failure(let error): print("error \(error)")

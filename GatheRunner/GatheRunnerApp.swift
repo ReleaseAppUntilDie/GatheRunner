@@ -29,7 +29,7 @@ struct GatheRunnerApp: App {
     
     init() {
         FirebaseApp.configure()
-        authenticator = Authenticator.shared
+        authenticator = Authenticator(userRepository: FirebaseUserRepository())
     }
 
     var body: some Scene {
@@ -39,7 +39,6 @@ struct GatheRunnerApp: App {
             } else {
                 AuthenticationView().environmentObject(authenticator)
             }
-            
         }
     }
 }

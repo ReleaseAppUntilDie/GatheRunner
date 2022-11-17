@@ -1020,6 +1020,8 @@
 				E3DA2F5928B76098001E9220 /* Alignment+Extention.swift in Sources */,
 				DBD4C52F28F3DFD1000E28D0 /* HistoryItem.swift in Sources */,
 				E38C3AB3291546FD00F0B104 /* JSONDecoder+Decode.swift in Sources */,
+				E31D525629261E730067DF48 /* FirebaseAuthRequestDTO.swift in Sources */,
+				E31D525429261D690067DF48 /* AuthRequest.swift in Sources */,
 				E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */,
 				DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */,
 				E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */,

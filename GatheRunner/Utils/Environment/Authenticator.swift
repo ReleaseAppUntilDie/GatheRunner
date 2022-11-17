@@ -8,28 +8,26 @@
 import Combine
 
 class Authenticator: ObservableObject {
-    static var shared = Authenticator()
-    
     @Published var isSignIn = false
     @Published var uid = ""
     @Published var email = ""
     
-    let userDataRepository: UserRepository
+    let userRepository: UserRepository
     var cancelBag = Set<AnyCancellable>()
     
-    init(userDataRepository: UserDataRepository = UserDataRepository()) {
-        self.userDataRepository = userDataRepository
+    init(userRepository: UserRepository) {
+        self.userRepository = userRepository
         bindCurrentUser()
     }
     
-    func setInfo(with user: FirebaseAuthResponseDTO) {
+    func setInfo(with user: AuthResponse) {
         isSignIn = true
         uid = user.uid
         email = user.email
     }
     
     private func bindCurrentUser() {
-        userDataRepository.currentUser()
+        userRepository.currentUser()
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(_): self?.isSignIn = false
@@ -37,9 +35,9 @@ class Authenticator: ObservableObject {
                 default: print("completion \(completion)")
                 }
                 
-        } receiveValue: { [weak self] user in
-            self?.setInfo(with: user)
-        }
-        .store(in: &cancelBag)
+            } receiveValue: { [weak self] user in
+                self?.setInfo(with: user)
+            }
+            .store(in: &cancelBag)
     }
 }
