@@ -5,25 +5,11 @@
 //  Created by cho on 2022/07/16.
 //
 
-import SwiftUI
 import Combine
 
 class RunGuideViewModel {
-    static var content: String?
-    static var outdoorGrade: String?
-    
-    // MARK: Internal
 
-    func getWeatherInfo() {
-        APIs.fetchWeatherInfo()
-            .sink { error in
-                print("fetchWeatherInfo error \(error)")
-            } receiveValue: { result in
-                Self.content = result.content ?? ""
-                Self.outdoorGrade = result.outdoorGrade ?? ""
-            }
-            .store(in: &APIs.cancelBag)
-    }
+    // MARK: Internal
     
     var getArrsRunGuideExperienceItem: [RunGuideItem] {
         runGuideExperienceItem
@@ -31,7 +17,6 @@ class RunGuideViewModel {
 
     // MARK: Private
 
-    // MARK: 서버 API 미구현 상태 -> 임시로 선언한 더미 데이터 -> API 구현 후 해당 코드 변경 예정
     private var runGuideExperienceItem = [
             RunGuideItem(
                 image: "RunGuideImage_1",
@@ -67,6 +52,5 @@ class RunGuideViewModel {
                 subtitle: "Ultra",
                 contents: "120분 장거리 러닝",
                 workoutGoal: "올림픽 메달리스트가 되기 위한 태릉식 워크아웃",
-                workoutComposition: "120일 처럼 느껴지는 120분"),
-    ]
+                workoutComposition: "120일 처럼 느껴지는 120분")]
 }

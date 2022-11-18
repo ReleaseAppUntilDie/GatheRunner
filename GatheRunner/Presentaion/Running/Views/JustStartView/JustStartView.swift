@@ -11,15 +11,42 @@ import SwiftUI
 
 struct JustStartView: View {
     @State private var isPresentedRunGuideDetailDescriptionView = false
+    @StateObject var getWeatherInfo: WeatherInfoViewModel = WeatherInfoViewModel()
 
     var body: some View {
         ZStack {
             MapView().hide(isPresentedRunGuideDetailDescriptionView)
             VStack {
-                RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView).padding(.top, 5)
+                weatherInfoDisplay
+                RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView).padding(0)
                 Spacer()
                 BottomButtonView().padding(.bottom, 30)
             }
+        }
+    }
+}
+
+extension JustStartView {
+    @ViewBuilder
+    private var weatherInfoDisplay: some View {
+        let weatherInfoString = isWeatherInfoDataNotNil ? ("오늘의 운동 지수 : " + getWeatherInfo.outdoorGrade! + (Int(getWeatherInfo.outdoorGrade!)! >= 70 ? " ☀️☀️ " : " ☁️☁️ ") + getWeatherInfo.content!) : ""
+        Rectangle().cornerRadius(7, corners: .allCorners)
+            .frame(height: UIScreen.getHeightby(ratio: 0.03))
+            .foregroundColor(.white)
+            .overlay {
+                Text(weatherInfoString)
+                    .bold()
+                    .kerning(2.0)
+                    .lineSpacing(4.0)
+                    .font(.system(size: 13))
+            }
+    }
+    
+    private var isWeatherInfoDataNotNil: Bool {
+        if getWeatherInfo.outdoorGrade != nil && getWeatherInfo.content != nil {
+            return true
+        } else {
+            return false
         }
     }
 }

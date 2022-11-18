@@ -29,6 +29,7 @@
 		DA7D5E7728F73A5F0066B2C6 /* RunGuideTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */; };
 		DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D5E7A28F740D90066B2C6 /* MapView.swift */; };
 		DA7E241828BB031F00046BFB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA7E241728BB031F00046BFB /* GoogleService-Info.plist */; };
+		DABD4A162924F184004381EB /* WeatherInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD4A152924F184004381EB /* WeatherInfoViewModel.swift */; };
 		DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */; };
 		DAEA9315287AED7200349465 /* RunGuideExperienceTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */; };
 		DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* BottomButtonView.swift */; };
@@ -131,6 +132,7 @@
 		DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideTabView.swift; sourceTree = "<group>"; };
 		DA7D5E7A28F740D90066B2C6 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DA7E241728BB031F00046BFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DABD4A152924F184004381EB /* WeatherInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoViewModel.swift; sourceTree = "<group>"; };
 		DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunGuideItem.swift; sourceTree = "<group>"; };
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideExperienceTabItem.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				DA58421D2893C27700554B5D /* RunGuideViewModel.swift */,
+				DABD4A152924F184004381EB /* WeatherInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1022,6 +1025,7 @@
 				E85FF54728F6857700C197CA /* History.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
+				DABD4A162924F184004381EB /* WeatherInfoViewModel.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
 				DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */,
@@ -1210,7 +1214,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GatheRunner/Preview Content\"";
-				DEVELOPMENT_TEAM = C57846S828;
+				DEVELOPMENT_TEAM = H5RWE65UKW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;
@@ -1249,7 +1253,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GatheRunner/Preview Content\"";
-				DEVELOPMENT_TEAM = C57846S828;
+				DEVELOPMENT_TEAM = H5RWE65UKW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;
