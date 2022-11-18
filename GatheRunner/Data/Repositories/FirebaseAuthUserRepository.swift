@@ -1,5 +1,5 @@
 //
-//  UserDataRepository.swift
+//  FirebaseUserRepository.swift
 //  GatheRunner
 //
 //  Created by 김동현 on 2022/11/14.
@@ -8,15 +8,16 @@
 import Foundation
 import Combine
 
-struct UserDataRepository: UserRepository {    
-    func currentUser() -> AnyPublisher<FirebaseAuthResponseDTO, Error> {
+struct FirebaseUserRepository: UserRepository {
+    func currentUser() -> AnyPublisher<AuthResponse, Error> {
         FirebaseAPIManager.shared.currentUser()
     }
     
-    func signIn(request: FirebaseAuthRequestDTO) -> AnyPublisher<FirebaseAuthResponseDTO, Error> {
+    func signIn(_ request: AuthRequest) -> AnyPublisher<AuthResponse, Error> {
+        let request = FirebaseAuthRequestDTO(request)
         guard let option = request.option else {
             return AnyPublisher(
-                Fail<FirebaseAuthResponseDTO, Error>(error: NSError())
+                Fail<AuthResponse, Error>(error: NSError())
             )
         }
         
@@ -38,15 +39,16 @@ struct UserDataRepository: UserRepository {
         }
     }
     
-    func signUp(request: FirebaseAuthRequestDTO) -> AnyPublisher<FirebaseAuthResponseDTO, Error> {
-        FirebaseAPIManager.shared.createUser(withEmail: request.email, password: request.password)
+    func signUp(_ request: AuthRequest) -> AnyPublisher<AuthResponse, Error> {
+        let request = FirebaseAuthRequestDTO(request)
+        return FirebaseAPIManager.shared.createUser(withEmail: request.email, password: request.password)
     }
     
     func signOut() -> AnyPublisher<Bool, Error> {
         FirebaseAPIManager.shared.signOut()
     }
     
-    func deleteUser(request: FirebaseAuthRequestDTO) -> AnyPublisher<Bool, Error> {
+    func deleteUser() -> AnyPublisher<Bool, Error> {
         FirebaseAPIManager.shared.deleteUser()
     }
 }
