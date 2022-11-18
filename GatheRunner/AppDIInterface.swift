@@ -9,8 +9,6 @@ import Combine
 
 protocol AppDIInterface {
     var userRepository: UserRepository { get }
-    var authInteractor: AuthInteractor { get }
-    var authViewModel: AuthenticationViewModel { get }
 }
 
 enum PHASE {
@@ -20,7 +18,6 @@ enum PHASE {
 struct AppEnvironment {
     let phase: PHASE
 }
-
 
 class AppDI: AppDIInterface, ObservableObject {
     static let shared = AppDI(AppEnvironment(phase: .FireBase))
@@ -36,13 +33,5 @@ class AppDI: AppDIInterface, ObservableObject {
         case .FireBase:
             return FirebaseUserRepository()
         }
-    }()
-    
-    lazy var authInteractor: AuthInteractor = {
-        return AuthInteractor(userRepository: userRepository)
-    }()
-    
-    lazy var authViewModel: AuthenticationViewModel = {
-        return AuthenticationViewModel(userRepository: userRepository, authInteractor: authInteractor)
     }()
 }

@@ -56,7 +56,7 @@ struct AuthenticationView: View {
     @State private var isValid = false
     @State private var isSignIn = false
     @State private var isAlertShow = false
-    @StateObject var viewModel: AuthenticationViewModel
+    @StateObject private var viewModel = AuthenticationViewModel()
 
     private var alertMessage: Text? {
         switch true {
@@ -81,9 +81,7 @@ extension AuthenticationView {
         viewModel.$isAuthValid
             .dropFirst()
             .compactMap { $0 }
-            .sink {
-                isValid = $0
-            }
+            .sink { isValid = $0 }
             .store(in: &viewModel.cancelBag)
     }
 }
@@ -122,6 +120,8 @@ extension AuthenticationView {
             .asValidationFieldStyle(isValid: $viewModel.isPasswordValid)
     }
 
+    // MARK: 환경변수를 통해서 인증시 메인탭뷰로 이동하게 처리 할 예정
+
     private var submitButton: some View {
         VStack {
             Button {
@@ -144,6 +144,6 @@ extension AuthenticationView {
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView(viewModel: AppDI.shared.authViewModel)
+        AuthenticationView()
     }
 }

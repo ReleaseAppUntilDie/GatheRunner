@@ -15,30 +15,26 @@ enum ViewsInHeaderView {
 // MARK: - HeaderView
 
 struct HeaderView: View {
+    
     let title: String
     let type: ViewsInHeaderView
     
-    @State private var showingAlert = false
-    @StateObject var viewModel: AuthenticationViewModel
-    
     let rightButtonAction: () -> Void
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Color(uiColor: .systemGray6)
             GatherNaviBar {
                 VStack(alignment: .leading) {
                     Button {
-                        showingAlert = true
+                        // TODO: profile view로 이동
+                        print("move to profile")
                     } label: {
                         Image(systemName: "person.crop.circle.fill")
                             .renderingMode(.template)
                             .resizable()
                             .foregroundColor(.gray)
                             .frame(width: 30, height: 30)
-                            .alert(Content.Label.userInfoSetting, isPresented: $showingAlert) {
-                                profileButtonLayer
-                            }
                     }
                 }
             } center: {
@@ -53,8 +49,7 @@ struct HeaderView: View {
                         .renderingMode(.template)
                         .foregroundColor(.black)
                         .frame(width: 25, height: 25)
-                }
-                .isEmpty(logicalOperator: .none, [type == .club])
+                }.isEmpty(logicalOperator: .none, [type == .club])
             }
             .padding(.horizontal, 10)
             .padding(.bottom)
@@ -67,38 +62,7 @@ struct HeaderView: View {
             .foregroundColor(.init(uiColor: .systemGray4))
         }
         .frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1 / 7))
-        
-    }
-}
-
-// MARK: - NameSpace
-
-extension HeaderView {
-    private enum Content {
-        enum Label {
-            static let userInfoSetting = "회원정보 설정"
-            static let signOut = "로그아웃"
-            static let deleteUser = "회원탈퇴"
-            static let cancle = "취소"
-        }
-    }
-}
-
-// MARK: SubViews
-
-extension HeaderView {
-    private var profileButtonLayer: some View {
-        VStack {
-            Button(Content.Label.signOut) {
-                viewModel.signOut()
-            }
-            Button(Content.Label.deleteUser) {
-                viewModel.deleteUser()
-            }
-            Button(Content.Label.cancle) {
-                showingAlert = false
-            }
-        }
+      
     }
 }
 
@@ -106,6 +70,8 @@ extension HeaderView {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title: "활동",type: .activity, viewModel: AppDI.shared.authViewModel) {}
+        HeaderView(title: "활동",type: .activity) {
+            print("")
+        }
     }
 }

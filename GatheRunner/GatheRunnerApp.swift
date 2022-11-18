@@ -5,6 +5,7 @@
 //  Created by 김동현 on 2022/06/29.
 //
 
+
 import FirebaseCore
 import SwiftUI
 
@@ -25,20 +26,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct GatheRunnerApp: App {
-    @ObservedObject var authInteractor: AuthInteractor
-    
-    init() {
-        FirebaseApp.configure()
-        authInteractor = AppDI.shared.authInteractor
-    }
+    // register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     var body: some Scene {
         WindowGroup {
-            if authInteractor.isSignIn {
-                MainTabView()
-            } else {
-                AuthenticationView(viewModel: AppDI.shared.authViewModel)
-            }
+            MainTabView()
         }
     }
 }
