@@ -25,19 +25,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct GatheRunnerApp: App {
-    @ObservedObject var authenticator: Authenticator
+    @ObservedObject var authInteractor: AuthInteractor
     
     init() {
         FirebaseApp.configure()
-        authenticator = Authenticator(userRepository: FirebaseUserRepository())
+        authInteractor = AppDI.shared.authInteractor
     }
 
     var body: some Scene {
         WindowGroup {
-            if authenticator.isSignIn {
-                MainTabView().environmentObject(authenticator)
+            if authInteractor.isSignIn {
+                MainTabView()
             } else {
-                AuthenticationView().environmentObject(authenticator)
+                AuthenticationView(viewModel: AppDI.shared.authViewModel)
             }
         }
     }

@@ -15,8 +15,8 @@ struct RunningView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            HeaderView(title: "러닝", type: .running, rightButtonAction: { })
-                .environmentObject(authenticator)
+            HeaderView(title: "활동",type: .activity, viewModel: AppDI.shared.authViewModel) {}
+            
             viewSelectorButton
                 .frame(width: UIScreen.main.bounds.size.width,
                 height: UIScreen.getHeightby(ratio: Size.viewSelectorButtonHeightRatio),

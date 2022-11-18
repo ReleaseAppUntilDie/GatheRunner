@@ -10,7 +10,6 @@ import SwiftUI
 // MARK: - AuthenticationView
 
 struct AuthenticationView: View {
-    @EnvironmentObject var authenticator: Authenticator
 
     // MARK: Internal
 
@@ -57,7 +56,7 @@ struct AuthenticationView: View {
     @State private var isValid = false
     @State private var isSignIn = false
     @State private var isAlertShow = false
-    @StateObject private var viewModel = AuthenticationViewModel(userRepository: FirebaseUserRepository())
+    @StateObject var viewModel: AuthenticationViewModel
 
     private var alertMessage: Text? {
         switch true {
@@ -84,7 +83,6 @@ extension AuthenticationView {
             .compactMap { $0 }
             .sink {
                 isValid = $0
-                authenticator.isSignIn = true
             }
             .store(in: &viewModel.cancelBag)
     }
@@ -127,7 +125,7 @@ extension AuthenticationView {
     private var submitButton: some View {
         VStack {
             Button {
-                isSignIn ? viewModel.signIn(authenticator: authenticator) : viewModel.signUp(authenticator: authenticator)
+                isSignIn ? viewModel.signIn() : viewModel.signUp()
             } label: { Text(isSignIn ? Content.Label.signIn : Content.Label.signUp).foregroundColor(.white) }
                 .frame(width: Size.width, height: Size.height, alignment: .center)
                 .background(Color.blue)
@@ -146,6 +144,6 @@ extension AuthenticationView {
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView()
+        AuthenticationView(viewModel: AppDI.shared.authViewModel)
     }
 }

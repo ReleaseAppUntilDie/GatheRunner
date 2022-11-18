@@ -21,16 +21,18 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var isInputsValid = false
     
     let userRepository: UserRepository
+    let authInteractor: AuthInteractor
     var cancelBag = Set<AnyCancellable>()
     
     // MARK: Lifecycle
     
-    init(userRepository: UserRepository) { 
+    init(userRepository: UserRepository, authInteractor: AuthInteractor) {
         self.userRepository = userRepository
+        self.authInteractor = authInteractor
         bindValidation()
     }
     
-    func signIn(authenticator: Authenticator) {
+    func signIn() {
         guard validatedInputs() else { return }
         
         userRepository.signIn(AuthRequest(email: email, password: password))
@@ -38,19 +40,19 @@ final class AuthenticationViewModel: ObservableObject {
                 switch completion {
                 case .failure(_):
                     self?.isAuthValid = false
-                    authenticator.isSignIn = false
+                    self?.authInteractor.isSignIn = false
                     
                 default: print("completion \(completion)")
                 }
                 
             } receiveValue: { [weak self] user in
                 self?.isAuthValid = true
-                authenticator.setInfo(with: user)
+                self?.authInteractor.setInfo(with: user)
             }
             .store(in: &cancelBag)
     }
     
-    func signUp(authenticator: Authenticator) {
+    func signUp() {
         guard validatedInputs() else { return }
         
         userRepository.signUp(AuthRequest(email: email, password: password))
@@ -58,19 +60,19 @@ final class AuthenticationViewModel: ObservableObject {
                 switch completion {
                 case .failure(_):
                     self?.isAuthValid = false
-                    authenticator.isSignIn = false
+                    self?.authInteractor.isSignIn = false
                     
                 default: print("completion \(completion)")
                 }
                 
             } receiveValue: { [weak self] user in
                 self?.isAuthValid = true
-                authenticator.setInfo(with: user)
+                self?.authInteractor.setInfo(with: user)
             }
             .store(in: &cancelBag)
     }
     
-    func signOut(authenticator: Authenticator) {
+    func signOut() {
         userRepository.signOut()
             .sink { completion in
                 switch completion {
@@ -78,14 +80,14 @@ final class AuthenticationViewModel: ObservableObject {
                 default: print("completion \(completion)")
                 }
                 
-            } receiveValue: { result in
+            } receiveValue: { [weak self] result in
                 guard result else { return }
-                authenticator.isSignIn = false
+                self?.authInteractor.isSignIn = false
             }
             .store(in: &cancelBag)
     }
     
-    func deleteUser(authenticator: Authenticator) {
+    func deleteUser() {
         userRepository.deleteUser()
             .sink { completion in
                 switch completion {
@@ -93,9 +95,9 @@ final class AuthenticationViewModel: ObservableObject {
                 default: print("completion \(completion)")
                 }
                 
-            } receiveValue: { result in
+            } receiveValue: { [weak self] result in
                 guard result else { return }
-                authenticator.isSignIn = false
+                self?.authInteractor.isSignIn = false
             }
             .store(in: &cancelBag)
     }

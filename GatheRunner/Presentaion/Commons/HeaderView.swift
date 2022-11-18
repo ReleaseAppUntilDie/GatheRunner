@@ -15,15 +15,14 @@ enum ViewsInHeaderView {
 // MARK: - HeaderView
 
 struct HeaderView: View {
-    @EnvironmentObject var authenticator: Authenticator
-    
     let title: String
     let type: ViewsInHeaderView
-    let rightButtonAction: () -> Void
     
     @State private var showingAlert = false
-    @StateObject private var viewModel = AuthenticationViewModel(userRepository: FirebaseUserRepository())
+    @StateObject var viewModel: AuthenticationViewModel
     
+    let rightButtonAction: () -> Void
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Color(uiColor: .systemGray6)
@@ -91,10 +90,10 @@ extension HeaderView {
     private var profileButtonLayer: some View {
         VStack {
             Button(Content.Label.signOut) {
-                viewModel.signOut(authenticator: authenticator)
+                viewModel.signOut()
             }
             Button(Content.Label.deleteUser) {
-                viewModel.deleteUser(authenticator: authenticator)
+                viewModel.deleteUser()
             }
             Button(Content.Label.cancle) {
                 showingAlert = false
@@ -107,8 +106,6 @@ extension HeaderView {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title: "활동",type: .activity) {
-            print("")
-        }
+        HeaderView(title: "활동",type: .activity, viewModel: AppDI.shared.authViewModel) {}
     }
 }

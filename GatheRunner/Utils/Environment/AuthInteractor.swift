@@ -1,5 +1,5 @@
 //
-//  Authenticator.swift
+//  AuthInteractor.swift
 //  GatheRunner
 //
 //  Created by 김동현 on 2022/11/14.
@@ -7,7 +7,7 @@
 
 import Combine
 
-class Authenticator: ObservableObject {
+class AuthInteractor: ObservableObject {
     @Published var isSignIn = false
     @Published var uid = ""
     @Published var email = ""

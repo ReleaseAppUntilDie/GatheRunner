@@ -12,15 +12,14 @@ struct ActivityView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HeaderView(title: "활동",type: .activity) {}
-            .environmentObject(authenticator)
+            HeaderView(title: "활동",type: .activity, viewModel: AppDI.shared.authViewModel) {}
             ActivityHistoryView()
             
         }
         .ignoresSafeArea(edges: .top)
     }
     
-    @EnvironmentObject var authenticator: Authenticator
+    @EnvironmentObject var authInteractor: AuthInteractor
 }
 
 // MARK: - ActivityView_Previews
