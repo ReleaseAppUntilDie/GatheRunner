@@ -578,12 +578,12 @@
 				DAEA930E28794F6F00349465 /* Info.plist */,
 				E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */,
 				DB198DAD288F7908002513A9 /* Utils */,
+				E31D526B2927EFCA0067DF48 /* Injected */,
 				E38C3AA2291546BA00F0B104 /* Data */,
 				E35EFEB6286DFB2D003E23DE /* Presentaion */,
 				E3D43D732876BEF3004C54C3 /* Helper */,
 				E3D34A04286C236300618AC3 /* Resources */,
 				E3D349DC286C20D500618AC3 /* Preview Content */,
-				E31D5259292784C40067DF48 /* AppDIInterface.swift */,
 			);
 			path = GatheRunner;
 			sourceTree = "<group>";
