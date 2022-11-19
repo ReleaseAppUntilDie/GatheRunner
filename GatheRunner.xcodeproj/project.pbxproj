@@ -36,8 +36,13 @@
 		DBD4C53128F3DFE0000E28D0 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4C53028F3DFE0000E28D0 /* HistoryList.swift */; };
 		E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671028B75B6600DFA1C4 /* LocationManager.swift */; };
 		E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671228B75BA200DFA1C4 /* Int+Extensions.swift */; };
+		E31D52602927A6040067DF48 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D525F2927A6040067DF48 /* AuthRequest.swift */; };
+		E31D52622927A6280067DF48 /* FirebaseAuthResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D52612927A6280067DF48 /* FirebaseAuthResponseDTO.swift */; };
+		E31D52642927A63C0067DF48 /* FirebaseAuthRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D52632927A63C0067DF48 /* FirebaseAuthRequestDTO.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
+		E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */; };
+		E3452551291E264000E2FA38 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3452550291E264000E2FA38 /* AuthResponse.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
 		E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* RunningRecordView.swift */; };
 		E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355960F28D45ECB00AF0FBD /* AuthenticationView.swift */; };
@@ -140,9 +145,14 @@
 		DBD4C53028F3DFE0000E28D0 /* HistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
 		E305671028B75B6600DFA1C4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E305671228B75BA200DFA1C4 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		E31D525F2927A6040067DF48 /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		E31D52612927A6280067DF48 /* FirebaseAuthResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthResponseDTO.swift; sourceTree = "<group>"; };
+		E31D52632927A63C0067DF48 /* FirebaseAuthRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthRequestDTO.swift; sourceTree = "<group>"; };
 		E32716CD290D560A005FA430 /* Encodable+ToDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+ToDictionary.swift"; sourceTree = "<group>"; };
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E3438C3B28D74B260003591F /* FieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldStyle.swift; sourceTree = "<group>"; };
+		E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseAPIManager+Auth.swift"; sourceTree = "<group>"; };
+		E3452550291E264000E2FA38 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		E350EA1528AD2DCC00F85FA1 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toggle+IconStyle.swift"; sourceTree = "<group>"; };
 		E351783928ABC9E50088003B /* RunningRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordView.swift; sourceTree = "<group>"; };
@@ -515,6 +525,8 @@
 			isa = PBXGroup;
 			children = (
 				E38C3AA6291546BA00F0B104 /* Common */,
+				E31D52612927A6280067DF48 /* FirebaseAuthResponseDTO.swift */,
+				E31D52632927A63C0067DF48 /* FirebaseAuthRequestDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -523,6 +535,8 @@
 			isa = PBXGroup;
 			children = (
 				E38C3AA7291546BA00F0B104 /* FireStoreRequest.swift */,
+				E3452550291E264000E2FA38 /* AuthResponse.swift */,
+				E31D525F2927A6040067DF48 /* AuthRequest.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -531,6 +545,7 @@
 			isa = PBXGroup;
 			children = (
 				E38C3AA9291546BA00F0B104 /* FirebaseAPIManager.swift */,
+				E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -984,6 +999,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3452551291E264000E2FA38 /* AuthResponse.swift in Sources */,
+				E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */,
 				DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */,
 				EA7913B828D6EA7000F889E5 /* GraphBottomSheetView.swift in Sources */,
 				E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */,
@@ -1025,8 +1042,10 @@
 				E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */,
 				E85FF54728F6857700C197CA /* History.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
+				E31D52642927A63C0067DF48 /* FirebaseAuthRequestDTO.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
+				E31D52622927A6280067DF48 /* FirebaseAuthResponseDTO.swift in Sources */,
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
 				DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */,
 				E38C3AB72915472D00F0B104 /* FirebaseAPIManager.swift in Sources */,
@@ -1039,6 +1058,7 @@
 				E3DA2F5828B76098001E9220 /* Constants.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
 				DA7D5E7728F73A5F0066B2C6 /* RunGuideTabView.swift in Sources */,
+				E31D52602927A6040067DF48 /* AuthRequest.swift in Sources */,
 				E38C3AB62915472800F0B104 /* FireStoreRequest.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */,
