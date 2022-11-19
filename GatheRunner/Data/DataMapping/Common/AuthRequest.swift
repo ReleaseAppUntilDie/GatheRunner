@@ -11,3 +11,21 @@ struct AuthRequest: Codable {
     let link: String?
     let token: String?
 }
+
+extension AuthRequest {
+    init(email: String, password: String) {
+        self.init(email: email, password: password, link: nil, token: nil)
+    }
+    
+    init(email: String, link: String) {
+        self.init(email: email, password: nil, link: link, token: nil)
+    }
+    
+    init(token: String) {
+        self.init(email: nil, password: nil, link: nil, token: token)
+    }
+    
+    init() {
+        self.init(email: nil, password: nil, link: nil, token: nil)
+    }
+}
