@@ -33,6 +33,7 @@
 		DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* BottomButtonView.swift */; };
 		DB1870D929212E8B00C51095 /* ResultMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1870D829212E8B00C51095 /* ResultMap.swift */; };
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
+		DB6C6E712929087100C18C37 /* MapWithPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C6E702929087100C18C37 /* MapWithPolyline.swift */; };
 		DBD4C52F28F3DFD1000E28D0 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4C52E28F3DFD1000E28D0 /* HistoryItem.swift */; };
 		DBD4C53128F3DFE0000E28D0 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4C53028F3DFE0000E28D0 /* HistoryList.swift */; };
 		E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671028B75B6600DFA1C4 /* LocationManager.swift */; };
@@ -138,6 +139,7 @@
 		DAEA9319287D184900349465 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
 		DB1870D829212E8B00C51095 /* ResultMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMap.swift; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		DB6C6E702929087100C18C37 /* MapWithPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWithPolyline.swift; sourceTree = "<group>"; };
 		DBD4C52E28F3DFD1000E28D0 /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		DBD4C53028F3DFE0000E28D0 /* HistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
 		E305671028B75B6600DFA1C4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				DB1870D829212E8B00C51095 /* ResultMap.swift */,
+				DB6C6E702929087100C18C37 /* MapWithPolyline.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 				E3607CD22923C1DF0018B2C2 /* LongPressTypeAlertModifier.swift in Sources */,
 				E3DA2F5828B76098001E9220 /* Constants.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
+				DB6C6E712929087100C18C37 /* MapWithPolyline.swift in Sources */,
 				DA7D5E7728F73A5F0066B2C6 /* RunGuideTabView.swift in Sources */,
 				E38C3AB62915472800F0B104 /* FireStoreRequest.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,

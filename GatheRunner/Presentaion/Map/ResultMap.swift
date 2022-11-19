@@ -12,8 +12,12 @@ struct ResultMap: View {
     @ObservedObject var manager: LocationManager
     
     var body: some View {
-        Map(coordinateRegion: $manager.resultMapRegion, showsUserLocation: false)
-            .disabled(false)
+        MapWithPolyline(
+            region: $manager.resultMapRegion,
+            lineCoordinates: $manager.polylineData,
+            startPosition: $manager.startPosition,
+            endPosition: $manager.endPosition
+        )
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .padding(.horizontal, 30)
             
