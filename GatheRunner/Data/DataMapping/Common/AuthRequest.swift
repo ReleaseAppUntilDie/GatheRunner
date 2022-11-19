@@ -8,6 +8,8 @@
 import Foundation
 
 struct AuthRequest: Codable {
-    let email: String
-    let password: String
+    let email: String?
+    let password: String?
+    let link: String?
+    let token: String?
 }
