@@ -36,7 +36,6 @@ struct EmptyActivityView: View {
                 .foregroundColor(.init(uiColor: .systemGray2))
             Spacer()
             Button {
-                SelectedTab.shared.index = TabItem.MainComponent.run.tag
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: UIScreen.getHeightby(ratio: 0.03))
@@ -48,6 +47,7 @@ struct EmptyActivityView: View {
                         .font(.system(size: 20, weight: .medium))
                 }.padding(.bottom)
             }
+            .buttonStyle(TabBarButton(MainTabComponents.run.tag))
         }
     }
 }

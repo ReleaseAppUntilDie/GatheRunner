@@ -10,5 +10,5 @@ import SwiftUI
 class SelectedTab: ObservableObject {
     static var shared = SelectedTab()
 
-    @Published var index = TabItem.MainComponent.run.tag
+    @Published var mainIndex = MainTabComponents.run.tag
 }
