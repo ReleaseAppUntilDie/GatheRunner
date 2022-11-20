@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct ResultMap: View {
+struct ResultMapView: View {
     @ObservedObject var manager: LocationManager
     
     var body: some View {
@@ -26,6 +26,6 @@ struct ResultMap: View {
 
 struct ResultMap_Previews: PreviewProvider {
     static var previews: some View {
-        ResultMap(manager: LocationManager())
+        ResultMapView(manager: LocationManager())
     }
 }

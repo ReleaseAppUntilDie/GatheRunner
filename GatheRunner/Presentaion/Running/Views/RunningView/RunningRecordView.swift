@@ -15,7 +15,7 @@ struct RunningRecordView: View {
     
     var body: some View {
         VStack(spacing: Size.mainVerticalSpacing) {
-            ResultMap(manager: manager)
+            ResultMapView(manager: manager)
                 .isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
             timerView
             realTimeRecordView

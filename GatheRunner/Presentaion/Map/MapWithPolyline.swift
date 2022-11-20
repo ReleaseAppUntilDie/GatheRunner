@@ -54,20 +54,28 @@ class Coordinator: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         zoomForAllOverlays(mapView: mapView)
         if let routePolyline = overlay as? MKPolyline {
-            let renderer = MKPolylineRenderer(polyline: routePolyline)
-            renderer.strokeColor = UIColor.systemBlue
-            renderer.lineWidth = 5
-            return renderer
+            return drawPolyLine(polyLine: routePolyline)
         } else if overlay is MKCircle {
-            let circleRenderer = MKCircleRenderer(overlay: overlay)
-            let strokColor: UIColor = .white
-            let color: UIColor = (circleRenderer.circle.circleType == .start) ? .green : .red
-            circleRenderer.strokeColor = strokColor
-            circleRenderer.fillColor = color
-            circleRenderer.lineWidth = 2.0
-            return circleRenderer
+            return drawCircle(overlay: overlay)
         }
         return MKOverlayRenderer()
+    }
+    
+    func drawCircle(overlay: MKOverlay) -> MKCircleRenderer{
+        let circleRenderer = MKCircleRenderer(overlay: overlay)
+        let strokColor: UIColor = .white
+        let color: UIColor = (circleRenderer.circle.circleType == .start) ? .green : .red
+        circleRenderer.strokeColor = strokColor
+        circleRenderer.fillColor = color
+        circleRenderer.lineWidth = 2.0
+        return circleRenderer
+    }
+    
+    func drawPolyLine(polyLine: MKPolyline) -> MKPolylineRenderer {
+        let renderer = MKPolylineRenderer(polyline: polyLine)
+        renderer.strokeColor = UIColor.systemBlue
+        renderer.lineWidth = 5
+        return renderer
     }
     
     func zoomForAllOverlays(mapView: MKMapView) {

@@ -66,7 +66,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         if recordState == .start {
             recordState = .pause
         }
-        
         timer?.invalidate()
         resultMapRegion.center = region.center
     }
@@ -87,6 +86,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         .store(in: &disposables)
     }
+    
+    func publishedDataInit() {
+        self.startPosition = nil
+        self.endPosition = nil
+        self.polylineData.removeAll()
+        self.progressTime = 0
+        self.minutes = "00"
+        self.seconds = "00"
+        self.currentPace = 0
+        self.distance = 0
+    }
 
     // MARK: Private
 
@@ -96,14 +106,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var recordState: RecordState = .stopped {
         didSet {
             if oldValue == .stopped && recordState == .start {
-                self.startPosition = nil
-                self.endPosition = nil
-                self.polylineData.removeAll()
-                self.progressTime = 0
-                self.minutes = "00"
-                self.seconds = "00"
-                self.currentPace = 0
-                self.distance = 0
+                self.publishedDataInit()
                 self.startPosition = region.center
                 
             }
