@@ -15,9 +15,13 @@ struct RunningRecordView: View {
     
     var body: some View {
         VStack(spacing: Size.mainVerticalSpacing) {
+            ResultMapView(manager: manager)
+                .isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
             timerView
             realTimeRecordView
             stopWatchButtonLayer
+            Spacer()
+                .isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
         }
     }
     
@@ -35,7 +39,7 @@ struct RunningRecordView: View {
     private enum Content {
         enum Label {
             static let exerciseTime = "운동 시간"
-            static let kilometer = "알림"
+            static let kilometer = "거리"
             static let pace = "페이스"
             static let recordFormat = "%.2f"
             static let empty = ""
@@ -49,6 +53,7 @@ struct RunningRecordView: View {
     }
     
     @State private var isRunning = false
+    @State private var isInitialState = true
     @EnvironmentObject private var manager: LocationManager
 }
 
@@ -74,7 +79,7 @@ extension RunningRecordView {
     
     private var stopWatchButtonLayer: some View {
         HStack(spacing: Size.stopWatchHorizontalSpacing) {
-            stopButton.isEmpty(logicalOperator: .none, [isRunning == true])
+            stopButton.isEmpty(logicalOperator: .none, [isRunning])
             resumeButton
         }
     }
@@ -83,13 +88,20 @@ extension RunningRecordView {
         Button(action: { }) {
             Image(Content.Image.stop)
                 .asIconStyle(withMaxWidth: Size.stopWatchImage, withMaxHeight: Size.stopWatchImage)
-                .addLongPressTypeAlert(withAction: manager.didUnSetStartLocation)
+                .addLongPressTypeAlert(withAction: {
+                    isRunning = false
+                    manager.didStopRecording()
+                    
+                })
         }
     }
     
     private var resumeButton: some View {
         Toggle(Content.Label.empty, isOn: $isRunning)
             .onChange(of: isRunning) {
+                if isInitialState {
+                    isInitialState = false
+                }
                 $0 ? manager.didSetStartLocation() : manager.didUnSetStartLocation()
             }
             .toggleStyle(IconStyle(onImage: Content.Image.play, offImage: Content.Image.pause, size: Size.stopWatchImage))

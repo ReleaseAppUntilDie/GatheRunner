@@ -31,7 +31,9 @@
 		DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */; };
 		DAEA9315287AED7200349465 /* RunGuideExperienceTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */; };
 		DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* BottomButtonView.swift */; };
+		DB1870D929212E8B00C51095 /* ResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1870D829212E8B00C51095 /* ResultMapView.swift */; };
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
+		DB6C6E712929087100C18C37 /* MapWithPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C6E702929087100C18C37 /* MapWithPolyline.swift */; };
 		DBD4C52F28F3DFD1000E28D0 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4C52E28F3DFD1000E28D0 /* HistoryItem.swift */; };
 		DBD4C53128F3DFE0000E28D0 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4C53028F3DFE0000E28D0 /* HistoryList.swift */; };
 		E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671028B75B6600DFA1C4 /* LocationManager.swift */; };
@@ -140,7 +142,9 @@
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideExperienceTabItem.swift; sourceTree = "<group>"; };
 		DAEA9319287D184900349465 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
+		DB1870D829212E8B00C51095 /* ResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapView.swift; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		DB6C6E702929087100C18C37 /* MapWithPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWithPolyline.swift; sourceTree = "<group>"; };
 		DBD4C52E28F3DFD1000E28D0 /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		DBD4C53028F3DFE0000E28D0 /* HistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
 		E305671028B75B6600DFA1C4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -362,6 +366,15 @@
 			path = TabItem;
 			sourceTree = "<group>";
 		};
+		DB1870D729212E2600C51095 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DB1870D829212E8B00C51095 /* ResultMapView.swift */,
+				DB6C6E702929087100C18C37 /* MapWithPolyline.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		DB198DAD288F7908002513A9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +434,7 @@
 		E35EFEB6286DFB2D003E23DE /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				DB1870D729212E2600C51095 /* Map */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
 				E355960E28D45E8200AF0FBD /* Authentication */,
@@ -1008,6 +1022,7 @@
 				E38C3AB52915471A00F0B104 /* OptionNameSpaces.swift in Sources */,
 				E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */,
 				E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */,
+				DB1870D929212E8B00C51095 /* ResultMapView.swift in Sources */,
 				E355961328D4651900AF0FBD /* AuthenticationViewModel.swift in Sources */,
 				EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */,
 				E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */,
@@ -1057,6 +1072,7 @@
 				E3607CD22923C1DF0018B2C2 /* LongPressTypeAlertModifier.swift in Sources */,
 				E3DA2F5828B76098001E9220 /* Constants.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
+				DB6C6E712929087100C18C37 /* MapWithPolyline.swift in Sources */,
 				DA7D5E7728F73A5F0066B2C6 /* RunGuideTabView.swift in Sources */,
 				E31D52602927A6040067DF48 /* AuthRequest.swift in Sources */,
 				E38C3AB62915472800F0B104 /* FireStoreRequest.swift in Sources */,
@@ -1238,7 +1254,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Running;
+				INFOPLIST_KEY_CFBundleDisplayName = GatheRunner;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 권한 요청";
@@ -1277,7 +1293,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GatheRunner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Running;
+				INFOPLIST_KEY_CFBundleDisplayName = GatheRunner;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 권한 요청";
