@@ -14,7 +14,6 @@ struct FirebaseUserRepository: UserRepository {
     }
     
     func signIn(_ request: AuthRequest) -> AnyPublisher<AuthResponse, Error> {
-        let request = FirebaseAuthRequestDTO(request)
         guard let option = request.option else {
             return AnyPublisher(
                 Fail<AuthResponse, Error>(error: NSError())
@@ -27,10 +26,7 @@ struct FirebaseUserRepository: UserRepository {
             
         case .link:
             return FirebaseAPIManager.shared.signIn(withEmail: request.email, link: request.link)
-            
-        case .credential:
-            return FirebaseAPIManager.shared.signIn(with: request.credential)
-            
+                        
         case .anonymously:
             return FirebaseAPIManager.shared.signInAnonymously()
             
@@ -40,8 +36,7 @@ struct FirebaseUserRepository: UserRepository {
     }
     
     func signUp(_ request: AuthRequest) -> AnyPublisher<AuthResponse, Error> {
-        let request = FirebaseAuthRequestDTO(request)
-        return FirebaseAPIManager.shared.createUser(withEmail: request.email, password: request.password)
+        FirebaseAPIManager.shared.createUser(withEmail: request.email, password: request.password)
     }
     
     func signOut() -> AnyPublisher<Bool, Error> {
