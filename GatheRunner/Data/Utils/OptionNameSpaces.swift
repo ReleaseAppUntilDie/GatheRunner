@@ -12,12 +12,11 @@ enum QueryOption {
     case range(fieldPath: String, start: Any, end: Any)
 }
 
-// MARK: - AuthOption
+// MARK: - FirebaseAuthOption
 
-enum AuthOption {
+enum FirebaseAuthOption {
     case password
     case link
-    case credential
     case anonymously
     case customToken
 }

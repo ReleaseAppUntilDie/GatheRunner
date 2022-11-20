@@ -5,33 +5,21 @@
 //  Created by 김동현 on 2022/11/17.
 //
 
-import FirebaseAuth
+// MARK: - FirebaseAuthRequestDTO
 
-struct FirebaseAuthRequestDTO {
-    let option: AuthOption?
-    let email: String?
-    let password: String?
-    let link: String?
-    let credential: AuthCredential?
-    let token: String?
-    
-    init(option: AuthOption? = nil,
-         email: String? = nil,
-         password: String? = nil,
-         link: String? = nil,
-         credential: AuthCredential? = nil,
-         token: String? = nil) {
-        self.option = option
-        self.email = email
-        self.password = password
-        self.link = link
-        self.credential = credential
-        self.token = token
-    }
-}
-
-extension FirebaseAuthRequestDTO {
-    init(_ request: AuthRequest) {
-        self.init(option: .password, email: request.email, password: request.password)
+extension AuthRequest {
+    var option: FirebaseAuthOption? {
+        switch (email, password, link, token) {
+        case (.some, .some, .none, .none):
+            return .password
+        case (.some, .none, .some, .none):
+            return .link
+        case (.none, .none, .none, .some):
+            return .customToken
+        case (.none, .none, .none, .none):
+            return .anonymously
+        default:
+            return nil
+        }
     }
 }
