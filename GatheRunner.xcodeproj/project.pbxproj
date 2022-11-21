@@ -75,7 +75,7 @@
 		E3DA2F5B28B76098001E9220 /* GatherNaviBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA2F5628B7607F001E9220 /* GatherNaviBar.swift */; };
 		E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E748082892837700F40457 /* RunSplashScreen.swift */; };
 		E3E7480B289284B200F40457 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E7480A289284B200F40457 /* TextStyle.swift */; };
-		E3F598A0292A0E2200023097 /* MainTabComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5989F292A0E2200023097 /* MainTabComponents.swift */; };
+		E3F598A5292B4F0300023097 /* MainTabComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5989F292A0E2200023097 /* MainTabComponents.swift */; };
 		E3F83E6A28AF641D000CA1B5 /* MeasurementViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */; };
 		E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE02FA28D49749008A9B91 /* String+isValid.swift */; };
 		E85FF54728F6857700C197CA /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85FF54628F6857700C197CA /* History.swift */; };
@@ -970,6 +970,7 @@
 				E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */,
 				E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */,
 				E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */,
+				E3F598A5292B4F0300023097 /* MainTabComponents.swift in Sources */,
 				E3E7480B289284B200F40457 /* TextStyle.swift in Sources */,
 				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
 				DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */,
