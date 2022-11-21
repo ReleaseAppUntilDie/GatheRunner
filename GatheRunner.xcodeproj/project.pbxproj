@@ -692,7 +692,6 @@
 		E3DA2F5328B7607F001E9220 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				E33663D9292B909600E41E28 /* AppEnvironment.swift */,
 				DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */,
 			);
 			path = Environment;
