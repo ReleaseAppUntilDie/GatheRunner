@@ -26,6 +26,7 @@ struct RunningView: View {
     }
         
     @StateObject var recentSelectButton = SelectedButtonMemory()
+    @EnvironmentObject var appDI: AppDI
 }
 
 extension RunningView {

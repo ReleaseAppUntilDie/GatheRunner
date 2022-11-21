@@ -37,6 +37,10 @@
 		E32D47B2292CEAB2001CCE61 /* MapWithPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D47B0292CEA1A001CCE61 /* MapWithPolyline.swift */; };
 		E32D47B3292CEAB4001CCE61 /* ResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D47B1292CEA1A001CCE61 /* ResultMapView.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
+		E33663D8292B906500E41E28 /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663D7292B906500E41E28 /* AppDI.swift */; };
+		E33663DA292B909600E41E28 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663D9292B909600E41E28 /* AppEnvironment.swift */; };
+		E33663DB292B90B900E41E28 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A062922848B00B65D48 /* AuthInteractor.swift */; };
+		E33663DD292B941400E41E28 /* AuthRevokedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663DC292B941400E41E28 /* AuthRevokedView.swift */; };
 		E3435A01292281F500B65D48 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A00292281F500B65D48 /* UserRepository.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
 		E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */; };
@@ -476,6 +480,7 @@
 		E35EFEBD286DFB2D003E23DE /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				E33663DC292B941400E41E28 /* AuthRevokedView.swift */,
 				DB198DA7288F76FF002513A9 /* HeaderView.swift */,
 				E35EFEBE286DFB2D003E23DE /* TabItem.swift */,
 				E3F5989F292A0E2200023097 /* MainTabComponents.swift */,
@@ -687,6 +692,7 @@
 		E3DA2F5328B7607F001E9220 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
+				E33663D9292B909600E41E28 /* AppEnvironment.swift */,
 				DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */,
 			);
 			path = Environment;
