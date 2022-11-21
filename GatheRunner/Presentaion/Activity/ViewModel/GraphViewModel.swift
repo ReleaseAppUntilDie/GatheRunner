@@ -21,6 +21,8 @@ class GraphViewModel: ObservableObject {
         dataInit()
 
         fetchData()
+        
+        fetchAllData()
     }
 
     // MARK: Internal
@@ -29,6 +31,8 @@ class GraphViewModel: ObservableObject {
     @Published var pickerItemListInMonth: ([Int],[Int])
     @Published var selectedString: String
     @Published var records: [Int]
+    @Published var historys: [History] = []
+    @Published var fetchError = false
     var selectedTimeUnit: TimeUnit
 
     func updateTimeUnit(_ unit: TimeUnit) {
@@ -146,6 +150,7 @@ class GraphViewModel: ObservableObject {
     }
 
     func fetchData() {
+        
         switch selectedTimeUnit {
         case .week:
             records = (0..<7).map { _ in Int.random(in: 1 ... 20) }
@@ -156,6 +161,24 @@ class GraphViewModel: ObservableObject {
         case .whole:
             records = (0..<4).map { _ in Int.random(in: 1 ... 20) }
         }
+    }
+    
+    func fetchAllData() {
+        RunningRecordAPIs.fetchRunningRecord(request: RunningRecordRequest(uid: "hanTest"))
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else {return}
+                switch completion {
+                case .failure(let error):
+                    print("debug error: ", error)
+                    self.fetchError = true
+                case .finished:
+                    print("fetch All data finished")
+                }
+            }, receiveValue: { [weak self] result in
+                guard let self = self else {return}
+                self.historys = result
+            })
+            .store(in: &RunningRecordAPIs.cancelBag)
     }
 
     // MARK: Private

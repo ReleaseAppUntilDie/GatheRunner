@@ -25,7 +25,7 @@ struct ActivityHistoryView: View {
         ZStack {
             ScrollView {
                 GraphView(isPickerViewShowed: $isPickerViewShowed, viewModel: viewModel, selectedTimeUnit: $selectedTimeUnit)
-                HistoryList()
+                HistoryList(viewModel: viewModel)
             }.padding(.top)
             GraphBottomSheetView(
                 viewModel: viewModel,
@@ -34,6 +34,7 @@ struct ActivityHistoryView: View {
             )
             .isEmpty(logicalOperator: .none, [isPickerViewShowed])
         }
+        
     }
 }
 

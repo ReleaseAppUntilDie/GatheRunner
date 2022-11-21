@@ -28,11 +28,13 @@ struct GraphView: View {
                 SimplifiedStatistics(
                     viewModel: viewModel,
                     selectedTimeUnit: $selectedTimeUnit,
-                    pickerViewShowed: $isPickerViewShowed, averageHistory: AverageHistory(
+                    pickerViewShowed: $isPickerViewShowed,
+                    averageHistory: AverageHistory(
                         distance: "10.0",
                         runningCnt: 6,
                         averagePace: "5'41''",
-                        totalTime: "2:54:51"))
+                        totalTime: "2:54:51")
+                )
 
                 Graph(
                     graphWidth: UIScreen.getWidthby(ratio: 0.7),

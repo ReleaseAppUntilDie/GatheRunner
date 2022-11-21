@@ -25,19 +25,20 @@ struct HistoryItem: View {
                             RoundedRectangle(cornerRadius: 5)
                                 .strokeBorder(.black,lineWidth: 1))
                     VStack(alignment: .leading) {
-                        Text(history.timeString)
+                        Text(history.date ?? "")
                             .font(.system(size: 14))
                             .foregroundColor(.black)
-                        Text(history.weekString)
+                        
+                        Text(history.weekday)
                             .font(.system(size: 14))
                             .foregroundColor(.gray)
                     }
                 }
 
                 HStack(spacing: 20) {
-                    element(title: history.distance, sub: "Km")
-                    element(title: history.averagePace, sub: "평균 페이스")
-                    element(title: history.runningTime, sub: "시간")
+                    element(title: history.distance ?? "0", sub: "Km")
+                    element(title: history.averagePace ?? "0", sub: "평균 페이스")
+                    element(title: history.runningTime ?? "0", sub: "시간")
                 }
                 Group {
                     Rectangle()
