@@ -10,12 +10,11 @@ import SwiftUI
 // MARK: - TabBarButton
 
 struct TabBarButton: ButtonStyle {
-    @EnvironmentObject var selectedTab: SelectedTab
     let tabIndex: Int
 
     func makeBody(configuration: Configuration) -> some View {
         Button {
-            selectedTab.index = tabIndex
+            SelectedTab.shared.mainIndex = tabIndex
         } label: {
             configuration.label
         }

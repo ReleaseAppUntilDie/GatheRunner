@@ -24,10 +24,8 @@ struct RunningView: View {
                 .frame(height: UIScreen.getHeightby(ratio: 0.72))
         }.ignoresSafeArea(edges: .top)
     }
-    
-    // MARK: Private
-    
-    @EnvironmentObject var recentSelectButton: SelectedButtonMemory
+        
+    @StateObject var recentSelectButton = SelectedButtonMemory()
 }
 
 extension RunningView {
