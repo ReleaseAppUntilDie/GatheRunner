@@ -1,5 +1,5 @@
 //
-//  AuthRevokedView.swift
+//  AuthSettingView.swift
 //  GatheRunner
 //
 //  Created by 김동현 on 2022/11/19.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AuthRevokedView: View {
+struct AuthSettingView: View {
     private enum Size {
         static let spacing: CGFloat = 20
     }
