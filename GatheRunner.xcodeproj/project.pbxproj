@@ -39,6 +39,8 @@
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E33663E3292CD2E200E41E28 /* RepositoriesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663E2292CD2E200E41E28 /* RepositoriesContainer.swift */; };
 		E33663E5292CD2F700E41E28 /* ViewModelsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663E4292CD2F700E41E28 /* ViewModelsContainer.swift */; };
+		E33663E7292CD6EE00E41E28 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663E6292CD6EE00E41E28 /* AppEnvironment.swift */; };
+		E33663E9292CD72900E41E28 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663E8292CD72900E41E28 /* DependencyContainer.swift */; };
 		E3435A01292281F500B65D48 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A00292281F500B65D48 /* UserRepository.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
 		E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */; };
@@ -151,6 +153,8 @@
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E33663E2292CD2E200E41E28 /* RepositoriesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesContainer.swift; sourceTree = "<group>"; };
 		E33663E4292CD2F700E41E28 /* ViewModelsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelsContainer.swift; sourceTree = "<group>"; };
+		E33663E6292CD6EE00E41E28 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		E33663E8292CD72900E41E28 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		E3435A00292281F500B65D48 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		E3435A022922820D00B65D48 /* FirebaseUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserRepository.swift; sourceTree = "<group>"; };
 		E3435A042922825300B65D48 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
@@ -987,8 +991,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3F598A4292A8C1C00023097 /* AppEnvironment.swift in Sources */,
-				E3F598A2292A8BCF00023097 /* DependencyContainer.swift in Sources */,
+				E33663E9292CD72900E41E28 /* DependencyContainer.swift in Sources */,
+				E33663E7292CD6EE00E41E28 /* AppEnvironment.swift in Sources */,
 				E3452551291E264000E2FA38 /* AuthResponse.swift in Sources */,
 				E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */,
 				DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */,
