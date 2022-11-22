@@ -42,7 +42,7 @@ final class AuthenticationViewModel: ObservableObject {
     // MARK: Private
 
     private func bindValidation() {
-        $email
+        $inputEmail
             .compactMap { $0 }
             .sink { [weak self] in
                 self?.isEmailValid = $0.isEmailValid

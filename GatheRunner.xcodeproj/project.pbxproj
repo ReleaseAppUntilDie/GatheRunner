@@ -37,10 +37,11 @@
 		E32D47B2292CEAB2001CCE61 /* MapWithPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D47B0292CEA1A001CCE61 /* MapWithPolyline.swift */; };
 		E32D47B3292CEAB4001CCE61 /* ResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D47B1292CEA1A001CCE61 /* ResultMapView.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
-		E33663D8292B906500E41E28 /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663D7292B906500E41E28 /* AppDI.swift */; };
+		E33663D8292B906500E41E28 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663D7292B906500E41E28 /* DependencyContainer.swift */; };
 		E33663DA292B909600E41E28 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663D9292B909600E41E28 /* AppEnvironment.swift */; };
-		E33663DB292B90B900E41E28 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A062922848B00B65D48 /* AuthInteractor.swift */; };
 		E33663DD292B941400E41E28 /* AuthRevokedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663DC292B941400E41E28 /* AuthRevokedView.swift */; };
+		E33663DF292B9AC600E41E28 /* RepositoriesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663DE292B9AC600E41E28 /* RepositoriesContainer.swift */; };
+		E33663E1292CC44E00E41E28 /* ViewModelsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663E0292CC44E00E41E28 /* ViewModelsContainer.swift */; };
 		E3435A01292281F500B65D48 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A00292281F500B65D48 /* UserRepository.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
 		E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */; };
@@ -616,7 +617,6 @@
 				DB198DAD288F7908002513A9 /* Utils */,
 				E34F7B67292D0A6C00BCC6FE /* Injected */,
 				E38C3AA2291546BA00F0B104 /* Data */,
-				E31D52662927D9B90067DF48 /* Interactors */,
 				E35EFEB6286DFB2D003E23DE /* Presentaion */,
 				E3D43D732876BEF3004C54C3 /* Helper */,
 				E3D34A04286C236300618AC3 /* Resources */,
@@ -1035,6 +1035,7 @@
 				E355961328D4651900AF0FBD /* AuthenticationViewModel.swift in Sources */,
 				EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */,
 				E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */,
+				E33663DF292B9AC600E41E28 /* RepositoriesContainer.swift in Sources */,
 				E3DA2F5B28B76098001E9220 /* GatherNaviBar.swift in Sources */,
 				EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */,
 				E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */,
@@ -1086,6 +1087,7 @@
 				E38C3AB62915472800F0B104 /* FireStoreRequest.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */,
+				E33663E1292CC44E00E41E28 /* ViewModelsContainer.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E399CA7C2933957C00ACFCFA /* ViewModelsContainer.swift in Sources */,
 				E38C3AB42915470000F0B104 /* Encodable+Queries.swift in Sources */,
