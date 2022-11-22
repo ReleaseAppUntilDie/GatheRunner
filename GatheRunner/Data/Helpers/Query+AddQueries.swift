@@ -15,10 +15,6 @@ extension Query {
             switch query {
             case .equal(let fieldPath, let condition):
                 return self.whereField(fieldPath, isEqualTo: condition).addQueries(queries)
-            case .contains(let fieldPath, let condition):
-                return self.whereField(fieldPath, isEqualTo: condition).addQueries(queries)
-            case .notContains(let fieldPath, let condition):
-                return self.whereField(fieldPath, isEqualTo: condition).addQueries(queries)
             case .range(let fieldPath, let start, let end):
                 return self.whereField(fieldPath, isGreaterThanOrEqualTo: start).whereField(fieldPath, isLessThanOrEqualTo: end).addQueries(queries)
             }

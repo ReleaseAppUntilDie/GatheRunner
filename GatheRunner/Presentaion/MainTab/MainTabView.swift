@@ -10,46 +10,56 @@ import SwiftUI
 // MARK: - MainTabView
 
 struct MainTabView: View {
-    @ObservedObject var selectedTab = SelectedTab.shared
-    private let recentSelectButton = SelectedButtonMemory()
+    private enum Content {
+        enum Image {
+            static let run = "person.crop.circle"
+            static let activity = "record.circle.fill"
+        }
+    }
     
     var body: some View {
-        TabView(selection: $selectedTab.index) {
-            ForEach(tabItems) { createTabView($0) }
-                .environmentObject(selectedTab)
+        NavigationView {
+            TabView(selection: $selectedTab.mainIndex) {
+                ForEach(tabItems) { childView($0) }
+            }
+            .onAppear { didSetTabBar() }
+            .accentColor(.black)
         }
-        .onAppear {
-            tabViewOnAppearAction()
-        }
-        .accentColor(.black)
-        .environmentObject(recentSelectButton)
     }
+    
+    @ObservedObject var selectedTab = SelectedTab.shared
 }
-
-// MARK: - TabItem Property and Functions
 
 extension MainTabView {
     private var tabItems: [TabItem] {
-         [TabItem(.run), TabItem(.activity)]
+        MainTabComponents.allCases.map { TabItem(title: Text($0.rawValue), icon: tabIcon($0), tag: $0.tag) }
     }
-
-    private func selectedView(_ tag: Int) -> AnyView {
+    
+    private func tabIcon(_ tag: MainTabComponents) -> Image {
         switch tag {
-        case 1: return AnyView(RunningView())
-        case 2: return AnyView(ActivityView())
-        default: return AnyView(HomeView())
+        case .run: return Image(systemName: Content.Image.run)
+        case .activity: return Image(systemName: Content.Image.activity)
         }
     }
-
-    private func createTabView(_ tabItem: TabItem) -> some View {
-        NavigationView { selectedView(tabItem.tag).navigationBarHidden(true) }
-            .tabItem {
-                Label(title: { tabItem.title }, icon: { tabItem.icon })
+    
+    private func selectedView(_ tag: Int) -> some View {
+        Group {
+            switch tag {
+            case 1: RunningView()
+            case 2: ActivityView()
+            default: EmptyView()
             }
+        }
+    }
+    
+    private func childView(_ tabItem: TabItem) -> some View {
+        selectedView(tabItem.tag)
+            .navigationBarHidden(true)
+            .tabItem { Label(title: { tabItem.title }, icon: { tabItem.icon }) }
             .tag(tabItem.tag)
     }
     
-    private func tabViewOnAppearAction() {
+    private func didSetTabBar() {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
