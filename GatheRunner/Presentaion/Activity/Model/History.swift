@@ -30,14 +30,14 @@ struct History: Decodable {
         let dateString = self.date!
         
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko-KR") // set locale to reliable US_POSIX
+        dateFormatter.locale = Locale(identifier: "ko-KR")
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
         return dateFormatter.date(from: dateString)!
     }
     
     var weekday: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko-KR") // set locale to reliable US_POSIX
+        dateFormatter.locale = Locale(identifier: "ko-KR")
         dateFormatter.dateFormat = "EEEEEE"
         let convertStr = dateFormatter.string(from: self.stringToDate)
         return "\(convertStr)요일"

@@ -23,6 +23,8 @@ class GraphViewModel: ObservableObject {
         fetchData()
         
         fetchAllData()
+        
+        범위테스트()
     }
 
     // MARK: Internal
@@ -34,6 +36,7 @@ class GraphViewModel: ObservableObject {
     @Published var historys: [History] = []
     @Published var fetchError = false
     var selectedTimeUnit: TimeUnit
+    var currentPeriod: (start: Date, end: Date) = (Date(),Date())
 
     func updateTimeUnit(_ unit: TimeUnit) {
         selectedTimeUnit = unit
@@ -99,37 +102,42 @@ class GraphViewModel: ObservableObject {
 
     func beforeTwoWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
         let date = Date()
-        guard let weekDay = Calendar.current.dateComponents([.weekday], from: date).weekday else {
+        
+        guard let weekDay = date.get([.weekday]).weekday else {
             return (0,0,0,0)
         }
 
-        guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(14 + (weekDay - 2)), to: date) else {
-            return (0,0,0,0)
-        }
-        guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(7 + (weekDay - 1)), to: date) else {
-            return (0,0,0,0)
-        }
-
-        let firstDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeTwoWeeks)
-        let lastDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeOneWeek)
+        let beforeTwoWeeks = date.calculatedDate(unit: .day, value: -(14 + (weekDay - 2)))
+       
+        let beforeOneWeek = date.calculatedDate(unit: .day, value: -(7 + (weekDay - 1)))
+        
+        let firstDateAndMonth = beforeTwoWeeks.get([.month, .day])
+        
+        let lastDateAndMonth = beforeOneWeek.get([.month, .day])
+        
         return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
+    }
+    
+    func 범위테스트() {
+        let today = Date()
+        guard let weekDay = today.get([.weekday]).weekday else { return }
+        let 이번주월요일 = today.calculatedDate(unit: .day, value: -(weekDay - 2))
+        let 지난주월요일 = today.calculatedDate(unit: .day, value: -(7 + weekDay - 2))
+        let 지난주일요일 = today.calculatedDate(unit: .day, value: -(weekDay - 1))
+        print(지난주일요일.get([.day,.month]))
     }
 
     func beforeThreeWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
         let date = Date()
-        guard let weekDay = Calendar.current.dateComponents([.weekday], from: date).weekday else {
+        guard let weekDay = date.get([.weekday]).weekday else {
             return (0,0,0,0)
         }
-
-        guard let beforeTwoWeeks = Calendar.current.date(byAdding: .day, value: -(21 + (weekDay - 2)), to: date) else {
-            return (0,0,0,0)
-        }
-        guard let beforeOneWeek = Calendar.current.date(byAdding: .day, value: -(14 + (weekDay - 1)), to: date) else {
-            return (0,0,0,0)
-        }
-
-        let firstDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeTwoWeeks)
-        let lastDateAndMonth = Calendar.current.dateComponents([.month,.day], from: beforeOneWeek)
+        let beforeThreeWeeks = date.calculatedDate(unit: .day, value: -(21 + (weekDay - 2)))
+        let beforeTwoWeek = date.calculatedDate(unit: .day, value: -(14 + (weekDay - 1)))
+       
+        let firstDateAndMonth = beforeThreeWeeks.get([.month, .day])
+        let lastDateAndMonth = beforeTwoWeek.get([.month,.day])
+        
         return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
     }
 
@@ -176,7 +184,7 @@ class GraphViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] result in
                 guard let self = self else {return}
-                self.historys = result
+                self.historys = result.sorted { $0.stringToDate > $1.stringToDate }
             })
             .store(in: &RunningRecordAPIs.cancelBag)
     }
@@ -196,6 +204,7 @@ class GraphViewModel: ObservableObject {
             periodString(beforeTwoWeeks),
             periodString(beforeThreeWeeks),
         ]
+        
     }
 
 }

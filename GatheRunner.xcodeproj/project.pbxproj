@@ -131,6 +131,7 @@
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideExperienceTabItem.swift; sourceTree = "<group>"; };
 		DAEA9319287D184900349465 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
+		DB051390292BDE7B00BE218B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DB1870D829212E8B00C51095 /* ResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapView.swift; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DB6C6E702929087100C18C37 /* MapWithPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWithPolyline.swift; sourceTree = "<group>"; };
@@ -339,6 +340,7 @@
 				E3DA2F5628B7607F001E9220 /* GatherNaviBar.swift */,
 				E3DA2F5728B7607F001E9220 /* TouchLocationView.swift */,
 				E305671028B75B6600DFA1C4 /* LocationManager.swift */,
+				DB051390292BDE7B00BE218B /* Date+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1026,6 +1028,7 @@
 				E31D52622927A6280067DF48 /* FirebaseAuthResponseDTO.swift in Sources */,
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
 				DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */,
+				DB051391292BDE7B00BE218B /* Date+Extension.swift in Sources */,
 				E38C3AB72915472D00F0B104 /* FirebaseAPIManager.swift in Sources */,
 				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
 				E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */,
