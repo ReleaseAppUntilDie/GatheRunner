@@ -5,7 +5,7 @@
 //  Created by cho on 2022/07/10.
 //
 
-import SwiftUI
+import Foundation
 
 struct RunGuideItem: Identifiable {
     let id = UUID()

@@ -5,7 +5,6 @@
 //  Created by 김동현 on 2022/06/29.
 //
 
-
 import FirebaseCore
 import SwiftUI
 
@@ -14,7 +13,7 @@ import SwiftUI
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
         _: UIApplication,
-        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey : Any]? = nil)
+        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil)
         -> Bool
     {
         FirebaseApp.configure()

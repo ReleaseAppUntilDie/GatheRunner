@@ -21,7 +21,7 @@ struct RunGuideTabView: View {
             tabView
             HStack(spacing: 5) {
                 tabViewIndicator
-            }.padding(.top, 10)
+            }.padding(.top, 5)
         }
     }
 }

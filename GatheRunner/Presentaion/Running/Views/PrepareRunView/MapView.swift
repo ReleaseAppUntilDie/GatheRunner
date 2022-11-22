@@ -12,7 +12,7 @@ import SwiftUI
 
 struct MapView: View {
     @StateObject private var manager = LocationManager()
-
+    
     var body: some View {
         Map(coordinateRegion: $manager.region, showsUserLocation: true).disabled(true)
             .overlay(mapOverlayMask)
