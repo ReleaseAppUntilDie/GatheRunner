@@ -39,7 +39,7 @@
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E33663D8292B906500E41E28 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663D7292B906500E41E28 /* DependencyContainer.swift */; };
 		E33663DA292B909600E41E28 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663D9292B909600E41E28 /* AppEnvironment.swift */; };
-		E33663DD292B941400E41E28 /* AuthRevokedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663DC292B941400E41E28 /* AuthRevokedView.swift */; };
+		E33663DD292B941400E41E28 /* AuthSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663DC292B941400E41E28 /* AuthSettingView.swift */; };
 		E33663DF292B9AC600E41E28 /* RepositoriesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663DE292B9AC600E41E28 /* RepositoriesContainer.swift */; };
 		E33663E1292CC44E00E41E28 /* ViewModelsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33663E0292CC44E00E41E28 /* ViewModelsContainer.swift */; };
 		E3435A01292281F500B65D48 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A00292281F500B65D48 /* UserRepository.swift */; };
@@ -481,7 +481,7 @@
 		E35EFEBD286DFB2D003E23DE /* Commons */ = {
 			isa = PBXGroup;
 			children = (
-				E33663DC292B941400E41E28 /* AuthRevokedView.swift */,
+				E33663DC292B941400E41E28 /* AuthSettingView.swift */,
 				DB198DA7288F76FF002513A9 /* HeaderView.swift */,
 				E35EFEBE286DFB2D003E23DE /* TabItem.swift */,
 				E3F5989F292A0E2200023097 /* MainTabComponents.swift */,
