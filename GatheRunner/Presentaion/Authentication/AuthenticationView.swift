@@ -60,8 +60,8 @@ struct AuthenticationView: View {
 
     private var alertMessage: Text? {
         switch true {
-        case viewModel.email.isEmpty: return Text(Content.Label.email + Content.Message.inputRequest)
-        case viewModel.password.isEmpty: return Text(Content.Label.password + Content.Message.inputRequest)
+        case viewModel.inputEmail.isEmpty: return Text(Content.Label.email + Content.Message.inputRequest)
+        case viewModel.inputPassword.isEmpty: return Text(Content.Label.password + Content.Message.inputRequest)
         case !viewModel.isEmailValid: return Text(Content.Label.email + Content.Message.inputError)
         case !viewModel.isPasswordValid: return Text(Content.Label.password + Content.Message.inputError)
         case !viewModel.isAuthValid: return Text(Content.Message.authFailed)
@@ -107,7 +107,7 @@ extension AuthenticationView {
     }
 
     private var emailField: some View {
-        TextField(Content.Label.email, text: $viewModel.email)
+        TextField(Content.Label.email, text: $viewModel.inputEmail)
             .keyboardType(.emailAddress)
             .disableAutocorrection(true)
             .frame(width: Size.width, height: Size.height, alignment: .center)
@@ -115,7 +115,7 @@ extension AuthenticationView {
     }
 
     private var passwordField: some View {
-        SecureField(Content.Label.password, text: $viewModel.password)
+        SecureField(Content.Label.password, text: $viewModel.inputPassword)
             .frame(width: Size.width, height: Size.height, alignment: .center)
             .asValidationFieldStyle(isValid: $viewModel.isPasswordValid)
     }
