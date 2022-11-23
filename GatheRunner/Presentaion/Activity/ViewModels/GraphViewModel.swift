@@ -167,7 +167,7 @@ extension GraphViewModel {
 extension GraphViewModel {
     func bindFetch() {
         //uid 관리방법
-        runningRecordRepository.fetch(RunningRecordRequest(uid: "hanTest"))
+        runningRecordRepository.fetch(RecordFetchRequest(uid: "hanTest"))
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error): print("debug error: ", error)

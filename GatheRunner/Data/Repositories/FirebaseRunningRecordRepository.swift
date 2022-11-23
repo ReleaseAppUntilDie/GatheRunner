@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 struct FirebaseRunningRecordRepository: RunningRecordRepository {
-    func post(_ request: RunningRecordRequest) -> AnyPublisher<Bool, Error> {
+    func post(_ request: RunningRecord) -> AnyPublisher<Bool, Error> {
         FirebaseAPIManager.shared.fetch(withQuery: request, as: Bool.self)
     }
     
-    func fetch(_ request: RunningRecordRequest) -> AnyPublisher<[RunningRecordResponse], Error> {
-        FirebaseAPIManager.shared.fetch(withQuery: request, as: RunningRecordResponse.self)
+    func fetch(_ request: RecordFetchRequest) -> AnyPublisher<[RunningRecord], Error> {
+        FirebaseAPIManager.shared.fetch(withQuery: request, as: RunningRecord.self)
     }
 }

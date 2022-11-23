@@ -48,13 +48,15 @@
 		E34F7B7A292E023100BCC6FE /* ViewModelsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B72292D0F4900BCC6FE /* ViewModelsContainer.swift */; };
 		E34F7B7B292E024600BCC6FE /* FirebaseUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A022922820D00B65D48 /* FirebaseUserRepository.swift */; };
 		E34F7B7D292E026700BCC6FE /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B7C292E026700BCC6FE /* AppEnvironment.swift */; };
-		E34F7B7F292E03D200BCC6FE /* RunningRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B7E292E03D200BCC6FE /* RunningRecordRequest.swift */; };
-		E34F7B81292E053D00BCC6FE /* FirebaseRunningRecordRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B80292E053D00BCC6FE /* FirebaseRunningRecordRequestDTO.swift */; };
+		E34F7B7F292E03D200BCC6FE /* RecordFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B7E292E03D200BCC6FE /* RecordFetchRequest.swift */; };
+		E34F7B81292E053D00BCC6FE /* RecordFetchFirebaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B80292E053D00BCC6FE /* RecordFetchFirebaseRequest.swift */; };
 		E34F7B84292E059800BCC6FE /* RunningRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B83292E059800BCC6FE /* RunningRecordResponse.swift */; };
 		E34F7B88292E076100BCC6FE /* RunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B87292E076100BCC6FE /* RunningRecordRepository.swift */; };
 		E34F7B8A292E07D900BCC6FE /* FirebaseRunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B89292E07D900BCC6FE /* FirebaseRunningRecordRepository.swift */; };
 		E34F7B94292E38C400BCC6FE /* RunningRecordResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B93292E38C400BCC6FE /* RunningRecordResponseDTO.swift */; };
 		E34F7B96292E424600BCC6FE /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B95292E424600BCC6FE /* String+ToDate.swift */; };
+		E34F7B99292E790A00BCC6FE /* RunningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B98292E790A00BCC6FE /* RunningRecord.swift */; };
+		E34F7B9B292E7A0A00BCC6FE /* RecordUploadFirebaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B9A292E7A0A00BCC6FE /* RecordUploadFirebaseRequest.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
 		E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* RunningRecordView.swift */; };
 		E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355960F28D45ECB00AF0FBD /* AuthenticationView.swift */; };
@@ -465,7 +467,6 @@
 		E34F7B91292E35EC00BCC6FE /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				E34F7B80292E053D00BCC6FE /* FirebaseRunningRecordRequestDTO.swift */,
 				E34F7B93292E38C400BCC6FE /* RunningRecordResponseDTO.swift */,
 			);
 			path = DTO;
@@ -474,10 +475,18 @@
 		E34F7B92292E35FA00BCC6FE /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E34F7B7E292E03D200BCC6FE /* RunningRecordRequest.swift */,
+				E34F7B7E292E03D200BCC6FE /* RecordFetchRequest.swift */,
 				E34F7B83292E059800BCC6FE /* RunningRecordResponse.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		E34F7B97292E789C00BCC6FE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E34F7B98292E790A00BCC6FE /* RunningRecord.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E355960E28D45E8200AF0FBD /* Authentication */ = {
@@ -538,7 +547,7 @@
 		E35EFEBB286DFB2D003E23DE /* Running */ = {
 			isa = PBXGroup;
 			children = (
-				EA5E278D28B604A1004C0798 /* Model */,
+				EA5E278D28B604A1004C0798 /* Models */,
 				DA58421C2893C26200554B5D /* ViewModel */,
 				DA5842242893C2E700554B5D /* TabItem */,
 				DA098D2D28F8470F0053140F /* Views */,
@@ -589,6 +598,7 @@
 			children = (
 				E38C3AA3291546BA00F0B104 /* Utils */,
 				E38C3AAA291546BA00F0B104 /* Helpers */,
+				E34F7B97292E789C00BCC6FE /* Models */,
 				E38C3AA8291546BA00F0B104 /* API */,
 				E34359FE292281D100B65D48 /* Repositories */,
 			);
@@ -598,8 +608,8 @@
 		E38C3AA3291546BA00F0B104 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E38C3AA4291546BA00F0B104 /* OptionNameSpaces.swift */,
 				E38C3AA7291546BA00F0B104 /* FireStoreRequest.swift */,
+				E38C3AA4291546BA00F0B104 /* OptionNameSpaces.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -744,6 +754,7 @@
 			children = (
 				E34F7B92292E35FA00BCC6FE /* Common */,
 				E34F7B91292E35EC00BCC6FE /* DTO */,
+				E34F7B80292E053D00BCC6FE /* RecordFetchFirebaseRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -759,12 +770,13 @@
 			path = Graph;
 			sourceTree = "<group>";
 		};
-		EA5E278D28B604A1004C0798 /* Model */ = {
+		EA5E278D28B604A1004C0798 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */,
+				E34F7B9A292E7A0A00BCC6FE /* RecordUploadFirebaseRequest.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EA5E279028B604B7004C0798 /* ViewModels */ = {
@@ -1068,6 +1080,7 @@
 				DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */,
 				EA7913B828D6EA7000F889E5 /* GraphBottomSheetView.swift in Sources */,
 				E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */,
+				E34F7B9B292E7A0A00BCC6FE /* RecordUploadFirebaseRequest.swift in Sources */,
 				E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */,
 				E3435A01292281F500B65D48 /* UserRepository.swift in Sources */,
 				E38C3AB52915471A00F0B104 /* OptionNameSpaces.swift in Sources */,
@@ -1077,7 +1090,7 @@
 				E355961328D4651900AF0FBD /* AuthenticationViewModel.swift in Sources */,
 				EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */,
 				E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */,
-				E34F7B81292E053D00BCC6FE /* FirebaseRunningRecordRequestDTO.swift in Sources */,
+				E34F7B81292E053D00BCC6FE /* RecordFetchFirebaseRequest.swift in Sources */,
 				E3DA2F5B28B76098001E9220 /* GatherNaviBar.swift in Sources */,
 				EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */,
 				E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */,
@@ -1085,7 +1098,7 @@
 				E34F7B94292E38C400BCC6FE /* RunningRecordResponseDTO.swift in Sources */,
 				E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */,
 				E3F598A5292B4F0300023097 /* MainTabComponents.swift in Sources */,
-				E34F7B7F292E03D200BCC6FE /* RunningRecordRequest.swift in Sources */,
+				E34F7B7F292E03D200BCC6FE /* RecordFetchRequest.swift in Sources */,
 				E34F7B7B292E024600BCC6FE /* FirebaseUserRepository.swift in Sources */,
 				E3E7480B289284B200F40457 /* TextStyle.swift in Sources */,
 				E399CA7F2933963100ACFCFA /* FirebaseUserRepository.swift in Sources */,
@@ -1128,6 +1141,7 @@
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
 				DA7D5E7728F73A5F0066B2C6 /* RunGuideTabView.swift in Sources */,
 				E31D52602927A6040067DF48 /* AuthRequest.swift in Sources */,
+				E34F7B99292E790A00BCC6FE /* RunningRecord.swift in Sources */,
 				E38C3AB62915472800F0B104 /* FireStoreRequest.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */,

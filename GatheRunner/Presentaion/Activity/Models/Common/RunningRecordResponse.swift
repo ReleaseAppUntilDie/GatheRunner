@@ -7,13 +7,7 @@
 
 import Foundation
 
-struct RunningRecordResponse: Decodable {
-    let uid: String
-    let distance: String
-    let averagePace: String
-    let runningTime: String
-    let date: String
-    
+extension RunningRecord {
     enum Keys: String, CodingKey {
         case uid
         case distance
@@ -34,7 +28,7 @@ struct RunningRecordResponse: Decodable {
 
 // MARK: NameSpace
 
-extension RunningRecordResponse {
+extension RunningRecord {
     enum Default {
         static let empty = ""
         static let distance = "0"

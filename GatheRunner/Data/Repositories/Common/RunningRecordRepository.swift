@@ -8,6 +8,6 @@
 import Combine
 
 protocol RunningRecordRepository {
-    func post(_ request: RunningRecordRequest) -> AnyPublisher<Bool, Error>
-    func fetch(_ request: RunningRecordRequest) -> AnyPublisher<[RunningRecordResponse], Error>
+    func post(_ request: RunningRecord) -> AnyPublisher<Bool, Error>
+    func fetch(_ request: RecordFetchRequest) -> AnyPublisher<[RunningRecord], Error>
 }

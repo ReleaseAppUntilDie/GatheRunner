@@ -22,9 +22,8 @@ struct AverageHistory {
     let totalTime: String
 }
 
-extension RunningRecordResponse {
+extension RunningRecord {
     var toHistory: HistoryModel {
         return .init(distance: distance, averagePace: averagePace, runningTime: runningTime, date: date, weekday: date.toWeekday)
     }
 }
-
