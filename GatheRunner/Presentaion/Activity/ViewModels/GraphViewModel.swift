@@ -15,8 +15,8 @@ class GraphViewModel: ObservableObject {
     @Published var pickerItemList = [String]()
     @Published var pickerItemListInMonth = ([Int](),[Int]())
     @Published var selectedString = "이번주"
-    @Published var records = [100,200]
-    @Published var response = [RunningRecordResponse]()
+    @Published var records = [0]
+    @Published var historyModels = [HistoryModel]()
 
     var selectedTimeUnit: TimeUnit = .week
     var currentPeriod: (start: Date, end: Date) = (Date(),Date())
@@ -31,7 +31,9 @@ class GraphViewModel: ObservableObject {
         dataInit()
         bindFetch()
     }
+}
 
+extension GraphViewModel {
     func updateTimeUnit(_ unit: TimeUnit) {
         selectedTimeUnit = unit
         switch unit {
@@ -94,39 +96,6 @@ class GraphViewModel: ObservableObject {
         }
     }
 
-    func beforeTwoWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
-        let date = Date()
-        
-        guard let weekDay = date.get([.weekday]).weekday else {
-            return (0,0,0,0)
-        }
-
-        let beforeTwoWeeks = date.calculatedDate(unit: .day, value: -(14 + (weekDay - 2)))
-       
-        let beforeOneWeek = date.calculatedDate(unit: .day, value: -(7 + (weekDay - 1)))
-        
-        let firstDateAndMonth = beforeTwoWeeks.get([.month, .day])
-        
-        let lastDateAndMonth = beforeOneWeek.get([.month, .day])
-        
-        return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
-    }
-    
-
-    func beforeThreeWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
-        let date = Date()
-        guard let weekDay = date.get([.weekday]).weekday else {
-            return (0,0,0,0)
-        }
-        let beforeThreeWeeks = date.calculatedDate(unit: .day, value: -(21 + (weekDay - 2)))
-        let beforeTwoWeek = date.calculatedDate(unit: .day, value: -(14 + (weekDay - 1)))
-       
-        let firstDateAndMonth = beforeThreeWeeks.get([.month, .day])
-        let lastDateAndMonth = beforeTwoWeek.get([.month,.day])
-        
-        return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
-    }
-
     func calculateYears() -> [Int] {
         var result = [Int]()
         let current = Calendar.current.dateComponents([.year], from: Date())
@@ -135,35 +104,11 @@ class GraphViewModel: ObservableObject {
         }
         return result
     }
+}
 
-    func isValidMonth(year: Int, month: Int) -> Bool {
-        let dateComponents = DateComponents(year: year,month: month)
-        let currentDate = Date()
-        guard let willCompareDate = Calendar.current.date(from: dateComponents) else { return false }
-        return currentDate >= willCompareDate
-    }
+// MARK: Private
 
-    func bindFetch() {
-        //uid 관리방법
-        runningRecordRepository.fetch(RunningRecordRequest(uid: "hanTest"))
-            .sink(receiveCompletion: { [weak self] completion in
-                guard let self = self else {return}
-                switch completion {
-                case .failure(let error):
-                    print("debug error: ", error)
-                case .finished:
-                    print("fetch All data finished")
-                }
-            }, receiveValue: { [weak self] result in
-                guard let self = self else {return}
-                print("result \(result) count \(result.count)")
-                self.response = result
-            })
-            .store(in: &cancelBag)
-    }
-
-    // MARK: Private
-
+extension GraphViewModel {
     private func dataInit() {
         let periodString: ((Int,Int,Int,Int)) -> String = {
             "\($0.0).\($0.1)~\($0.2).\($0.3)"
@@ -177,5 +122,62 @@ class GraphViewModel: ObservableObject {
             periodString(beforeTwoWeeks),
             periodString(beforeThreeWeeks),
         ]
+    }
+    
+    private func isValidMonth(year: Int, month: Int) -> Bool {
+        let dateComponents = DateComponents(year: year,month: month)
+        let currentDate = Date()
+        guard let willCompareDate = Calendar.current.date(from: dateComponents) else { return false }
+        return currentDate >= willCompareDate
+    }
+    
+    private func beforeTwoWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
+        let date = Date()
+        guard let weekDay = date.get([.weekday]).weekday else {
+            return (0,0,0,0)
+        }
+
+        let beforeTwoWeeks = date.calculatedDate(unit: .day, value: -(14 + (weekDay - 2)))
+        let beforeOneWeek = date.calculatedDate(unit: .day, value: -(7 + (weekDay - 1)))
+        
+        let firstDateAndMonth = beforeTwoWeeks.get([.month, .day])
+        let lastDateAndMonth = beforeOneWeek.get([.month, .day])
+        
+        return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
+    }
+
+    private func beforeThreeWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
+        let date = Date()
+        guard let weekDay = date.get([.weekday]).weekday else {
+            return (0,0,0,0)
+        }
+        
+        let beforeThreeWeeks = date.calculatedDate(unit: .day, value: -(21 + (weekDay - 2)))
+        let beforeTwoWeek = date.calculatedDate(unit: .day, value: -(14 + (weekDay - 1)))
+       
+        let firstDateAndMonth = beforeThreeWeeks.get([.month, .day])
+        let lastDateAndMonth = beforeTwoWeek.get([.month,.day])
+        
+        return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
+    }
+}
+
+// MARK: bind
+
+extension GraphViewModel {
+    func bindFetch() {
+        //uid 관리방법
+        runningRecordRepository.fetch(RunningRecordRequest(uid: "hanTest"))
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error): print("debug error: ", error)
+                case .finished: print("finished")
+                }
+            }, receiveValue: { [weak self] result in
+                guard let self = self else { return }
+                
+                self.historyModels = result.map { $0.toHistory }
+            })
+            .store(in: &cancelBag)
     }
 }

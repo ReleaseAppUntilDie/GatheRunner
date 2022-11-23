@@ -16,7 +16,6 @@ enum TimeUnit {
 // MARK: - ActivityHistoryView
 
 struct ActivityHistoryView: View {
-
     @ObservedObject var viewModel: GraphViewModel
     @State private var isPickerViewShowed = false
     @State var selectedTimeUnit: TimeUnit = .week

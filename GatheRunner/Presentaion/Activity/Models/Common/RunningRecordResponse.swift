@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct RunningRecordResponse: Decodable, Hashable {
-    let uid: String?
-    let distance: String?
-    let averagePace: String?
-    let runningTime: String?
-    let date: String?
+struct RunningRecordResponse: Decodable {
+    let uid: String
+    let distance: String
+    let averagePace: String
+    let runningTime: String
+    let date: String
     
     enum Keys: String, CodingKey {
         case uid
@@ -24,7 +24,7 @@ struct RunningRecordResponse: Decodable, Hashable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
-        uid = try container.decodeIfPresent(String.self, forKey: .uid) ?? ""
+        uid = try container.decodeIfPresent(String.self, forKey: .uid) ?? Default.empty
         distance = try container.decodeIfPresent(String.self, forKey: .distance) ?? Default.distance
         averagePace = try container.decodeIfPresent(String.self, forKey: .averagePace) ?? Default.averagePace
         runningTime = try container.decodeIfPresent(String.self, forKey: .runningTime) ?? Default.runningTime
@@ -36,9 +36,10 @@ struct RunningRecordResponse: Decodable, Hashable {
 
 extension RunningRecordResponse {
     enum Default {
+        static let empty = ""
         static let distance = "0"
         static let averagePace = "0"
         static let runningTime = "0"
-        static let date = ""
+        static let date = "날짜정보가 없습니다."
     }
 }

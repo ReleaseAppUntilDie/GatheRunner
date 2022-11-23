@@ -11,9 +11,9 @@ import SwiftUI
 
 struct HistoryItem: View {
     let iconImageName = "map"
-    let recrod: RunningRecordResponse
+    let history: HistoryModel
     @State var hasBadge = true
-
+    
     var body: some View {
         ZStack(alignment: .leading) {
             Color.white
@@ -25,26 +25,26 @@ struct HistoryItem: View {
                             RoundedRectangle(cornerRadius: 5)
                                 .strokeBorder(.black,lineWidth: 1))
                     VStack(alignment: .leading) {
-                        Text(recrod.date ?? "")
+                        Text(history.date)
                             .font(.system(size: 14))
                             .foregroundColor(.black)
                         
-//                        Text(history.weekday)
-//                            .font(.system(size: 14))
-//                            .foregroundColor(.gray)
+                        Text(history.weekday)
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
                     }
                 }
-
+                
                 HStack(spacing: 20) {
-                    element(title: recrod.distance ?? "0", sub: "Km")
-                    element(title: recrod.averagePace ?? "0", sub: "평균 페이스")
-                    element(title: recrod.runningTime ?? "0", sub: "시간")
+                    element(title: history.distance, sub: "Km")
+                    element(title: history.averagePace, sub: "평균 페이스")
+                    element(title: history.runningTime, sub: "시간")
                 }
                 Group {
                     Rectangle()
                         .strokeBorder(Color.gray,lineWidth: 1)
                         .frame(height: 1)
-
+                    
                     Image(systemName: "star.circle")
                         .resizable()
                         .frame(width: 50, height: 50)
@@ -56,7 +56,7 @@ struct HistoryItem: View {
         .frame(width: UIScreen.getWidthby(ratio: 0.8))
         .cornerRadius(10)
     }
-
+    
     func element(title: String, sub: String) -> some View {
         VStack(alignment: .leading) {
             Text(title)

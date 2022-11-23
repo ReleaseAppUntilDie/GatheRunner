@@ -20,10 +20,9 @@ struct HistoryList: View {
                     .font(.title3)
                     .padding()
                     .padding(.leading,20)
+                
                 LazyVStack {
-                    ForEach(viewModel.response, id: \.self) { item in
-                        HistoryItem(recrod: item)
-                    }
+                    ForEach(viewModel.historyModels, id: \.self) { HistoryItem(history: $0) }
                 }
             }
         }

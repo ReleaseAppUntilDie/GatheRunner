@@ -53,6 +53,8 @@
 		E34F7B84292E059800BCC6FE /* RunningRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B83292E059800BCC6FE /* RunningRecordResponse.swift */; };
 		E34F7B88292E076100BCC6FE /* RunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B87292E076100BCC6FE /* RunningRecordRepository.swift */; };
 		E34F7B8A292E07D900BCC6FE /* FirebaseRunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B89292E07D900BCC6FE /* FirebaseRunningRecordRepository.swift */; };
+		E34F7B94292E38C400BCC6FE /* RunningRecordResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B93292E38C400BCC6FE /* RunningRecordResponseDTO.swift */; };
+		E34F7B96292E424600BCC6FE /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B95292E424600BCC6FE /* String+ToDate.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
 		E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* RunningRecordView.swift */; };
 		E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355960F28D45ECB00AF0FBD /* AuthenticationView.swift */; };
@@ -97,7 +99,6 @@
 		E3F598A5292B4F0300023097 /* MainTabComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5989F292A0E2200023097 /* MainTabComponents.swift */; };
 		E3F83E6A28AF641D000CA1B5 /* MeasurementViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */; };
 		E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE02FA28D49749008A9B91 /* String+isValid.swift */; };
-		E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85FF54828F6867C00C197CA /* AverageHistory.swift */; };
 		EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8928D07C1000D78D28 /* PeriodView.swift */; };
 		EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8A28D07C1000D78D28 /* GraphView.swift */; };
 		EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8B28D07C1000D78D28 /* Graph.swift */; };
@@ -226,7 +227,6 @@
 		E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewUITests.swift; sourceTree = "<group>"; };
 		E3FE02FA28D49749008A9B91 /* String+isValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValid.swift"; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E85FF54828F6867C00C197CA /* AverageHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageHistory.swift; sourceTree = "<group>"; };
 		EA3D3F8928D07C1000D78D28 /* PeriodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodView.swift; sourceTree = "<group>"; };
 		EA3D3F8A28D07C1000D78D28 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		EA3D3F8B28D07C1000D78D28 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -336,6 +336,7 @@
 				DA5842182893C22F00554B5D /* View+Extensions.swift */,
 				DA58421A2893C24A00554B5D /* Array+Extensions.swift */,
 				E3FE02FA28D49749008A9B91 /* String+isValid.swift */,
+				E34F7B95292E424600BCC6FE /* String+ToDate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -420,14 +421,6 @@
 			path = Injected;
 			sourceTree = "<group>";
 		};
-		E34F7B82292E056100BCC6FE /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				E34F7B80292E053D00BCC6FE /* FirebaseRunningRecordRequestDTO.swift */,
-			);
-			path = Firebase;
-			sourceTree = "<group>";
-		};
 		E34F7B8B292E0A1200BCC6FE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +460,24 @@
 				E31D52632927A63C0067DF48 /* FirebaseAuthRequestDTO.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		E34F7B91292E35EC00BCC6FE /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				E34F7B80292E053D00BCC6FE /* FirebaseRunningRecordRequestDTO.swift */,
+				E34F7B93292E38C400BCC6FE /* RunningRecordResponseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		E34F7B92292E35FA00BCC6FE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E34F7B7E292E03D200BCC6FE /* RunningRecordRequest.swift */,
+				E34F7B83292E059800BCC6FE /* RunningRecordResponse.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		E355960E28D45E8200AF0FBD /* Authentication */ = {
@@ -731,10 +742,8 @@
 		E85FF54528F6856800C197CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E34F7B7E292E03D200BCC6FE /* RunningRecordRequest.swift */,
-				E34F7B83292E059800BCC6FE /* RunningRecordResponse.swift */,
-				E34F7B82292E056100BCC6FE /* Firebase */,
-				E85FF54828F6867C00C197CA /* AverageHistory.swift */,
+				E34F7B92292E35FA00BCC6FE /* Common */,
+				E34F7B91292E35EC00BCC6FE /* DTO */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1073,6 +1082,7 @@
 				EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */,
 				E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */,
 				E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */,
+				E34F7B94292E38C400BCC6FE /* RunningRecordResponseDTO.swift in Sources */,
 				E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */,
 				E3F598A5292B4F0300023097 /* MainTabComponents.swift in Sources */,
 				E34F7B7F292E03D200BCC6FE /* RunningRecordRequest.swift in Sources */,
@@ -1109,7 +1119,6 @@
 				DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */,
 				E38C3AB72915472D00F0B104 /* FirebaseAPIManager.swift in Sources */,
 				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
-				E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */,
 				E38C3AB0291546F500F0B104 /* Query+AddQueries.swift in Sources */,
 				E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */,
 				E38C3AB2291546FB00F0B104 /* Firestore+Combine.swift in Sources */,
