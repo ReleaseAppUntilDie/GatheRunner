@@ -8,6 +8,7 @@
 extension DependencyContainer {
     struct Repositories {
         let userRepository: UserRepository
+        let runningRecordRepository: RunningRecordRepository
     }
 }
 
@@ -16,8 +17,9 @@ extension DependencyContainer.Repositories {
         switch apiType {
         case .FireBase:
             let userRepository = FirebaseUserRepository()
+            let runningRecordRepository = FirebaseRunningRecordRepository()
             
-            self.init(userRepository: userRepository)
+            self.init(userRepository: userRepository, runningRecordRepository: runningRecordRepository)
         }
     }
 }

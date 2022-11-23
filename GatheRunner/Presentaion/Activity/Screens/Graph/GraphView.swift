@@ -66,7 +66,6 @@ struct GraphView: View {
     func viewModelUpdate() {
         viewModel.updateTimeUnit(selectedTimeUnit)
         viewModel.updatePicker(timeUnit: selectedTimeUnit)
-        viewModel.fetchData()
     }
 
 }

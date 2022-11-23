@@ -5,38 +5,32 @@
 //  Created by hanjaeseung on 2022/08/15.
 //
 
-import SwiftUI
+import Foundation
+import Combine
 
 class GraphViewModel: ObservableObject {
 
-    // MARK: Lifecycle
-
-    init() {
-        pickerItemList = [String]()
-        pickerItemListInMonth = ([Int](),[Int]())
-        selectedString = "이번주"
-        selectedTimeUnit = .week
-        records = [Int]()
-
-        dataInit()
-
-        fetchData()
-        
-        fetchAllData()
-        
-        범위테스트()
-    }
-
     // MARK: Internal
 
-    @Published var pickerItemList: [String]
-    @Published var pickerItemListInMonth: ([Int],[Int])
-    @Published var selectedString: String
-    @Published var records: [Int]
-    @Published var historys: [History] = []
-    @Published var fetchError = false
-    var selectedTimeUnit: TimeUnit
+    @Published var pickerItemList = [String]()
+    @Published var pickerItemListInMonth = ([Int](),[Int]())
+    @Published var selectedString = "이번주"
+    @Published var records = [100,200]
+    @Published var response = [RunningRecordResponse]()
+
+    var selectedTimeUnit: TimeUnit = .week
     var currentPeriod: (start: Date, end: Date) = (Date(),Date())
+    
+    let runningRecordRepository: RunningRecordRepository
+    var cancelBag = Set<AnyCancellable>()
+
+    // MARK: Lifecycle
+
+    init(runningRecordRepository: RunningRecordRepository) {
+        self.runningRecordRepository = runningRecordRepository
+        dataInit()
+        bindFetch()
+    }
 
     func updateTimeUnit(_ unit: TimeUnit) {
         selectedTimeUnit = unit
@@ -118,14 +112,6 @@ class GraphViewModel: ObservableObject {
         return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
     }
     
-    func 범위테스트() {
-        let today = Date()
-        guard let weekDay = today.get([.weekday]).weekday else { return }
-        let 이번주월요일 = today.calculatedDate(unit: .day, value: -(weekDay - 2))
-        let 지난주월요일 = today.calculatedDate(unit: .day, value: -(7 + weekDay - 2))
-        let 지난주일요일 = today.calculatedDate(unit: .day, value: -(weekDay - 1))
-        print(지난주일요일.get([.day,.month]))
-    }
 
     func beforeThreeWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
         let date = Date()
@@ -157,36 +143,23 @@ class GraphViewModel: ObservableObject {
         return currentDate >= willCompareDate
     }
 
-    func fetchData() {
-        
-        switch selectedTimeUnit {
-        case .week:
-            records = (0..<7).map { _ in Int.random(in: 1 ... 20) }
-        case .month:
-            records = (0..<30).map { _ in Int.random(in: 1 ... 20) }
-        case .year:
-            records = (0..<12).map { _ in Int.random(in: 1 ... 20) }
-        case .whole:
-            records = (0..<4).map { _ in Int.random(in: 1 ... 20) }
-        }
-    }
-    
-    func fetchAllData() {
-        RunningRecordAPIs.fetchRunningRecord(request: RunningRecordRequest(uid: "hanTest"))
+    func bindFetch() {
+        //uid 관리방법
+        runningRecordRepository.fetch(RunningRecordRequest(uid: "hanTest"))
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else {return}
                 switch completion {
                 case .failure(let error):
                     print("debug error: ", error)
-                    self.fetchError = true
                 case .finished:
                     print("fetch All data finished")
                 }
             }, receiveValue: { [weak self] result in
                 guard let self = self else {return}
-                self.historys = result.sorted { $0.stringToDate > $1.stringToDate }
+                print("result \(result) count \(result.count)")
+                self.response = result
             })
-            .store(in: &RunningRecordAPIs.cancelBag)
+            .store(in: &cancelBag)
     }
 
     // MARK: Private
@@ -204,7 +177,5 @@ class GraphViewModel: ObservableObject {
             periodString(beforeTwoWeeks),
             periodString(beforeThreeWeeks),
         ]
-        
     }
-
 }

@@ -78,7 +78,7 @@ struct GraphBottomSheetView: View {
             selectedYear: selectedYear,
             selectedMonth: selectedMonth
         )
-        viewModel.fetchData()
+//        viewModel.fetchData()
         withAnimation(.linear) {
             show.toggle()
         }

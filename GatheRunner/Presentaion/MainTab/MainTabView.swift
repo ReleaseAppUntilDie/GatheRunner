@@ -20,13 +20,14 @@ struct MainTabView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab.mainIndex) {
-                ForEach(tabItems) { childView($0) }
+                ForEach(tabItems) { childView($0).environmentObject(container) }
             }
             .onAppear { didSetTabBar() }
             .accentColor(.black)
         }
     }
     
+    @EnvironmentObject var container: DependencyContainer
     @ObservedObject var selectedTab = SelectedTab.shared
 }
 
