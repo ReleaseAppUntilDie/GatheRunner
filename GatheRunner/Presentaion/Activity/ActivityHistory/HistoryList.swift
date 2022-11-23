@@ -10,34 +10,33 @@ import SwiftUI
 // MARK: - HistoryList
 
 struct HistoryList: View {
+    @ObservedObject var viewModel: GraphViewModel
+    
     var body: some View {
         ZStack {
             Color(uiColor: .systemGray6)
-            VStack(alignment: .leading) {
-                Text("최근 활동")
-                    .font(.title3)
-                    .padding()
-                    .padding(.leading,20)
-                LazyVStack {
-                    ForEach(0..<10) { _ in
-                        HistoryItem(history:
-                                        History(
-                                            timeString: "2022.10.7.",
-                                            weekString: "금요일 저녁 러닝",
-                                            distance: "8.00",
-                                            averagePace: "5'13''",
-                                            runningTime: "41:44"))
+            if !viewModel.fetchError {
+                VStack(alignment: .leading) {
+                    Text("최근 활동")
+                        .font(.title3)
+                        .padding()
+                        .padding(.leading,20)
+                    LazyVStack {
+                        ForEach(Array(viewModel.historys.enumerated()), id: \.offset) { index, history in
+                            HistoryItem(
+                                history: history
+                            )
+                        }
                     }
                 }
+            } else {
+                Spacer()
+                
+                Text("기록이 없습니다")
+                    .font(.system(size: 20, weight: .bold))
+                
+                Spacer()
             }
         }
-    }
-}
-
-// MARK: - HistoryList_Previews
-
-struct HistoryList_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryList()
     }
 }

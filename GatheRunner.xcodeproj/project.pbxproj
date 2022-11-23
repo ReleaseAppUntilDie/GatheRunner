@@ -41,6 +41,7 @@
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
 		E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */; };
 		E3452551291E264000E2FA38 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3452550291E264000E2FA38 /* AuthResponse.swift */; };
+		E34F7B77292DDAC900BCC6FE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB051390292BDE7B00BE218B /* Date+Extension.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
 		E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* RunningRecordView.swift */; };
 		E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355960F28D45ECB00AF0FBD /* AuthenticationView.swift */; };
@@ -131,6 +132,7 @@
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideExperienceTabItem.swift; sourceTree = "<group>"; };
 		DAEA9319287D184900349465 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
+		DB051390292BDE7B00BE218B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DB1870D829212E8B00C51095 /* ResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapView.swift; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DB6C6E702929087100C18C37 /* MapWithPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWithPolyline.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				E3DA2F5628B7607F001E9220 /* GatherNaviBar.swift */,
 				E3DA2F5728B7607F001E9220 /* TouchLocationView.swift */,
 				E305671028B75B6600DFA1C4 /* LocationManager.swift */,
+				DB051390292BDE7B00BE218B /* Date+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				DBD4C53128F3DFE0000E28D0 /* HistoryList.swift in Sources */,
 				E3607CD42923C25E0018B2C2 /* ImageStyle.swift in Sources */,
 				EA3D3F9028D07C1000D78D28 /* SimplifiedStatistics.swift in Sources */,
+				E34F7B77292DDAC900BCC6FE /* Date+Extension.swift in Sources */,
 				E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */,
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
