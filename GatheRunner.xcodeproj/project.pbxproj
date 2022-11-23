@@ -41,6 +41,7 @@
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
 		E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345254A291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift */; };
 		E3452551291E264000E2FA38 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3452550291E264000E2FA38 /* AuthResponse.swift */; };
+		E34F7B77292DDAC900BCC6FE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB051390292BDE7B00BE218B /* Date+Extension.swift */; };
 		E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350EA1728AE196000F85FA1 /* Toggle+IconStyle.swift */; };
 		E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351783928ABC9E50088003B /* RunningRecordView.swift */; };
 		E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355960F28D45ECB00AF0FBD /* AuthenticationView.swift */; };
@@ -1010,6 +1011,7 @@
 				DBD4C53128F3DFE0000E28D0 /* HistoryList.swift in Sources */,
 				E3607CD42923C25E0018B2C2 /* ImageStyle.swift in Sources */,
 				EA3D3F9028D07C1000D78D28 /* SimplifiedStatistics.swift in Sources */,
+				E34F7B77292DDAC900BCC6FE /* Date+Extension.swift in Sources */,
 				E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */,
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
@@ -1028,7 +1030,6 @@
 				E31D52622927A6280067DF48 /* FirebaseAuthResponseDTO.swift in Sources */,
 				E3DA2F5A28B76098001E9220 /* TouchLocationView.swift in Sources */,
 				DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */,
-				DB051391292BDE7B00BE218B /* Date+Extension.swift in Sources */,
 				E38C3AB72915472D00F0B104 /* FirebaseAPIManager.swift in Sources */,
 				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
 				E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */,
