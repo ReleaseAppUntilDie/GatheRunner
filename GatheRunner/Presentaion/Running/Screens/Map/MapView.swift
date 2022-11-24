@@ -11,10 +11,10 @@ import SwiftUI
 // MARK: - MapView
 
 struct MapView: View {
-    @StateObject private var manager = LocationManager()
+    @StateObject var viewModel: MapViewModel
 
     var body: some View {
-        Map(coordinateRegion: $manager.region, showsUserLocation: true).disabled(true)
+        Map(coordinateRegion: $viewModel.region, showsUserLocation: true).disabled(true)
             .overlay(mapOverlayMask)
     }
 }
@@ -38,8 +38,8 @@ extension MapView {
 
 // MARK: - MapView_Previews
 
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView()
-    }
-}
+//struct MapView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MapView()
+//    }
+//}

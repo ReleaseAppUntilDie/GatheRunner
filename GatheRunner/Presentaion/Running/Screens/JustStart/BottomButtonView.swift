@@ -11,6 +11,7 @@ import SwiftUI
 
 struct BottomButtonView: View {
     @State var tag: Int? = nil
+    @EnvironmentObject var container: DependencyContainer
 
     var body: some View {
         VStack(spacing: 10) {
@@ -19,7 +20,8 @@ struct BottomButtonView: View {
                     // MARK: - 측정화면으로 이동을 위한 임시 구현
 
                     NavigationLink(
-                        destination: RunningRecordView().environmentObject(LocationManager()),
+                        destination: RunningRecordView(recordVm: container.viewModels.runningRecordViewModel,
+                                                       routeVm: container.viewModels.runningRouteViewModel),
                         tag: 1,
                         selection: self.$tag)
                     {

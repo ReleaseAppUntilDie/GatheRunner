@@ -34,6 +34,7 @@ extension RunningView {
     var viewSelector: some View {
         if recentSelectButton.selectedButton == .justStartButton {
             JustStartView()
+                .environmentObject(container)
                 .transition(.move(edge: .leading))
                 .zIndex(-1)
         }

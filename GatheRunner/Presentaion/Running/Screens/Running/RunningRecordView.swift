@@ -15,13 +15,12 @@ struct RunningRecordView: View {
     
     var body: some View {
         VStack(spacing: Size.mainVerticalSpacing) {
-            ResultMapView(manager: manager)
-                .isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
+            RunningRouteView(viewModel: routeVm).isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
             timerView
             realTimeRecordView
             stopWatchButtonLayer
-            Spacer()
-                .isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
+            Spacer().isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
+
         }
     }
     
@@ -54,7 +53,8 @@ struct RunningRecordView: View {
     
     @State private var isRunning = false
     @State private var isInitialState = true
-    @EnvironmentObject private var manager: LocationManager
+    @StateObject var recordVm: RunningRecordViewModel
+    @StateObject var routeVm: RunningRouteViewModel
 }
 
 // MARK: SubViews
@@ -63,17 +63,17 @@ extension RunningRecordView {
     private var timerView: some View {
         recordLabelView(
             label: Content.Label.exerciseTime,
-            bidingText: "\(manager.minutes) : \(manager.seconds)")
+            bidingText: "\(recordVm.minutes) : \(recordVm.seconds)")
     }
     
     private var realTimeRecordView: some View {
         HStack(spacing: Size.recordHorizontalSpacing) {
             recordLabelView(
                 label: Content.Label.kilometer,
-                bidingText: String(format: Content.Label.recordFormat, manager.distance))
+                bidingText: String(format: Content.Label.recordFormat, recordVm.distance))
             recordLabelView(
                 label: Content.Label.pace,
-                bidingText: String(format: Content.Label.recordFormat, manager.currentPace))
+                bidingText: String(format: Content.Label.recordFormat, recordVm.currentPace))
         }
     }
     
@@ -90,8 +90,7 @@ extension RunningRecordView {
                 .asIconStyle(withMaxWidth: Size.stopWatchImage, withMaxHeight: Size.stopWatchImage)
                 .addLongPressTypeAlert(withAction: {
                     isRunning = false
-                    manager.didStopRecording()
-                    
+                    recordVm.stopRecord()
                 })
         }
     }
@@ -99,10 +98,9 @@ extension RunningRecordView {
     private var resumeButton: some View {
         Toggle(Content.Label.empty, isOn: $isRunning)
             .onChange(of: isRunning) {
-                if isInitialState {
-                    isInitialState = false
-                }
-                $0 ? manager.didSetStartLocation() : manager.didUnSetStartLocation()
+                isInitialState = isInitialState ? false : isInitialState
+
+                $0 ? recordVm.startRecord() : recordVm.pauseRecord()
             }
             .toggleStyle(IconStyle(onImage: Content.Image.play, offImage: Content.Image.pause, size: Size.stopWatchImage))
     }
@@ -123,8 +121,9 @@ extension RunningRecordView {
 }
 
 // MARK: - RunningRecordView_Previews
-struct RunningRecordView_Previews: PreviewProvider {
-    static var previews: some View {
-        RunningRecordView().environmentObject(LocationManager())
-    }
-}
+
+//struct RunningRecordView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RunningRecordView().environmentObject(LocationManager())
+//    }
+//}

@@ -11,14 +11,18 @@ import SwiftUI
 
 struct JustStartView: View {
     @State private var isPresentedRunGuideDetailDescriptionView = false
+    @EnvironmentObject var container: DependencyContainer
 
     var body: some View {
         ZStack {
-            MapView().hide(isPresentedRunGuideDetailDescriptionView)
+            MapView(viewModel: container.viewModels.mapViewModel)
+                .hide(isPresentedRunGuideDetailDescriptionView)
             VStack {
                 RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView).padding(.top, 5)
                 Spacer()
-                BottomButtonView().padding(.bottom, 30)
+                BottomButtonView()
+                    .environmentObject(container)
+                    .padding(.bottom, 30)
             }
         }
     }

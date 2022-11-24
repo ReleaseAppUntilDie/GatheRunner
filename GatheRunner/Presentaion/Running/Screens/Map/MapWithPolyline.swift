@@ -13,7 +13,7 @@ struct MapWithPolyline: UIViewRepresentable {
     @Binding var region: MKCoordinateRegion
     @Binding var lineCoordinates: [CLLocationCoordinate2D]
     @Binding var startPosition: CLLocationCoordinate2D?
-    @Binding var endPosition: CLLocationCoordinate2D?
+    @Binding var endPosition: CLLocationCoordinate2D
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
@@ -26,7 +26,7 @@ struct MapWithPolyline: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
-        guard let startPosition = startPosition, let endPosition = endPosition else {
+        guard let startPosition = startPosition else {
             return
         }
         let startCircle = MKCircle(center: startPosition, radius: 7)
