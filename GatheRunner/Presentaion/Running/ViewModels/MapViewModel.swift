@@ -17,10 +17,10 @@ class MapViewModel: ObservableObject {
     init(locationManager: LocationManager) {
         self.locationManager = locationManager
         bindRegion()
-    }
+    }    
     
     func bindRegion() {
-        locationManager.$region
+        locationManager.regionSubject
             .assign(to: \.region, on: self)
             .store(in: &cancelBag)
     }

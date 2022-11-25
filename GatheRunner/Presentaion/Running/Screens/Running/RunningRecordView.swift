@@ -15,12 +15,10 @@ struct RunningRecordView: View {
     
     var body: some View {
         VStack(spacing: Size.mainVerticalSpacing) {
-            RunningRouteView(viewModel: routeVm).isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
+            RunningRouteView(viewModel: routeVm).isEmpty(logicalOperator: .and, [isStart, !isRunning])
             timerView
             realTimeRecordView
             stopWatchButtonLayer
-            Spacer().isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
-
         }
     }
     
@@ -52,7 +50,7 @@ struct RunningRecordView: View {
     }
     
     @State private var isRunning = false
-    @State private var isInitialState = true
+    @State private var isStart = false
     @StateObject var recordVm: RunningRecordViewModel
     @StateObject var routeVm: RunningRouteViewModel
 }
@@ -88,23 +86,19 @@ extension RunningRecordView {
         Button(action: { }) {
             Image(Content.Image.stop)
                 .asIconStyle(withMaxWidth: Size.stopWatchImage, withMaxHeight: Size.stopWatchImage)
-                .addLongPressTypeAlert(withAction: {
+                .addLongPressTypeAlert {
                     isRunning = false
-                    recordVm.stopRecord()
-                })
+                    isStart = false
+                    stopRecord()
+                }
         }
     }
     
     private var resumeButton: some View {
         Toggle(Content.Label.empty, isOn: $isRunning)
             .onChange(of: isRunning) {
-                if isInitialState {
-                    $0 ? recordVm.startRecord() : recordVm.pauseRecord()
-                } else {
-                    $0 ? recordVm.resumeRecord() : recordVm.pauseRecord()
-                }
-                isInitialState = isInitialState ? false : isInitialState
-                
+                isStart = true
+                $0 ? recordVm.startRecord() : recordVm.pauseRecord()
             }
             .toggleStyle(IconStyle(onImage: Content.Image.play, offImage: Content.Image.pause, size: Size.stopWatchImage))
     }
@@ -122,6 +116,22 @@ extension RunningRecordView {
             Text(label).asLabelStyle()
         }
     }
+    
+    private func startRecord() {
+        recordVm.startRecord()
+        routeVm.startRecord()
+    }
+    
+    private func pauseRecord() {
+        recordVm.pauseRecord()
+        routeVm.pauseRecord()
+    }
+    
+    private func stopRecord() {
+        recordVm.stopRecord()
+        routeVm.stopRecord()
+    }
+
 }
 
 // MARK: - RunningRecordView_Previews

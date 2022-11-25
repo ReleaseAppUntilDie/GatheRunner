@@ -17,7 +17,8 @@ class RunningRecordViewModel: ObservableObject {
     private let runningRecordRepository: RunningRecordRepository
     private let locationManager: LocationManager
     private let timerManager: TimerManager
-    private var oldLocatioin = CLLocationCoordinate2D()
+    private var oldLocation: CLLocationCoordinate2D?
+    private var locationCancellable: Cancellable?
     
     var cancelBag = Set<AnyCancellable>()
     
@@ -37,21 +38,17 @@ extension RunningRecordViewModel {
         bindLocation()
     }
     
-    func resumeRecord() {
-        locationManager.startUpdate()
-        bindTimer()
-    }
-    
     func pauseRecord() {
-        locationManager.stopUpdate()
         timerManager.cancleBinding()
+        locationCancellable?.cancel()
     }
     
     func stopRecord() {
-        locationManager.cancleBinding()
         timerManager.cancleBinding()
-        locationManager.resetLocation()
+        locationCancellable?.cancel()
+        
         timerManager.resetTime()
+        resetRecord()
     }
 }
 
@@ -71,26 +68,62 @@ extension RunningRecordViewModel {
     }
     
     private func bindLocation() {
-        oldLocatioin = locationManager.region.center
-        locationManager.bind()
-        
-        locationManager.$currentLocation
-            .sink { [weak self] location in
+        locationCancellable = locationManager.regionSubject
+            .sink { [weak self] region in
                 guard let self = self else { return }
+                
+                let location = region.center
                 self.distance += self.calcDistance(current: location)
                 self.currentPace = self.calcPace
-                self.oldLocatioin = location
+                self.oldLocation = location
+                print("recordVm distance \(self.distance) currentPace \(self.currentPace)")
             }
-            .store(in: &cancelBag)
+        
+//        locationCancellable = locationManager.$region
+//                    .sink { [weak self] region in
+//                        guard let self = self else { return }
+//                        let location = region.center
+//                        self.distance += self.calcDistance(current: location)
+//                        self.currentPace = self.calcPace
+//                        self.oldLocatioin = location
+//                        print("recordVm distance \(self.distance) currentPace \(self.currentPace)")
+//                    }
+//                    .store(in: &cancelBag)
+
+//        locationManager.$currentLocation
+//            .sink { [weak self] location in
+//                guard let self = self else { return }
+//                self.distance += self.calcDistance(current: location)
+//                self.currentPace = self.calcPace
+//                self.oldLocatioin = location
+////                print("bindLocation distance \(self.distance) currentPace \(self.currentPace)")
+//            }
+//            .store(in: &cancelBag)
     }
     
     private var calcPace: Double {
-        (Double(timerManager.progressTime) / 60) / distance
+        guard timerManager.progressTime > 0, oldLocation != nil else {
+            return 0
+        }
+        
+        return (Double(timerManager.progressTime) / 60) / distance
     }
     
     private func calcDistance(current: CLLocationCoordinate2D) -> Double {
-        let oldCLLocation = CLLocation(latitude: oldLocatioin.latitude, longitude: oldLocatioin.longitude)
+        guard let oldLocation = oldLocation else {
+            return 0
+        }
+        
+        let oldCLLocation = CLLocation(latitude: oldLocation.latitude, longitude: oldLocation.longitude)
         let currentCLLocation = CLLocation(latitude: current.latitude, longitude: current.longitude)
         return oldCLLocation.distance(from: currentCLLocation) / 1000
+    }
+    
+    private func resetRecord() {
+        minutes = "00"
+        seconds = "00"
+        oldLocation = nil
+        distance = Double()
+        currentPace = Double()
     }
 }
