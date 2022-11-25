@@ -18,9 +18,9 @@ class RunningRecordViewModel: ObservableObject {
     private let locationManager: LocationManager
     private let timerManager: TimerManager
     private var oldLocatioin = CLLocationCoordinate2D()
-
+    
     var cancelBag = Set<AnyCancellable>()
-        
+    
     init(runningRecordRepository: RunningRecordRepository,
          locationManager: LocationManager,
          timerManager: TimerManager) {
@@ -33,19 +33,23 @@ class RunningRecordViewModel: ObservableObject {
 
 extension RunningRecordViewModel {
     func startRecord() {
-        setStartLocation()
         bindTimer()
         bindLocation()
     }
     
+    func resumeRecord() {
+        locationManager.startUpdate()
+        bindTimer()
+    }
+    
     func pauseRecord() {
-        locationManager.cancleLocationBind()
-        timerManager.cancleTimer()
+        locationManager.stopUpdate()
+        timerManager.cancleBinding()
     }
     
     func stopRecord() {
-        locationManager.cancleLocationBind()
-        timerManager.cancleTimer()
+        locationManager.cancleBinding()
+        timerManager.cancleBinding()
         locationManager.resetLocation()
         timerManager.resetTime()
     }
@@ -53,17 +57,9 @@ extension RunningRecordViewModel {
 
 // MARK: private
 
-extension RunningRecordViewModel {
-    private func setStartLocation() {
-        guard locationManager.startLocation == nil else {
-            return
-        }
-        locationManager.startLocation = locationManager.region.center
-        oldLocatioin = locationManager.startLocation ?? CLLocationCoordinate2D()
-    }
-    
+extension RunningRecordViewModel {    
     private func bindTimer() {
-        timerManager.bindTimer()
+        timerManager.bind()
         
         timerManager.$progressTime
             .sink { [weak self] progressTime in
@@ -75,6 +71,9 @@ extension RunningRecordViewModel {
     }
     
     private func bindLocation() {
+        oldLocatioin = locationManager.region.center
+        locationManager.bind()
+        
         locationManager.$currentLocation
             .sink { [weak self] location in
                 guard let self = self else { return }

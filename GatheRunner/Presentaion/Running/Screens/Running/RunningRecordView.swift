@@ -98,9 +98,13 @@ extension RunningRecordView {
     private var resumeButton: some View {
         Toggle(Content.Label.empty, isOn: $isRunning)
             .onChange(of: isRunning) {
+                if isInitialState {
+                    $0 ? recordVm.startRecord() : recordVm.pauseRecord()
+                } else {
+                    $0 ? recordVm.resumeRecord() : recordVm.pauseRecord()
+                }
                 isInitialState = isInitialState ? false : isInitialState
-
-                $0 ? recordVm.startRecord() : recordVm.pauseRecord()
+                
             }
             .toggleStyle(IconStyle(onImage: Content.Image.play, offImage: Content.Image.pause, size: Size.stopWatchImage))
     }

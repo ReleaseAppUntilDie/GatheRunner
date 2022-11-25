@@ -12,7 +12,7 @@ struct RunningRouteView: View {
     @ObservedObject var viewModel: RunningRouteViewModel
 
     var body: some View {
-        MapWithPolyline(region: $viewModel.region, lineCoordinates: $viewModel.coordinates, startPosition: $viewModel.startLocatioin, endPosition: $viewModel.currentLocation)
+        MapWithPolyline(region: $viewModel.region, lineCoordinates: $viewModel.coordinates)
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .padding(.horizontal, 30)
     }

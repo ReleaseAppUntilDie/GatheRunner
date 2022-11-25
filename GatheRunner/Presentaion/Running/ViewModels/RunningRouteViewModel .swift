@@ -11,8 +11,6 @@ import MapKit
 class RunningRouteViewModel: ObservableObject {
     @Published var coordinates = [CLLocationCoordinate2D]()
     @Published var region = MKCoordinateRegion()
-    @Published var currentLocation = CLLocationCoordinate2D()
-    @Published var startLocatioin: CLLocationCoordinate2D?
 
     let locationManager: LocationManager
     
@@ -24,20 +22,12 @@ class RunningRouteViewModel: ObservableObject {
     }
     
     func bindLocation() {
-        
         locationManager.$region
             .assign(to: \.region, on: self)
             .store(in: &cancelBag)
         
         locationManager.$currentLocation
-            .assign(to: \.currentLocation, on: self)
-            .store(in: &cancelBag)
-
-        let startLocation = locationManager.startLocation ?? CLLocationCoordinate2D()
-        self.startLocatioin = startLocation
-        coordinates.append(startLocation)
-
-        locationManager.$currentLocation
+            .dropFirst()
             .sink { [weak self] location in
                 self?.coordinates.append(location)
             }

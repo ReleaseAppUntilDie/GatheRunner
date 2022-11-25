@@ -4,8 +4,6 @@ import MapKit
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var region = MKCoordinateRegion()
     @Published var currentLocation = CLLocationCoordinate2D()
-
-    var startLocation: CLLocationCoordinate2D?
     
     private var locationCancellable: Cancellable?
     private let manager = CLLocationManager()
@@ -37,7 +35,7 @@ extension LocationManager {
 }
 
 extension LocationManager {
-    func bindLocation() {
+    func bind() {
         locationCancellable = $region
             .sink { [weak self] in
                 guard let self = self else { return }
@@ -45,13 +43,19 @@ extension LocationManager {
             }
     }
     
-    func cancleLocationBind() {
-        manager.stopUpdatingLocation()
+    func cancleBinding() {
         locationCancellable?.cancel()
     }
     
     func resetLocation() {
-        startLocation = CLLocationCoordinate2D()
         currentLocation = CLLocationCoordinate2D()
+    }
+    
+    func startUpdate() {
+        manager.startUpdatingLocation()
+    }
+    
+    func stopUpdate() {
+        manager.stopUpdatingLocation()
     }
 }

@@ -13,16 +13,23 @@ class TimerManager: ObservableObject {
     
     private var timerCancellable: Cancellable?
 
-    func bindTimer() {
+    func bind() {
         timerCancellable = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
-            .sink { [weak self] _ in
+            .sink(receiveCompletion: { _ in
+                print("타이머 종료")
+            }, receiveValue: { [weak self] _ in
                 guard let self = self else { return }
                 self.progressTime += 1
-            }
+            })
+        
+//            .sink { [weak self] _ in
+//                guard let self = self else { return }
+//                self.progressTime += 1
+//            }
     }
     
-    func cancleTimer() {
+    func cancleBinding() {
         timerCancellable?.cancel()
     }
     
