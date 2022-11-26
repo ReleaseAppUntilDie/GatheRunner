@@ -15,7 +15,7 @@ struct RunningRecordView: View {
     
     var body: some View {
         VStack(spacing: Size.mainVerticalSpacing) {
-            RunningRouteView(viewModel: routeVm).isEmpty(logicalOperator: .and, [isStart, !isRunning])
+            runningRouteView
             timerView
             realTimeRecordView
             stopWatchButtonLayer
@@ -31,6 +31,8 @@ struct RunningRecordView: View {
         static let stopWatchHorizontalSpacing: CGFloat = 30
         static let stopWatchImage: CGFloat = 100
         static let labelFont: CGFloat = 40
+        static let routeCornerRadius: CGFloat = 15
+        static let routePadding: CGFloat = 30
     }
     
     private enum Content {
@@ -50,7 +52,7 @@ struct RunningRecordView: View {
     }
     
     @State private var isRunning = false
-    @State private var isStart = false
+    @State private var isResume = false
     @StateObject var recordVm: RunningRecordViewModel
     @StateObject var routeVm: RunningRouteViewModel
 }
@@ -58,6 +60,13 @@ struct RunningRecordView: View {
 // MARK: SubViews
 
 extension RunningRecordView {
+    private var runningRouteView: some View {
+        RunningRouteView(routeVm: routeVm)
+            .isEmpty(logicalOperator: .and, [isResume, !isRunning])
+            .clipShape(RoundedRectangle(cornerRadius: Size.routeCornerRadius))
+            .padding(.horizontal, Size.routePadding)
+    }
+    
     private var timerView: some View {
         recordLabelView(
             label: Content.Label.exerciseTime,
@@ -88,7 +97,7 @@ extension RunningRecordView {
                 .asIconStyle(withMaxWidth: Size.stopWatchImage, withMaxHeight: Size.stopWatchImage)
                 .addLongPressTypeAlert {
                     isRunning = false
-                    isStart = false
+                    isResume = false
                     stopRecord()
                 }
         }
@@ -97,8 +106,8 @@ extension RunningRecordView {
     private var resumeButton: some View {
         Toggle(Content.Label.empty, isOn: $isRunning)
             .onChange(of: isRunning) {
-                isStart = true
-                $0 ? recordVm.startRecord() : recordVm.pauseRecord()
+                isResume = true
+                $0 ? startRecord() : pauseRecord()
             }
             .toggleStyle(IconStyle(onImage: Content.Image.play, offImage: Content.Image.pause, size: Size.stopWatchImage))
     }
@@ -131,7 +140,6 @@ extension RunningRecordView {
         recordVm.stopRecord()
         routeVm.stopRecord()
     }
-
 }
 
 // MARK: - RunningRecordView_Previews
