@@ -54,7 +54,8 @@ struct RunningRecordView: View {
     @State private var isRunning = false
     @State private var isResume = false
     @StateObject var recordVm: RunningRecordViewModel
-    @StateObject var routeVm: RunningRouteViewModel
+    
+    var routeVm: RunningRouteViewModel
 }
 
 // MARK: SubViews
@@ -109,7 +110,8 @@ extension RunningRecordView {
                 isResume = true
                 $0 ? startRecord() : pauseRecord()
             }
-            .toggleStyle(IconStyle(onImage: Content.Image.play, offImage: Content.Image.pause, size: Size.stopWatchImage))
+            .toggleStyle(IconStyle(onImage: Content.Image.play,
+                                   offImage: Content.Image.pause, size: Size.stopWatchImage))
     }
     
     private func recordLabelView(
@@ -120,8 +122,7 @@ extension RunningRecordView {
     -> some View
     {
         VStack(spacing: spacing) {
-            Text(bidingText)
-                .font(font)
+            Text(bidingText).font(font)
             Text(label).asLabelStyle()
         }
     }
@@ -144,8 +145,9 @@ extension RunningRecordView {
 
 // MARK: - RunningRecordView_Previews
 
-//struct RunningRecordView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RunningRecordView().environmentObject(LocationManager())
-//    }
-//}
+struct RunningRecordView_Previews: PreviewProvider {
+    static var previews: some View {
+        RunningRecordView(recordVm: DependencyContainer.previewRecordScene,
+                          routeVm: DependencyContainer.previewRouteScene)
+    }
+}

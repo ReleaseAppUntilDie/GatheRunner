@@ -38,8 +38,8 @@ extension MapView {
 
 // MARK: - MapView_Previews
 
-//struct MapView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MapView()
-//    }
-//}
+struct MapView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapView(viewModel: DependencyContainer.previewMapScene)
+    }
+}

@@ -8,9 +8,9 @@
 import Combine
 import MapKit
 
-class RunningRouteViewModel: ObservableObject {
-    @Published var coordinates = [CLLocationCoordinate2D]()
-    @Published var region = MKCoordinateRegion()
+class RunningRouteViewModel {
+    var coordinates = [CLLocationCoordinate2D]()
+    var region = MKCoordinateRegion()
     
     private let locationManager: LocationManager
     private var cancelBag = Set<AnyCancellable>()

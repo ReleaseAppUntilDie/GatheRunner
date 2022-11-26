@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct RunningRouteView: UIViewRepresentable {
-    @StateObject var routeVm: RunningRouteViewModel
+    var routeVm: RunningRouteViewModel
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
@@ -42,11 +42,9 @@ extension RunningRouteView {
         static let polyLineLineWidth: CGFloat = 5
         static let zoomInset: CGFloat = 50
     }
-    
 }
 
-
-// MARK: Private methods
+// MARK: Private
 
 extension RunningRouteView {
     private func addPolyline(_ drawItems: inout [MKOverlay], with coordinates: [CLLocationCoordinate2D]) {
@@ -68,6 +66,8 @@ extension RunningRouteView {
         drawItems.append(endCircle)
     }
 }
+
+// MARK: Coordinator
 
 extension RunningRouteView {
     class Coordinator: NSObject, MKMapViewDelegate {
@@ -117,5 +117,13 @@ extension RunningRouteView {
 
             mapView.setVisibleMapRect(mapRect, edgePadding: insets, animated: true)
         }
+    }
+}
+
+// MARK: - RunningRouteView_Previews
+
+struct RunningRouteView_Previews: PreviewProvider {
+    static var previews: some View {
+        RunningRouteView(routeVm: DependencyContainer.previewRouteScene)
     }
 }

@@ -326,6 +326,7 @@
 		DA098D2D28F8470F0053140F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				DA5842242893C2E700554B5D /* TabItem */,
 				E32D47AF292CEA1A001CCE61 /* Map */,
 				DA098D2928F818750053140F /* JustStart */,
 				DA098D2E28F8615C0053140F /* Running */,
@@ -584,7 +585,6 @@
 			children = (
 				EA5E278D28B604A1004C0798 /* Models */,
 				DA58421C2893C26200554B5D /* ViewModels */,
-				DA5842242893C2E700554B5D /* TabItem */,
 				DA098D2D28F8470F0053140F /* Screens */,
 			);
 			path = Running;
