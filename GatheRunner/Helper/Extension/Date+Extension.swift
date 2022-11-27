@@ -8,6 +8,10 @@
 import Foundation
 
 extension Date {
+    private enum Format {
+        static let longTypeDateAndShortTypeTime = "yyyy/MM/dd HH:mm"
+    }
+    
     func get(_ components: Set<Calendar.Component>) -> DateComponents {
         return Calendar.current.dateComponents(components, from: self)
     }
@@ -18,9 +22,7 @@ extension Date {
     
     static var currentDate: String {
         let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.dateStyle = .short
-    
+        formatter.dateFormat = Format.longTypeDateAndShortTypeTime
         return formatter.string(from: Date())
     }
 }

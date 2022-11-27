@@ -13,7 +13,8 @@ class RunningRecordViewModel: ObservableObject {
     @Published var seconds = Content.defaultTime
     @Published var distance = Double()
     @Published var currentPace = Double()
-    
+    @Published var isFinished = false
+
     var cancelBag = Set<AnyCancellable>()
     
     // MARK: Private
@@ -43,6 +44,7 @@ class RunningRecordViewModel: ObservableObject {
 extension RunningRecordViewModel {
     private enum Content {
         static let defaultTime = "00"
+        static let colon = ":"
     }
     
     private enum Calc {
@@ -50,6 +52,7 @@ extension RunningRecordViewModel {
         static let resultZero: Double = 0
         static let paceDivide: Double = 60
         static let distanceDivide: Double = 1000
+        static let ceil = "%.1f"
     }
 }
 
@@ -128,20 +131,25 @@ extension RunningRecordViewModel {
     }
     
     private func uploadRecord() {
-        let reuqest = RunningRecord(uid: userManager.uid, distance: String(distance), averagePace: String(averagePace), runningTime: minutes + seconds, date: Date.currentDate)
-        print("uploadRecord reuqest: \(reuqest)")
-
-        runningRecordRepository.post(reuqest)
-            .sink { [weak self] completion in
+        runningRecordRepository.post(runningRecordDTO)
+            .sink { completion in
                 switch completion {
                 case .failure(let error): print("error \(error)")
                 default: print("completion \(completion)")
                 }
                 
-            } receiveValue: { [weak self] result in
-                print("result \(result)")
+            } receiveValue: { [weak self] _ in
+                self?.isFinished = true
             }
             .store(in: &cancelBag)
+    }
+    
+    private var runningRecordDTO: RunningRecord {
+        return RunningRecord(uid: userManager.uid,
+                             distance: String(format: Calc.ceil, distance),
+                             averagePace: String(format: Calc.ceil, averagePace),
+                             runningTime: minutes + Content.colon + seconds,
+                             date: Date.currentDate)
     }
 }
 

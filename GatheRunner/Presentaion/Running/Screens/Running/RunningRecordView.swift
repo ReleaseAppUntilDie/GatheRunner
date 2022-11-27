@@ -20,6 +20,9 @@ struct RunningRecordView: View {
             realTimeRecordView
             stopWatchButtonLayer
         }
+        .onAppear {
+            bindViewModel()
+        }
     }
     
     // MARK: Private
@@ -50,6 +53,8 @@ struct RunningRecordView: View {
             static let pause = "pause"
         }
     }
+    
+    @Environment(\.dismiss) var dismiss
     
     @State private var isRunning = false
     @State private var isResume = false
@@ -126,6 +131,20 @@ extension RunningRecordView {
             Text(label).asLabelStyle()
         }
     }
+}
+
+// MARK: Private Methods
+
+extension RunningRecordView {
+    private func bindViewModel() {
+        recordVm.$isFinished
+            .sink {
+                guard $0 else { return }
+                self.dismiss()
+            }
+            .store(in: &recordVm.cancelBag)
+
+    }
     
     private func startRecord() {
         recordVm.startRecord()
@@ -141,6 +160,7 @@ extension RunningRecordView {
         recordVm.stopRecord()
         routeVm.stopRecord()
     }
+
 }
 
 // MARK: - RunningRecordView_Previews
