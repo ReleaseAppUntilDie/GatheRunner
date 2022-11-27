@@ -4,6 +4,7 @@
 //
 //  Created by jaeseung han on 2022/07/07.
 //
+
 import SwiftUI
 
 // MARK: - ViewsInHeaderView
@@ -15,26 +16,29 @@ enum ViewsInHeaderView {
 // MARK: - HeaderView
 
 struct HeaderView: View {
-    
+    @EnvironmentObject var container: DependencyContainer
+    @State private var isShownSheet = false
+
     let title: String
     let type: ViewsInHeaderView
-    
     let rightButtonAction: () -> Void
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Color(uiColor: .systemGray6)
             GatherNaviBar {
                 VStack(alignment: .leading) {
                     Button {
-                        // TODO: profile view로 이동
-                        print("move to profile")
+                        isShownSheet = true
                     } label: {
                         Image(systemName: "person.crop.circle.fill")
                             .renderingMode(.template)
                             .resizable()
                             .foregroundColor(.gray)
                             .frame(width: 30, height: 30)
+                            .sheet(isPresented: $isShownSheet) {
+                                AuthSettingView(isShownSheet: $isShownSheet, viewModel: container.viewModels.authVm)
+                            }
                     }
                 }
             } center: {
@@ -49,7 +53,8 @@ struct HeaderView: View {
                         .renderingMode(.template)
                         .foregroundColor(.black)
                         .frame(width: 25, height: 25)
-                }.isEmpty(logicalOperator: .none, [type == .club])
+                }
+                .isEmpty(logicalOperator: .none, [type == .club])
             }
             .padding(.horizontal, 10)
             .padding(.bottom)
@@ -62,7 +67,7 @@ struct HeaderView: View {
             .foregroundColor(.init(uiColor: .systemGray4))
         }
         .frame(width: UIScreen.screenWidth,height: UIScreen.getHeightby(ratio: 1 / 7))
-      
+        
     }
 }
 
@@ -70,8 +75,6 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title: "활동",type: .activity) {
-            print("")
-        }
+        HeaderView(title: "활동", type: .activity, rightButtonAction: {} ).environmentObject(DependencyContainer.previewAuthScene)
     }
 }
