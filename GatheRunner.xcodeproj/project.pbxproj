@@ -82,6 +82,10 @@
 		E399CA9A2933A74800ACFCFA /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CA992933A74700ACFCFA /* AppEnvironment.swift */; };
 		E399CA9B2933A79500ACFCFA /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37F7182292FB05A0072E86A /* Date+Extension.swift */; };
 		E399CA9D2933A80300ACFCFA /* RunningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CA9C2933A80300ACFCFA /* RunningRecord.swift */; };
+		E399CAAF2933AC9400ACFCFA /* FirebaseRunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CAAE2933AC9400ACFCFA /* FirebaseRunningRecordRepository.swift */; };
+		E399CAB12933AC9F00ACFCFA /* RunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CAB02933AC9F00ACFCFA /* RunningRecordRepository.swift */; };
+		E399CAB32933ACDD00ACFCFA /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CAB22933ACDD00ACFCFA /* String+ToDate.swift */; };
+		E399CAB52933AE3C00ACFCFA /* UploadRecordWithFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CAB42933AE3C00ACFCFA /* UploadRecordWithFirebase.swift */; };
 		E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */; };
 		E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E279128B604B7004C0798 /* GraphViewModel.swift */; };
 		E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */; };
@@ -212,6 +216,10 @@
 		E399CA922933A61000ACFCFA /* RecordFetchFirebaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordFetchFirebaseRequest.swift; sourceTree = "<group>"; };
 		E399CA992933A74700ACFCFA /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		E399CA9C2933A80300ACFCFA /* RunningRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningRecord.swift; sourceTree = "<group>"; };
+		E399CAAE2933AC9400ACFCFA /* FirebaseRunningRecordRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseRunningRecordRepository.swift; path = ../../../../Auth/GatheRunner/Data/Repositories/FirebaseRunningRecordRepository.swift; sourceTree = "<group>"; };
+		E399CAB02933AC9F00ACFCFA /* RunningRecordRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RunningRecordRepository.swift; path = ../../../../../Auth/GatheRunner/Data/Repositories/Common/RunningRecordRepository.swift; sourceTree = "<group>"; };
+		E399CAB22933ACDD00ACFCFA /* String+ToDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ToDate.swift"; sourceTree = "<group>"; };
+		E399CAB42933AE3C00ACFCFA /* UploadRecordWithFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRecordWithFirebase.swift; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
 		E3D349D8286C20D200618AC3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -347,6 +355,7 @@
 				DA5842182893C22F00554B5D /* View+Extensions.swift */,
 				DA58421A2893C24A00554B5D /* Array+Extensions.swift */,
 				E3FE02FA28D49749008A9B91 /* String+IsValid.swift */,
+				E399CAB22933ACDD00ACFCFA /* String+ToDate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -412,6 +421,7 @@
 			children = (
 				E34359FF292281E500B65D48 /* Common */,
 				E3435A022922820D00B65D48 /* FirebaseUserRepository.swift */,
+				E399CAAE2933AC9400ACFCFA /* FirebaseRunningRecordRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -420,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				E3435A00292281F500B65D48 /* UserRepository.swift */,
+				E399CAB02933AC9F00ACFCFA /* RunningRecordRepository.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -763,6 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */,
+				E399CAB42933AE3C00ACFCFA /* UploadRecordWithFirebase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1073,6 +1085,7 @@
 				E38C3AB52915471A00F0B104 /* OptionNameSpaces.swift in Sources */,
 				E3FE02FB28D49749008A9B91 /* String+IsValid.swift in Sources */,
 				E399CA962933A69500ACFCFA /* Alignment+Extention.swift in Sources */,
+				E399CAB52933AE3C00ACFCFA /* UploadRecordWithFirebase.swift in Sources */,
 				E319CC34292F51F600774B74 /* RunningRouteViewModel .swift in Sources */,
 				E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */,
 				E355961328D4651900AF0FBD /* AuthenticationViewModel.swift in Sources */,
@@ -1111,9 +1124,11 @@
 				E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */,
 				E399CA9D2933A80300ACFCFA /* RunningRecord.swift in Sources */,
 				DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */,
+				E399CAB32933ACDD00ACFCFA /* String+ToDate.swift in Sources */,
 				E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */,
 				E32D47B2292CEAB2001CCE61 /* RunningRouteView.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
+				E399CAB12933AC9F00ACFCFA /* RunningRecordRepository.swift in Sources */,
 				E31D52642927A63C0067DF48 /* FirebaseAuthRequestDTO.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				E399CA9B2933A79500ACFCFA /* Date+Extension.swift in Sources */,
@@ -1135,6 +1150,7 @@
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
+				E399CAAF2933AC9400ACFCFA /* FirebaseRunningRecordRepository.swift in Sources */,
 				E399CA9A2933A74800ACFCFA /* AppEnvironment.swift in Sources */,
 				E399CA7C2933957C00ACFCFA /* ViewModelsContainer.swift in Sources */,
 				E38C3AB42915470000F0B104 /* Encodable+Queries.swift in Sources */,

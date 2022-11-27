@@ -22,6 +22,19 @@ extension DependencyContainer.ViewModels {
         AuthenticationViewModel(userRepository: repositories.userRepository,
                                 userManager: managers.userManager)
     }
-
     
+    var mapVm: MapViewModel {
+        MapViewModel(locationManager: managers.locationManager)
+    }
+    
+    var recordVm: RunningRecordViewModel {
+        RunningRecordViewModel(runningRecordRepository: repositories.runningRecordRepository,
+                               locationManager: managers.locationManager,
+                               timerManager: managers.timerManager,
+                               userManager: managers.userManager)
+    }
+    
+    var routeVm: RunningRouteViewModel {
+        RunningRouteViewModel(locationManager: managers.locationManager)
+    }
 }

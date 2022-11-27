@@ -18,3 +18,10 @@ class DependencyContainer: ObservableObject {
         self.viewModels = ViewModels(repositories: repositories, managers: managers)
     }
 }
+
+extension DependencyContainer {
+    static var previewAuthScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.authVm
+    static var previewMapScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.mapVm
+    static var previewRecordScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.recordVm
+    static var previewRouteScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.routeVm
+}

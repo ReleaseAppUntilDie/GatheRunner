@@ -15,7 +15,7 @@ struct JustStartView: View {
 
     var body: some View {
         ZStack {
-            MapView(viewModel: container.viewModels.mapViewModel)
+            MapView(viewModel: container.viewModels.mapVm)
                 .hide(isPresentedRunGuideDetailDescriptionView)
             VStack {
                 RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView).padding(.top, 5)

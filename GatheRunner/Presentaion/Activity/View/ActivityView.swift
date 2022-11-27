@@ -13,7 +13,7 @@ struct ActivityView: View {
     var body: some View {
         VStack(spacing: 0) {
             HeaderView(title: "활동",type: .activity) {}
-            ActivityHistoryView()
+            ActivityHistoryView(viewModel: GraphViewModel(runningRecordRepository: FirebaseRunningRecordRepository()))
                 
         }
         .ignoresSafeArea(edges: .top)

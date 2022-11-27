@@ -4,7 +4,6 @@
 //
 //  Created by 김동현 on 2022/09/16.
 //
-
 import SwiftUI
 
 // MARK: - AuthenticationView
@@ -12,7 +11,6 @@ import SwiftUI
 struct AuthenticationView: View {
 
     // MARK: Internal
-
     var body: some View {
         NavigationView {
             VStack {
@@ -27,7 +25,7 @@ struct AuthenticationView: View {
     }
 
     // MARK: Private
-
+    
     private enum Size {
         static let width: CGFloat = 280
         static let height: CGFloat = 45
@@ -56,7 +54,7 @@ struct AuthenticationView: View {
     @State private var isValid = false
     @State private var isSignIn = false
     @State private var isAlertShow = false
-    @StateObject private var viewModel = AuthenticationViewModel()
+    @StateObject var viewModel: AuthenticationViewModel
 
     private var alertMessage: Text? {
         switch true {
@@ -120,8 +118,6 @@ extension AuthenticationView {
             .asValidationFieldStyle(isValid: $viewModel.isPasswordValid)
     }
 
-    // MARK: 환경변수를 통해서 인증시 메인탭뷰로 이동하게 처리 할 예정
-
     private var submitButton: some View {
         VStack {
             Button {
@@ -144,6 +140,6 @@ extension AuthenticationView {
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView()
+        AuthenticationView(viewModel: DependencyContainer.previewAuthScene)
     }
 }
