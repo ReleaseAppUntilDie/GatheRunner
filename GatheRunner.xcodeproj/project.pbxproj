@@ -77,6 +77,7 @@
 		E37F718B292FB05B0072E86A /* TouchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37F7185292FB05A0072E86A /* TouchLocationView.swift */; };
 		E37F718C292FB05B0072E86A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37F7186292FB05A0072E86A /* Constants.swift */; };
 		E37F718D292FB05B0072E86A /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37F7187292FB05B0072E86A /* AppEnvironment.swift */; };
+		E37F71912932602C0072E86A /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37F71902932602C0072E86A /* UserManager.swift */; };
 		E38C3AB0291546F500F0B104 /* Query+AddQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38C3AAF291546BA00F0B104 /* Query+AddQueries.swift */; };
 		E38C3AB1291546F800F0B104 /* Encodable+ToDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38C3AAE291546BA00F0B104 /* Encodable+ToDictionary.swift */; };
 		E38C3AB2291546FB00F0B104 /* Firestore+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38C3AAD291546BA00F0B104 /* Firestore+Combine.swift */; };
@@ -206,6 +207,7 @@
 		E37F7185292FB05A0072E86A /* TouchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchLocationView.swift; sourceTree = "<group>"; };
 		E37F7186292FB05A0072E86A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E37F7187292FB05B0072E86A /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		E37F71902932602C0072E86A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E38C3AA4291546BA00F0B104 /* OptionNameSpaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionNameSpaces.swift; sourceTree = "<group>"; };
 		E38C3AA7291546BA00F0B104 /* FireStoreRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireStoreRequest.swift; sourceTree = "<group>"; };
 		E38C3AA9291546BA00F0B104 /* FirebaseAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAPIManager.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 			children = (
 				E319CC31292F47BF00774B74 /* TimerManager.swift */,
 				E305671028B75B6600DFA1C4 /* LocationManager.swift */,
+				E37F71902932602C0072E86A /* UserManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1132,6 +1135,7 @@
 				E3E7480B289284B200F40457 /* TextStyle.swift in Sources */,
 				E399CA7F2933963100ACFCFA /* FirebaseUserRepository.swift in Sources */,
 				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
+				E37F71912932602C0072E86A /* UserManager.swift in Sources */,
 				DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */,
 				E38C3AB1291546F800F0B104 /* Encodable+ToDictionary.swift in Sources */,
 				E319CC32292F47BF00774B74 /* TimerManager.swift in Sources */,

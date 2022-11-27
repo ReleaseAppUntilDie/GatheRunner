@@ -10,6 +10,7 @@ import Combine
 class DependencyContainer: ObservableObject {
     let managers: Managers
     let viewModels: ViewModels
+    let managers: Managers
     
     init(configure appEnvironment: AppEnvironment) {
         let repositories = Repositories(with: appEnvironment.apiType)

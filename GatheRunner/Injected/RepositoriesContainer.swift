@@ -19,7 +19,8 @@ extension DependencyContainer.Repositories {
             let userRepository = FirebaseUserRepository()
             let runningRecordRepository = FirebaseRunningRecordRepository()
             
-            self.init(userRepository: userRepository, runningRecordRepository: runningRecordRepository)
+            self.init(userRepository: userRepository,
+                      runningRecordRepository: runningRecordRepository)
         }
     }
 }
