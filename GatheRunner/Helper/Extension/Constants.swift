@@ -12,7 +12,6 @@ extension UIScreen {
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
 
-
     static func getHeightby(ratio : Double) -> Double {
         screenHeight * ratio
     }
@@ -21,4 +20,3 @@ extension UIScreen {
         screenWidth * ratio
     }
 }
-

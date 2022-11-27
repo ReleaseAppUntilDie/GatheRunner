@@ -17,4 +17,11 @@ extension DependencyContainer {
     }
 }
 
-extension DependencyContainer.ViewModels { }
+extension DependencyContainer.ViewModels {
+    var authVm: AuthenticationViewModel {
+        AuthenticationViewModel(userRepository: repositories.userRepository,
+                                userManager: managers.userManager)
+    }
+
+    
+}
