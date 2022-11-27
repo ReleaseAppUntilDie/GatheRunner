@@ -15,4 +15,12 @@ extension Date {
     func calculatedDate(unit: Calendar.Component, value: Int) -> Date {
         return Calendar.current.date(byAdding: unit, value: value, to: self) ?? self
     }
+    
+    static var currentDate: String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
+    
+        return formatter.string(from: Date())
+    }
 }

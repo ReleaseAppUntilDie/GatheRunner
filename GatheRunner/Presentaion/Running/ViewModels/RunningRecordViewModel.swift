@@ -21,37 +21,23 @@ class RunningRecordViewModel: ObservableObject {
     private let runningRecordRepository: RunningRecordRepository
     private let locationManager: LocationManager
     private let timerManager: TimerManager
+    private let userManager: UserManager
+    
     private var oldLocation: CLLocationCoordinate2D?
     private var locationCancellable: Cancellable?
-        
+    private var paceRecords = [Double]()
+    
     init(runningRecordRepository: RunningRecordRepository,
          locationManager: LocationManager,
-         timerManager: TimerManager) {
+         timerManager: TimerManager,
+         userManager: UserManager) {
         self.runningRecordRepository = runningRecordRepository
         self.locationManager = locationManager
         self.timerManager = timerManager
+        self.userManager = userManager
     }
 }
 
-extension RunningRecordViewModel {
-    func startRecord() {
-        bindTimer()
-        bindLocation()
-    }
-    
-    func pauseRecord() {
-        timerManager.cancleBinding()
-        locationCancellable?.cancel()
-    }
-    
-    func stopRecord() {
-        timerManager.cancleBinding()
-        locationCancellable?.cancel()
-        
-        timerManager.resetTime()
-        resetRecord()
-    }
-}
 // MARK: NameSpace
 
 extension RunningRecordViewModel {
@@ -67,7 +53,32 @@ extension RunningRecordViewModel {
     }
 }
 
-// MARK: Private
+// MARK: Record LifeCycle
+
+extension RunningRecordViewModel {
+    func startRecord() {
+        bindTimer()
+        bindLocation()
+        bindPace()
+    }
+    
+    func pauseRecord() {
+        timerManager.cancleBinding()
+        locationCancellable?.cancel()
+    }
+    
+    func stopRecord() {
+        timerManager.cancleBinding()
+        locationCancellable?.cancel()
+        
+        uploadRecord()
+        
+        timerManager.resetTime()
+        resetRecord()
+    }
+}
+
+// MARK: Private Bind
 
 extension RunningRecordViewModel {    
     private func bindTimer() {
@@ -95,6 +106,48 @@ extension RunningRecordViewModel {
             }
     }
     
+    private func bindPace() {
+        $currentPace
+            .sink { [weak self] in
+                self?.paceRecords.append($0)
+            }
+            .store(in: &cancelBag)
+    }
+}
+
+// MARK: Private Methods
+
+extension RunningRecordViewModel {
+    private func resetRecord() {
+        minutes = Content.defaultTime
+        seconds = Content.defaultTime
+        oldLocation = nil
+        distance = Double()
+        currentPace = Double()
+        paceRecords = [Double]()
+    }
+    
+    private func uploadRecord() {
+        let reuqest = RunningRecord(uid: userManager.uid, distance: String(distance), averagePace: String(averagePace), runningTime: minutes + seconds, date: Date.currentDate)
+        print("uploadRecord reuqest: \(reuqest)")
+
+        runningRecordRepository.post(reuqest)
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(let error): print("error \(error)")
+                default: print("completion \(completion)")
+                }
+                
+            } receiveValue: { [weak self] result in
+                print("result \(result)")
+            }
+            .store(in: &cancelBag)
+    }
+}
+
+// MARK: Private Calc
+
+extension RunningRecordViewModel {
     private var calcPace: Double {
         guard timerManager.progressTime > Calc.defaultZero, oldLocation != nil else {
             return Calc.resultZero
@@ -113,11 +166,11 @@ extension RunningRecordViewModel {
         return oldCLLocation.distance(from: currentCLLocation) / Calc.distanceDivide
     }
     
-    private func resetRecord() {
-        minutes = Content.defaultTime
-        seconds = Content.defaultTime
-        oldLocation = nil
-        distance = Double()
-        currentPace = Double()
+    private var averagePace: Double {
+        guard !paceRecords.isEmpty else {
+            return Calc.resultZero
+        }
+        
+        return paceRecords.reduce(0.0, +) / Double(paceRecords.count)
     }
 }

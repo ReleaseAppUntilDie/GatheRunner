@@ -10,7 +10,7 @@ import Combine
 
 struct FirebaseRunningRecordRepository: RunningRecordRepository {
     func post(_ request: RunningRecord) -> AnyPublisher<Bool, Error> {
-        FirebaseAPIManager.shared.fetch(withQuery: request, as: Bool.self)
+        FirebaseAPIManager.shared.post(request: request)
     }
     
     func fetch(_ request: RecordFetchRequest) -> AnyPublisher<[RunningRecord], Error> {
