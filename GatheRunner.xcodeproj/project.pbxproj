@@ -63,6 +63,7 @@
 		E38C3AB52915471A00F0B104 /* OptionNameSpaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38C3AA4291546BA00F0B104 /* OptionNameSpaces.swift */; };
 		E38C3AB62915472800F0B104 /* FireStoreRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38C3AA7291546BA00F0B104 /* FireStoreRequest.swift */; };
 		E38C3AB72915472D00F0B104 /* FirebaseAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38C3AA9291546BA00F0B104 /* FirebaseAPIManager.swift */; };
+		E399CA7929338BA100ACFCFA /* ManagersContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CA7829338BA100ACFCFA /* ManagersContainer.swift */; };
 		E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */; };
 		E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E279128B604B7004C0798 /* GraphViewModel.swift */; };
 		E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */; };
@@ -183,6 +184,7 @@
 		E38C3AAD291546BA00F0B104 /* Firestore+Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Firestore+Combine.swift"; sourceTree = "<group>"; };
 		E38C3AAE291546BA00F0B104 /* Encodable+ToDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+ToDictionary.swift"; sourceTree = "<group>"; };
 		E38C3AAF291546BA00F0B104 /* Query+AddQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Query+AddQueries.swift"; sourceTree = "<group>"; };
+		E399CA7829338BA100ACFCFA /* ManagersContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagersContainer.swift; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
 		E3D349D8286C20D200618AC3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 			children = (
 				E34F7B68292D0A6C00BCC6FE /* DependencyContainer.swift */,
 				E34F7B69292D0A6C00BCC6FE /* RepositoriesContainer.swift */,
+				E399CA7829338BA100ACFCFA /* ManagersContainer.swift */,
 				E34F7B6A292D0A6C00BCC6FE /* ViewModelsContainer.swift */,
 			);
 			path = Injected;
@@ -1031,6 +1034,7 @@
 				DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */,
 				E38C3AB1291546F800F0B104 /* Encodable+ToDictionary.swift in Sources */,
 				EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */,
+				E399CA7929338BA100ACFCFA /* ManagersContainer.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
 				DBD4C53128F3DFE0000E28D0 /* HistoryList.swift in Sources */,
 				E3607CD42923C25E0018B2C2 /* ImageStyle.swift in Sources */,

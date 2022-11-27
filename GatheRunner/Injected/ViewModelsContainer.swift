@@ -6,12 +6,15 @@
 //
 
 extension DependencyContainer {
-    struct ViewModels { }
-}
-
-extension DependencyContainer.ViewModels {
-    init(with repositories: DependencyContainer.Repositories) {
+    struct ViewModels {
+        private let repositories: DependencyContainer.Repositories
+        private let managers: DependencyContainer.Managers
         
-        self.init()
+        init(repositories: DependencyContainer.Repositories, managers: DependencyContainer.Managers) {
+            self.repositories = repositories
+            self.managers = managers
+        }
     }
 }
+
+extension DependencyContainer.ViewModels { }

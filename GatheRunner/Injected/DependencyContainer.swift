@@ -8,10 +8,13 @@
 import Combine
 
 class DependencyContainer: ObservableObject {
+    let managers: Managers
     let viewModels: ViewModels
     
     init(configure appEnvironment: AppEnvironment) {
         let repositories = Repositories(with: appEnvironment.apiType)
-        self.viewModels = ViewModels(with: repositories)
+        
+        self.managers = Managers(repositories: repositories)
+        self.viewModels = ViewModels(repositories: repositories, managers: managers)
     }
 }
