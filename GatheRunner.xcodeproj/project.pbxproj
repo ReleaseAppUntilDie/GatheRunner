@@ -67,6 +67,7 @@
 		E399CA7B2933957700ACFCFA /* RepositoriesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B69292D0A6C00BCC6FE /* RepositoriesContainer.swift */; };
 		E399CA7C2933957C00ACFCFA /* ViewModelsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F7B6A292D0A6C00BCC6FE /* ViewModelsContainer.swift */; };
 		E399CA7E293395C900ACFCFA /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CA7D293395C800ACFCFA /* AppEnvironment.swift */; };
+		E399CA7F2933963100ACFCFA /* FirebaseUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A022922820D00B65D48 /* FirebaseUserRepository.swift */; };
 		E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */; };
 		E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E279128B604B7004C0798 /* GraphViewModel.swift */; };
 		E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */; };
@@ -1035,6 +1036,7 @@
 				E3708FF1289BBEE6004FF0C1 /* EmptyModifier.swift in Sources */,
 				E3F598A5292B4F0300023097 /* MainTabComponents.swift in Sources */,
 				E3E7480B289284B200F40457 /* TextStyle.swift in Sources */,
+				E399CA7F2933963100ACFCFA /* FirebaseUserRepository.swift in Sources */,
 				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
 				DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */,
 				E38C3AB1291546F800F0B104 /* Encodable+ToDictionary.swift in Sources */,
