@@ -49,16 +49,21 @@ struct Graph: View {
         case .week:
             return ["월","화","수","목","금","토","일"]
         case .month:
-            return Array(1...30).map { String($0) }
+            return Array(1...31).map { String($0) }
         case .year:
             return Array(1...12).map { "\($0)월" }
         case .whole:
-            return viewModel.calculateYears().map { "\($0)년" }
+            return viewModel.calculateYears().sorted().map { "\($0)년" }
         }
     }
 
     var maxValue: Int {
-        (viewModel.records.max()! / 3 + 2) * 3
+        if viewModel.records.max() == nil {
+            return 10
+        } else {
+            return (viewModel.records.max()! / 3 + 2) * 3
+        }
+        
     }
 
     var secondV: Int {

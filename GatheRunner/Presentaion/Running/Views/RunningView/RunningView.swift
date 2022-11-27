@@ -40,7 +40,7 @@ extension RunningView {
             RunGuideView().transition(.move(edge: .trailing))
         }
     }
-
+ 
     var viewSelectorButton: some View {
         HStack {
             Button("바로 시작") {

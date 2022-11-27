@@ -15,7 +15,7 @@ struct SimplifiedStatistics: View {
     @Binding var selectedTimeUnit: TimeUnit
     @Binding var pickerViewShowed: Bool
 
-    let averageHistory: AverageHistory
+    let averageHistory: (distance: Int, count: Int, pace: String, totalTime: String)
 
 
     var buttonText: String {
@@ -45,14 +45,14 @@ struct SimplifiedStatistics: View {
             }
             .disabled(selectedTimeUnit == .whole)
             .foregroundColor(.black)
-            Text(averageHistory.distance)
+            Text(String(averageHistory.distance))
                 .font(.system(size: 30, weight: .bold, design: .rounded))
             Text("킬로미터")
                 .foregroundColor(.gray)
                 .font(.system(size: 12))
             HStack(spacing: 40) {
-                runningCountView(cnt: averageHistory.runningCnt)
-                averagePaceView(pace: averageHistory.averagePace)
+                runningCountView(cnt: averageHistory.count)
+                averagePaceView(pace: averageHistory.pace)
                 totalTimeView(time: averageHistory.totalTime)
             }
         }

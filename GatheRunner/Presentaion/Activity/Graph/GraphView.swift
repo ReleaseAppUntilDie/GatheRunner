@@ -25,16 +25,16 @@ struct GraphView: View {
                         }
                     }
                 // TODO: Picker 아이템 생성후 삽입
-                SimplifiedStatistics(
-                    viewModel: viewModel,
-                    selectedTimeUnit: $selectedTimeUnit,
-                    pickerViewShowed: $isPickerViewShowed,
-                    averageHistory: AverageHistory(
-                        distance: "10.0",
-                        runningCnt: 6,
-                        averagePace: "5'41''",
-                        totalTime: "2:54:51")
-                )
+                if viewModel.totalRecord == nil {
+                    
+                } else {
+                    SimplifiedStatistics(
+                        viewModel: viewModel,
+                        selectedTimeUnit: $selectedTimeUnit,
+                        pickerViewShowed: $isPickerViewShowed,
+                        averageHistory: viewModel.totalRecord!)
+                }
+                
 
                 Graph(
                     graphWidth: UIScreen.getWidthby(ratio: 0.7),
@@ -66,7 +66,7 @@ struct GraphView: View {
     func viewModelUpdate() {
         viewModel.updateTimeUnit(selectedTimeUnit)
         viewModel.updatePicker(timeUnit: selectedTimeUnit)
-        viewModel.fetchData()
+        viewModel.drawGraph()
     }
 
 }

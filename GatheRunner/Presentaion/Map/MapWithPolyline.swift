@@ -10,7 +10,7 @@ import MapKit
 
 struct MapWithPolyline: UIViewRepresentable {
     
-    @Binding var region: MKCoordinateRegion
+    var region: MKCoordinateRegion
     @Binding var lineCoordinates: [CLLocationCoordinate2D]
     @Binding var startPosition: CLLocationCoordinate2D?
     @Binding var endPosition: CLLocationCoordinate2D?
