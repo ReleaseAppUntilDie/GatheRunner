@@ -30,7 +30,7 @@ struct WorkoutIndexResponse: Decodable {
     }
 }
 
-class APIs {
+class WorkoutIndexFetchAPIs {
     static var cancelBag = Set<AnyCancellable>()
     
     static func fetchWorkoutIndex() -> AnyPublisher<WorkoutIndexResponse, Error> {
