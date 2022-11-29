@@ -11,7 +11,7 @@ class PrepareRunViewModel: ObservableObject {
     @Published var fetchedWorkoutIndexArrs: [String]?
     
     func getWorkoutIndex() {
-        APIs.fetchWorkoutIndex()
+        WorkoutIndexFetchAPIs.fetchWorkoutIndex()
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(_):
@@ -21,7 +21,7 @@ class PrepareRunViewModel: ObservableObject {
                 }
             } receiveValue: { result in
                 self.fetchedWorkoutIndexArrs = result.outdoorGrade
-            }.store(in: &APIs.cancelBag)
+            }.store(in: &WorkoutIndexFetchAPIs.cancelBag)
     }
     
     func getWorkoutIndexContents() -> String {
