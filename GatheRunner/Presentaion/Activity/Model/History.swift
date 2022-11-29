@@ -18,8 +18,9 @@ extension RunningRecordRequest: FireStoreRequestWithQuery {
     }
 }
 
-struct History: Decodable {
+struct History: Decodable, Identifiable {
 
+    var id: String { (distance ?? "") + (date ?? "") }
     let distance: String?
     let averagePace: String?
     let runningTime: String?

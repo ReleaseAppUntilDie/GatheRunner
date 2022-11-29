@@ -22,17 +22,16 @@ struct HistoryList: View {
                         .padding()
                         .padding(.leading,20)
                     LazyVStack {
-                        ForEach(Array(viewModel.historys.enumerated()), id: \.offset) { index, history in
-                            HistoryItem(
-                                history: history
-                            )
+                        ForEach(viewModel.historys ?? []) { history in
+                            HistoryItem(history: history)
                         }
                     }
+                    .padding(.bottom)
                 }
             } else {
                 Spacer()
                 
-                Text("기록이 없습니다")
+                Text("기록을 불러오지 못했습니다.")
                     .font(.system(size: 20, weight: .bold))
                 
                 Spacer()

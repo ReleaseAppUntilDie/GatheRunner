@@ -22,9 +22,9 @@ struct GraphBottomSheetView: View {
         _show = show
         _selectedTimeUnit = selectedTimeUnit
         
-        let current = Calendar.current.dateComponents([.year,.month], from: Date())
-        selectedYear = current.year!
-        selectedMonth = current.month!
+        let current = Date().get([.year,.month])
+        selectedYear = current.year ?? 0
+        selectedMonth = current.month ?? 0
      
     }
     
@@ -53,7 +53,7 @@ struct GraphBottomSheetView: View {
                     selected: $selected,
                     selectedMonth: $selectedMonth,
                     selectedYear: $selectedYear,
-                    isMonth: selectedTimeUnit == .month)
+                    timeUnit: selectedTimeUnit)
                 .padding()
                 Button {
                     confirmButtonAction()
@@ -73,12 +73,11 @@ struct GraphBottomSheetView: View {
     }
     
     func confirmButtonAction() {
-        viewModel.updateSelected(
+        viewModel.updatePeriodText(
             selectedStr: selected,
             selectedYear: selectedYear,
             selectedMonth: selectedMonth
         )
-        viewModel.fetchData()
         withAnimation(.linear) {
             show.toggle()
         }
@@ -93,17 +92,17 @@ struct PickerView: View {
     @Binding var selected: String
     @Binding var selectedMonth: Int
     @Binding var selectedYear: Int
-    var isMonth: Bool
+    var timeUnit: TimeUnit
     
     var body: some View {
-        if !isMonth {
+        if timeUnit == .week {
             Picker("Choose period", selection: $selected) {
                 ForEach(viewModel.pickerItemList,id: \.self) {
                     Text($0)
                 }
             }
             .pickerStyle(.wheel)
-        } else {
+        } else if timeUnit == .month {
             HStack(spacing: 0) {
                 Picker("Choose year", selection: $selectedYear) {
                     ForEach(viewModel.pickerItemListInMonth.0,id: \.self) {
@@ -121,6 +120,13 @@ struct PickerView: View {
                 .frame(width: UIScreen.getWidthby(ratio: 0.5))
                 .pickerStyle(.wheel)
             }
+        } else if timeUnit == .year {
+            Picker("Choose period", selection: $selectedYear) {
+                ForEach(viewModel.pickerListYear, id: \.self) {
+                    Text(verbatim: "\($0)년")
+                }
+            }
+            .pickerStyle(.wheel)
         }
     }
 }

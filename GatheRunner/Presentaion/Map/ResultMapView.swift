@@ -13,7 +13,7 @@ struct ResultMapView: View {
     
     var body: some View {
         MapWithPolyline(
-            region: $manager.resultMapRegion,
+            region: manager.resultMapRegion,
             lineCoordinates: $manager.polylineData,
             startPosition: $manager.startPosition,
             endPosition: $manager.endPosition
