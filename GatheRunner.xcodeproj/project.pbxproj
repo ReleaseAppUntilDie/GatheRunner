@@ -13,8 +13,10 @@
 		DA098D2728F802320053140F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA098D2628F802320053140F /* CardView.swift */; };
 		DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */; };
 		DA2FFD3D28A8B33B006291CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */; };
-		DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695728790DBE00FA13AE /* JustStartView.swift */; };
+		DA33695828790DBE00FA13AE /* PrepareRunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695728790DBE00FA13AE /* PrepareRunView.swift */; };
 		DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33695928790E0C00FA13AE /* RunningGuideView.swift */; };
+		DA42E58D292CF4A300D349A9 /* PrepareRunViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA42E58C292CF4A300D349A9 /* PrepareRunViewModel.swift */; };
+		DA42E590292CF51F00D349A9 /* WorkoutIndexRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA42E58F292CF51F00D349A9 /* WorkoutIndexRepository.swift */; };
 		DA5165A728A8B3E60024BE22 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = DA5165A628A8B3E60024BE22 /* .swiftformat */; };
 		DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5842182893C22F00554B5D /* View+Extensions.swift */; };
 		DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58421A2893C24A00554B5D /* Array+Extensions.swift */; };
@@ -127,8 +129,10 @@
 		DA098D2628F802320053140F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedButtonMemory.swift; sourceTree = "<group>"; };
 		DA2FFD3C28A8B33B006291CE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		DA33695728790DBE00FA13AE /* JustStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustStartView.swift; sourceTree = "<group>"; };
+		DA33695728790DBE00FA13AE /* PrepareRunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareRunView.swift; sourceTree = "<group>"; };
 		DA33695928790E0C00FA13AE /* RunningGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGuideView.swift; sourceTree = "<group>"; };
+		DA42E58C292CF4A300D349A9 /* PrepareRunViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareRunViewModel.swift; sourceTree = "<group>"; };
+		DA42E58F292CF51F00D349A9 /* WorkoutIndexRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutIndexRepository.swift; sourceTree = "<group>"; };
 		DA5165A628A8B3E60024BE22 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		DA5842182893C22F00554B5D /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		DA58421A2893C24A00554B5D /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -284,15 +288,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DA098D2928F818750053140F /* JustStartView */ = {
+		DA098D2928F818750053140F /* PrepareRunView */ = {
 			isa = PBXGroup;
 			children = (
-				DA33695728790DBE00FA13AE /* JustStartView.swift */,
+				DA33695728790DBE00FA13AE /* PrepareRunView.swift */,
 				DA7D5E7A28F740D90066B2C6 /* MapView.swift */,
 				DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */,
 				DAEA9319287D184900349465 /* BottomButtonView.swift */,
 			);
-			path = JustStartView;
+			path = PrepareRunView;
 			sourceTree = "<group>";
 		};
 		DA098D2A28F8189E0053140F /* RunGuideView */ = {
@@ -309,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				DA098D2E28F8615C0053140F /* RunningView */,
-				DA098D2928F818750053140F /* JustStartView */,
+				DA098D2928F818750053140F /* PrepareRunView */,
 				DA098D2A28F8189E0053140F /* RunGuideView */,
 			);
 			path = Views;
@@ -323,6 +327,14 @@
 				E351783928ABC9E50088003B /* RunningRecordView.swift */,
 			);
 			path = RunningView;
+			sourceTree = "<group>";
+		};
+		DA42E58E292CF50500D349A9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DA42E58F292CF51F00D349A9 /* WorkoutIndexRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		DA5842172893C21800554B5D /* Extension */ = {
@@ -340,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				DA58421D2893C27700554B5D /* RunGuideViewModel.swift */,
+				DA42E58C292CF4A300D349A9 /* PrepareRunViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -459,6 +472,7 @@
 		E35EFEB6286DFB2D003E23DE /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				DA42E58E292CF50500D349A9 /* Repository */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
 				E32D47AF292CEA1A001CCE61 /* Map */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
@@ -1073,6 +1087,8 @@
 				E38C3AB3291546FD00F0B104 /* JSONDecoder+Decode.swift in Sources */,
 				E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */,
 				DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */,
+				DA42E58D292CF4A300D349A9 /* PrepareRunViewModel.swift in Sources */,
+				DA42E590292CF51F00D349A9 /* WorkoutIndexRepository.swift in Sources */,
 				E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */,
 				E85FF54728F6857700C197CA /* History.swift in Sources */,
 				E32D47B2292CEAB2001CCE61 /* MapWithPolyline.swift in Sources */,
@@ -1101,7 +1117,7 @@
 				E399CA7C2933957C00ACFCFA /* ViewModelsContainer.swift in Sources */,
 				E38C3AB42915470000F0B104 /* Encodable+Queries.swift in Sources */,
 				E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */,
-				DA33695828790DBE00FA13AE /* JustStartView.swift in Sources */,
+				DA33695828790DBE00FA13AE /* PrepareRunView.swift in Sources */,
 				DAEA9315287AED7200349465 /* RunGuideExperienceTabItem.swift in Sources */,
 				DA098D2728F802320053140F /* CardView.swift in Sources */,
 				E399CA7A2933957500ACFCFA /* DependencyContainer.swift in Sources */,
