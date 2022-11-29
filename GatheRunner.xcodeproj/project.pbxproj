@@ -73,6 +73,10 @@
 		E399CA7F2933963100ACFCFA /* FirebaseUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A022922820D00B65D48 /* FirebaseUserRepository.swift */; };
 		E399CA8229339C9F00ACFCFA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CA8129339C9F00ACFCFA /* UserManager.swift */; };
 		E399CA8529339E2000ACFCFA /* AuthSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CA8429339E2000ACFCFA /* AuthSettingView.swift */; };
+		E399CAC82935F83B00ACFCFA /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CAC72935F83B00ACFCFA /* LoadableView.swift */; };
+		E399CACC2936199C00ACFCFA /* FetchStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CACB2936199C00ACFCFA /* FetchStatusType.swift */; };
+		E399CACE29362D5600ACFCFA /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CACD29362D5600ACFCFA /* ActivityIndicatorView.swift */; };
+		E399CAD029362DBE00ACFCFA /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399CACF29362DBE00ACFCFA /* ErrorView.swift */; };
 		E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */; };
 		E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E279128B604B7004C0798 /* GraphViewModel.swift */; };
 		E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */; };
@@ -199,6 +203,10 @@
 		E399CA7D293395C800ACFCFA /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		E399CA8129339C9F00ACFCFA /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E399CA8429339E2000ACFCFA /* AuthSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSettingView.swift; sourceTree = "<group>"; };
+		E399CAC72935F83B00ACFCFA /* LoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableView.swift; sourceTree = "<group>"; };
+		E399CACB2936199C00ACFCFA /* FetchStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchStatusType.swift; sourceTree = "<group>"; };
+		E399CACD29362D5600ACFCFA /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		E399CACF29362DBE00ACFCFA /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		E3D349D3286C20D200618AC3 /* GatheRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GatheRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D349D6286C20D200618AC3 /* GatheRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatheRunnerApp.swift; sourceTree = "<group>"; };
 		E3D349D8286C20D200618AC3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -377,6 +385,7 @@
 				E3DA2F5728B7607F001E9220 /* TouchLocationView.swift */,
 				E305671028B75B6600DFA1C4 /* LocationManager.swift */,
 				DB051390292BDE7B00BE218B /* Date+Extension.swift */,
+				E399CACB2936199C00ACFCFA /* FetchStatusType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -501,6 +510,8 @@
 				E35EFEBE286DFB2D003E23DE /* TabItem.swift */,
 				E3F5989F292A0E2200023097 /* MainTabComponents.swift */,
 				E335FAF828B7610300835F72 /* SelectedTab.swift */,
+				E399CACD29362D5600ACFCFA /* ActivityIndicatorView.swift */,
+				E399CACF29362DBE00ACFCFA /* ErrorView.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -533,6 +544,7 @@
 			children = (
 				E3708FF0289BBEE6004FF0C1 /* EmptyModifier.swift */,
 				E3607CD12923C1DF0018B2C2 /* LongPressTypeAlertModifier.swift */,
+				E399CAC72935F83B00ACFCFA /* LoadableView.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -1059,6 +1071,8 @@
 				E355961328D4651900AF0FBD /* AuthenticationViewModel.swift in Sources */,
 				EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */,
 				E39F0B5A28B75CF30086957F /* EmptyActivityView.swift in Sources */,
+				E399CACE29362D5600ACFCFA /* ActivityIndicatorView.swift in Sources */,
+				E399CACC2936199C00ACFCFA /* FetchStatusType.swift in Sources */,
 				E3DA2F5B28B76098001E9220 /* GatherNaviBar.swift in Sources */,
 				EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */,
 				E305671328B75BA200DFA1C4 /* Int+Extensions.swift in Sources */,
@@ -1106,11 +1120,13 @@
 				E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */,
 				E38C3AB2291546FB00F0B104 /* Firestore+Combine.swift in Sources */,
 				E3607CD22923C1DF0018B2C2 /* LongPressTypeAlertModifier.swift in Sources */,
+				E399CAC82935F83B00ACFCFA /* LoadableView.swift in Sources */,
 				E3DA2F5828B76098001E9220 /* Constants.swift in Sources */,
 				DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */,
 				DA7D5E7728F73A5F0066B2C6 /* RunGuideTabView.swift in Sources */,
 				E31D52602927A6040067DF48 /* AuthRequest.swift in Sources */,
 				E38C3AB62915472800F0B104 /* FireStoreRequest.swift in Sources */,
+				E399CAD029362DBE00ACFCFA /* ErrorView.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
 				DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,

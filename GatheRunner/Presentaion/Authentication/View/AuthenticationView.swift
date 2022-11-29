@@ -11,6 +11,7 @@ import SwiftUI
 struct AuthenticationView: View {
 
     // MARK: Internal
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -21,7 +22,11 @@ struct AuthenticationView: View {
                 submitButton
             }
         }
-        .onAppear { bindViewModel() }
+        .didSetLoadable(by: $viewModel.fetchStatus)
+        .onAppear {
+            bindValidation()
+            bindFetch()
+        }
     }
 
     // MARK: Private
@@ -47,14 +52,13 @@ struct AuthenticationView: View {
         enum Message {
             static let inputRequest = "을(를) 입력해주세요."
             static let inputError = "이(가) 유효하지 않습니다."
-            static let authFailed = "인증에 실패했습니다."
         }
     }
-
-    @State private var isValid = false
-    @State private var isSignIn = false
-    @State private var isAlertShow = false
+    
     @StateObject var viewModel: AuthenticationViewModel
+
+    @State private var isSignIn = false
+    @State private var isShownAlert = false
 
     private var alertMessage: Text? {
         switch true {
@@ -62,24 +66,28 @@ struct AuthenticationView: View {
         case viewModel.inputPassword.isEmpty: return Text(Content.Label.password + Content.Message.inputRequest)
         case !viewModel.isEmailValid: return Text(Content.Label.email + Content.Message.inputError)
         case !viewModel.isPasswordValid: return Text(Content.Label.password + Content.Message.inputError)
-        case !viewModel.isAuthValid: return Text(Content.Message.authFailed)
-        default: return nil
+        default: return Text(viewModel.errorMessage)
         }
     }
 }
 
 extension AuthenticationView {
-    private func bindViewModel() {
+    private func bindValidation() {
         viewModel.$isInputsValid
             .dropFirst()
             .compactMap { $0 }
-            .sink { isAlertShow = !$0 }
+            .sink { isShownAlert = !$0 }
             .store(in: &viewModel.cancelBag)
-
-        viewModel.$isAuthValid
-            .dropFirst()
-            .compactMap { $0 }
-            .sink { isValid = $0 }
+    }
+    
+    private func bindFetch() {
+        viewModel.$fetchStatus
+            .sink {
+                switch $0 {
+                case .failure: isShownAlert.toggle()
+                default: return
+                }
+            }
             .store(in: &viewModel.cancelBag)
     }
 }
@@ -126,7 +134,7 @@ extension AuthenticationView {
                 .frame(width: Size.width, height: Size.height, alignment: .center)
                 .background(Color.blue)
                 .cornerRadius(Size.cornerRadius)
-                .alert(isPresented: $isAlertShow) {
+                .alert(isPresented: $isShownAlert) {
                     Alert(
                         title: Text(Content.Label.alertTitle),
                         message: alertMessage,
