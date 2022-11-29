@@ -15,7 +15,6 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var inputPassword = ""
     @Published var isEmailValid = false
     @Published var isPasswordValid = false
-    @Published var isInputsValid = false
     @Published var fetchStatus: FetchStatus = .none
         
     var cancelBag = Set<AnyCancellable>()
@@ -35,11 +34,10 @@ final class AuthenticationViewModel: ObservableObject {
     }
 }
 
-// MARK: Internal Methods
+// MARK: Auth Methods
 
 extension AuthenticationViewModel {
     func signIn() {
-        guard validatedInputs() else { return }
         fetchStatusSubject.send(.fetching)
 
         userRepository.signIn(AuthRequest(email: inputEmail, password: inputPassword))
@@ -59,7 +57,6 @@ extension AuthenticationViewModel {
     }
 
     func signUp() {
-        guard validatedInputs() else { return }
         fetchStatusSubject.send(.fetching)
 
         userRepository.signUp(AuthRequest(email: inputEmail, password: inputPassword))
@@ -121,7 +118,7 @@ extension AuthenticationViewModel {
     }
 }
 
-// MARK: Private Methods
+// MARK: Private Bind
 
 extension AuthenticationViewModel {
     private func bindValidation() {
@@ -151,14 +148,5 @@ extension AuthenticationViewModel {
         // MARK: Temp errorMessage
 
         errorMessage = error.localizedDescription
-    }
-
-    private func validatedInputs() -> Bool {
-        guard isEmailValid, isPasswordValid else {
-            isInputsValid = false
-            return isInputsValid
-        }
-        isInputsValid = true
-        return isInputsValid
     }
 }

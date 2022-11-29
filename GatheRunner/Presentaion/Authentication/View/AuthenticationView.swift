@@ -9,26 +9,21 @@ import SwiftUI
 // MARK: - AuthenticationView
 
 struct AuthenticationView: View {
-
+    
     // MARK: Internal
     
     var body: some View {
-        NavigationView {
-            VStack {
-                fieldLayer
-
-                Spacer()
-
-                submitButton
-            }
+        VStack {
+            fieldLayer
+            
+            Spacer()
+            
+            submitButton
         }
         .didSetLoadable(by: $viewModel.fetchStatus)
-        .onAppear {
-            bindValidation()
-            bindFetch()
-        }
+        .onAppear { bindFetchStatus() }
     }
-
+    
     // MARK: Private
     
     private enum Size {
@@ -37,7 +32,7 @@ struct AuthenticationView: View {
         static let spacing: CGFloat = 16
         static let cornerRadius: CGFloat = 8
     }
-
+    
     private enum Content {
         enum Label {
             static let signIn = "로그인"
@@ -48,7 +43,7 @@ struct AuthenticationView: View {
             static let alertTitle = "알림"
             static let confirm = "확인"
         }
-
+        
         enum Message {
             static let inputRequest = "을(를) 입력해주세요."
             static let inputError = "이(가) 유효하지 않습니다."
@@ -56,10 +51,10 @@ struct AuthenticationView: View {
     }
     
     @StateObject var viewModel: AuthenticationViewModel
-
+    
     @State private var isSignIn = false
     @State private var isShownAlert = false
-
+    
     private var alertMessage: Text? {
         switch true {
         case viewModel.inputEmail.isEmpty: return Text(Content.Label.email + Content.Message.inputRequest)
@@ -72,15 +67,7 @@ struct AuthenticationView: View {
 }
 
 extension AuthenticationView {
-    private func bindValidation() {
-        viewModel.$isInputsValid
-            .dropFirst()
-            .compactMap { $0 }
-            .sink { isShownAlert = !$0 }
-            .store(in: &viewModel.cancelBag)
-    }
-    
-    private func bindFetch() {
+    private func bindFetchStatus() {
         viewModel.$fetchStatus
             .sink {
                 switch $0 {
@@ -89,6 +76,15 @@ extension AuthenticationView {
                 }
             }
             .store(in: &viewModel.cancelBag)
+    }
+    
+    private func requestAuth() {
+        guard viewModel.isEmailValid, viewModel.isPasswordValid else {
+            isShownAlert.toggle()
+            return
+        }
+        
+        isSignIn ? viewModel.signIn() : viewModel.signUp()
     }
 }
 
@@ -102,7 +98,7 @@ extension AuthenticationView {
             passwordField
         }
     }
-
+    
     private var fieldPicker: some View {
         Picker(Content.Label.empty, selection: $isSignIn) {
             Text(Content.Label.signIn).tag(true)
@@ -111,7 +107,7 @@ extension AuthenticationView {
         .pickerStyle(SegmentedPickerStyle())
         .padding()
     }
-
+    
     private var emailField: some View {
         TextField(Content.Label.email, text: $viewModel.inputEmail)
             .keyboardType(.emailAddress)
@@ -119,27 +115,26 @@ extension AuthenticationView {
             .frame(width: Size.width, height: Size.height, alignment: .center)
             .asValidationFieldStyle(isValid: $viewModel.isEmailValid)
     }
-
+    
     private var passwordField: some View {
         SecureField(Content.Label.password, text: $viewModel.inputPassword)
             .frame(width: Size.width, height: Size.height, alignment: .center)
             .asValidationFieldStyle(isValid: $viewModel.isPasswordValid)
     }
-
+    
     private var submitButton: some View {
         VStack {
-            Button {
-                isSignIn ? viewModel.signIn() : viewModel.signUp()
+            Button { requestAuth()
             } label: { Text(isSignIn ? Content.Label.signIn : Content.Label.signUp).foregroundColor(.white) }
-                .frame(width: Size.width, height: Size.height, alignment: .center)
-                .background(Color.blue)
-                .cornerRadius(Size.cornerRadius)
-                .alert(isPresented: $isShownAlert) {
-                    Alert(
-                        title: Text(Content.Label.alertTitle),
-                        message: alertMessage,
-                        dismissButton: .default(Text(Content.Label.confirm)))
-                }
+            .frame(width: Size.width, height: Size.height, alignment: .center)
+            .background(Color.blue)
+            .cornerRadius(Size.cornerRadius)
+            .alert(isPresented: $isShownAlert) {
+                Alert(
+                    title: Text(Content.Label.alertTitle),
+                    message: alertMessage,
+                    dismissButton: .default(Text(Content.Label.confirm)))
+            }
         }
     }
 }
