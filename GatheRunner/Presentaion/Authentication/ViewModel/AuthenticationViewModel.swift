@@ -145,7 +145,7 @@ extension AuthenticationViewModel {
     private func bindError(_ error: Error) {
         fetchStatusSubject.send(.failure)
         
-        // MARK: Temp errorMessage
+        // MARK: Temp errorMessage Handling
 
         errorMessage = error.localizedDescription
     }

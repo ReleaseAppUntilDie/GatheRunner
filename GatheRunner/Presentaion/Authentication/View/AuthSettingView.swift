@@ -28,7 +28,7 @@ struct AuthSettingView: View {
     var body: some View {
         buttonLayer
             .didSetLoadable(by: $viewModel.fetchStatus)
-            .onAppear { bindFetch() }
+            .onAppear { bindFetchStatus() }
             .alert(isPresented: $isShownAlert) {
                 Alert(
                     title: Text(Label.alertTitle),
@@ -51,7 +51,7 @@ struct AuthSettingView: View {
         }
     }
     
-    private func bindFetch() {
+    private func bindFetchStatus() {
         viewModel.$fetchStatus
             .sink {
                 switch $0 {
