@@ -30,7 +30,7 @@ final class AuthenticationViewModel: ObservableObject {
         self.userRepository = userRepository
         self.userManager = userManager
         bindValidation()
-        bindFetch()
+        bindFetchStatus()
     }
 }
 
@@ -137,7 +137,7 @@ extension AuthenticationViewModel {
             .store(in: &cancelBag)
     }
     
-    private func bindFetch() {
+    private func bindFetchStatus() {
         fetchStatusSubject.assign(to: \.fetchStatus, on: self)
             .store(in: &cancelBag)
     }
