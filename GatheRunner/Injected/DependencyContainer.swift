@@ -22,4 +22,7 @@ class DependencyContainer: ObservableObject {
 extension DependencyContainer {
     static var previewAuthScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.authVm
     static var previewGraphScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.graphVm
+    static var previewMapScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.mapVm
+    static var previewRecordScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.recordVm
+    static var previewRouteScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.routeVm
 }
