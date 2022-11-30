@@ -22,9 +22,7 @@ struct HistoryList: View {
                         .padding()
                         .padding(.leading,20)
                     LazyVStack {
-                        ForEach(viewModel.historys ?? []) { history in
-                            HistoryItem(history: history)
-                        }
+                        ForEach(viewModel.historys, id: \.self) { HistoryItem(history: $0) }
                     }
                     .padding(.bottom)
                 }

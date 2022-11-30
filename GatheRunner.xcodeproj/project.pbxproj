@@ -38,6 +38,14 @@
 		E31D52642927A63C0067DF48 /* FirebaseAuthRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D52632927A63C0067DF48 /* FirebaseAuthRequestDTO.swift */; };
 		E32D47B2292CEAB2001CCE61 /* MapWithPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D47B0292CEA1A001CCE61 /* MapWithPolyline.swift */; };
 		E32D47B3292CEAB4001CCE61 /* ResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D47B1292CEA1A001CCE61 /* ResultMapView.swift */; };
+		E335E7E5293729AB0034CFED /* RunningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7E4293729AB0034CFED /* RunningRecord.swift */; };
+		E335E7E7293729D80034CFED /* RunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7E6293729D80034CFED /* RunningRecordRepository.swift */; };
+		E335E7E929372A0F0034CFED /* FirebaseRunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7E829372A0F0034CFED /* FirebaseRunningRecordRepository.swift */; };
+		E335E7EB29372ACA0034CFED /* RunningRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7EA29372ACA0034CFED /* RunningRecordResponse.swift */; };
+		E335E7ED29372C380034CFED /* SearchRunningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7EC29372C380034CFED /* SearchRunningRecord.swift */; };
+		E335E7EF29372C740034CFED /* SearchRunningRecord+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7EE29372C740034CFED /* SearchRunningRecord+Firebase.swift */; };
+		E335E7F129372D960034CFED /* RunningRecord+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7F029372D960034CFED /* RunningRecord+Firebase.swift */; };
+		E335E7F329372DFE0034CFED /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7F229372DFE0034CFED /* String+ToDate.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E3435A01292281F500B65D48 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A00292281F500B65D48 /* UserRepository.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
@@ -95,8 +103,7 @@
 		E3F598A5292B4F0300023097 /* MainTabComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5989F292A0E2200023097 /* MainTabComponents.swift */; };
 		E3F83E6A28AF641D000CA1B5 /* MeasurementViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */; };
 		E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE02FA28D49749008A9B91 /* String+isValid.swift */; };
-		E85FF54728F6857700C197CA /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85FF54628F6857700C197CA /* History.swift */; };
-		E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85FF54828F6867C00C197CA /* AverageHistory.swift */; };
+		E85FF54928F6867C00C197CA /* RunningRecordResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85FF54828F6867C00C197CA /* RunningRecordResponseDTO.swift */; };
 		EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8928D07C1000D78D28 /* PeriodView.swift */; };
 		EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8A28D07C1000D78D28 /* GraphView.swift */; };
 		EA3D3F8F28D07C1000D78D28 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D3F8B28D07C1000D78D28 /* Graph.swift */; };
@@ -163,6 +170,14 @@
 		E32716CD290D560A005FA430 /* Encodable+ToDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+ToDictionary.swift"; sourceTree = "<group>"; };
 		E32D47B0292CEA1A001CCE61 /* MapWithPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWithPolyline.swift; sourceTree = "<group>"; };
 		E32D47B1292CEA1A001CCE61 /* ResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapView.swift; sourceTree = "<group>"; };
+		E335E7E4293729AB0034CFED /* RunningRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecord.swift; sourceTree = "<group>"; };
+		E335E7E6293729D80034CFED /* RunningRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordRepository.swift; sourceTree = "<group>"; };
+		E335E7E829372A0F0034CFED /* FirebaseRunningRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRunningRecordRepository.swift; sourceTree = "<group>"; };
+		E335E7EA29372ACA0034CFED /* RunningRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordResponse.swift; sourceTree = "<group>"; };
+		E335E7EC29372C380034CFED /* SearchRunningRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRunningRecord.swift; sourceTree = "<group>"; };
+		E335E7EE29372C740034CFED /* SearchRunningRecord+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchRunningRecord+Firebase.swift"; sourceTree = "<group>"; };
+		E335E7F029372D960034CFED /* RunningRecord+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RunningRecord+Firebase.swift"; sourceTree = "<group>"; };
+		E335E7F229372DFE0034CFED /* String+ToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDate.swift"; sourceTree = "<group>"; };
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E33663E2292CD2E200E41E28 /* RepositoriesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesContainer.swift; sourceTree = "<group>"; };
 		E33663E4292CD2F700E41E28 /* ViewModelsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelsContainer.swift; sourceTree = "<group>"; };
@@ -233,8 +248,7 @@
 		E3F83E6928AF641D000CA1B5 /* MeasurementViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewUITests.swift; sourceTree = "<group>"; };
 		E3FE02FA28D49749008A9B91 /* String+isValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValid.swift"; sourceTree = "<group>"; };
 		E532B14686B661EA8EC46FEF /* Pods_GatheRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GatheRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E85FF54628F6857700C197CA /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		E85FF54828F6867C00C197CA /* AverageHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageHistory.swift; sourceTree = "<group>"; };
+		E85FF54828F6867C00C197CA /* RunningRecordResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordResponseDTO.swift; sourceTree = "<group>"; };
 		EA3D3F8928D07C1000D78D28 /* PeriodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodView.swift; sourceTree = "<group>"; };
 		EA3D3F8A28D07C1000D78D28 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		EA3D3F8B28D07C1000D78D28 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -352,6 +366,8 @@
 				DA5842182893C22F00554B5D /* View+Extensions.swift */,
 				DA58421A2893C24A00554B5D /* Array+Extensions.swift */,
 				E3FE02FA28D49749008A9B91 /* String+isValid.swift */,
+				E335E7F229372DFE0034CFED /* String+ToDate.swift */,
+				DB051390292BDE7B00BE218B /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -384,7 +400,6 @@
 				E3DA2F5628B7607F001E9220 /* GatherNaviBar.swift */,
 				E3DA2F5728B7607F001E9220 /* TouchLocationView.swift */,
 				E305671028B75B6600DFA1C4 /* LocationManager.swift */,
-				DB051390292BDE7B00BE218B /* Date+Extension.swift */,
 				E399CACB2936199C00ACFCFA /* FetchStatusType.swift */,
 			);
 			path = Utils;
@@ -408,11 +423,33 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		E335E7E2293727AE0034CFED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E35EFEC1286DFB2D003E23DE /* ActivityView.swift */,
+				EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */,
+				EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */,
+				DBD4C52D28F3DFBC000E28D0 /* ActivityHistory */,
+				EA7913B628D6EA5900F889E5 /* Picker */,
+				EA3D3F8828D07C0000D78D28 /* Graph */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E335E7E3293729820034CFED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E335E7E4293729AB0034CFED /* RunningRecord.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E34359FE292281D100B65D48 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 				E34359FF292281E500B65D48 /* Common */,
 				E3435A022922820D00B65D48 /* FirebaseUserRepository.swift */,
+				E335E7E829372A0F0034CFED /* FirebaseRunningRecordRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -421,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				E3435A00292281F500B65D48 /* UserRepository.swift */,
+				E335E7E6293729D80034CFED /* RunningRecordRepository.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -520,13 +558,8 @@
 			isa = PBXGroup;
 			children = (
 				E85FF54528F6856800C197CA /* Model */,
-				DBD4C52D28F3DFBC000E28D0 /* ActivityHistory */,
-				EA7913B628D6EA5900F889E5 /* Picker */,
-				EA3D3F8828D07C0000D78D28 /* Graph */,
 				EA5E279028B604B7004C0798 /* ViewModel */,
-				E35EFEC1286DFB2D003E23DE /* ActivityView.swift */,
-				EA4D0FE628B634C00005A5F3 /* EmptyActivityView.swift */,
-				EA4D0FE828B63B210005A5F3 /* ActivityHistoryView.swift */,
+				E335E7E2293727AE0034CFED /* View */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -554,6 +587,7 @@
 			children = (
 				E38C3AA3291546BA00F0B104 /* Utils */,
 				E38C3AAA291546BA00F0B104 /* Helpers */,
+				E335E7E3293729820034CFED /* Model */,
 				E38C3AA8291546BA00F0B104 /* API */,
 				E34359FE292281D100B65D48 /* Repositories */,
 			);
@@ -735,8 +769,10 @@
 		E85FF54528F6856800C197CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E85FF54628F6857700C197CA /* History.swift */,
-				E85FF54828F6867C00C197CA /* AverageHistory.swift */,
+				E85FF54828F6867C00C197CA /* RunningRecordResponseDTO.swift */,
+				E335E7EA29372ACA0034CFED /* RunningRecordResponse.swift */,
+				E335E7EC29372C380034CFED /* SearchRunningRecord.swift */,
+				E335E7EE29372C740034CFED /* SearchRunningRecord+Firebase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -756,6 +792,7 @@
 			isa = PBXGroup;
 			children = (
 				DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */,
+				E335E7F029372D960034CFED /* RunningRecord+Firebase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1063,6 +1100,7 @@
 				E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */,
 				E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */,
 				E3435A01292281F500B65D48 /* UserRepository.swift in Sources */,
+				E335E7E7293729D80034CFED /* RunningRecordRepository.swift in Sources */,
 				E38C3AB52915471A00F0B104 /* OptionNameSpaces.swift in Sources */,
 				E399CA8229339C9F00ACFCFA /* UserManager.swift in Sources */,
 				E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */,
@@ -1085,6 +1123,7 @@
 				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
 				DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */,
 				E38C3AB1291546F800F0B104 /* Encodable+ToDictionary.swift in Sources */,
+				E335E7EF29372C740034CFED /* SearchRunningRecord+Firebase.swift in Sources */,
 				EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */,
 				E399CA7929338BA100ACFCFA /* ManagersContainer.swift in Sources */,
 				E35EFEC7286DFB2D003E23DE /* TabItem.swift in Sources */,
@@ -1095,16 +1134,20 @@
 				E399CA7B2933957700ACFCFA /* RepositoriesContainer.swift in Sources */,
 				E350EA1828AE196000F85FA1 /* Toggle+IconStyle.swift in Sources */,
 				DA33695A28790E0C00FA13AE /* RunningGuideView.swift in Sources */,
+				E335E7F329372DFE0034CFED /* String+ToDate.swift in Sources */,
 				E35EFEC6286DFB2D003E23DE /* RunningView.swift in Sources */,
 				E3DA2F5928B76098001E9220 /* Alignment+Extention.swift in Sources */,
+				E335E7E5293729AB0034CFED /* RunningRecord.swift in Sources */,
 				DBD4C52F28F3DFD1000E28D0 /* HistoryItem.swift in Sources */,
+				E335E7EB29372ACA0034CFED /* RunningRecordResponse.swift in Sources */,
 				E38C3AB3291546FD00F0B104 /* JSONDecoder+Decode.swift in Sources */,
+				E335E7E929372A0F0034CFED /* FirebaseRunningRecordRepository.swift in Sources */,
+				E335E7F129372D960034CFED /* RunningRecord+Firebase.swift in Sources */,
 				E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */,
 				DA5842192893C22F00554B5D /* View+Extensions.swift in Sources */,
 				DA42E58D292CF4A300D349A9 /* PrepareRunViewModel.swift in Sources */,
 				DA42E590292CF51F00D349A9 /* WorkoutIndexRepository.swift in Sources */,
 				E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */,
-				E85FF54728F6857700C197CA /* History.swift in Sources */,
 				E32D47B2292CEAB2001CCE61 /* MapWithPolyline.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				E31D52642927A63C0067DF48 /* FirebaseAuthRequestDTO.swift in Sources */,
@@ -1115,7 +1158,7 @@
 				DA58421E2893C27700554B5D /* RunGuideViewModel.swift in Sources */,
 				E38C3AB72915472D00F0B104 /* FirebaseAPIManager.swift in Sources */,
 				DA58421B2893C24A00554B5D /* Array+Extensions.swift in Sources */,
-				E85FF54928F6867C00C197CA /* AverageHistory.swift in Sources */,
+				E85FF54928F6867C00C197CA /* RunningRecordResponseDTO.swift in Sources */,
 				E38C3AB0291546F500F0B104 /* Query+AddQueries.swift in Sources */,
 				E355961028D45ECB00AF0FBD /* AuthenticationView.swift in Sources */,
 				E38C3AB2291546FB00F0B104 /* Firestore+Combine.swift in Sources */,
@@ -1128,6 +1171,7 @@
 				E38C3AB62915472800F0B104 /* FireStoreRequest.swift in Sources */,
 				E399CAD029362DBE00ACFCFA /* ErrorView.swift in Sources */,
 				E3E748092892837700F40457 /* RunSplashScreen.swift in Sources */,
+				E335E7ED29372C380034CFED /* SearchRunningRecord.swift in Sources */,
 				DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E399CA7C2933957C00ACFCFA /* ViewModelsContainer.swift in Sources */,

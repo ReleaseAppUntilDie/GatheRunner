@@ -30,7 +30,9 @@ struct ActivityHistoryView: View {
                     selectedTimeUnit: $selectedTimeUnit
                 )
                 HistoryList(viewModel: viewModel)
-            }.padding(.top)
+            }
+            .padding(.top)
+            
             GraphBottomSheetView(
                 viewModel: viewModel,
                 show: $isPickerViewShowed,
@@ -44,8 +46,8 @@ struct ActivityHistoryView: View {
 
 // MARK: - ActivityHistoryView_Previews
 //
-//struct ActivityHistoryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ActivityHistoryView()
-//    }
-//}
+struct ActivityHistoryView_Previews: PreviewProvider {
+    static var previews: some View {
+        ActivityHistoryView(viewModel: DependencyContainer.previewGraphScene)
+    }
+}

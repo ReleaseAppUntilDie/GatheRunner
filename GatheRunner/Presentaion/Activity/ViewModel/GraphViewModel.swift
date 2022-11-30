@@ -5,45 +5,48 @@
 //  Created by hanjaeseung on 2022/08/15.
 //
 
-import SwiftUI
+import Combine
+import Foundation
 
 class GraphViewModel: ObservableObject {
 
-    // MARK: Lifecycle
-
-    init() {
-        pickerItemList = [String]()
-        pickerItemListInMonth = ([Int](),[Int]())
-        pickerListYear = [Int]()
-        selectedString = "이번주"
-        selectedTimeUnit = .week
-        records = [Int]()
-
-        dataInit()
-        
-        fetchAllData()
-        
-    }
-
     // MARK: Internal
 
-    @Published var pickerItemList: [String]
-    @Published var pickerItemListInMonth: ([Int],[Int])
-    @Published var pickerListYear: [Int]
-    @Published var selectedString: String
-    @Published var records: [Int]
-    @Published var historys: [History]?
-    @Published var filteredHistorys: [History]? {
+    @Published var pickerItemList = [String]()
+    @Published var pickerItemListInMonth = ([Int](),[Int]())
+    @Published var pickerListYear = [Int]()
+    @Published var selectedString = "이번주"
+    @Published var records = [Int]()
+    @Published var historys = [HistoryModel]()
+    @Published var fetchError = false
+    @Published var totalRecord: (distance: Int, count: Int, pace: String, totalTime: String)?
+    @Published var filteredHistorys: [HistoryModel]? {
         didSet {
             if filteredHistorys != nil {
                 self.drawGraph()
             }
         }
     }
-    @Published var fetchError = false
-    @Published var totalRecord: (distance: Int, count: Int, pace: String, totalTime: String)?
-    var selectedTimeUnit: TimeUnit
 
+    var selectedTimeUnit: TimeUnit = .week
+    var cancelBag = Set<AnyCancellable>()
+
+    private let runningRecordRepository: RunningRecordRepository
+    private let userManager: UserManager
+    
+    // MARK: Lifecycle
+
+    init(runningRecordRepository: RunningRecordRepository,
+         userManager: UserManager) {
+        self.runningRecordRepository = runningRecordRepository
+        self.userManager = userManager
+        
+        dataInit()
+        fetchAllData()
+    }
+}
+
+extension GraphViewModel {
     func updateTimeUnit(_ unit: TimeUnit) {
         selectedTimeUnit = unit
         switch unit {
@@ -112,6 +115,110 @@ class GraphViewModel: ObservableObject {
             break
         }
     }
+    
+    func drawGraph() {
+        guard let filteredHistorys = filteredHistorys else { return }
+
+        switch selectedTimeUnit {
+        case .week:
+            var graphDates = [Int](repeating: 0, count: 7)
+            filteredHistorys.forEach {
+                let comps = $0.date.toDate.get([.weekday])
+                var index = comps.weekday! - 2
+                if index < 0 {
+                    index = 6
+                }
+                graphDates[index] += Int($0.distance) ?? 0
+            }
+            records = graphDates
+        case .month:
+            let lastDay = filteredHistorys.first?.date.toDate.endOfMonth().get([.day]).day
+
+            var graphDates = [Int](repeating: 0, count: lastDay ?? 0)
+            filteredHistorys.forEach {
+                let comps = $0.date.toDate.get([.day])
+                let index = comps.day! - 1
+               
+                graphDates[index] += Int($0.distance) ?? 0
+            }
+            records = graphDates
+        case .year:
+            var graphDates = [Int](repeating: 0, count: 12)
+            filteredHistorys.forEach {
+                let comps = $0.date.toDate.get([.month])
+                let index = comps.month! - 1
+                
+                graphDates[index] += Int($0.distance) ?? 0
+            }
+            records = graphDates
+        case .whole:
+            
+            var graphDates = [Int](repeating: 0, count: 4)
+            filteredHistorys.forEach {
+                let comps = $0.date.toDate.get([.year])
+                
+                let index = comps.year! - (comps.year! - 4 + 1)
+                
+                graphDates[index] += Int($0.distance) ?? 0
+            }
+           
+            records = graphDates
+        }
+    }
+    
+    func calculateYears() -> [Int] {
+        var result = [Int]()
+        let current = Calendar.current.dateComponents([.year], from: Date())
+        for i in 0..<4 {
+            result.append(current.year! - i)
+        }
+        return result
+    }
+
+    func isValidMonth(year: Int, month: Int) -> Bool {
+        let dateComponents = DateComponents(year: year,month: month)
+        let currentDate = Date()
+        guard let willCompareDate = Calendar.current.date(from: dateComponents) else { return false }
+        return currentDate >= willCompareDate
+    }
+    
+    func fetchAllData() {
+        runningRecordRepository.fetch(SearchRunningRecord(uid: userManager.uid))
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else {return}
+                switch completion {
+                case .failure(let error):
+                    print("debug error: ", error)
+                    self.fetchError = true
+                case .finished:
+                    print("fetch All data finished")
+                }
+            }, receiveValue: { [weak self] result in
+                guard let self = self else {return}
+                self.historys = result.sorted { $0.date.toDate > $1.date.toDate }.map { $0.toHistory }
+                self.getFilteredHistoryInWeek(index: 0)
+            })
+            .store(in: &cancelBag)
+    }
+}
+
+// MARK: Private
+
+extension GraphViewModel {
+    private func dataInit() {
+        let periodString: ((Int,Int,Int,Int)) -> String = {
+            "\($0.0).\($0.1)~\($0.2).\($0.3)"
+        }
+        let beforeTwoWeeks = beforeTwoWeeks()
+        let beforeThreeWeeks = beforeThreeWeeks()
+
+        pickerItemList = [
+            "이번주",
+            "저번주",
+            periodString(beforeTwoWeeks),
+            periodString(beforeThreeWeeks),
+        ]
+    }
 
     private func beforeTwoWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
         let date = Date()
@@ -149,7 +256,7 @@ class GraphViewModel: ObservableObject {
             comps.hour = 0
             comps.minute = 0
             let firstDay = Calendar.current.date(from: comps)!
-            filteredHistorys = historys?.filter { today.endOfday() >= $0.stringToDate && $0.stringToDate >= firstDay.startOfMonth().startOfDay() }
+            filteredHistorys = historys.filter { today.endOfday() >= $0.date.toDate && $0.date.toDate >= firstDay.startOfMonth().startOfDay() }
         } else {
             var comps = DateComponents()
             comps.day = 1
@@ -163,7 +270,7 @@ class GraphViewModel: ObservableObject {
             comps.hour = 23
             comps.minute = 59
             let lastDay = Calendar.current.date(from: comps)!
-            filteredHistorys = historys?.filter { lastDay.endOfday() >= $0.stringToDate && $0.stringToDate >= firstDay.startOfMonth().startOfDay() }
+            filteredHistorys = historys.filter { lastDay.endOfday() >= $0.date.toDate && $0.date.toDate >= firstDay.startOfMonth().startOfDay() }
         }
         
         calculateTotalRecord()
@@ -173,7 +280,7 @@ class GraphViewModel: ObservableObject {
         let today = Date()
         let dc = today.get([.year, .month])
         if dc.year! == year && dc.month! == month {
-            filteredHistorys = historys?.filter { today.endOfday() >= $0.stringToDate && $0.stringToDate >= today.startOfMonth().startOfDay() }
+            filteredHistorys = historys.filter { today.endOfday() >= $0.date.toDate && $0.date.toDate >= today.startOfMonth().startOfDay() }
         } else {
             var comps = DateComponents()
             comps.day = 2
@@ -182,7 +289,7 @@ class GraphViewModel: ObservableObject {
             comps.hour = 0
             comps.minute = 0
             let date = Calendar.current.date(from: comps)!
-            filteredHistorys = historys?.filter { date.endOfMonth().endOfday() >= $0.stringToDate && $0.stringToDate >= date.startOfMonth().startOfDay() }
+            filteredHistorys = historys.filter { date.endOfMonth().endOfday() >= $0.date.toDate && $0.date.toDate >= date.startOfMonth().startOfDay() }
         }
         
         calculateTotalRecord()
@@ -198,9 +305,9 @@ class GraphViewModel: ObservableObject {
         let sunday = today.calculatedDate(unit: .day, value: -(7 * (index - 1) + weekDay - 1 + constant))
 
         if index == 0 {
-            filteredHistorys = historys?.filter { today >= $0.stringToDate && $0.stringToDate >= monday }
+            filteredHistorys = historys.filter { today >= $0.date.toDate && $0.date.toDate >= monday }
         } else {
-            filteredHistorys = historys?.filter { sunday >= $0.stringToDate && $0.stringToDate >= monday }
+            filteredHistorys = historys.filter { sunday >= $0.date.toDate && $0.date.toDate >= monday }
         }
         
         calculateTotalRecord()
@@ -217,12 +324,12 @@ class GraphViewModel: ObservableObject {
         var paces = 0
         var totalTime = 0
         for hitory in historys  {
-            distance += Int(hitory.distance!)!
-            let curPacem = hitory.averagePace!.components(separatedBy: "'")[0]
-            let curPaces = hitory.averagePace!.components(separatedBy: "'")[1].components(separatedBy: "'")[0]
+            distance += Int(hitory.distance) ?? 0
+            let curPacem = hitory.averagePace.components(separatedBy: "'")[0]
+            let curPaces = hitory.averagePace.components(separatedBy: "'")[1].components(separatedBy: "'")[0]
             paces += Int(curPaces)!
             pacem += Int(curPacem)!
-            var runningTimeArray = hitory.runningTime!.components(separatedBy: ":")
+            var runningTimeArray = hitory.runningTime.components(separatedBy: ":")
             var timeIndex = 1
             while !runningTimeArray.isEmpty {
                 totalTime += Int(runningTimeArray.removeLast())! * timeIndex
@@ -240,55 +347,6 @@ class GraphViewModel: ObservableObject {
         self.totalRecord = (distance: distance, count: historys.count, pace: "\(pacem)'\(paces)''",totalTime: "\(totalTime.hours):\(totalTime.minutesWithHours):\(totalTime.seconds)")
     }
     
-    func drawGraph() {
-        guard let filteredHistorys = filteredHistorys else { return }
-
-        switch selectedTimeUnit {
-        case .week:
-            var graphDates = [Int](repeating: 0, count: 7)
-            filteredHistorys.forEach {
-                let comps = $0.stringToDate.get([.weekday])
-                var index = comps.weekday! - 2
-                if index < 0 {
-                    index = 6
-                }
-                graphDates[index] += Int($0.distance ?? "0") ?? 0
-            }
-            records = graphDates
-        case .month:
-            let lastDay = filteredHistorys.first?.stringToDate.endOfMonth().get([.day]).day!
-            var graphDates = [Int](repeating: 0, count: lastDay ?? 0)
-            filteredHistorys.forEach {
-                let comps = $0.stringToDate.get([.day])
-                let index = comps.day! - 1
-               
-                graphDates[index] += Int($0.distance ?? "0") ?? 0
-            }
-            records = graphDates
-        case .year:
-            var graphDates = [Int](repeating: 0, count: 12)
-            filteredHistorys.forEach {
-                let comps = $0.stringToDate.get([.month])
-                let index = comps.month! - 1
-                
-                graphDates[index] += Int($0.distance ?? "0") ?? 0
-            }
-            records = graphDates
-        case .whole:
-            
-            var graphDates = [Int](repeating: 0, count: 4)
-            filteredHistorys.forEach {
-                let comps = $0.stringToDate.get([.year])
-                
-                let index = comps.year! - (comps.year! - 4 + 1)
-                
-                graphDates[index] += Int($0.distance ?? "0") ?? 0
-            }
-           
-            records = graphDates
-        }
-    }
-
     private func beforeThreeWeeks() -> (firstDay: Int,firstMonth: Int,lastDay: Int,lastMonth: Int) {
         let date = Date()
         guard let weekDay = date.get([.weekday]).weekday else {
@@ -303,60 +361,4 @@ class GraphViewModel: ObservableObject {
         
         return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
     }
-
-    func calculateYears() -> [Int] {
-        var result = [Int]()
-        let current = Calendar.current.dateComponents([.year], from: Date())
-        for i in 0..<4 {
-            result.append(current.year! - i)
-        }
-        return result
-    }
-
-    func isValidMonth(year: Int, month: Int) -> Bool {
-        let dateComponents = DateComponents(year: year,month: month)
-        let currentDate = Date()
-        guard let willCompareDate = Calendar.current.date(from: dateComponents) else { return false }
-        return currentDate >= willCompareDate
-    }
-
-    
-    
-    func fetchAllData() {
-        RunningRecordAPIs.fetchRunningRecord(request: RunningRecordRequest(uid: "hanTest"))
-            .sink(receiveCompletion: { [weak self] completion in
-                guard let self = self else {return}
-                switch completion {
-                case .failure(let error):
-                    print("debug error: ", error)
-                    self.fetchError = true
-                case .finished:
-                    print("fetch All data finished")
-                }
-            }, receiveValue: { [weak self] result in
-                guard let self = self else {return}
-                self.historys = result.sorted { $0.stringToDate > $1.stringToDate }
-                self.getFilteredHistoryInWeek(index: 0)
-            })
-            .store(in: &RunningRecordAPIs.cancelBag)
-    }
-
-    // MARK: Private
-
-    private func dataInit() {
-        let periodString: ((Int,Int,Int,Int)) -> String = {
-            "\($0.0).\($0.1)~\($0.2).\($0.3)"
-        }
-        let beforeTwoWeeks = beforeTwoWeeks()
-        let beforeThreeWeeks = beforeThreeWeeks()
-
-        pickerItemList = [
-            "이번주",
-            "저번주",
-            periodString(beforeTwoWeeks),
-            periodString(beforeThreeWeeks),
-        ]
-        
-    }
-
 }

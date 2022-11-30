@@ -22,4 +22,9 @@ extension DependencyContainer.ViewModels {
         AuthenticationViewModel(userRepository: repositories.userRepository,
                                 userManager: managers.userManager)
     }
+    
+    var graphVm: GraphViewModel {
+        GraphViewModel(runningRecordRepository: repositories.runningRecordRepository,
+                       userManager: managers.userManager)
+    }
 }

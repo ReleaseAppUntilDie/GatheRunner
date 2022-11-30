@@ -9,24 +9,15 @@ import SwiftUI
 // MARK: - ActivityView
 
 struct ActivityView: View {
-    @ObservedObject var viewModel = GraphViewModel()
-    
     var body: some View {
         VStack(spacing: 0) {
             HeaderView(title: "활동",type: .activity) {}
-            
-            if viewModel.historys == nil {
-                Spacer()
-            } else {
-                if viewModel.historys!.isEmpty {
-                    EmptyActivityView()
-                } else {
-                    ActivityHistoryView(viewModel: viewModel)
-                }
-            }
+            ActivityHistoryView(viewModel: container.viewModels.graphVm)
         }
         .ignoresSafeArea(edges: .top)
     }
+    
+    @EnvironmentObject var container: DependencyContainer
 }
 
 // MARK: - ActivityView_Previews
