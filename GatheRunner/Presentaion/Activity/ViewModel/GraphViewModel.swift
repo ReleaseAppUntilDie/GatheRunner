@@ -18,7 +18,6 @@ class GraphViewModel: ObservableObject {
     @Published var selectedString = "이번주"
     @Published var records = [Int]()
     @Published var historys = [HistoryModel]()
-    @Published var fetchError = false
     @Published var totalRecord: (distance: Int, count: Int, pace: String, totalTime: String)?
     @Published var filteredHistorys: [HistoryModel]? {
         didSet {
@@ -27,12 +26,16 @@ class GraphViewModel: ObservableObject {
             }
         }
     }
+    
+    @Published var fetchStatus: FetchStatus = .none
 
     var selectedTimeUnit: TimeUnit = .week
     var cancelBag = Set<AnyCancellable>()
+    var errorMessage = ""
 
     private let runningRecordRepository: RunningRecordRepository
     private let userManager: UserManager
+    private let fetchStatusSubject = CurrentValueSubject<FetchStatus, Never>(.none)
     
     // MARK: Lifecycle
 
@@ -42,6 +45,7 @@ class GraphViewModel: ObservableObject {
         self.userManager = userManager
         
         dataInit()
+        bindFetchStatus()
         fetchAllData()
     }
 }
@@ -183,21 +187,35 @@ extension GraphViewModel {
     }
     
     func fetchAllData() {
+        fetchStatusSubject.send(.fetching)
         runningRecordRepository.fetch(SearchRunningRecord(uid: userManager.uid))
             .sink(receiveCompletion: { [weak self] completion in
-                guard let self = self else {return}
+                guard let self = self else { return }
+                
                 switch completion {
                 case .failure(let error):
-                    print("debug error: ", error)
-                    self.fetchError = true
+                    self.fetchStatusSubject.send(.failure)
+                    self.errorMessage = error.localizedDescription
+                    
                 case .finished:
                     print("fetch All data finished")
                 }
             }, receiveValue: { [weak self] result in
-                guard let self = self else {return}
+                guard let self = self else { return }
+                
+                self.fetchStatusSubject.send(.success)
                 self.historys = result.sorted { $0.date.toDate > $1.date.toDate }.map { $0.toHistory }
                 self.getFilteredHistoryInWeek(index: 0)
             })
+            .store(in: &cancelBag)
+    }
+}
+
+// MARK: Private Bind
+
+extension GraphViewModel {
+    private func bindFetchStatus() {
+        fetchStatusSubject.assign(to: \.fetchStatus, on: self)
             .store(in: &cancelBag)
     }
 }

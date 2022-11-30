@@ -16,11 +16,10 @@ enum TimeUnit {
 // MARK: - ActivityHistoryView
 
 struct ActivityHistoryView: View {
-
-    @ObservedObject var viewModel: GraphViewModel
+    @StateObject var viewModel: GraphViewModel
     @State private var isPickerViewShowed = false
     @State var selectedTimeUnit: TimeUnit = .week
-
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -29,7 +28,8 @@ struct ActivityHistoryView: View {
                     viewModel: viewModel,
                     selectedTimeUnit: $selectedTimeUnit
                 )
-                HistoryList(viewModel: viewModel)
+                
+                HistoryList
             }
             .padding(.top)
             
@@ -38,9 +38,25 @@ struct ActivityHistoryView: View {
                 show: $isPickerViewShowed,
                 selectedTimeUnit: $selectedTimeUnit
             )
-            .isEmpty(logicalOperator: .none, [isPickerViewShowed])
+                .isEmpty(logicalOperator: .none, [isPickerViewShowed])
         }
-        
+    }
+    
+    private var HistoryList: some View {
+        ZStack {
+            Color(uiColor: .systemGray6)
+            VStack(alignment: .leading) {
+                Text("최근 활동")
+                    .font(.title3)
+                    .padding()
+                    .padding(.leading,20)
+                
+                LazyVStack {
+                    ForEach(viewModel.historys, id: \.self) { HistoryItem(history: $0) }
+                }
+                .padding(.bottom)
+            }
+        }
     }
 }
 

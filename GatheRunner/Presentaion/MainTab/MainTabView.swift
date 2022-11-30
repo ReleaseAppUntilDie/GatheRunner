@@ -27,6 +27,7 @@ struct MainTabView: View {
         }
     }
     
+    @EnvironmentObject var container: DependencyContainer
     @ObservedObject var selectedTab = SelectedTab.shared
 }
 
@@ -46,7 +47,7 @@ extension MainTabView {
         Group {
             switch tag {
             case 1: RunningView()
-            case 2: ActivityView()
+            case 2: ActivityView(viewModel: container.viewModels.graphVm)
             default: EmptyView()
             }
         }
