@@ -16,9 +16,10 @@ class RunningRecordViewModel: ObservableObject {
     @Published var seconds = Content.defaultTime
     @Published var totalTravelDistance = Double()
     @Published var currentPace = Double()
-    @Published var isFinished = false
-    
+    @Published var fetchStatus: FetchStatus = .none
+
     var cancelBag = Set<AnyCancellable>()
+    var errorMessage = ""
     
     // MARK: Private
     
@@ -27,10 +28,11 @@ class RunningRecordViewModel: ObservableObject {
     private let timerManager: TimerManager
     private let userManager: UserManager
     
+    private let fetchStatusSubject = CurrentValueSubject<FetchStatus, Never>(.none)
+    
     private var locationCancellable: Cancellable?
-
     private var oldLocation: CLLocationCoordinate2D?
-    private var oldTime = 0
+    private var oldTime = Int()
     
     // MARK: LifeCycle
 
@@ -42,6 +44,8 @@ class RunningRecordViewModel: ObservableObject {
         self.locationManager = locationManager
         self.timerManager = timerManager
         self.userManager = userManager
+        
+        bindFetchStatus()
     }
 }
 
@@ -109,10 +113,15 @@ extension RunningRecordViewModel {
                 guard let self = self else { return }
                 
                 let location = region.center
-                let travelDistance = self.calcDistance(current: location)
+                let travelDistance = self.calcDistance(with: location)
                 
                 self.updateRecord(on: location, calcWith: travelDistance)
             }
+    }
+    
+    private func bindFetchStatus() {
+        fetchStatusSubject.assign(to: \.fetchStatus, on: self)
+            .store(in: &cancelBag)
     }
 }
 
@@ -120,15 +129,22 @@ extension RunningRecordViewModel {
 
 extension RunningRecordViewModel {
     private func uploadRecord() {
+        fetchStatusSubject.send(.fetching)
+
         runningRecordRepository.post(runningRecordDTO)
-            .sink { completion in
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+
                 switch completion {
-                case .failure(let error): print("error \(error)")
-                default: print("completion \(completion)")
+                case .failure(let error):
+                    self.fetchStatusSubject.send(.failure)
+                    self.errorMessage = error.localizedDescription
+
+                default: return
                 }
                 
             } receiveValue: { [weak self] _ in
-                self?.isFinished = true
+                self?.fetchStatusSubject.send(.success)
             }
             .store(in: &cancelBag)
     }
@@ -145,7 +161,7 @@ extension RunningRecordViewModel {
 // MARK: Private CalcTask
 
 extension RunningRecordViewModel {
-    private func calcDistance(current: CLLocationCoordinate2D) -> Double {
+    private func calcDistance(with current: CLLocationCoordinate2D) -> Double {
         guard let oldLocation = oldLocation else {
             return Calc.resultZero
         }
@@ -169,13 +185,11 @@ extension RunningRecordViewModel {
         }
         
         let beforeCeil = (Double(calcTime) / Calc.paceDivide) / distance
-        
         return Double(String(format: Calc.paceCeil, beforeCeil)) ?? Calc.resultZero
     }
 
     private var calcAveragePace: String {
         let doubleType = (Double(timerManager.progressTime) / Calc.paceDivide) / totalTravelDistance
-        
         return String(format: Calc.paceCeil, doubleType).toRecordFormat
     }
 }

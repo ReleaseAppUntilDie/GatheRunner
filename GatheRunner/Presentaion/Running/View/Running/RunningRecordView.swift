@@ -20,9 +20,8 @@ struct RunningRecordView: View {
             realTimeRecordView
             stopWatchButtonLayer
         }
-        .onAppear {
-            bindViewModel()
-        }
+        .onAppear { bindFetchStatus() }
+        .didSetLoadable(by: $recordVm.fetchStatus)
     }
     
     // MARK: Private
@@ -136,14 +135,13 @@ extension RunningRecordView {
 // MARK: Private Methods
 
 extension RunningRecordView {
-    private func bindViewModel() {
-        recordVm.$isFinished
+    private func bindFetchStatus() {
+        recordVm.$fetchStatus
             .sink {
-                guard $0 else { return }
+                guard $0 == .success else { return }
                 self.dismiss()
             }
             .store(in: &recordVm.cancelBag)
-
     }
     
     private func startRecord() {
