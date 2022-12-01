@@ -9,12 +9,15 @@ import Combine
 import MapKit
 
 class RunningRecordViewModel: ObservableObject {
+    
+    // MARK: Internal
+
     @Published var minutes = Content.defaultTime
     @Published var seconds = Content.defaultTime
-    @Published var distance = Double()
+    @Published var totalTravelDistance = Double()
     @Published var currentPace = Double()
     @Published var isFinished = false
-
+    
     var cancelBag = Set<AnyCancellable>()
     
     // MARK: Private
@@ -24,10 +27,13 @@ class RunningRecordViewModel: ObservableObject {
     private let timerManager: TimerManager
     private let userManager: UserManager
     
-    private var oldLocation: CLLocationCoordinate2D?
     private var locationCancellable: Cancellable?
-    private var paceRecords = [Double]()
+
+    private var oldLocation: CLLocationCoordinate2D?
+    private var oldTime = 0
     
+    // MARK: LifeCycle
+
     init(runningRecordRepository: RunningRecordRepository,
          locationManager: LocationManager,
          timerManager: TimerManager,
@@ -63,7 +69,6 @@ extension RunningRecordViewModel {
     func startRecord() {
         bindTimer()
         bindLocation()
-        bindPace()
     }
     
     func pauseRecord() {
@@ -104,33 +109,16 @@ extension RunningRecordViewModel {
                 guard let self = self else { return }
                 
                 let location = region.center
-                self.distance += self.calcDistance(current: location)
-                self.currentPace = self.calcPace
-                self.oldLocation = location
+                let travelDistance = self.calcDistance(current: location)
+                
+                self.updateRecord(on: location, calcWith: travelDistance)
             }
-    }
-    
-    private func bindPace() {
-        $currentPace
-            .sink { [weak self] in
-                self?.paceRecords.append($0)
-            }
-            .store(in: &cancelBag)
     }
 }
 
-// MARK: Private Methods
+// MARK: Private NetworkTask
 
 extension RunningRecordViewModel {
-    private func resetRecord() {
-        minutes = Content.defaultTime
-        seconds = Content.defaultTime
-        oldLocation = nil
-        distance = Double()
-        currentPace = Double()
-        paceRecords = [Double]()
-    }
-    
     private func uploadRecord() {
         runningRecordRepository.post(runningRecordDTO)
             .sink { completion in
@@ -147,26 +135,16 @@ extension RunningRecordViewModel {
     
     private var runningRecordDTO: RunningRecord {
         return RunningRecord(uid: userManager.uid,
-                             distance: String(format: Calc.distanceCeil, distance),
-                             averagePace: averagePace,
-                             runningTime: minutes + Content.colon + seconds,
+                             distance: String(format: Calc.distanceCeil, totalTravelDistance),
+                             averagePace: calcAveragePace,
+                             runningTime: (minutes + Content.colon + seconds),
                              date: Date.currentDate)
     }
 }
 
-// MARK: Private Calc
+// MARK: Private CalcTask
 
 extension RunningRecordViewModel {
-    private var calcPace: Double {
-        guard timerManager.progressTime > Calc.defaultZero, oldLocation != nil else {
-            return Calc.resultZero
-        }
-        
-        let pace = (Double(timerManager.progressTime) / Calc.paceDivide) / distance
-        
-        return Double(String(format: Calc.paceCeil, pace)) ?? Calc.resultZero
-    }
-    
     private func calcDistance(current: CLLocationCoordinate2D) -> Double {
         guard let oldLocation = oldLocation else {
             return Calc.resultZero
@@ -177,11 +155,47 @@ extension RunningRecordViewModel {
         return oldCLLocation.distance(from: currentCLLocation) / Calc.distanceDivide
     }
     
-    private var averagePace: String {
-        guard !paceRecords.isEmpty else {
-            return String(Calc.resultZero)
+    private var calcTime: Int {
+        guard timerManager.progressTime > Calc.defaultZero else {
+            return Int(Calc.resultZero)
         }
-                
-        return (paceRecords.reduce(0.0, +) / Double(paceRecords.count)).toRecordFormat
+        
+        return timerManager.progressTime - oldTime
+    }
+    
+    private func calcPace(with distance: Double) -> Double {
+        guard oldLocation != nil else {
+            return Calc.resultZero
+        }
+        
+        let beforeCeil = (Double(calcTime) / Calc.paceDivide) / distance
+        
+        return Double(String(format: Calc.paceCeil, beforeCeil)) ?? Calc.resultZero
+    }
+
+    private var calcAveragePace: String {
+        let doubleType = (Double(timerManager.progressTime) / Calc.paceDivide) / totalTravelDistance
+        
+        return String(format: Calc.paceCeil, doubleType).toRecordFormat
+    }
+}
+
+// MARK: Private Update Property
+
+extension RunningRecordViewModel {
+    private func updateRecord(on location: CLLocationCoordinate2D, calcWith travelDistance: Double) {
+        totalTravelDistance += travelDistance
+        currentPace = calcPace(with: travelDistance)
+        
+        oldLocation = location
+        oldTime = timerManager.progressTime
+    }
+    
+    private func resetRecord() {
+        minutes = Content.defaultTime
+        seconds = Content.defaultTime
+        oldLocation = nil
+        totalTravelDistance = Double()
+        currentPace = Double()
     }
 }

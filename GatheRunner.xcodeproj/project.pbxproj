@@ -48,7 +48,7 @@
 		E335E7F72937B76B0034CFED /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7F62937B76B0034CFED /* TimerManager.swift */; };
 		E335E7F92937B8250034CFED /* RunningRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7F82937B8250034CFED /* RunningRecordViewModel.swift */; };
 		E335E7FB2937B8370034CFED /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7FA2937B8370034CFED /* MapViewModel.swift */; };
-		E335E7FD2937C6FE0034CFED /* Double+ToRecordFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7FC2937C6FE0034CFED /* Double+ToRecordFormat.swift */; };
+		E335E7FD2937C6FE0034CFED /* String+ToRecordFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7FC2937C6FE0034CFED /* String+ToRecordFormat.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E3435A01292281F500B65D48 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A00292281F500B65D48 /* UserRepository.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
@@ -183,7 +183,7 @@
 		E335E7F62937B76B0034CFED /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		E335E7F82937B8250034CFED /* RunningRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordViewModel.swift; sourceTree = "<group>"; };
 		E335E7FA2937B8370034CFED /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
-		E335E7FC2937C6FE0034CFED /* Double+ToRecordFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ToRecordFormat.swift"; sourceTree = "<group>"; };
+		E335E7FC2937C6FE0034CFED /* String+ToRecordFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToRecordFormat.swift"; sourceTree = "<group>"; };
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E33663E2292CD2E200E41E28 /* RepositoriesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesContainer.swift; sourceTree = "<group>"; };
 		E33663E4292CD2F700E41E28 /* ViewModelsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelsContainer.swift; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 				E3FE02FA28D49749008A9B91 /* String+isValid.swift */,
 				E335E7F229372DFE0034CFED /* String+ToDate.swift */,
 				DB051390292BDE7B00BE218B /* Date+Extension.swift */,
-				E335E7FC2937C6FE0034CFED /* Double+ToRecordFormat.swift */,
+				E335E7FC2937C6FE0034CFED /* String+ToRecordFormat.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1106,7 +1106,7 @@
 				E335E7E7293729D80034CFED /* RunningRecordRepository.swift in Sources */,
 				E38C3AB52915471A00F0B104 /* OptionNameSpaces.swift in Sources */,
 				E399CA8229339C9F00ACFCFA /* UserManager.swift in Sources */,
-				E335E7FD2937C6FE0034CFED /* Double+ToRecordFormat.swift in Sources */,
+				E335E7FD2937C6FE0034CFED /* String+ToRecordFormat.swift in Sources */,
 				E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */,
 				E32D47B3292CEAB4001CCE61 /* RunningRouteView.swift in Sources */,
 				E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */,

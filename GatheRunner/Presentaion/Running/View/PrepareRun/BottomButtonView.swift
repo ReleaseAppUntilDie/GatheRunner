@@ -19,7 +19,8 @@ struct BottomButtonView: View {
                     // MARK: - 측정화면으로 이동을 위한 임시 구현
 
                     NavigationLink(
-                        destination: RunningRecordView().environmentObject(LocationManager()),
+                        destination: RunningRecordView(recordVm: DependencyContainer.previewRecordScene,
+                                                       routeVm: DependencyContainer.previewRouteScene),
                         tag: 1,
                         selection: self.$tag)
                     {

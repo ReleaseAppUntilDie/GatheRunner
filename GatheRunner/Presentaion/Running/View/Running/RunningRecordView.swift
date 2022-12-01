@@ -83,7 +83,7 @@ extension RunningRecordView {
         HStack(spacing: Size.recordHorizontalSpacing) {
             recordLabelView(
                 label: Content.Label.kilometer,
-                bidingText: String(format: Content.Label.recordFormat, recordVm.distance))
+                bidingText: String(format: Content.Label.recordFormat, recordVm.totalTravelDistance))
             recordLabelView(
                 label: Content.Label.pace,
                 bidingText: String(format: Content.Label.recordFormat, recordVm.currentPace))
