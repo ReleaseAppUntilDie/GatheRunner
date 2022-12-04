@@ -22,7 +22,7 @@ extension RunningRecord {
         distance = try container.decodeIfPresent(String.self, forKey: .distance) ?? Default.distance
         averagePace = try container.decodeIfPresent(String.self, forKey: .averagePace) ?? Default.averagePace
         runningTime = try container.decodeIfPresent(String.self, forKey: .runningTime) ?? Default.runningTime
-        date = try container.decodeIfPresent(String.self, forKey: .runningTime) ?? Default.date
+        date = try container.decodeIfPresent(String.self, forKey: .date) ?? Default.date
     }
 }
 

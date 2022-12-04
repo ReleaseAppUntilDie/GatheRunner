@@ -16,9 +16,10 @@ class GraphViewModel: ObservableObject {
     @Published var pickerItemListInMonth = ([Int](),[Int]())
     @Published var pickerListYear = [Int]()
     @Published var selectedString = "이번주"
+    
     @Published var records = [Int]()
     @Published var historys = [HistoryModel]()
-    @Published var totalRecord: (distance: Int, count: Int, pace: String, totalTime: String)?
+    @Published var totalRecord: (distance: Double, count: Int, pace: String, totalTime: String)?
     @Published var filteredHistorys: [HistoryModel]? {
         didSet {
             if filteredHistorys != nil {
@@ -51,21 +52,42 @@ class GraphViewModel: ObservableObject {
 }
 
 extension GraphViewModel {
+    private enum Content {
+        static let defaultIndex = 0
+        static let defaultYear = 2022
+        static let defaultMonth = 1
+        static let defaultWeekDay = 7
+        static let defaultDay = 2
+        static let defaultDistance = 0
+        static let defaultPace = 0
+        static let defaultTime = 0
+    }
+    
+    private enum Calc {
+        static let defaultDistance = 0.0
+    }
+}
+
+extension GraphViewModel {
     func updateTimeUnit(_ unit: TimeUnit) {
         selectedTimeUnit = unit
         switch unit {
         case .week:
             selectedString = "이번주"
             let index = pickerItemList.firstIndex(of: "이번주")
-            getFilteredHistoryInWeek(index: index!)
+            getFilteredHistoryInWeek(index: index ?? Content.defaultIndex)
+            
         case .month:
             let current = Calendar.current.dateComponents([.year,.month], from: Date())
-            selectedString = "\(String(current.year!))년 \(String(current.month!))월"
-            getFilteredHistoryInMonth(year: current.year!, month: current.month!)
+            selectedString = "\(String(current.year ?? Content.defaultYear))년 \(String(current.month ?? Content.defaultMonth))월"
+            getFilteredHistoryInMonth(year: current.year ?? Content.defaultYear,
+                                      month: current.month ?? Content.defaultMonth)
+            
         case .year:
             let current = Calendar.current.dateComponents([.year], from: Date())
-            selectedString = "\(String(current.year!))년"
-            getFilteredHistoryInYear(year: current.year!)
+            selectedString = "\(String(current.year ?? Content.defaultYear))년"
+            getFilteredHistoryInYear(year: current.year ?? Content.defaultYear)
+            
         case .whole:
             selectedString = "전체"
             getFilteredHistoryInWhole()
@@ -77,7 +99,7 @@ extension GraphViewModel {
         case .week:
             selectedString = selectedStr
             let index = pickerItemList.firstIndex(of: selectedStr)
-            getFilteredHistoryInWeek(index: index!)
+            getFilteredHistoryInWeek(index: index ?? Content.defaultIndex)
         case .month:
             guard isValidMonth(year: selectedYear, month: selectedMonth) else { return }
             selectedString = "\(selectedYear)년 \(selectedMonth)월"
@@ -105,6 +127,7 @@ extension GraphViewModel {
                 periodString(beforeTwoWeeks),
                 periodString(beforeThreeWeeks),
             ]
+            
         case .month:
             let years = calculateYears()
             var result = ([Int](),[Int]())
@@ -115,6 +138,7 @@ extension GraphViewModel {
 
         case .year:
             pickerListYear = calculateYears()
+            
         case .whole:
             break
         }
@@ -128,42 +152,46 @@ extension GraphViewModel {
             var graphDates = [Int](repeating: 0, count: 7)
             filteredHistorys.forEach {
                 let comps = $0.date.toDate.get([.weekday])
-                var index = comps.weekday! - 2
+                var index = comps.weekday ?? Content.defaultWeekDay - 2
                 if index < 0 {
                     index = 6
                 }
-                graphDates[index] += Int($0.distance) ?? 0
+                graphDates[index] += Int($0.distance) ?? Content.defaultDistance
+                
             }
             records = graphDates
+            
         case .month:
             let lastDay = filteredHistorys.first?.date.toDate.endOfMonth().get([.day]).day
 
             var graphDates = [Int](repeating: 0, count: lastDay ?? 0)
             filteredHistorys.forEach {
                 let comps = $0.date.toDate.get([.day])
-                let index = comps.day! - 1
+                let index = comps.day ?? Content.defaultDay - 1
                
-                graphDates[index] += Int($0.distance) ?? 0
+                graphDates[index] += Int($0.distance) ?? Content.defaultDistance
             }
             records = graphDates
+            
         case .year:
             var graphDates = [Int](repeating: 0, count: 12)
             filteredHistorys.forEach {
                 let comps = $0.date.toDate.get([.month])
-                let index = comps.month! - 1
+                let index = comps.month ?? Content.defaultDay - 1
                 
-                graphDates[index] += Int($0.distance) ?? 0
+                graphDates[index] += Int($0.distance) ?? Content.defaultDistance
             }
             records = graphDates
+            
         case .whole:
             
             var graphDates = [Int](repeating: 0, count: 4)
             filteredHistorys.forEach {
                 let comps = $0.date.toDate.get([.year])
                 
-                let index = comps.year! - (comps.year! - 4 + 1)
+                let index = comps.year ?? Content.defaultYear - (comps.year ?? Content.defaultYear - 4 + 1)
                 
-                graphDates[index] += Int($0.distance) ?? 0
+                graphDates[index] += Int($0.distance) ?? Content.defaultDistance
             }
            
             records = graphDates
@@ -174,7 +202,7 @@ extension GraphViewModel {
         var result = [Int]()
         let current = Calendar.current.dateComponents([.year], from: Date())
         for i in 0..<4 {
-            result.append(current.year! - i)
+            result.append(current.year ?? Content.defaultYear - i)
         }
         return result
     }
@@ -253,7 +281,10 @@ extension GraphViewModel {
         
         let lastDateAndMonth = beforeOneWeek.get([.month, .day])
         
-        return (firstDateAndMonth.month ?? 0,firstDateAndMonth.day ?? 0,lastDateAndMonth.month ?? 0,lastDateAndMonth.day ?? 0)
+        return (firstDateAndMonth.month ?? Content.defaultMonth,
+                firstDateAndMonth.day ?? 0,
+                lastDateAndMonth.month ?? 0,
+                lastDateAndMonth.day ?? 0)
     }
     
     private func getFilteredHistoryInWhole() {
@@ -266,14 +297,14 @@ extension GraphViewModel {
     private func getFilteredHistoryInYear(year: Int) {
         let today = Date()
         let dc = today.get([.year])
-        if dc.year! == year {
+        if dc.year ?? Content.defaultYear == year {
             var comps = DateComponents()
             comps.day = 1
             comps.month = 1
             comps.year = year
             comps.hour = 0
             comps.minute = 0
-            let firstDay = Calendar.current.date(from: comps)!
+            let firstDay = Calendar.current.date(from: comps) ?? Date()
             filteredHistorys = historys.filter { today.endOfday() >= $0.date.toDate && $0.date.toDate >= firstDay.startOfMonth().startOfDay() }
         } else {
             var comps = DateComponents()
@@ -282,12 +313,12 @@ extension GraphViewModel {
             comps.year = year
             comps.hour = 0
             comps.minute = 0
-            let firstDay = Calendar.current.date(from: comps)!
+            let firstDay = Calendar.current.date(from: comps) ?? Date()
             comps.day = 31
             comps.month = 12
             comps.hour = 23
             comps.minute = 59
-            let lastDay = Calendar.current.date(from: comps)!
+            let lastDay = Calendar.current.date(from: comps) ?? Date()
             filteredHistorys = historys.filter { lastDay.endOfday() >= $0.date.toDate && $0.date.toDate >= firstDay.startOfMonth().startOfDay() }
         }
         
@@ -297,7 +328,8 @@ extension GraphViewModel {
     private func getFilteredHistoryInMonth(year: Int, month: Int) {
         let today = Date()
         let dc = today.get([.year, .month])
-        if dc.year! == year && dc.month! == month {
+        if dc.year ?? Content.defaultYear == year &&
+            dc.month ?? Content.defaultMonth == month {
             filteredHistorys = historys.filter { today.endOfday() >= $0.date.toDate && $0.date.toDate >= today.startOfMonth().startOfDay() }
         } else {
             var comps = DateComponents()
@@ -306,7 +338,7 @@ extension GraphViewModel {
             comps.year = year
             comps.hour = 0
             comps.minute = 0
-            let date = Calendar.current.date(from: comps)!
+            let date = Calendar.current.date(from: comps) ?? Date()
             filteredHistorys = historys.filter { date.endOfMonth().endOfday() >= $0.date.toDate && $0.date.toDate >= date.startOfMonth().startOfDay() }
         }
         
@@ -337,20 +369,20 @@ extension GraphViewModel {
             self.totalRecord = (distance: 0, count: 0, pace: "0'0''",totalTime: "0")
             return
         }
-        var distance = 0
+        var distance = Calc.defaultDistance
         var pacem = 0
         var paces = 0
         var totalTime = 0
         for hitory in historys  {
-            distance += Int(hitory.distance) ?? 0
+            distance += Double(hitory.distance) ?? Calc.defaultDistance
             let curPacem = hitory.averagePace.components(separatedBy: "'")[0]
             let curPaces = hitory.averagePace.components(separatedBy: "'")[1].components(separatedBy: "'")[0]
-            paces += Int(curPaces)!
-            pacem += Int(curPacem)!
+            paces += Int(curPaces) ?? Content.defaultPace
+            pacem += Int(curPacem) ?? Content.defaultPace
             var runningTimeArray = hitory.runningTime.components(separatedBy: ":")
             var timeIndex = 1
             while !runningTimeArray.isEmpty {
-                totalTime += Int(runningTimeArray.removeLast())! * timeIndex
+                totalTime += Int(runningTimeArray.removeLast()) ?? Content.defaultTime * timeIndex
                 timeIndex *= 60
             }
         }
