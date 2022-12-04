@@ -73,6 +73,7 @@ extension RunningRouteView {
         // MARK: Temp - Modifying state during view update, this will cause undefined behavior. fix 예정
 
         guard !hasSetRegion else { return }
+        
         hasSetRegion = true
         view.setRegion(routeVm.region, animated: false)
     }
