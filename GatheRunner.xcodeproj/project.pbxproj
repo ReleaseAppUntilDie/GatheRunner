@@ -35,8 +35,7 @@
 		E31D52602927A6040067DF48 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D525F2927A6040067DF48 /* AuthRequest.swift */; };
 		E31D52622927A6280067DF48 /* FirebaseAuthResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D52612927A6280067DF48 /* FirebaseAuthResponseDTO.swift */; };
 		E31D52642927A63C0067DF48 /* FirebaseAuthRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D52632927A63C0067DF48 /* FirebaseAuthRequestDTO.swift */; };
-		E32D47B2292CEAB2001CCE61 /* MapWithPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D47B0292CEA1A001CCE61 /* MapWithPolyline.swift */; };
-		E32D47B3292CEAB4001CCE61 /* ResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D47B1292CEA1A001CCE61 /* ResultMapView.swift */; };
+		E32D47B3292CEAB4001CCE61 /* RunningRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D47B1292CEA1A001CCE61 /* RunningRouteView.swift */; };
 		E335E7E5293729AB0034CFED /* RunningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7E4293729AB0034CFED /* RunningRecord.swift */; };
 		E335E7E7293729D80034CFED /* RunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7E6293729D80034CFED /* RunningRecordRepository.swift */; };
 		E335E7E929372A0F0034CFED /* FirebaseRunningRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7E829372A0F0034CFED /* FirebaseRunningRecordRepository.swift */; };
@@ -45,6 +44,11 @@
 		E335E7EF29372C740034CFED /* SearchRunningRecord+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7EE29372C740034CFED /* SearchRunningRecord+Firebase.swift */; };
 		E335E7F129372D960034CFED /* RunningRecord+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7F029372D960034CFED /* RunningRecord+Firebase.swift */; };
 		E335E7F329372DFE0034CFED /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7F229372DFE0034CFED /* String+ToDate.swift */; };
+		E335E7F52937B6FF0034CFED /* RunningRouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7F42937B6FF0034CFED /* RunningRouteViewModel.swift */; };
+		E335E7F72937B76B0034CFED /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7F62937B76B0034CFED /* TimerManager.swift */; };
+		E335E7F92937B8250034CFED /* RunningRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7F82937B8250034CFED /* RunningRecordViewModel.swift */; };
+		E335E7FB2937B8370034CFED /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7FA2937B8370034CFED /* MapViewModel.swift */; };
+		E335E7FD2937C6FE0034CFED /* String+ToRecordFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335E7FC2937C6FE0034CFED /* String+ToRecordFormat.swift */; };
 		E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335FAF828B7610300835F72 /* SelectedTab.swift */; };
 		E3435A01292281F500B65D48 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3435A00292281F500B65D48 /* UserRepository.swift */; };
 		E3438C3C28D74B260003591F /* FieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3438C3B28D74B260003591F /* FieldStyle.swift */; };
@@ -166,8 +170,7 @@
 		E31D52612927A6280067DF48 /* FirebaseAuthResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthResponseDTO.swift; sourceTree = "<group>"; };
 		E31D52632927A63C0067DF48 /* FirebaseAuthRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthRequestDTO.swift; sourceTree = "<group>"; };
 		E32716CD290D560A005FA430 /* Encodable+ToDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+ToDictionary.swift"; sourceTree = "<group>"; };
-		E32D47B0292CEA1A001CCE61 /* MapWithPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWithPolyline.swift; sourceTree = "<group>"; };
-		E32D47B1292CEA1A001CCE61 /* ResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapView.swift; sourceTree = "<group>"; };
+		E32D47B1292CEA1A001CCE61 /* RunningRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRouteView.swift; sourceTree = "<group>"; };
 		E335E7E4293729AB0034CFED /* RunningRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecord.swift; sourceTree = "<group>"; };
 		E335E7E6293729D80034CFED /* RunningRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordRepository.swift; sourceTree = "<group>"; };
 		E335E7E829372A0F0034CFED /* FirebaseRunningRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRunningRecordRepository.swift; sourceTree = "<group>"; };
@@ -176,6 +179,11 @@
 		E335E7EE29372C740034CFED /* SearchRunningRecord+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchRunningRecord+Firebase.swift"; sourceTree = "<group>"; };
 		E335E7F029372D960034CFED /* RunningRecord+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RunningRecord+Firebase.swift"; sourceTree = "<group>"; };
 		E335E7F229372DFE0034CFED /* String+ToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDate.swift"; sourceTree = "<group>"; };
+		E335E7F42937B6FF0034CFED /* RunningRouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRouteViewModel.swift; sourceTree = "<group>"; };
+		E335E7F62937B76B0034CFED /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		E335E7F82937B8250034CFED /* RunningRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRecordViewModel.swift; sourceTree = "<group>"; };
+		E335E7FA2937B8370034CFED /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		E335E7FC2937C6FE0034CFED /* String+ToRecordFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToRecordFormat.swift"; sourceTree = "<group>"; };
 		E335FAF828B7610300835F72 /* SelectedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTab.swift; sourceTree = "<group>"; };
 		E33663E2292CD2E200E41E28 /* RepositoriesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesContainer.swift; sourceTree = "<group>"; };
 		E33663E4292CD2F700E41E28 /* ViewModelsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelsContainer.swift; sourceTree = "<group>"; };
@@ -308,45 +316,46 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DA098D2928F818750053140F /* PrepareRunView */ = {
+		DA098D2928F818750053140F /* PrepareRun */ = {
 			isa = PBXGroup;
 			children = (
 				DA33695728790DBE00FA13AE /* PrepareRunView.swift */,
-				DA7D5E7A28F740D90066B2C6 /* MapView.swift */,
 				DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */,
 				DAEA9319287D184900349465 /* BottomButtonView.swift */,
 			);
-			path = PrepareRunView;
+			path = PrepareRun;
 			sourceTree = "<group>";
 		};
-		DA098D2A28F8189E0053140F /* RunGuideView */ = {
+		DA098D2A28F8189E0053140F /* RunGuide */ = {
 			isa = PBXGroup;
 			children = (
 				DA33695928790E0C00FA13AE /* RunningGuideView.swift */,
 				DA694A7E28F72E6800A02EEE /* RunGuideDescriptionView.swift */,
 				DA098D2628F802320053140F /* CardView.swift */,
 			);
-			path = RunGuideView;
+			path = RunGuide;
 			sourceTree = "<group>";
 		};
-		DA098D2D28F8470F0053140F /* Views */ = {
+		DA098D2D28F8470F0053140F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DA098D2E28F8615C0053140F /* RunningView */,
-				DA098D2928F818750053140F /* PrepareRunView */,
-				DA098D2A28F8189E0053140F /* RunGuideView */,
+				DA5842242893C2E700554B5D /* TabItem */,
+				E32D47AF292CEA1A001CCE61 /* Map */,
+				DA098D2E28F8615C0053140F /* Running */,
+				DA098D2928F818750053140F /* PrepareRun */,
+				DA098D2A28F8189E0053140F /* RunGuide */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
-		DA098D2E28F8615C0053140F /* RunningView */ = {
+		DA098D2E28F8615C0053140F /* Running */ = {
 			isa = PBXGroup;
 			children = (
 				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
 				E3E748082892837700F40457 /* RunSplashScreen.swift */,
 				E351783928ABC9E50088003B /* RunningRecordView.swift */,
 			);
-			path = RunningView;
+			path = Running;
 			sourceTree = "<group>";
 		};
 		DA42E58E292CF50500D349A9 /* Repository */ = {
@@ -366,6 +375,7 @@
 				E3FE02FA28D49749008A9B91 /* String+isValid.swift */,
 				E335E7F229372DFE0034CFED /* String+ToDate.swift */,
 				DB051390292BDE7B00BE218B /* Date+Extension.swift */,
+				E335E7FC2937C6FE0034CFED /* String+ToRecordFormat.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -373,8 +383,12 @@
 		DA58421C2893C26200554B5D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */,
 				DA58421D2893C27700554B5D /* RunGuideViewModel.swift */,
 				DA42E58C292CF4A300D349A9 /* PrepareRunViewModel.swift */,
+				E335E7F42937B6FF0034CFED /* RunningRouteViewModel.swift */,
+				E335E7F82937B8250034CFED /* RunningRecordViewModel.swift */,
+				E335E7FA2937B8370034CFED /* MapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -390,15 +404,13 @@
 		DB198DAD288F7908002513A9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E399CA8029339C5A00ACFCFA /* Manager */,
-				E3DA2F5328B7607F001E9220 /* Environment */,
 				E399CA7D293395C800ACFCFA /* AppEnvironment.swift */,
 				E3DA2F5528B7607F001E9220 /* Alignment+Extention.swift */,
 				E3DA2F5228B7607F001E9220 /* Constants.swift */,
 				E3DA2F5628B7607F001E9220 /* GatherNaviBar.swift */,
 				E3DA2F5728B7607F001E9220 /* TouchLocationView.swift */,
-				E305671028B75B6600DFA1C4 /* LocationManager.swift */,
 				E399CACB2936199C00ACFCFA /* FetchStatusType.swift */,
+				E399CA8029339C5A00ACFCFA /* Manager */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -414,8 +426,8 @@
 		E32D47AF292CEA1A001CCE61 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				E32D47B0292CEA1A001CCE61 /* MapWithPolyline.swift */,
-				E32D47B1292CEA1A001CCE61 /* ResultMapView.swift */,
+				DA7D5E7A28F740D90066B2C6 /* MapView.swift */,
+				E32D47B1292CEA1A001CCE61 /* RunningRouteView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -518,7 +530,6 @@
 			children = (
 				DA42E58E292CF50500D349A9 /* Repository */,
 				E35EFEBD286DFB2D003E23DE /* Commons */,
-				E32D47AF292CEA1A001CCE61 /* Map */,
 				E35EFEC2286DFB2D003E23DE /* MainTab */,
 				E355960E28D45E8200AF0FBD /* Authentication */,
 				E35EFEBB286DFB2D003E23DE /* Running */,
@@ -532,8 +543,7 @@
 			children = (
 				EA5E278D28B604A1004C0798 /* Model */,
 				DA58421C2893C26200554B5D /* ViewModel */,
-				DA5842242893C2E700554B5D /* TabItem */,
-				DA098D2D28F8470F0053140F /* Views */,
+				DA098D2D28F8470F0053140F /* View */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -625,6 +635,8 @@
 			isa = PBXGroup;
 			children = (
 				E399CA8129339C9F00ACFCFA /* UserManager.swift */,
+				E305671028B75B6600DFA1C4 /* LocationManager.swift */,
+				E335E7F62937B76B0034CFED /* TimerManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -753,14 +765,6 @@
 				E3607CD32923C25E0018B2C2 /* ImageStyle.swift */,
 			);
 			path = Style;
-			sourceTree = "<group>";
-		};
-		E3DA2F5328B7607F001E9220 /* Environment */ = {
-			isa = PBXGroup;
-			children = (
-				DA18732B28F9BD26009D23F7 /* SelectedButtonMemory.swift */,
-			);
-			path = Environment;
 			sourceTree = "<group>";
 		};
 		E85FF54528F6856800C197CA /* Model */ = {
@@ -1090,18 +1094,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E399CA7E293395C900ACFCFA /* AppEnvironment.swift in Sources */,
+				E335E7F72937B76B0034CFED /* TimerManager.swift in Sources */,
 				E3452551291E264000E2FA38 /* AuthResponse.swift in Sources */,
 				E345254C291E25DB00E2FA38 /* FirebaseAPIManager+Auth.swift in Sources */,
 				DA18732C28F9BD26009D23F7 /* SelectedButtonMemory.swift in Sources */,
 				EA7913B828D6EA7000F889E5 /* GraphBottomSheetView.swift in Sources */,
+				E335E7F52937B6FF0034CFED /* RunningRouteViewModel.swift in Sources */,
 				E335FAF928B7610300835F72 /* SelectedTab.swift in Sources */,
 				E39F0B5D28B75D0B0086957F /* GraphViewModel.swift in Sources */,
 				E3435A01292281F500B65D48 /* UserRepository.swift in Sources */,
 				E335E7E7293729D80034CFED /* RunningRecordRepository.swift in Sources */,
 				E38C3AB52915471A00F0B104 /* OptionNameSpaces.swift in Sources */,
 				E399CA8229339C9F00ACFCFA /* UserManager.swift in Sources */,
+				E335E7FD2937C6FE0034CFED /* String+ToRecordFormat.swift in Sources */,
 				E3FE02FB28D49749008A9B91 /* String+isValid.swift in Sources */,
-				E32D47B3292CEAB4001CCE61 /* ResultMapView.swift in Sources */,
+				E32D47B3292CEAB4001CCE61 /* RunningRouteView.swift in Sources */,
 				E39F0B5E28B75D0B0086957F /* ActivityHistoryView.swift in Sources */,
 				E355961328D4651900AF0FBD /* AuthenticationViewModel.swift in Sources */,
 				EA3D3F8D28D07C1000D78D28 /* PeriodView.swift in Sources */,
@@ -1144,9 +1151,9 @@
 				DA42E58D292CF4A300D349A9 /* PrepareRunViewModel.swift in Sources */,
 				DA42E590292CF51F00D349A9 /* WorkoutIndexRepository.swift in Sources */,
 				E351783A28ABC9E50088003B /* RunningRecordView.swift in Sources */,
-				E32D47B2292CEAB2001CCE61 /* MapWithPolyline.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				E31D52642927A63C0067DF48 /* FirebaseAuthRequestDTO.swift in Sources */,
+				E335E7F92937B8250034CFED /* RunningRecordViewModel.swift in Sources */,
 				DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */,
 				E35EFEC9286DFB2D003E23DE /* ActivityView.swift in Sources */,
 				E31D52622927A6280067DF48 /* FirebaseAuthResponseDTO.swift in Sources */,
@@ -1171,6 +1178,7 @@
 				DA7D5E7B28F740D90066B2C6 /* MapView.swift in Sources */,
 				E3D349D7286C20D200618AC3 /* GatheRunnerApp.swift in Sources */,
 				E399CA7C2933957C00ACFCFA /* ViewModelsContainer.swift in Sources */,
+				E335E7FB2937B8370034CFED /* MapViewModel.swift in Sources */,
 				E38C3AB42915470000F0B104 /* Encodable+Queries.swift in Sources */,
 				E35EFECA286DFB2D003E23DE /* MainTabView.swift in Sources */,
 				DA33695828790DBE00FA13AE /* PrepareRunView.swift in Sources */,

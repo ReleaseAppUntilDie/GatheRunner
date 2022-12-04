@@ -15,7 +15,7 @@ struct PrepareRunView: View {
 
     var body: some View {
         ZStack {
-            MapView().hide(isPresentedRunGuideDetailDescriptionView)
+            MapView(viewModel: DependencyContainer.previewMapScene).hide(isPresentedRunGuideDetailDescriptionView)
             VStack {
                 workoutIndexView
                 RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView).padding(0)

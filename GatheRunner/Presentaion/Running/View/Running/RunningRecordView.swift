@@ -15,14 +15,13 @@ struct RunningRecordView: View {
     
     var body: some View {
         VStack(spacing: Size.mainVerticalSpacing) {
-            ResultMapView(manager: manager)
-                .isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
+            runningRouteView
             timerView
             realTimeRecordView
             stopWatchButtonLayer
-            Spacer()
-                .isEmpty(logicalOperator: .and, [!isRunning, !isInitialState])
         }
+        .onAppear { bindFetchStatus() }
+        .didSetLoadable(by: $recordVm.fetchStatus)
     }
     
     // MARK: Private
@@ -34,6 +33,8 @@ struct RunningRecordView: View {
         static let stopWatchHorizontalSpacing: CGFloat = 30
         static let stopWatchImage: CGFloat = 100
         static let labelFont: CGFloat = 40
+        static let routeCornerRadius: CGFloat = 15
+        static let routePadding: CGFloat = 30
     }
     
     private enum Content {
@@ -52,28 +53,39 @@ struct RunningRecordView: View {
         }
     }
     
+    @Environment(\.dismiss) var dismiss
+    
     @State private var isRunning = false
-    @State private var isInitialState = true
-    @EnvironmentObject private var manager: LocationManager
+    @State private var isResume = false
+    @StateObject var recordVm: RunningRecordViewModel
+    
+    var routeVm: RunningRouteViewModel
 }
 
 // MARK: SubViews
 
 extension RunningRecordView {
+    private var runningRouteView: some View {
+        RunningRouteView(routeVm: routeVm)
+            .isEmpty(logicalOperator: .and, [isResume, !isRunning])
+            .clipShape(RoundedRectangle(cornerRadius: Size.routeCornerRadius))
+            .padding(.horizontal, Size.routePadding)
+    }
+    
     private var timerView: some View {
         recordLabelView(
             label: Content.Label.exerciseTime,
-            bidingText: "\(manager.minutes) : \(manager.seconds)")
+            bidingText: "\(recordVm.minutes) : \(recordVm.seconds)")
     }
     
     private var realTimeRecordView: some View {
         HStack(spacing: Size.recordHorizontalSpacing) {
             recordLabelView(
                 label: Content.Label.kilometer,
-                bidingText: String(format: Content.Label.recordFormat, manager.distance))
+                bidingText: String(format: Content.Label.recordFormat, recordVm.totalTravelDistance))
             recordLabelView(
                 label: Content.Label.pace,
-                bidingText: String(format: Content.Label.recordFormat, manager.currentPace))
+                bidingText: String(format: Content.Label.recordFormat, recordVm.currentPace))
         }
     }
     
@@ -88,23 +100,22 @@ extension RunningRecordView {
         Button(action: { }) {
             Image(Content.Image.stop)
                 .asIconStyle(withMaxWidth: Size.stopWatchImage, withMaxHeight: Size.stopWatchImage)
-                .addLongPressTypeAlert(withAction: {
+                .addLongPressTypeAlert {
                     isRunning = false
-                    manager.didStopRecording()
-                    
-                })
+                    isResume = false
+                    stopRecord()
+                }
         }
     }
     
     private var resumeButton: some View {
         Toggle(Content.Label.empty, isOn: $isRunning)
             .onChange(of: isRunning) {
-                if isInitialState {
-                    isInitialState = false
-                }
-                $0 ? manager.didSetStartLocation() : manager.didUnSetStartLocation()
+                isResume = true
+                $0 ? startRecord() : pauseRecord()
             }
-            .toggleStyle(IconStyle(onImage: Content.Image.play, offImage: Content.Image.pause, size: Size.stopWatchImage))
+            .toggleStyle(IconStyle(onImage: Content.Image.play,
+                                   offImage: Content.Image.pause, size: Size.stopWatchImage))
     }
     
     private func recordLabelView(
@@ -115,16 +126,46 @@ extension RunningRecordView {
     -> some View
     {
         VStack(spacing: spacing) {
-            Text(bidingText)
-                .font(font)
+            Text(bidingText).font(font)
             Text(label).asLabelStyle()
         }
     }
 }
 
+// MARK: Private Methods
+
+extension RunningRecordView {
+    private func bindFetchStatus() {
+        recordVm.$fetchStatus
+            .sink {
+                guard $0 == .success else { return }
+                self.dismiss()
+            }
+            .store(in: &recordVm.cancelBag)
+    }
+    
+    private func startRecord() {
+        recordVm.startRecord()
+        routeVm.startRecord()
+    }
+    
+    private func pauseRecord() {
+        recordVm.pauseRecord()
+        routeVm.pauseRecord()
+    }
+    
+    private func stopRecord() {
+        recordVm.stopRecord()
+        routeVm.stopRecord()
+    }
+
+}
+
 // MARK: - RunningRecordView_Previews
+
 struct RunningRecordView_Previews: PreviewProvider {
     static var previews: some View {
-        RunningRecordView().environmentObject(LocationManager())
+        RunningRecordView(recordVm: DependencyContainer.previewRecordScene,
+                          routeVm: DependencyContainer.previewRouteScene)
     }
 }
