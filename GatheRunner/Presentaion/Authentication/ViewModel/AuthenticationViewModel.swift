@@ -15,11 +15,12 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var inputPassword = ""
     @Published var isEmailValid = false
     @Published var isPasswordValid = false
-    @Published var isInputsValid = false
-    @Published var isAuthValid = false
-
+    @Published var fetchStatus: FetchStatus = .none
+        
     var cancelBag = Set<AnyCancellable>()
-
+    var errorMessage = ""
+    
+    private let fetchStatusSubject = CurrentValueSubject<FetchStatus, Never>(.none)
     private let userRepository: UserRepository
     private let userManager: UserManager
 
@@ -28,78 +29,96 @@ final class AuthenticationViewModel: ObservableObject {
     init(userRepository: UserRepository, userManager: UserManager) {
         self.userRepository = userRepository
         self.userManager = userManager
-
         bindValidation()
+        bindFetchStatus()
     }
 }
 
-// MARK: Internal Methods
+// MARK: Auth Methods
 
 extension AuthenticationViewModel {
     func signIn() {
-        guard validatedInputs() else { return }
+        fetchStatusSubject.send(.fetching)
 
         userRepository.signIn(AuthRequest(email: inputEmail, password: inputPassword))
             .sink { [weak self] completion in
                 switch completion {
-                case .failure(_): self?.isAuthValid = false
-
-                default: print("completion \(completion)")
+                case .failure(let error): self?.bindError(error)
+                default: return
                 }
 
             } receiveValue: { [weak self] user in
-                self?.userManager.setInfo(with: user)
+                guard let self = self else { return }
+                
+                self.userManager.setInfo(with: user)
+                self.fetchStatusSubject.send(.success)
             }
             .store(in: &cancelBag)
     }
 
     func signUp() {
-        guard validatedInputs() else { return }
+        fetchStatusSubject.send(.fetching)
 
         userRepository.signUp(AuthRequest(email: inputEmail, password: inputPassword))
             .sink { [weak self] completion in
                 switch completion {
-                case .failure(_): self?.isAuthValid = false
+                case .failure(let error): self?.bindError(error)
+                default: return
 
-                default: print("completion \(completion)")
                 }
 
             } receiveValue: { [weak self] user in
-                self?.userManager.setInfo(with: user)
+                guard let self = self else { return }
+
+                self.userManager.setInfo(with: user)
+                self.fetchStatusSubject.send(.success)
+
             }
             .store(in: &cancelBag)
     }
 
     func signOut() {
+        fetchStatusSubject.send(.fetching)
+
         userRepository.signOut()
-            .sink { completion in
+            .sink { [weak self] completion in
                 switch completion {
-                case .failure(let error): print("error \(error)")
-                default: print("completion \(completion)")
+                case .failure(let error): self?.bindError(error)
+                default: return
                 }
 
-            } receiveValue: { [weak self] _ in
-                self?.userManager.isSignIn = false
+            } receiveValue: { [weak self] result in
+                guard let self = self, result else { return }
+                
+                self.userManager.isSignIn = false
+                self.fetchStatusSubject.send(.success)
             }
             .store(in: &cancelBag)
     }
 
     func deleteUser() {
+        fetchStatusSubject.send(.fetching)
+        
         userRepository.deleteUser()
-            .sink { completion in
+            .sink { [weak self] completion in
                 switch completion {
-                case .failure(let error): print("error \(error)")
-                default: print("completion \(completion)")
+                case .failure(let error):
+                    self?.bindError(error)
+
+                default: return
                 }
 
-            } receiveValue: { [weak self] _ in
-                self?.userManager.isSignIn = false
+            } receiveValue: { [weak self] result in
+                guard let self = self, result else { return }
+
+                self.userManager.isSignIn = false
+                self.fetchStatusSubject.send(.success)
             }
             .store(in: &cancelBag)
     }
 }
 
-// MARK: Private Methods
+// MARK: Private Bind
 
 extension AuthenticationViewModel {
     private func bindValidation() {
@@ -117,13 +136,17 @@ extension AuthenticationViewModel {
             }
             .store(in: &cancelBag)
     }
+    
+    private func bindFetchStatus() {
+        fetchStatusSubject.assign(to: \.fetchStatus, on: self)
+            .store(in: &cancelBag)
+    }
+    
+    private func bindError(_ error: Error) {
+        fetchStatusSubject.send(.failure)
+        
+        // MARK: Temp errorMessage Handling
 
-    private func validatedInputs() -> Bool {
-        guard isEmailValid, isPasswordValid else {
-            isInputsValid = false
-            return isInputsValid
-        }
-        isInputsValid = true
-        return isInputsValid
+        errorMessage = error.localizedDescription
     }
 }
