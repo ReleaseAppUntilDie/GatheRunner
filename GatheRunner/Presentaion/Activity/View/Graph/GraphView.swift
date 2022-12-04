@@ -34,7 +34,6 @@ struct GraphView: View {
                         pickerViewShowed: $isPickerViewShowed,
                         averageHistory: viewModel.totalRecord!)
                 }
-                
 
                 Graph(
                     graphWidth: UIScreen.getWidthby(ratio: 0.7),

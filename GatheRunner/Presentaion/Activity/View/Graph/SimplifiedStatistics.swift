@@ -17,7 +17,6 @@ struct SimplifiedStatistics: View {
 
     let averageHistory: (distance: Int, count: Int, pace: String, totalTime: String)
 
-
     var buttonText: String {
         switch selectedTimeUnit {
         case .week: return "이번주"

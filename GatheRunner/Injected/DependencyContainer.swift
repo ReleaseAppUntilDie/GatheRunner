@@ -21,4 +21,5 @@ class DependencyContainer: ObservableObject {
 
 extension DependencyContainer {
     static var previewAuthScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.authVm
+    static var previewGraphScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.graphVm
 }
