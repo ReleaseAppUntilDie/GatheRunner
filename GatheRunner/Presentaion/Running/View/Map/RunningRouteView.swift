@@ -11,6 +11,8 @@ import MapKit
 struct RunningRouteView: UIViewRepresentable {
     var routeVm: RunningRouteViewModel
     
+    @State private var hasSetRegion = false
+    
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
@@ -20,12 +22,12 @@ struct RunningRouteView: UIViewRepresentable {
     func updateUIView(_ view: MKMapView, context: Context) {
         var drawItems = [MKOverlay]()
         let lineCoordinates = routeVm.coordinates
-                
+        
+        setRegionOnce(view)
+
         addPolyline(&drawItems, with: lineCoordinates)
         addCircle(&drawItems, with: lineCoordinates)
-                
         view.addOverlays(drawItems)
-        view.setRegion(routeVm.region, animated: false)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -65,6 +67,12 @@ extension RunningRouteView {
         drawItems.append(startCircle)
         drawItems.append(endCircle)
     }
+    
+    private func setRegionOnce(_ view: MKMapView) {
+        guard !hasSetRegion else { return }
+        hasSetRegion = true
+        view.setRegion(routeVm.region, animated: false)
+    }
 }
 
 // MARK: Coordinator
@@ -76,7 +84,7 @@ extension RunningRouteView {
         init(_ parent: RunningRouteView) {
             self.parent = parent
         }
-        
+                
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             zoomForAllOverlays(mapView: mapView)
             
@@ -110,11 +118,10 @@ extension RunningRouteView {
             let insets = UIEdgeInsets(top: Size.zoomInset, left: Size.zoomInset,
                                       bottom: Size.zoomInset, right: Size.zoomInset)
             guard let initial = mapView.overlays.first?.boundingMapRect else { return }
-
+            
             let mapRect = mapView.overlays
                 .dropFirst()
                 .reduce(initial) { $0.union($1.boundingMapRect) }
-
             mapView.setVisibleMapRect(mapRect, edgePadding: insets, animated: true)
         }
     }

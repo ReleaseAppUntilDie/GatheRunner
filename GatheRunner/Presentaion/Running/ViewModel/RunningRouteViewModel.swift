@@ -25,6 +25,7 @@ class RunningRouteViewModel {
         locationCancellable = locationManager.regionSubject
             .sink { [weak self] region in
                 guard let self = self else { return }
+                
                 self.region = region
                 self.coordinates.append(region.center)
             }
