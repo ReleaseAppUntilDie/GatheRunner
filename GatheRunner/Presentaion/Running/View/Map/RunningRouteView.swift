@@ -42,7 +42,7 @@ extension RunningRouteView {
         static let circleRadius: CGFloat = 7
         static let circleLineWidth: CGFloat = 2
         static let polyLineLineWidth: CGFloat = 5
-        static let zoomInset: CGFloat = 50
+        static let zoomInset: CGFloat = 30
     }
 }
 
@@ -69,6 +69,9 @@ extension RunningRouteView {
     }
     
     private func setRegionOnce(_ view: MKMapView) {
+        
+        // MARK: Temp - Modifying state during view update, this will cause undefined behavior. fix 예정
+
         guard !hasSetRegion else { return }
         hasSetRegion = true
         view.setRegion(routeVm.region, animated: false)
@@ -88,26 +91,30 @@ extension RunningRouteView {
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             zoomForAllOverlays(mapView: mapView)
             
-            if let routePolyline = overlay as? MKPolyline {
-                return drawPolyLine(polyLine: routePolyline)
-            } else if overlay is MKCircle {
-                return drawCircle(overlay: overlay)
+            return drawMap(with: overlay)
+        }
+        
+        func drawMap(with overlay: MKOverlay) -> MKOverlayRenderer {
+            if let polyline = overlay as? MKPolyline {
+                return drawPolyLine(with: polyline)
+            } else if let circle = overlay as? MKCircle {
+                return drawCircle(with: circle)
             }
             return MKOverlayRenderer()
         }
         
-        func drawCircle(overlay: MKOverlay) -> MKCircleRenderer {
-            let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.strokeColor = UIColor.white
+        func drawCircle(with circle: MKCircle) -> MKCircleRenderer {
             
             // MARK: Temp - start,end에 따른 색상변경 추가 예정
             
-            circleRenderer.fillColor = UIColor.red
-            circleRenderer.lineWidth = Size.circleLineWidth
-            return circleRenderer
+            let renderer = MKCircleRenderer(circle: circle)
+            renderer.strokeColor = UIColor.white
+            renderer.fillColor = UIColor.red
+            renderer.lineWidth = Size.circleLineWidth
+            return renderer
         }
         
-        func drawPolyLine(polyLine: MKPolyline) -> MKPolylineRenderer {
+        func drawPolyLine(with polyLine: MKPolyline) -> MKPolylineRenderer {
             let renderer = MKPolylineRenderer(polyline: polyLine)
             renderer.strokeColor = UIColor.systemBlue
             renderer.lineWidth = Size.polyLineLineWidth
