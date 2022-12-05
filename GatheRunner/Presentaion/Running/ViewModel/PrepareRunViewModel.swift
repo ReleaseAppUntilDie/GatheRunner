@@ -8,35 +8,69 @@
 import Combine
 
 class PrepareRunViewModel: ObservableObject {
-    @Published var fetchedWorkoutIndexArrs: [String]?
+    @Published var todayInfo = ""
+    @Published var fetchStatus: FetchStatus = .none
+
+    var errorMessage = ""
+
+    // MARK: Private
     
-    func getWorkoutIndex() {
-        WorkoutIndexFetchAPIs.fetchWorkoutIndex()
+    private let workoutIndexRepository: WorkoutIndexRepository
+    private let fetchStatusSubject = CurrentValueSubject<FetchStatus, Never>(.none)
+    
+    private var cancelBag = Set<AnyCancellable>()
+
+    // MARK: LifeCycle
+
+    init(workoutIndexRepository: WorkoutIndexRepository) {
+        self.workoutIndexRepository = workoutIndexRepository
+        
+        bindFetchStatus()
+        fetchTodayInfo()
+    }
+}
+
+// MARK: Private Methods
+
+extension PrepareRunViewModel {
+    private func bindFetchStatus() {
+        fetchStatusSubject.assign(to: \.fetchStatus, on: self)
+            .store(in: &cancelBag)
+    }
+    
+    private func fetchTodayInfo() {
+        fetchStatusSubject.send(.fetching)
+        
+        workoutIndexRepository.fetch(TodayWorkoutIndex())
             .sink { [weak self] completion in
+                guard let self = self else { return }
+
                 switch completion {
-                case .failure(_):
-                    print("fetch workoutIndex Error")
-                default:
-                    print("fetch workoutIndex Completion \(completion)")
+                case .failure(let error):
+                    self.fetchStatusSubject.send(.failure)
+                    self.errorMessage = error.localizedDescription
+                    
+                default: return
                 }
-            } receiveValue: { result in
-                self.fetchedWorkoutIndexArrs = result.outdoorGrade
-            }.store(in: &WorkoutIndexFetchAPIs.cancelBag)
+                
+            } receiveValue: { [weak self] result in
+                guard let self = self else { return }
+                
+                self.fetchStatusSubject.send(.success)
+                self.todayInfo = self.workoutIndexDTO(with: result)
+            }
+            .store(in: &cancelBag)
     }
-    
-    func getWorkoutIndexContents() -> String {
-        guard let fetchedWorkoutIndexArrs = self.fetchedWorkoutIndexArrs else { return "" }
+
+    private func workoutIndexDTO(with workoutIndex: WorkoutIndex) -> String {
         
-        let parsedContents = parseWorkoutIndexContents(fetchedWorkoutIndexArrs[0])
+        // MARK: Temp City Info
         
-        if let convertIntToIndex = Int(parsedContents[0]) {
-            return "오늘의 운동 지수 : " + parsedContents[0] + (convertIntToIndex >= 70 ? " ☀️☀️ " : " ☁️☁️ ") + parsedContents[1]
-        } else {
-            return ""
-        }
-    }
-    
-    func parseWorkoutIndexContents(_ contents: String) -> [String] {
-        return contents.components(separatedBy: ",")
+        let results = workoutIndex.outdoorGrade
+        let content = results[0].components(separatedBy: ",")
+        let grade = "오늘의 운동 지수 : " + content[0] + (content[0] >= "70" ? " ☀️☀️ " : " ☁️☁️ ")
+        let coment = content[1]
+
+        return grade + coment
     }
 }

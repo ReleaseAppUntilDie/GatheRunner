@@ -25,4 +25,5 @@ extension DependencyContainer {
     static var previewMapScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.mapVm
     static var previewRecordScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.recordVm
     static var previewRouteScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.routeVm
+    static var previewPrepareScene = DependencyContainer(configure: .init(apiType: .FireBase)).viewModels.prepareRunVm
 }

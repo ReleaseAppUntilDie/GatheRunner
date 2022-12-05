@@ -11,19 +11,17 @@ import SwiftUI
 
 struct PrepareRunView: View {
     @State private var isPresentedRunGuideDetailDescriptionView = false
-    @StateObject var viewModel: PrepareRunViewModel = PrepareRunViewModel()
+    @StateObject var prepareRunVm: PrepareRunViewModel
 
     var body: some View {
         ZStack {
             MapView(viewModel: DependencyContainer.previewMapScene).hide(isPresentedRunGuideDetailDescriptionView)
             VStack {
-                workoutIndexView
+                workoutIndexView.didSetLoadable(by: $prepareRunVm.fetchStatus)
                 RunGuideTabView(isPresentedRunGuideDetailDescriptionView: $isPresentedRunGuideDetailDescriptionView).padding(0)
                 Spacer()
                 BottomButtonView().padding(.bottom, 30)
             }
-        }.onAppear {
-            viewModel.getWorkoutIndex()
         }
     }
 }
@@ -34,7 +32,7 @@ extension PrepareRunView {
             .frame(height: UIScreen.getHeightby(ratio: 0.03))
             .foregroundColor(.white)
             .overlay {
-                Text(viewModel.getWorkoutIndexContents())
+                Text(prepareRunVm.todayInfo)
                     .bold()
                     .kerning(Size.workoutIndexTextKerning)
                     .lineSpacing(Size.workoutIndexTextLineSpacing)
@@ -55,6 +53,6 @@ extension PrepareRunView {
 
 struct PrepareRunView_Previews: PreviewProvider {
     static var previews: some View {
-        PrepareRunView()
+        PrepareRunView(prepareRunVm: DependencyContainer.previewPrepareScene)
     }
 }

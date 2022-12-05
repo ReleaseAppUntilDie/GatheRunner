@@ -43,4 +43,7 @@ extension DependencyContainer.ViewModels {
         RunningRouteViewModel(locationManager: managers.locationManager)
     }
 
+    var prepareRunVm: PrepareRunViewModel {
+        PrepareRunViewModel(workoutIndexRepository: repositories.workoutIndexRepository)
+    }
 }

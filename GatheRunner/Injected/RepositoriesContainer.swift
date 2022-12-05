@@ -9,6 +9,7 @@ extension DependencyContainer {
     struct Repositories {
         let userRepository: UserRepository
         let runningRecordRepository: RunningRecordRepository
+        let workoutIndexRepository: WorkoutIndexRepository
     }
 }
 
@@ -18,9 +19,11 @@ extension DependencyContainer.Repositories {
         case .FireBase:
             let userRepository = FirebaseUserRepository()
             let runningRecordRepository = FirebaseRunningRecordRepository()
-
+            let workoutIndexRepository = FirebaseWorkoutIndexRepository()
+            
             self.init(userRepository: userRepository,
-                      runningRecordRepository: runningRecordRepository)
+                      runningRecordRepository: runningRecordRepository,
+                      workoutIndexRepository: workoutIndexRepository)
         }
     }
 }
