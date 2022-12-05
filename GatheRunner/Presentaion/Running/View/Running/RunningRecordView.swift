@@ -24,7 +24,7 @@ struct RunningRecordView: View {
         .didSetLoadable(by: $recordVm.fetchStatus)
     }
     
-    // MARK: Private
+    // MARK: NameSpace
     
     private enum Size {
         static let defaultVerticalSpacing: CGFloat = 10
@@ -53,12 +53,14 @@ struct RunningRecordView: View {
         }
     }
     
-    @Environment(\.dismiss) var dismiss
+    // MARK: Properties
+
+    @Binding var isStart: Bool
     
     @State private var isRunning = false
     @State private var isResume = false
-    @StateObject var recordVm: RunningRecordViewModel
     
+    @StateObject var recordVm: RunningRecordViewModel
     var routeVm: RunningRouteViewModel
 }
 
@@ -139,7 +141,8 @@ extension RunningRecordView {
         recordVm.$fetchStatus
             .sink {
                 guard $0 == .success else { return }
-                self.dismiss()
+                
+                isStart = false
             }
             .store(in: &recordVm.cancelBag)
     }
@@ -158,14 +161,15 @@ extension RunningRecordView {
         recordVm.stopRecord()
         routeVm.stopRecord()
     }
-
+    
 }
 
 // MARK: - RunningRecordView_Previews
 
 struct RunningRecordView_Previews: PreviewProvider {
     static var previews: some View {
-        RunningRecordView(recordVm: DependencyContainer.previewRecordScene,
+        RunningRecordView(isStart: .constant(true),
+                          recordVm: DependencyContainer.previewRecordScene,
                           routeVm: DependencyContainer.previewRouteScene)
     }
 }

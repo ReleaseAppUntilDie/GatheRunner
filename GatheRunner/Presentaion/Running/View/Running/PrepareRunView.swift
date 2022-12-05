@@ -22,15 +22,8 @@ struct PrepareRunView: View {
         }
     }
     
-    @EnvironmentObject var container: DependencyContainer
-    @StateObject var viewModel: PrepareRunViewModel
-    
-    @State private var isPresentedRunGuideDetailDescriptionView = false
-}
+    // MARK: - NameSpace
 
-// MARK: - NameSpace
-
-extension PrepareRunView {
     private enum Size {
         static let workoutIndexTextKerning: CGFloat = 2.0
         static let workoutIndexTextLineSpacing: CGFloat = 4.0
@@ -50,9 +43,17 @@ extension PrepareRunView {
             static let title = "시작"
         }
     }
+    
+    // MARK: Properties
+
+    @EnvironmentObject var container: DependencyContainer
+    @StateObject var viewModel: PrepareRunViewModel
+    
+    @State private var isPresentedRunGuideDetailDescriptionView = false
+    @State private var isStart = false
 }
 
-// MARK: - subViews
+// MARK: - SubViews
 
 extension PrepareRunView {
     private var workoutIndexView: some View {
@@ -69,7 +70,7 @@ extension PrepareRunView {
     }
     
     private var startButton: some View {
-        NavigationLink(destination: runningRecord) {
+        NavigationLink(destination: runningRecord, isActive: $isStart) {
             startImage
         }
     }
@@ -92,6 +93,7 @@ extension PrepareRunView {
     
     private var runningRecord: some View {
         RunningRecordView(
+            isStart: $isStart,
             recordVm: container.viewModels.recordVm,
             routeVm: container.viewModels.routeVm)
     }
