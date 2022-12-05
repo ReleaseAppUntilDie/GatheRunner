@@ -33,7 +33,7 @@ extension RunningView {
     @ViewBuilder
     var viewSelector: some View {
         if recentSelectButton.selectedButton == .justStartButton {
-            PrepareRunView()
+            PrepareRunView(viewModel: container.viewModels.prepareRunVm)
                 .transition(.move(edge: .leading))
                 .zIndex(-1)
         }

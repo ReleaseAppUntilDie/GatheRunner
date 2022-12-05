@@ -8,35 +8,91 @@
 import Combine
 
 class PrepareRunViewModel: ObservableObject {
-    @Published var fetchedWorkoutIndexArrs: [String]?
+    @Published var todayInfo = ""
+    @Published var fetchStatus: FetchStatus = .none
     
-    func getWorkoutIndex() {
-        WorkoutIndexFetchAPIs.fetchWorkoutIndex()
+    var errorMessage = ""
+    
+    // MARK: Private
+    
+    private let workoutIndexRepository: WorkoutIndexRepository
+    private let fetchStatusSubject = CurrentValueSubject<FetchStatus, Never>(.none)
+    
+    private var cancelBag = Set<AnyCancellable>()
+    
+    // MARK: LifeCycle
+    
+    init(workoutIndexRepository: WorkoutIndexRepository) {
+        self.workoutIndexRepository = workoutIndexRepository
+        
+        bindFetchStatus()
+        fetchTodayInfo()
+    }
+}
+
+// MARK: NameSpace
+
+extension PrepareRunViewModel {
+    private enum Content {
+        static let sunnyEmoji = " ☀️☀️ "
+        static let rainyEmoji = " ☁️☁️ "
+        static let gradeComment = "오늘의 운동 지수 : "
+        static let standard = "70"
+        static let comma = ","
+    }
+    
+    private enum Index {
+        static let city = 0
+        static let grade = 0
+        static let comment = 1
+    }
+}
+
+// MARK: Private Methods
+
+extension PrepareRunViewModel {
+    private func bindFetchStatus() {
+        fetchStatusSubject.assign(to: \.fetchStatus, on: self)
+            .store(in: &cancelBag)
+    }
+    
+    private func fetchTodayInfo() {
+        fetchStatusSubject.send(.fetching)
+        
+        workoutIndexRepository.fetch(TodayWorkoutIndex())
             .sink { [weak self] completion in
+                guard let self = self else { return }
+                
                 switch completion {
-                case .failure(_):
-                    print("fetch workoutIndex Error")
-                default:
-                    print("fetch workoutIndex Completion \(completion)")
+                case .failure(let error):
+                    self.fetchStatusSubject.send(.failure)
+                    self.errorMessage = error.localizedDescription
+                    
+                default: return
                 }
-            } receiveValue: { result in
-                self.fetchedWorkoutIndexArrs = result.outdoorGrade
-            }.store(in: &WorkoutIndexFetchAPIs.cancelBag)
+                
+            } receiveValue: { [weak self] result in
+                guard let self = self else { return }
+                
+                self.fetchStatusSubject.send(.success)
+                self.todayInfo = self.workoutIndexDTO(with: result)
+            }
+            .store(in: &cancelBag)
     }
     
-    func getWorkoutIndexContents() -> String {
-        guard let fetchedWorkoutIndexArrs = self.fetchedWorkoutIndexArrs else { return "" }
+    private func workoutIndexDTO(with workoutIndex: WorkoutIndex) -> String {
         
-        let parsedContents = parseWorkoutIndexContents(fetchedWorkoutIndexArrs[0])
+        // MARK: Temp CityIndex
         
-        if let convertIntToIndex = Int(parsedContents[0]) {
-            return "오늘의 운동 지수 : " + parsedContents[0] + (convertIntToIndex >= 70 ? " ☀️☀️ " : " ☁️☁️ ") + parsedContents[1]
-        } else {
-            return ""
-        }
-    }
-    
-    func parseWorkoutIndexContents(_ contents: String) -> [String] {
-        return contents.components(separatedBy: ",")
+        let results = workoutIndex.outdoorGrade
+        let content = results[Index.city].components(separatedBy: Content.comma)
+        
+        let grade = Content.gradeComment
+        + content[Index.grade]
+        + (content[Index.grade] >= Content.standard ? Content.sunnyEmoji : Content.rainyEmoji)
+        
+        let coment = content[Index.comment]
+        
+        return grade + coment
     }
 }
