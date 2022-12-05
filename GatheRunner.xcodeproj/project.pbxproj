@@ -26,7 +26,6 @@
 		DA7E241828BB031F00046BFB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA7E241728BB031F00046BFB /* GoogleService-Info.plist */; };
 		DAE12F5D28D346FC00C328EA /* RunGuideItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */; };
 		DAEA9315287AED7200349465 /* RunGuideExperienceTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */; };
-		DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEA9319287D184900349465 /* BottomButtonView.swift */; };
 		DB198DA8288F76FF002513A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB198DA7288F76FF002513A9 /* HeaderView.swift */; };
 		DBD4C52F28F3DFD1000E28D0 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4C52E28F3DFD1000E28D0 /* HistoryItem.swift */; };
 		E305671128B75B6600DFA1C4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305671028B75B6600DFA1C4 /* LocationManager.swift */; };
@@ -161,7 +160,6 @@
 		DAE12F5C28D346FC00C328EA /* RunGuideItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunGuideItem.swift; sourceTree = "<group>"; };
 		DAEA930E28794F6F00349465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGuideExperienceTabItem.swift; sourceTree = "<group>"; };
-		DAEA9319287D184900349465 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
 		DB051390292BDE7B00BE218B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DB1870D829212E8B00C51095 /* ResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapView.swift; sourceTree = "<group>"; };
 		DB198DA7288F76FF002513A9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -324,16 +322,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DA098D2928F818750053140F /* PrepareRun */ = {
-			isa = PBXGroup;
-			children = (
-				DA33695728790DBE00FA13AE /* PrepareRunView.swift */,
-				DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */,
-				DAEA9319287D184900349465 /* BottomButtonView.swift */,
-			);
-			path = PrepareRun;
-			sourceTree = "<group>";
-		};
 		DA098D2A28F8189E0053140F /* RunGuide */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,10 +335,9 @@
 		DA098D2D28F8470F0053140F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DA5842242893C2E700554B5D /* TabItem */,
+				DA5842242893C2E700554B5D /* Tab */,
 				E32D47AF292CEA1A001CCE61 /* Map */,
 				DA098D2E28F8615C0053140F /* Running */,
-				DA098D2928F818750053140F /* PrepareRun */,
 				DA098D2A28F8189E0053140F /* RunGuide */,
 			);
 			path = View;
@@ -360,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				E35EFEBC286DFB2D003E23DE /* RunningView.swift */,
+				DA33695728790DBE00FA13AE /* PrepareRunView.swift */,
 				E3E748082892837700F40457 /* RunSplashScreen.swift */,
 				E351783928ABC9E50088003B /* RunningRecordView.swift */,
 			);
@@ -393,12 +381,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		DA5842242893C2E700554B5D /* TabItem */ = {
+		DA5842242893C2E700554B5D /* Tab */ = {
 			isa = PBXGroup;
 			children = (
 				DAEA9314287AED7200349465 /* RunGuideExperienceTabItem.swift */,
+				DA7D5E7628F73A5F0066B2C6 /* RunGuideTabView.swift */,
 			);
-			path = TabItem;
+			path = Tab;
 			sourceTree = "<group>";
 		};
 		DB198DAD288F7908002513A9 /* Utils */ = {
@@ -1131,7 +1120,6 @@
 				E3E7480B289284B200F40457 /* TextStyle.swift in Sources */,
 				E399CA7F2933963100ACFCFA /* FirebaseUserRepository.swift in Sources */,
 				E3708FDC289B8F49004FF0C1 /* TabBarButton.swift in Sources */,
-				DAEA931A287D184900349465 /* BottomButtonView.swift in Sources */,
 				E38C3AB1291546F800F0B104 /* Encodable+ToDictionary.swift in Sources */,
 				E335E7EF29372C740034CFED /* SearchRunningRecord+Firebase.swift in Sources */,
 				EA3D3F8E28D07C1000D78D28 /* GraphView.swift in Sources */,
