@@ -50,7 +50,7 @@ struct PrepareRunView: View {
     @StateObject var viewModel: PrepareRunViewModel
     
     @State private var isPresentedRunGuideDetailDescriptionView = false
-    @State private var isStart = false
+    @State private var isRunning = false
 }
 
 // MARK: - SubViews
@@ -70,7 +70,7 @@ extension PrepareRunView {
     }
     
     private var startButton: some View {
-        NavigationLink(destination: runningRecord, isActive: $isStart) {
+        NavigationLink(destination: runningRecord, isActive: $isRunning) {
             startImage
         }
     }
@@ -93,7 +93,7 @@ extension PrepareRunView {
     
     private var runningRecord: some View {
         RunningRecordView(
-            isStart: $isStart,
+            isRunning: $isRunning,
             recordVm: container.viewModels.recordVm,
             routeVm: container.viewModels.routeVm)
     }

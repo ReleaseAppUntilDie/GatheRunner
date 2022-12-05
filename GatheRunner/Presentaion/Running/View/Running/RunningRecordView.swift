@@ -55,9 +55,9 @@ struct RunningRecordView: View {
     
     // MARK: Properties
 
-    @Binding var isStart: Bool
+    @Binding var isRunning: Bool
     
-    @State private var isRunning = false
+    @State private var isRecording = false
     @State private var isResume = false
     
     @StateObject var recordVm: RunningRecordViewModel
@@ -69,7 +69,7 @@ struct RunningRecordView: View {
 extension RunningRecordView {
     private var runningRouteView: some View {
         RunningRouteView(routeVm: routeVm)
-            .isEmpty(logicalOperator: .and, [isResume, !isRunning])
+            .isEmpty(logicalOperator: .and, [isResume, !isRecording])
             .clipShape(RoundedRectangle(cornerRadius: Size.routeCornerRadius))
             .padding(.horizontal, Size.routePadding)
     }
@@ -93,7 +93,7 @@ extension RunningRecordView {
     
     private var stopWatchButtonLayer: some View {
         HStack(spacing: Size.stopWatchHorizontalSpacing) {
-            stopButton.isEmpty(logicalOperator: .none, [isRunning])
+            stopButton.isEmpty(logicalOperator: .none, [isRecording])
             resumeButton
         }
     }
@@ -103,7 +103,7 @@ extension RunningRecordView {
             Image(Content.Image.stop)
                 .asIconStyle(withMaxWidth: Size.stopWatchImage, withMaxHeight: Size.stopWatchImage)
                 .addLongPressTypeAlert {
-                    isRunning = false
+                    isRecording = false
                     isResume = false
                     stopRecord()
                 }
@@ -111,8 +111,8 @@ extension RunningRecordView {
     }
     
     private var resumeButton: some View {
-        Toggle(Content.Label.empty, isOn: $isRunning)
-            .onChange(of: isRunning) {
+        Toggle(Content.Label.empty, isOn: $isRecording)
+            .onChange(of: isRecording) {
                 isResume = true
                 $0 ? startRecord() : pauseRecord()
             }
@@ -142,7 +142,7 @@ extension RunningRecordView {
             .sink {
                 guard $0 == .success else { return }
                 
-                isStart = false
+                isRunning = false
             }
             .store(in: &recordVm.cancelBag)
     }
@@ -168,7 +168,7 @@ extension RunningRecordView {
 
 struct RunningRecordView_Previews: PreviewProvider {
     static var previews: some View {
-        RunningRecordView(isStart: .constant(true),
+        RunningRecordView(isRunning: .constant(true),
                           recordVm: DependencyContainer.previewRecordScene,
                           routeVm: DependencyContainer.previewRouteScene)
     }
