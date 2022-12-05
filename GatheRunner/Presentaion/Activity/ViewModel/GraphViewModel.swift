@@ -19,7 +19,7 @@ class GraphViewModel: ObservableObject {
     
     @Published var records = [Int]()
     @Published var historys = [HistoryModel]()
-    @Published var totalRecord: (distance: Double, count: Int, pace: String, totalTime: String)?
+    @Published var totalRecord: (distance: Double, count: Int, pace: String, totalTime: String) = (distance: 0, count: 0, pace: "0'0''",totalTime: "0")
     @Published var filteredHistorys: [HistoryModel]? {
         didSet {
             if filteredHistorys != nil {
@@ -152,7 +152,7 @@ extension GraphViewModel {
             var graphDates = [Int](repeating: 0, count: 7)
             filteredHistorys.forEach {
                 let comps = $0.date.toDate.get([.weekday])
-                var index = comps.weekday ?? Content.defaultWeekDay - 2
+                var index = (comps.weekday ?? Content.defaultWeekDay) - 2
                 if index < 0 {
                     index = 6
                 }
@@ -167,8 +167,8 @@ extension GraphViewModel {
             var graphDates = [Int](repeating: 0, count: lastDay ?? 0)
             filteredHistorys.forEach {
                 let comps = $0.date.toDate.get([.day])
-                let index = comps.day ?? Content.defaultDay - 1
-               
+                let index = (comps.day ?? Content.defaultDay) - 1
+                
                 graphDates[index] += Int($0.distance) ?? Content.defaultDistance
             }
             records = graphDates
@@ -177,7 +177,7 @@ extension GraphViewModel {
             var graphDates = [Int](repeating: 0, count: 12)
             filteredHistorys.forEach {
                 let comps = $0.date.toDate.get([.month])
-                let index = comps.month ?? Content.defaultDay - 1
+                let index = (comps.month ?? Content.defaultMonth) - 1
                 
                 graphDates[index] += Int($0.distance) ?? Content.defaultDistance
             }
@@ -189,7 +189,7 @@ extension GraphViewModel {
             filteredHistorys.forEach {
                 let comps = $0.date.toDate.get([.year])
                 
-                let index = comps.year ?? Content.defaultYear - (comps.year ?? Content.defaultYear - 4 + 1)
+                let index = (comps.year ?? Content.defaultYear) - ((comps.year ?? Content.defaultYear) - 4 + 1)
                 
                 graphDates[index] += Int($0.distance) ?? Content.defaultDistance
             }
@@ -202,7 +202,7 @@ extension GraphViewModel {
         var result = [Int]()
         let current = Calendar.current.dateComponents([.year], from: Date())
         for i in 0..<4 {
-            result.append(current.year ?? Content.defaultYear - i)
+            result.append((current.year ?? Content.defaultYear) - i)
         }
         return result
     }

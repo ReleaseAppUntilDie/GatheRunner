@@ -15,7 +15,7 @@ struct SimplifiedStatistics: View {
     @Binding var selectedTimeUnit: TimeUnit
     @Binding var pickerViewShowed: Bool
 
-    let averageHistory: (distance: Int, count: Int, pace: String, totalTime: String)
+    let averageHistory: (distance: Double, count: Int, pace: String, totalTime: String)
 
     var buttonText: String {
         switch selectedTimeUnit {
@@ -94,11 +94,3 @@ extension SimplifiedStatistics {
     }
 
 }
-
-// MARK: - SimplifiedStatistics_Previews
-//
-// struct SimplifiedStatistics_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SimplifiedStatistics(selectedTimeUnit: .constant(.week), pickerViewShowed: .constant(true))
-//    }
-// }
